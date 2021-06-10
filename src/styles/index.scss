@@ -1,0 +1,106 @@
+@import './variables.module.scss';
+@import './transition.scss';
+@import './sidebar.scss';
+@import './mixin.scss';
+
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 20px;
+}
+.title{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  // margin: 10px 0;
+}
+
+.checkbtn {
+  border-width: 0px;
+  margin: 15px 0 0 10px;
+  width: 90px;
+  height: 36px;
+  background: inherit;
+  background-color: rgba(64, 158, 255, 1);
+  border: none;
+  border-radius: 4px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.bigselect {
+  width: 400px;
+}
+
+.paging {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tablecontent {
+  margin-bottom: 40px;
+}
+
+.el-dialog__body {
+  padding: 0px;
+}
