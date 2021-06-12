@@ -33,7 +33,6 @@ const getBreadcrumb = () => {
 // 手动解析path中可能存在的参数
 const pathCompile = (path) => {
   // var toPath = compile(path);
-  console.log(path)
   var toPath = path;
   return toPath(route.params);
 };
@@ -54,7 +53,6 @@ watch(route, getBreadcrumb);
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.module.scss";
 .app-breadcrumb.el-breadcrumb {
   // display: inline-block;
   // font-size: 14px;

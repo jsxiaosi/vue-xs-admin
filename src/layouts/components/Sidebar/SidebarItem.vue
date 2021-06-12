@@ -25,7 +25,6 @@
 </template>
 
 <script setup>
-// import path from 'path'
 import { computed, defineProps, ref } from "vue";
 import { isExternal } from "@/utils/validate";
 import Item from './Item.vue'

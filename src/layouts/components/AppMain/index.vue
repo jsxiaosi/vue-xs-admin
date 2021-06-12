@@ -22,8 +22,6 @@ const route = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.module.scss";
-
 .app-main {
   min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
   width: 100%;

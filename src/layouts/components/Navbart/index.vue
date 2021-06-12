@@ -9,8 +9,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.module.scss";
-
 .navbar{
   width: 100%;
   height: #{$navBarHeight};

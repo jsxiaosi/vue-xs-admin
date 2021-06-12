@@ -48,4 +48,13 @@ export default defineConfig({
       }
     }
   },
+  css: {
+    preprocessorOptions: {
+      // 配置scss全局样式以及变量
+      scss: {
+        additionalData: `@import "./src/styles/index.scss";`
+      }
+    }
+  }
+
 })
