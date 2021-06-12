@@ -74,15 +74,11 @@ const hasOneShowingChild = (children = [], parent) => {
 }
 const resolvePath = (routePath) => {
   if (isExternal(routePath)) {
-    console.log('这里？？？')
     return routePath
   }
   if (isExternal(props.basePath)) {
-        console.log('这里？？？')
-
     return props.basePath
   }
-  console.log(`${props.basePath}/${routePath}`)
   return `${props.basePath}/${routePath}`
 }
 

@@ -6,6 +6,11 @@
     transition: margin-left .28s;
     margin-left: #{$sideBarWidth};
     position: relative;
+
+    .main-container-breadcrumb{
+      width: 100%;
+      height: #{$BreadcrumbHeight};
+    }
   }
 
   .sidebar-container {

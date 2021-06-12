@@ -2,14 +2,17 @@
 $menuText:#909399; //文字颜色
 $menuActiveText:#409EFF; //选中的文字颜色
 $subMenuActiveText:#409EFF; //选中的文字父元素颜色
-$menuBg:#ffffff;// 背景颜色
-$menuHover:#f3f3f3;// 焦点背景色
-$subMenuBg:#ffffff;//子元素的背景颜色
-$subMenuHover:#f3f3f3;//子元素焦点背景色
+$menuBg:#ffffff; // 背景颜色
+$menuHover:#f3f3f3; // 焦点背景色
+$subMenuBg:#ffffff; //子元素的背景颜色
+$subMenuHover:#f3f3f3; //子元素焦点背景色
 
 $sideBarWidth: 210px;
-
 $navBarHeight: 54px;
+
+$appMainBgColor: #f5f6fa; //app-mian背景颜色
+
+$BreadcrumbHeight:50px; //面包屑高度
 
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass

@@ -25,10 +25,11 @@ const route = computed(() => {
 @import "@/styles/variables.module.scss";
 
 .app-main {
-  min-height: calc(100vh - #{$navBarHeight});
+  min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
   width: 100%;
   position: relative;
   overflow: hidden;
+  background-color: #{$appMainBgColor};
 }
 .fixed-header + .app-main {
   padding-top: 50px;
