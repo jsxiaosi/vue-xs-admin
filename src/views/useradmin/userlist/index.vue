@@ -1,5 +1,7 @@
 <template>
-	<div>vue</div>
+	<div class="page-container">
+		
+	</div>
 </template>
 
 <script>

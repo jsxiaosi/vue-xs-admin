@@ -28,6 +28,13 @@ const route = computed(() => {
   position: relative;
   overflow: hidden;
   background-color: #{$appMainBgColor};
+  .page-container{
+    margin: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 }
 .fixed-header + .app-main {
   padding-top: 50px;

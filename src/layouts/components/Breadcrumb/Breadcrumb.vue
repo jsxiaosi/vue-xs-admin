@@ -5,7 +5,7 @@
         v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
         class="no-redirect"
         >{{ item.meta.title }}</span>
-      <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+      <a class="redirect" v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
@@ -58,7 +58,9 @@ watch(route, getBreadcrumb);
   // font-size: 14px;
   line-height: #{$BreadcrumbHeight};
   // margin-left: 8px;
-
+  .redirect{
+    color: $BreadcrumbText;
+  }
   .no-redirect {
     color: #97a8be;
     cursor: text;

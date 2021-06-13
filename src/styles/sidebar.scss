@@ -9,7 +9,9 @@
 
     .main-container-breadcrumb{
       width: 100%;
+      padding: 0 20px;
       height: #{$BreadcrumbHeight};
+      background-color: $BreadcrumbColor;
     }
   }
 
@@ -33,10 +35,12 @@
     }
 
     .el-menu-item{
-      // border-left: #{$menuItemBorderLeft} solid 3px;
+      color: $menuText;
+      border-left: #{$menuItemBorderLeft} solid 3px;
     }
     .el-menu-item.is-active {
-      // border-left: #{$subMenuItemBorderLeft} solid 3px !important;
+      color: $menuItemActiveText ;
+      border-left: #{$subMenuItemBorderLeft} solid 3px !important;
       background-color:  $subMenuItemBg !important;
     }
 
@@ -92,15 +96,17 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-submenu__title {
-      // // border-left: $menuBg solid 3px;
+      color: $menuText;
+      border-left: $menuBg solid 3px;
       background-color: $menuBg ;
       &:hover {
-        background-color: $menuHover !important;
+        color: $menuHoverText !important;
+        background-color: $menuHover ;
       }
     }
 
     .is-active>.el-submenu__title {
-      color: $subMenuActiveText !important;
+      color: $menuActiveText !important;
     }
 
     & .nest-menu .el-submenu>.el-submenu__title,
@@ -109,7 +115,8 @@
       background-color: $menuItemBg ;
 
       &:hover {
-        background-color: $submenuItemHover !important;
+        color: $menuItemHoverText !important;
+        background-color: $menuItemHover;
       }
     }
   }
