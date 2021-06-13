@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-const routesModules = import.meta.globEager('./module/**/index.ts');
+const routesModules = import.meta.globEager('./module/**/index.js');
 
 console.log(routesModules)
 
