@@ -25,28 +25,6 @@ export const safeManagerRoutes = [
         meta: { title: 'index', icon: 'el-icon-phone-outline' }
       }
     ]
-  },
-  {
-    path: '/deta',
-    component: Layout,
-    redirect: '/deta/datelist/',
-    name: '客户',
-    alwaysShow: true,
-    meta: { title: '客户', icon: 'el-icon-user-solid' },
-    children: [
-      {
-        path: 'datelist',
-        name: 'datelist',
-        component: () => import('@/views/useradmin/userlist/index.vue'),
-        meta: { title: '客户列表', icon: 'el-icon-s-tools' }
-      },
-      {
-        path: 'dateindex',
-        name: '客户详情',
-        component: () => import('@/views/index/index.vue'),
-        meta: { title: '客户详情', icon: 'el-icon-phone-outline' }
-      }
-    ]
   }
 ]
 

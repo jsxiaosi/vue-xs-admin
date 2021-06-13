@@ -17,6 +17,7 @@ const props = defineProps({
 
 const isExternal = computed(() => isExt(props.to));
 
+// 判断是否是外部链接，如果是外部链接，使用标签
 const type = computed(() => {
   if (isExternal.value) {
     return "a";

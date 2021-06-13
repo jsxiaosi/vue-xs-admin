@@ -13,7 +13,7 @@ export default defineConfig({
   }, 
   plugins: [
     vue(),
-    // 按需引入组件库样式(目前使用element引入方式是完整引入)
+    // 按需引入组件库样式
     styleImport({
       libs: [{
         libraryName: 'element-plus',
