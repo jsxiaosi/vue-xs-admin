@@ -1,6 +1,6 @@
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
- 
+
 // 此处存在问题：
 // vite 配置了全局scss之后如果页面内再次引入文件，会报错，所以export单独抽离出来在页面import 导入
 :export {
@@ -9,7 +9,5 @@
   subMenuActiveText: $subMenuActiveText;
   menuBg: $menuBg;
   menuHover: $menuHover;
-  subMenuBg: $subMenuBg;
-  subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
 }

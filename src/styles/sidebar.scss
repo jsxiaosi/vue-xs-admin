@@ -33,12 +33,11 @@
     }
 
     .el-menu-item{
-      border-left:#ffffff solid 3px;
+      // border-left: #{$menuItemBorderLeft} solid 3px;
     }
     .el-menu-item.is-active {
-      border-left:#2380FF solid 3px !important;
-      background-color: #EDF5FF !important;
-      color: #{$menuActiveText} !important;
+      // border-left: #{$subMenuItemBorderLeft} solid 3px !important;
+      background-color:  $subMenuItemBg !important;
     }
 
     // reset element-ui css
@@ -93,6 +92,8 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-submenu__title {
+      // // border-left: $menuBg solid 3px;
+      background-color: $menuBg ;
       &:hover {
         background-color: $menuHover !important;
       }
@@ -105,10 +106,10 @@
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {
       min-width: $sideBarWidth !important;
-      // background-color: $subMenuBg !important;
+      background-color: $menuItemBg ;
 
       &:hover {
-        background-color: $subMenuHover !important;
+        background-color: $submenuItemHover !important;
       }
     }
   }
@@ -224,7 +225,7 @@
   .el-menu-item {
     &:hover {
       // you can use $subMenuHover
-      background-color: $menuHover !important;
+      // background-color: $menuHover !important;
     }
   }
 

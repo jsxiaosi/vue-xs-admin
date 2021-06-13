@@ -1,0 +1,36 @@
+// 统一颜色主题
+$mianColor: #409EFF; //主色
+$subColor1: #909399; //灰色
+$subColor2: #f5f6fa; //辅助色
+$subColor3: #FFFFFF; //辅助色
+$subColor4: #ecf5ff; //辅助色
+$selectBg: #ecf5ff; //辅助色
+$selectColor: #f3f3f3; //选中颜色（浅灰）
+
+
+
+// 左侧导航栏
+$sideBarWidth: 210px;
+$navBarHeight: 54px;
+
+
+$BreadcrumbHeight: 50px; //面包屑高度
+
+
+$menuBg: $subColor3; // 侧边栏背景颜色
+$menuHover: $selectColor; // 焦点背景色
+$menuBorderLeft: $subColor3; //左描边背景颜色
+$menuText: $subColor1; //文字颜色
+$menuActiveText: $mianColor; //选中的文字颜色
+$subMenuActiveText: $mianColor; //选中文字颜色
+
+
+$menuItemBg: $subColor3; //二级背景颜色
+$menuItemBorderLeft: $subColor3; //未选中的背景颜色
+$subMenuItemBg: $subColor4; //二级选中背景颜色
+$subMenuItemBorderLeft: $mianColor; //二级左描边背景颜色
+$submenuItemHover: $selectColor; //二级焦点背景颜色
+
+$appMainBgColor: $subColor2; //app-mian背景颜色
+
+

@@ -1,10 +1,32 @@
 <template>
   <div class="navbar">
-    admin
+  <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
+    <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
+
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+const options = ref([
+  {name:'123',value:'variables-theme-day'},
+  {name:'456',value:'variables-theme-dark'}
+])
+
+const value = ref()
+
+const toggleTheme = (scopeName = "theme-default") => {
+
+  document.documentElement.className = scopeName;
+ 
+};
 
 </script>
 
