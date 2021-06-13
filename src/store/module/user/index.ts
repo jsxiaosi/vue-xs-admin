@@ -1,4 +1,3 @@
-import storage from '@/config/storage'
 
 const actionTypes = {}
 
