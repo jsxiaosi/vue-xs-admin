@@ -24,7 +24,8 @@
     "@zougt/vite-plugin-theme-preprocessor": "^1.0.0",
     "sass": "^1.34.0",
     "vite": "^2.3.5",
-    "vite-plugin-style-import": "^0.10.1"
+    "vite-plugin-style-import": "^0.10.1",
+    "vite-plugin-svg-icons": "^0.7.0"
   },
   "license": "MIT"
 }
