@@ -4,20 +4,13 @@
 	</div>
 </template>
 
-<script>
+<script setup>
+import { useStore } from 'vuex'
+import mutation from '@/store/mutation.js'
 
-export default {
-	components: {
-	},
-	data() {
-		return{}
-	},
-	mounted() {
-	
-	},
-	methods: {
-	}
-}
+// const store = useStore()
+// store.commit(mutation.SET_USER,'进来了是吗？？？？')
+// console.log(useStore())
 </script>
 
 <style scoped>

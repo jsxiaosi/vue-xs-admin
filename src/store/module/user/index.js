@@ -1,7 +1,9 @@
 
 const actionTypes = {}
 
-const mutationTypes = {}
+const mutationTypes = {
+  SET_USER:'SET_USER'
+}
 
 const state = ()=>{
   return {
@@ -16,7 +18,10 @@ const getters = {
 const actions = {}
 
 const mutations = {
- 
+ [mutationTypes.SET_USER]:(state,res)=>{
+  console.log('asdasdasd',state,res)
+  state.user  = res
+ }
 }
 
 export {

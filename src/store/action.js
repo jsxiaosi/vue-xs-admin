@@ -1,6 +1,6 @@
 const actions = (r => {
-  return r.keys().map(key => r(key).actionTypes)
-})(require.context('./module/', true, /^\.\/([\s\S])+\/index\.js$/))
+  return Object.keys(r).map(key => r[key].actionTypes);
+})(import.meta.globEager("./module/**/index.js"))
 
 const newActions = Object.assign({}, ...actions)
 

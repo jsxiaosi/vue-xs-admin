@@ -8,7 +8,9 @@
       :value="item.value">
     </el-option>
   </el-select>
+  <!-- <div class="pattern">
 
+  </div> -->
   </div>
 </template>
 

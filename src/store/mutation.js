@@ -1,6 +1,6 @@
 const mutations = (r => {
-  return r.keys().map(key => r(key).mutationTypes)
-})(require.context('./module/', true, /^\.\/([\s\S])+\/index\.js$/))
+  return Object.keys(r).map(key => r[key].mutationTypes);
+})(import.meta.globEager("./module/**/index.js"))
 
 const newMutations = Object.assign({}, ...mutations)
 
