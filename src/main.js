@@ -1,17 +1,28 @@
-import 'virtual:svg-icons-register';
-
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
+
 import 'element-plus/lib/theme-chalk/index.css';
 import 'es6-promise/auto';
+import 'virtual:svg-icons-register';
 
-import Store from "./store"
+import Store from "./store";
 import Router from "./router";
-import App from './App.vue'
+import I18n from "./locales"
+import App from './App.vue';
 
-createApp(App)
-.use(Store)
-.use(Router)
-.use(ElementPlus)
-.mount('#app')
+const app = createApp(App)
 
+// 全局定义属性
+app.config.globalProperties.foo = 'bar'
+/**
+ * 页面使用方法：
+ * import { getCurrentInstance } from 'vue';
+ * const { proxy } = getCurrentInstance()
+ * proxy.foo
+ */
+
+app.use(Store)
+  .use(Router)
+  .use(I18n)
+  .use(ElementPlus)
+  .mount('#app')

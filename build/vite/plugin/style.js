@@ -1,3 +1,4 @@
+// https://github.com/anncwb/vite-plugin-style-import/blob/main/README.zh_CN.md
 import styleImport from 'vite-plugin-style-import'
 
 export function configStylePlugin(){

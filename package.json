@@ -1,6 +1,6 @@
 {
   "name": "vite+vue3 Template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "小斯斯",
     "email": "1531733886@qq.com",
@@ -19,6 +19,7 @@
     "vuex": "^4.0.1"
   },
   "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^2.2.1",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "@zougt/vite-plugin-theme-preprocessor": "^1.0.0",

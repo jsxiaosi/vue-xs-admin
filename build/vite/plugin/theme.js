@@ -1,3 +1,5 @@
+// https://github.com/GitOfZGT/vite-plugin-theme-preprocessor
+
 import path from 'path'
 import themePreprocessorPlugin, {
   getModulesScopeGenerater,
