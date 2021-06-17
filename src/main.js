@@ -23,6 +23,8 @@ app.config.globalProperties.foo = 'bar'
 
 app.use(Store)
   .use(Router)
+  .use(ElementPlus, {
+    i18n: I18n.global.t,
+  })
   .use(I18n)
-  .use(ElementPlus)
   .mount('#app')

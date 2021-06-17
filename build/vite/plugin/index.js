@@ -6,8 +6,7 @@ import { configStylePlugin } from './style'
 import { configThemePlugin } from './theme';
 // svg配置
 import { configSvgPlugin } from './svg';
-// 国际化翻译配置
-import { configI18nPlugin } from './i18n'
+// 压缩
 import { configCompressPlugin } from './compress'
 
 export function createVitePlugins() {
@@ -19,8 +18,6 @@ export function createVitePlugins() {
   vitePlugins.push(configThemePlugin())
 
   vitePlugins.push(configSvgPlugin())
-
-  vitePlugins.push(configI18nPlugin())
 
   vitePlugins.push(configCompressPlugin('gzip',true))
 
