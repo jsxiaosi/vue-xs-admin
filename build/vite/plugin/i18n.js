@@ -1,4 +1,7 @@
-// https://github.com/intlify/vite-plugin-vue-i18n
+/**
+ * 国际化
+ * https://github.com/intlify/vite-plugin-vue-i18n
+ */
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
 
 export function configI18nPlugin() { 

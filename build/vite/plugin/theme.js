@@ -1,4 +1,7 @@
-// https://github.com/GitOfZGT/vite-plugin-theme-preprocessor
+/**
+ * 动态改变主题
+ * https://github.com/GitOfZGT/vite-plugin-theme-preprocessor
+ */
 
 import path from 'path'
 import themePreprocessorPlugin, {

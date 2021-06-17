@@ -1,4 +1,7 @@
-// https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
+/**
+ * svg
+ * https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
+ */
 import viteSvgIcons from 'vite-plugin-svg-icons';
 import path from 'path';
 
