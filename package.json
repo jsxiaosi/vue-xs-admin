@@ -13,7 +13,9 @@
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,js}\" --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,css,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:staged": "lint-staged"
   },
   "dependencies": {
@@ -42,7 +44,7 @@
     "http-server": "^0.12.3",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.1",
+    "prettier": "2.3.1",
     "sass": "^1.34.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -55,19 +57,5 @@
     "vite-plugin-style-import": "^0.10.1",
     "vite-plugin-svg-icons": "^0.7.0"
   },
-  "license": "MIT",
-  "husky": {
-    "hooks": {
-      "precommit": "lint-staged",
-      "commitmsg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "prettier --write",
-      "stylelint \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-      "eslint \"{src,mock}/**/*.{vue,js}\"",
-      "git add"
-    ]
-  }
+  "license": "MIT"
 }
