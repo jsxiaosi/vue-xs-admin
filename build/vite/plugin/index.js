@@ -9,6 +9,9 @@ import { configSvgPlugin } from './svg';
 // 压缩
 import { configCompressPlugin } from './compress'
 
+import viteESLint from '@ehutch79/vite-eslint'
+
+
 export function createVitePlugins() {
   const vitePlugins = [
     vue()
@@ -21,6 +24,6 @@ export function createVitePlugins() {
 
   vitePlugins.push(configCompressPlugin('gzip',true))
 
-
+  vitePlugins.push(viteESLint())
   return vitePlugins
 }

@@ -13,7 +13,8 @@
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,js}\" --fix",
-    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:staged": "lint-staged"
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.46",
@@ -24,6 +25,7 @@
     "vuex": "^4.0.1"
   },
   "devDependencies": {
+    "@ehutch79/vite-eslint": "^0.0.1",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "@zougt/vite-plugin-theme-preprocessor": "^1.0.0",
