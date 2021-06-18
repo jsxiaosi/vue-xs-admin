@@ -52,16 +52,16 @@
     "vite-plugin-svg-icons": "^0.7.0"
   },
   "license": "MIT",
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
-    },
-    "lint-staged": {
-      "*.{js,vue}": [
-        "prettier --write",
-        "vue-cli-service lint",
-        "git add"
-      ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "prettier --write",
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
 }
