@@ -1,15 +1,15 @@
 import { defineConfig, loadEnv } from 'vite'
-import path from "path";
+import path from 'path'
 
-import { createVitePlugins } from './build/vite/plugin';
+import { createVitePlugins } from './build/vite/plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig((ConfigEnv) => {
   const { mode, command } = ConfigEnv
 
-  const root = process.cwd();
+  const root = process.cwd()
 
-  const env = loadEnv(mode, root);
+  const env = loadEnv(mode, root)
 
   console.log(mode, process.cwd(), env)
   return {
@@ -18,7 +18,7 @@ export default defineConfig((ConfigEnv) => {
       alias: {
         // 配置@别名
         '@': `${path.resolve(__dirname, 'src')}`,
-        //解决警告You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
+        // 解决警告You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
         'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
       }
     },
@@ -43,21 +43,20 @@ export default defineConfig((ConfigEnv) => {
       preprocessorOptions: {
         // 配置scss全局样式以及变量
         scss: {
-          additionalData: `@import "./src/styles/index.scss";`
+          additionalData: '@import "./src/styles/index.scss";'
         }
       }
     },
     build: {
       assetsDir: 'static',
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 2000
     },
     optimizeDeps: {
       include: [
         'element-plus/lib/locale/lang/zh-tw',
         'element-plus/lib/locale/lang/en'
       ],
-      exclude: [],
-    },
-
+      exclude: []
+    }
   }
 })

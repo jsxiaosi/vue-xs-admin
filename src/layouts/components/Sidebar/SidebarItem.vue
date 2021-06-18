@@ -25,8 +25,8 @@
 </template>
 
 <script setup>
-import { computed, defineProps, ref } from "vue";
-import { isExternal } from "@/utils/validate";
+import { computed, defineProps, ref } from 'vue'
+import { isExternal } from '@/utils/validate'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
 
@@ -65,7 +65,7 @@ const hasOneShowingChild = (children = [], parent) => {
 
   // Show parent if there are no child router to display
   if (showingChildren.length === 0) {
-    onlyOneChild.value = { ... parent, path: '', noShowingChildren: true }
+    onlyOneChild.value = { ...parent, path: '', noShowingChildren: true }
     return true
   }
 

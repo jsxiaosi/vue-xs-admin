@@ -4,18 +4,18 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps } from 'vue'
 
 defineProps({
   icon: {
     type: String,
-    default: "",
+    default: ''
   },
   title: {
     type: String,
-    default: "",
-  },
-});
+    default: ''
+  }
+})
 
 </script>
 

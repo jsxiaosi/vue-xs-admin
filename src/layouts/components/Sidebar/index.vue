@@ -17,20 +17,20 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-import SidebarItem from "./SidebarItem.vue";
-import { safeManagerRoutes } from "@/router/otherRoute";
-import variables from "@/styles/variables.module.scss";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import SidebarItem from './SidebarItem.vue'
+import { safeManagerRoutes } from '@/router/otherRoute'
+import variables from '@/styles/variables.module.scss'
 
 const activeMenyu = computed(() => {
-  const route = useRoute();
-  const { meta, path } = route;
+  const route = useRoute()
+  const { meta, path } = route
   if (meta.activeMenu) {
-    return meta.activeMenu;
+    return meta.activeMenu
   }
-  return path;
-});
+  return path
+})
 
 </script>
 

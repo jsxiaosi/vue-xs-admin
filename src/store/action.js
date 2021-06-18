@@ -1,6 +1,6 @@
 const actions = (r => {
-  return Object.keys(r).map(key => r[key].actionTypes);
-})(import.meta.globEager("./module/**/index.js"))
+  return Object.keys(r).map(key => r[key].actionTypes)
+})(import.meta.globEager('./module/**/index.js'))
 
 const newActions = Object.assign({}, ...actions)
 

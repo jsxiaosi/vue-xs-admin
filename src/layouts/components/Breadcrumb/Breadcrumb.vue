@@ -12,44 +12,44 @@
 
 <script setup>
 // import { compile } from "path-to-regexp";
-import { reactive, ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { reactive, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-const levelList = ref(null);
-const router = useRouter();
+const levelList = ref(null)
+const router = useRouter()
 // 当前路由
-const route = useRoute();
+const route = useRoute()
 
 // 解析路由匹配的数组
 const getBreadcrumb = () => {
   // 过滤留下只有meta和title
-  let matched = route.matched.filter((item) => item.meta && item.meta.title);
+  const matched = route.matched.filter((item) => item.meta && item.meta.title)
 
   // 拼出最终需要展示的跳转数据
   levelList.value = matched.filter(
     (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
-  );
-};
+  )
+}
 // 手动解析path中可能存在的参数
 const pathCompile = (path) => {
   // var toPath = compile(path);
-  var toPath = path;
-  return toPath(route.params);
-};
+  const toPath = path
+  return toPath(route.params)
+}
 // 跳转连接处理
 const handleLink = (item) => {
-  const { redirect, path } = item;
+  const { redirect, path } = item
   if (redirect) {
-    router.push(redirect);
-    return;
+    router.push(redirect)
+    return
   }
-  router.push(pathCompile(path));
-};
+  router.push(pathCompile(path))
+}
 
 // 首次调用
-getBreadcrumb();
+getBreadcrumb()
 // 监控route的变化，避免组件复用信息同步问题
-watch(route, getBreadcrumb);
+watch(route, getBreadcrumb)
 </script>
 
 <style lang="scss" scoped>

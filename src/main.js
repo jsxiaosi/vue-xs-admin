@@ -1,14 +1,14 @@
-import { createApp } from 'vue';
-import ElementPlus from 'element-plus';
+import { createApp } from 'vue'
+import ElementPlus from 'element-plus'
 
-import 'element-plus/lib/theme-chalk/index.css';
-import 'es6-promise/auto';
-import 'virtual:svg-icons-register';
+import 'element-plus/lib/theme-chalk/index.css'
+import 'es6-promise/auto'
+import 'virtual:svg-icons-register'
 
-import Store from "./store";
-import Router from "./router";
-import I18n from "./locales"
-import App from './App.vue';
+import Store from './store'
+import Router from './router'
+import I18n from './locales'
+import App from './App.vue'
 
 const app = createApp(App)
 
@@ -24,7 +24,7 @@ app.config.globalProperties.foo = 'bar'
 app.use(Store)
   .use(Router)
   .use(ElementPlus, {
-    i18n: I18n.global.t,
+    i18n: I18n.global.t
   })
   .use(I18n)
   .mount('#app')

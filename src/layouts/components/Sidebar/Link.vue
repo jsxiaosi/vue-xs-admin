@@ -5,37 +5,37 @@
 </template>
 
 <script setup>
-import { isExternal as isExt } from "@/utils/validate";
-import { computed, defineProps } from "vue";
+import { isExternal as isExt } from '@/utils/validate'
+import { computed, defineProps } from 'vue'
 
 const props = defineProps({
   to: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-const isExternal = computed(() => isExt(props.to));
+const isExternal = computed(() => isExt(props.to))
 
 // 判断是否是外部链接，如果是外部链接，使用标签
 const type = computed(() => {
   if (isExternal.value) {
-    return "a";
+    return 'a'
   }
-  return "router-link";
-});
+  return 'router-link'
+})
 
 const linkProps = (to) => {
   if (isExternal.value) {
     return {
       href: to,
-      target: "_blank",
-      rel: "noopener",
-    };
+      target: '_blank',
+      rel: 'noopener'
+    }
   }
   return {
-    to: to,
-  };
-};
+    to: to
+  }
+}
 
 </script>

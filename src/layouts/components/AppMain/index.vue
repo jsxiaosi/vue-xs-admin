@@ -9,16 +9,16 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 const route = computed(() => {
-  const route = useRoute();
-  const { path } = route;
-  console.log(path);
+  const route = useRoute()
+  const { path } = route
+  console.log(path)
 
-  return path;
-});
+  return path
+})
 </script>
 
 <style lang="scss" scoped>

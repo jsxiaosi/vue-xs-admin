@@ -1,8 +1,6 @@
 /* Layout */
 import Layout from '@/layouts/index.vue'
 
-
-
 export const safeManagerRoutes = [
   {
     path: '/useradmin',
@@ -57,5 +55,3 @@ export const safeManagerRoutes = [
     meta: { title: '首页列表', icon: 'el-icon-s-tools' }
   }
 ]
-
-

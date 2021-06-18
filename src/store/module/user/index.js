@@ -2,12 +2,12 @@
 const actionTypes = {}
 
 const mutationTypes = {
-  SET_USER:'SET_USER'
+  SET_USER: 'SET_USER'
 }
 
-const state = ()=>{
+const state = () => {
   return {
-    user: null,
+    user: null
   }
 }
 
@@ -18,10 +18,10 @@ const getters = {
 const actions = {}
 
 const mutations = {
- [mutationTypes.SET_USER]:(state,res)=>{
-  console.log('asdasdasd',state,res)
-  state.user  = res
- }
+  [mutationTypes.SET_USER]: (state, res) => {
+    console.log('asdasdasd', state, res)
+    state.user = res
+  }
 }
 
 export {

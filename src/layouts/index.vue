@@ -16,10 +16,10 @@
 </template>
 
 <script setup>
-import AppMain from "./components/AppMain/index.vue";
-import NavBart from "./components/Navbart/index.vue";
-import Sidebar from "./components/Sidebar/index.vue";
-import Breadcrumb from "./components/Breadcrumb/Breadcrumb.vue";
+import AppMain from './components/AppMain/index.vue'
+import NavBart from './components/Navbart/index.vue'
+import Sidebar from './components/Sidebar/index.vue'
+import Breadcrumb from './components/Breadcrumb/Breadcrumb.vue'
 </script>
 
 <style lang="scss" scoped>

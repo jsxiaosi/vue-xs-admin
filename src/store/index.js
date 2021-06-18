@@ -6,10 +6,10 @@ const modules = (r => {
       name: key.match(/^\.\/module\/([\s\S]+)\/index\.js$/)[1],
       module: r[key].default
     }
-  });
-})(import.meta.globEager("./module/**/index.js"))
+  })
+})(import.meta.globEager('./module/**/index.js'))
 
-let modulesObj = {}
+const modulesObj = {}
 
 modules.forEach(item => {
   modulesObj[item.name] = item.module
