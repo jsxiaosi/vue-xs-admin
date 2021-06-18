@@ -65,7 +65,8 @@
   "lint-staged": {
     "*.{js,vue}": [
       "prettier --write",
-      "vue-cli-service lint",
+      "stylelint \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+      "eslint \"{src,mock}/**/*.{vue,js}\"",
       "git add"
     ]
   }
