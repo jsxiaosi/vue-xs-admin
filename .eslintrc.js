@@ -1,7 +1,9 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    es2021: true
+    es6: true,
+    node: true
   },
   extends: ['standard', 'plugin:vue/essential'],
   parserOptions: {

@@ -36,6 +36,8 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^7.11.1",
     "http-server": "^0.12.3",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
     "sass": "^1.34.0",
     "stylelint": "^13.13.1",
@@ -49,5 +51,17 @@
     "vite-plugin-style-import": "^0.10.1",
     "vite-plugin-svg-icons": "^0.7.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.{js,vue}": [
+        "prettier --write",
+        "vue-cli-service lint",
+        "git add"
+      ]
+    }
 }
