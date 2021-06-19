@@ -21,7 +21,6 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import SidebarItem from './SidebarItem.vue'
 import { safeManagerRoutes } from '@/router/otherRoute'
-import variables from '@/styles/variables.module.scss'
 
 const activeMenyu = computed(() => {
   const route = useRoute()

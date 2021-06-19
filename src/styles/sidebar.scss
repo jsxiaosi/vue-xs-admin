@@ -1,52 +1,51 @@
 #app {
-
   .main-container {
+    position: relative;
     min-height: 100%;
     padding-top: #{$navBarHeight};
-    transition: margin-left .28s;
     margin-left: #{$sideBarWidth};
-    position: relative;
+    transition: margin-left 0.28s;
 
-    .main-container-breadcrumb{
+    .main-container-breadcrumb {
       width: 100%;
-      padding: 0 20px;
       height: #{$BreadcrumbHeight};
+      padding: 0 20px;
       background-color: $BreadcrumbColor;
     }
   }
 
   .sidebar-container {
-    transition: width 0.28s;
-    width: $sideBarWidth !important;
-    background-color: $menuBg;
-    // height: 100%;
-    padding: 26px 0;
     position: fixed;
-    font-size: 0px;
     top: #{$navBarHeight};
     bottom: 0;
     left: 0;
-    box-shadow: 1px 0 2px rgb(28 29 30 / 8%);
     z-index: 1001;
+    width: $sideBarWidth !important;
+    // height: 100%;
+    padding: 26px 0;
     overflow: hidden;
+    font-size: 0;
+    background-color: $menuBg;
+    box-shadow: 1px 0 2px rgb(28 29 30 / 8%);
+    transition: width 0.28s;
 
-    .sidebar-menu {
-
-    }
-
-    .el-menu-item{
+    .el-menu-item {
       color: $menuText;
       border-left: #{$menuItemBorderLeft} solid 3px;
     }
+
     .el-menu-item.is-active {
-      color: $menuItemActiveText ;
+      color: $menuItemActiveText;
+      background-color: $subMenuItemBg !important;
       border-left: #{$subMenuItemBorderLeft} solid 3px !important;
-      background-color:  $subMenuItemBg !important;
     }
 
     // reset element-ui css
     .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+      transition:
+        0s width ease-in-out,
+        0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
     }
 
     .scrollbar-wrapper {
@@ -54,7 +53,7 @@
     }
 
     .el-scrollbar__bar.is-vertical {
-      right: 0px;
+      right: 0;
     }
 
     .el-scrollbar {
@@ -82,37 +81,38 @@
     }
 
     .sub-el-icon {
-      color: currentColor;
       margin-right: 12px;
       margin-left: -2px;
+      color: currentColor;
     }
 
     .el-menu {
-      border: none;
-      height: 100%;
       width: 100% !important;
+      height: 100%;
+      border: none;
     }
 
     // menu hover
     .submenu-title-noDropdown,
     .el-submenu__title {
       color: $menuText;
+      background-color: $menuBg;
       border-left: $menuBg solid 3px;
-      background-color: $menuBg ;
+
       &:hover {
         color: $menuHoverText !important;
-        background-color: $menuHover ;
+        background-color: $menuHover;
       }
     }
 
-    .is-active>.el-submenu__title {
+    .is-active > .el-submenu__title {
       color: $menuActiveText !important;
     }
 
-    & .nest-menu .el-submenu>.el-submenu__title,
+    & .nest-menu .el-submenu > .el-submenu__title,
     & .el-submenu .el-menu-item {
       min-width: $sideBarWidth !important;
-      background-color: $menuItemBg ;
+      background-color: $menuItemBg;
 
       &:hover {
         color: $menuItemHoverText !important;
@@ -131,8 +131,8 @@
     }
 
     .submenu-title-noDropdown {
-      padding: 0 !important;
       position: relative;
+      padding: 0 !important;
 
       .el-tooltip {
         padding: 0 !important;
@@ -150,7 +150,7 @@
     .el-submenu {
       overflow: hidden;
 
-      &>.el-submenu__title {
+      & > .el-submenu__title {
         padding: 0 !important;
 
         .svg-icon {
@@ -169,13 +169,13 @@
 
     .el-menu--collapse {
       .el-submenu {
-        &>.el-submenu__title {
-          &>span {
-            height: 0;
+        & > .el-submenu__title {
+          & > span {
+            display: inline-block;
             width: 0;
+            height: 0;
             overflow: hidden;
             visibility: hidden;
-            display: inline-block;
           }
         }
       }
@@ -189,12 +189,12 @@
   // mobile responsive
   .mobile {
     .main-container {
-      margin-left: 0px;
+      margin-left: 0;
     }
 
     .sidebar-container {
-      transition: transform .28s;
       width: $sideBarWidth !important;
+      transition: transform 0.28s;
     }
 
     &.hideSidebar {
@@ -207,7 +207,6 @@
   }
 
   .withoutAnimation {
-
     .main-container,
     .sidebar-container {
       transition: none;
@@ -217,7 +216,7 @@
 
 // when menu collapsed
 .el-menu--vertical {
-  &>.el-menu {
+  & > .el-menu {
     .svg-icon {
       margin-right: 16px;
     }
@@ -228,7 +227,7 @@
     }
   }
 
-  .nest-menu .el-submenu>.el-submenu__title,
+  .nest-menu .el-submenu > .el-submenu__title,
   .el-menu-item {
     &:hover {
       // you can use $subMenuHover
@@ -237,7 +236,7 @@
   }
 
   // the scroll bar appears when the subMenu is too long
-  >.el-menu--popup {
+  > .el-menu--popup {
     max-height: 100vh;
     overflow-y: auto;
 

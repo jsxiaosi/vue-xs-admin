@@ -10,7 +10,7 @@ module.exports = {
 	// 行尾逗号,默认none,可选 none|es5|all
 	// es5 包括es5中的数组、对象
 	// all 包括函数对象等所有可选
-	TrailingCooma: 'none',
+	// TrailingCooma: 'none',
 	// 对象中的空格 默认trueÏ
 	// true: { foo: bar }
 	// false: {foo: bar}

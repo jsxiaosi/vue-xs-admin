@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 已存在文件只需添加以下命令
+npx eslint --fix --ext src/**/*.{vue}
+npx prettier --write --loglevel warn src/**/*.{js,scss,vue}
+npx stylelint --fix src/**/*.{vue,scss} --cache --cache-location node_modules/.cache/stylelint/
+git add .
