@@ -21,10 +21,11 @@ app.config.globalProperties.foo = 'bar'
  * proxy.foo
  */
 
-app.use(Store)
-  .use(Router)
-  .use(ElementPlus, {
-    i18n: I18n.global.t
-  })
-  .use(I18n)
-  .mount('#app')
+app
+	.use(Store)
+	.use(Router)
+	.use(ElementPlus, {
+		i18n: I18n.global.t,
+	})
+	.use(I18n)
+	.mount('#app')

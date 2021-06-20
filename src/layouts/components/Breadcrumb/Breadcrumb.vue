@@ -1,13 +1,16 @@
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/">
-    <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-      <span
-        v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
-        class="no-redirect"
-        >{{ item.meta.title }}</span>
-      <a class="redirect" v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
-    </el-breadcrumb-item>
-  </el-breadcrumb>
+	<el-breadcrumb class="app-breadcrumb" separator="/">
+		<el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
+			<span
+				v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+				class="no-redirect"
+				>{{ item.meta.title }}</span
+			>
+			<a class="redirect" v-else @click.prevent="handleLink(item)">{{
+				item.meta.title
+			}}</a>
+		</el-breadcrumb-item>
+	</el-breadcrumb>
 </template>
 
 <script setup>
@@ -22,28 +25,28 @@ const route = useRoute()
 
 // 解析路由匹配的数组
 const getBreadcrumb = () => {
-  // 过滤留下只有meta和title
-  const matched = route.matched.filter((item) => item.meta && item.meta.title)
+	// 过滤留下只有meta和title
+	const matched = route.matched.filter((item) => item.meta && item.meta.title)
 
-  // 拼出最终需要展示的跳转数据
-  levelList.value = matched.filter(
-    (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
-  )
+	// 拼出最终需要展示的跳转数据
+	levelList.value = matched.filter(
+		(item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+	)
 }
 // 手动解析path中可能存在的参数
 const pathCompile = (path) => {
-  // var toPath = compile(path);
-  const toPath = path
-  return toPath(route.params)
+	// var toPath = compile(path);
+	const toPath = path
+	return toPath(route.params)
 }
 // 跳转连接处理
 const handleLink = (item) => {
-  const { redirect, path } = item
-  if (redirect) {
-    router.push(redirect)
-    return
-  }
-  router.push(pathCompile(path))
+	const { redirect, path } = item
+	if (redirect) {
+		router.push(redirect)
+		return
+	}
+	router.push(pathCompile(path))
 }
 
 // 首次调用
@@ -54,16 +57,17 @@ watch(route, getBreadcrumb)
 
 <style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
-  // display: inline-block;
-  // font-size: 14px;
-  line-height: #{$BreadcrumbHeight};
-  // margin-left: 8px;
-  .redirect{
-    color: $BreadcrumbText;
-  }
-  .no-redirect {
-    color: #97a8be;
-    cursor: text;
-  }
+	// display: inline-block;
+	// font-size: 14px;
+	line-height: #{$BreadcrumbHeight};
+	// margin-left: 8px;
+	.redirect {
+		color: $BreadcrumbText;
+	}
+
+	.no-redirect {
+		color: #97a8be;
+		cursor: text;
+	}
 }
 </style>

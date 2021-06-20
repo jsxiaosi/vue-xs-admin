@@ -1,19 +1,19 @@
 <template>
-  <el-scrollbar wrap-class="scrollbar-wrapper">
-    <el-menu
-      :default-active="activeMenyu"
-      :unique-opened="false"
-      mode="vertical"
-    >
-      <sidebar-item
-        v-for="route in safeManagerRoutes"
-        :key="route.path"
-        :item="route"
-        :isNest="false"
-        :base-path="route.path"
-      />
-    </el-menu>
-  </el-scrollbar>
+	<el-scrollbar wrap-class="scrollbar-wrapper">
+		<el-menu
+			:default-active="activeMenyu"
+			:unique-opened="false"
+			mode="vertical"
+		>
+			<sidebar-item
+				v-for="route in safeManagerRoutes"
+				:key="route.path"
+				:item="route"
+				:isNest="false"
+				:base-path="route.path"
+			/>
+		</el-menu>
+	</el-scrollbar>
 </template>
 
 <script setup>
@@ -23,18 +23,17 @@ import SidebarItem from './SidebarItem.vue'
 import { safeManagerRoutes } from '@/router/otherRoute'
 
 const activeMenyu = computed(() => {
-  const route = useRoute()
-  const { meta, path } = route
-  if (meta.activeMenu) {
-    return meta.activeMenu
-  }
-  return path
+	const route = useRoute()
+	const { meta, path } = route
+	if (meta.activeMenu) {
+		return meta.activeMenu
+	}
+	return path
 })
-
 </script>
 
 <style lang="scss" scoped>
 .tac {
-  height: 100%;
+	height: 100%;
 }
 </style>

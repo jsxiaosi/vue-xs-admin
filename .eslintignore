@@ -10,6 +10,6 @@ dist
 /public
 /docs
 .husky
-.local
 /bin
+*html
 Dockerfile

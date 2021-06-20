@@ -11,16 +11,16 @@ import { configCompressPlugin } from './compress'
 
 // import viteESLint from '@ehutch79/vite-eslint'
 
-export function createVitePlugins () {
-  const vitePlugins = [vue()]
-  vitePlugins.push(configStylePlugin())
+export function createVitePlugins() {
+	const vitePlugins = [vue()]
+	vitePlugins.push(configStylePlugin())
 
-  vitePlugins.push(configThemePlugin())
+	vitePlugins.push(configThemePlugin())
 
-  vitePlugins.push(configSvgPlugin())
+	vitePlugins.push(configSvgPlugin())
 
-  vitePlugins.push(configCompressPlugin('gzip', true))
+	vitePlugins.push(configCompressPlugin('gzip', true))
 
-  // vitePlugins.push(viteESLint())
-  return vitePlugins
+	// vitePlugins.push(viteESLint())
+	return vitePlugins
 }

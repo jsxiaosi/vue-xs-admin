@@ -1,8 +1,8 @@
 <template>
-  <div>
-    index.js
-    <HelloWorld />
-  </div>
+	<div>
+		index.js
+		<HelloWorld />
+	</div>
 </template>
 
 <script setup>
