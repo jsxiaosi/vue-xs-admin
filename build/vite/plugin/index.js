@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 
 // 按需加载样式配置
-import { configStylePlugin } from './style'
+// import { configStylePlugin } from './style'
 // 主题切换配置
 import { configThemePlugin } from './theme'
 // svg配置
@@ -13,7 +13,7 @@ import { configCompressPlugin } from './compress'
 
 export function createVitePlugins() {
 	const vitePlugins = [vue()]
-	vitePlugins.push(configStylePlugin())
+	// vitePlugins.push(configStylePlugin())
 
 	vitePlugins.push(configThemePlugin())
 

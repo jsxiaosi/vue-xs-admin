@@ -1,5 +1,5 @@
 import { createI18n } from 'vue-i18n'
-import ElementLocale from 'element-plus/lib/locale'
+// import ElementLocale from 'element-plus/lib/locale'
 
 const messages = Object.fromEntries(
 	Object.entries(import.meta.globEager('./**.js')).map(([key, value]) => {
