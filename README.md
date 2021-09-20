@@ -108,6 +108,8 @@ npm run build
 - [styleLint](https://stylelint.io/) - 样式语法检测
 - [commitLint](https://commitlint.js.org/#/) - git commit 提交规范检测
 
+## 项目目录结构
+
 ```base
 .
 ├── build                         #全局公共配置目录
