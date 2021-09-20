@@ -16,7 +16,6 @@ const actions = {}
 
 const mutations = {
 	[mutationTypes.SET_USER]: (state, res) => {
-		console.log('asdasdasd', state, res)
 		state.user = res
 	},
 }

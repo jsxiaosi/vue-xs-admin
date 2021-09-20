@@ -1,7 +1,7 @@
-// import enLocale from 'element-plus/lib/locale/lang/en'
+import enLocale from 'element-plus/es/locale/lang/en'
 
 export const lang = {
-	// el: enLocale.el,
+	el: enLocale.el,
 	login: {
 		title: 'login',
 	},

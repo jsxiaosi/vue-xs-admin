@@ -6,7 +6,7 @@
 				class="no-redirect"
 				>{{ item.meta.title }}</span
 			>
-			<a class="redirect" v-else @click.prevent="handleLink(item)">{{
+			<a v-else class="redirect" @click.prevent="handleLink(item)">{{
 				item.meta.title
 			}}</a>
 		</el-breadcrumb-item>

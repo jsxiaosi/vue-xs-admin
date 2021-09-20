@@ -1,6 +1,6 @@
 {
 	"name": "vite+vue3 Template",
-	"version": "0.1.0",
+	"version": "1.1.0",
 	"author": {
 		"name": "小斯斯",
 		"email": "1531733886@qq.com",
@@ -45,7 +45,7 @@
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"eslint-plugin-promise": "^5.1.0",
-		"eslint-plugin-vue": "^7.11.1",
+		"eslint-plugin-vue": "^7.18.0",
 		"http-server": "^0.12.3",
 		"husky": "^6.0.0",
 		"lint-staged": "^11.0.0",

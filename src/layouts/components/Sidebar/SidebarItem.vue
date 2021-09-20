@@ -20,7 +20,7 @@
 			</app-link>
 		</template>
 
-		<el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
+		<el-sub-menu v-else :index="resolvePath(item.path)" popper-append-to-body>
 			<template #title>
 				<item
 					v-if="item.meta"
@@ -36,12 +36,12 @@
 				:base-path="resolvePath(child.path)"
 				class="nest-menu"
 			/>
-		</el-submenu>
+		</el-sub-menu>
 	</div>
 </template>
 
 <script setup>
-import { computed, defineProps, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { isExternal } from '@/utils/validate'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
@@ -51,7 +51,7 @@ const props = defineProps({
 	// route object
 	item: {
 		type: Object,
-		default: {},
+		default: () => {},
 	},
 	isNest: {
 		type: Boolean,
@@ -88,6 +88,7 @@ const hasOneShowingChild = (children = [], parent) => {
 	return false
 }
 const resolvePath = (routePath) => {
+	console.log(routePath)
 	if (isExternal(routePath)) {
 		return routePath
 	}

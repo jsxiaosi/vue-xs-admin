@@ -8,8 +8,8 @@
 <script setup>
 // 直接导入组件
 import HelloWorld from '@/components/HelloWorld.vue'
-import { useContext } from 'vue'
-console.log(useContext())
+// import { useContext } from 'vue'
+// console.log(useContext())
 </script>
 
 <style></style>

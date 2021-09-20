@@ -17,10 +17,13 @@
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
+import { reactive } from 'vue'
 
 defineProps({
-	msg: String,
+	msg: {
+		type: String,
+		default: '',
+	},
 })
 
 const state = reactive({ count: 0 })
@@ -28,6 +31,6 @@ const state = reactive({ count: 0 })
 
 <style lang="scss" scoped>
 a {
-  color: #42b983;
+	color: #42b983;
 }
 </style>

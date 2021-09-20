@@ -53,8 +53,8 @@ export default defineConfig((ConfigEnv) => {
 		},
 		optimizeDeps: {
 			include: [
-				// 'element-plus/lib/locale/lang/zh-tw',
-				// 'element-plus/lib/locale/lang/en',
+				'element-plus/es/locale/lang/zh-tw',
+				'element-plus/es/locale/lang/en',
 			],
 			exclude: [],
 		},

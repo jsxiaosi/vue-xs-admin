@@ -9,7 +9,7 @@
 				v-for="route in safeManagerRoutes"
 				:key="route.path"
 				:item="route"
-				:isNest="false"
+				:is-nest="false"
 				:base-path="route.path"
 			/>
 		</el-menu>

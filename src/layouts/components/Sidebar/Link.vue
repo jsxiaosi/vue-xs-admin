@@ -6,7 +6,7 @@
 
 <script setup>
 import { isExternal as isExt } from '@/utils/validate'
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
 	to: {
@@ -26,6 +26,7 @@ const type = computed(() => {
 })
 
 const linkProps = (to) => {
+	console.log('点击', to)
 	if (isExternal.value) {
 		return {
 			href: to,
