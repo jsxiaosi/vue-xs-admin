@@ -3,8 +3,9 @@
  * https://github.com/anncwb/vite-plugin-style-import/blob/main/README.zh_CN.md
  */
 import styleImport from 'vite-plugin-style-import'
+import type { Plugin } from 'vite'
 
-export function configStylePlugin() {
+export function configStylePlugin(): Plugin | Plugin[] {
 	const options = {
 		libs: [
 			{
@@ -24,6 +25,6 @@ export function configStylePlugin() {
 			},
 		],
 	}
-	const plugin = [styleImport(options)]
+	const plugin: Plugin[] = [styleImport(options)]
 	return plugin
 }

@@ -2,8 +2,8 @@
 	<router-view />
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+// import HelloWorld from './components/HelloWorld.vue'
 
 const admin = 'asdasdasdas'
 

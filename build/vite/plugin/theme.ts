@@ -3,12 +3,14 @@
  * https://github.com/GitOfZGT/vite-plugin-theme-preprocessor
  */
 
+import type { Plugin } from 'vite'
+
 import path from 'path'
 import themePreprocessorPlugin, {
 	getModulesScopeGenerater,
 } from '@zougt/vite-plugin-theme-preprocessor'
 
-export function configThemePlugin() {
+export function configThemePlugin(): Plugin | Plugin[] {
 	const options = {
 		scss: {
 			multipleScopeVars: [
@@ -49,7 +51,7 @@ export function configThemePlugin() {
 		//   ],
 		// },
 	}
-
-	const plugin = [themePreprocessorPlugin(options)]
+	const plugin: Plugin[] = []
+	// const plugin: Plugin[] = [themePreprocessorPlugin(options)]
 	return plugin
 }

@@ -32,6 +32,7 @@
 		"@commitlint/cli": "^12.1.4",
 		"@commitlint/config-conventional": "^12.1.4",
 		"@ehutch79/vite-eslint": "^0.0.1",
+		"@types/node": "^16.9.6",
 		"@vitejs/plugin-vue": "^1.2.3",
 		"@vue/compiler-sfc": "^3.2.11",
 		"@zougt/vite-plugin-theme-preprocessor": "^1.0.0",
@@ -58,10 +59,12 @@
 		"stylelint-config-standard": "^22.0.0",
 		"stylelint-order": "^4.1.0",
 		"stylelint-scss": "^3.19.0",
+		"typescript": "^4.4.3",
 		"vite": "^2.3.5",
 		"vite-plugin-compression": "^0.2.5",
 		"vite-plugin-style-import": "^0.10.1",
-		"vite-plugin-svg-icons": "^0.7.0"
+		"vite-plugin-svg-icons": "^0.7.0",
+		"vue-tsc": "^0.3.0"
 	},
 	"license": "MIT",
 	"config": {
