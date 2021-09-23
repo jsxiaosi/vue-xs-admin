@@ -88,7 +88,6 @@ const hasOneShowingChild = (children = [], parent) => {
 	return false
 }
 const resolvePath = (routePath) => {
-	console.log(routePath)
 	if (isExternal(routePath)) {
 		return routePath
 	}

@@ -3,7 +3,6 @@ import { createI18n } from 'vue-i18n'
 
 const messages = Object.fromEntries(
 	Object.entries(import.meta.globEager('./**.js')).map(([key, value]) => {
-		console.log(value)
 		return [key.match(/^\.\/([\s\S]+)\.js$/)[1], value.lang]
 	})
 )

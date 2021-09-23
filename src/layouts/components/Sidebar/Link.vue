@@ -26,7 +26,6 @@ const type = computed(() => {
 })
 
 const linkProps = (to) => {
-	console.log('点击', to)
 	if (isExternal.value) {
 		return {
 			href: to,

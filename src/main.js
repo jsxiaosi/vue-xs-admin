@@ -10,8 +10,6 @@ import Router from './router'
 import I18n from './locales'
 import App from './App.vue'
 
-console.log(I18n)
-
 const app = createApp(App)
 
 // 全局定义属性
