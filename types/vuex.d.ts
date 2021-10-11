@@ -12,3 +12,7 @@ declare module '@vue/runtime-core' {
 		$store: Store<State>
 	}
 }
+
+export interface AnyObject {
+	[key: string]: any
+}

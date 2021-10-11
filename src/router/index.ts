@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { safeManagerRoutes } from './otherRoute'
 // import Layout from '@/layouts/index.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
 	...safeManagerRoutes, // 管理端
 	{
 		path: '/',

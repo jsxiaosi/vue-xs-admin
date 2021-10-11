@@ -1,4 +1,5 @@
 import { Module } from 'vuex'
+import { AnyObject } from '#/vuex'
 
 const actionTypes = {}
 
@@ -7,11 +8,15 @@ const mutationTypes = {
 }
 
 interface StoreUser {
-	user: object
+	user: Object
 }
 
-const store: Module<StoreUser, unknown> = {
-	namespaced: false, //是否加上所属的模块名
+interface Unknown {
+	payload: Object
+}
+
+const store: Module<StoreUser, Unknown> = {
+	namespaced: false, // 是否加上所属的模块名
 	state() {
 		return {
 			user: {},

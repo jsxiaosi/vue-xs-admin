@@ -1,6 +1,6 @@
 <template>
 	<div class="navbar">
-		<el-select v-model="value" placeholder="请选择" @change="toggleTheme">
+		<!-- <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
 			<el-option
 				v-for="item in options"
 				:key="item.value"
@@ -8,7 +8,7 @@
 				:value="item.value"
 			>
 			</el-option>
-		</el-select>
+		</el-select> -->
 		<!-- <div class="pattern">
 
   </div> -->

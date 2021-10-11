@@ -15,7 +15,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AppMain from './components/AppMain/index.vue'
 import NavBart from './components/Navbart/index.vue'
 import Sidebar from './components/Sidebar/index.vue'

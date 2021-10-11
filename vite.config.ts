@@ -17,8 +17,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 			alias: {
 				// 配置@别名
 				'@': `${path.resolve(__dirname, 'src')}`,
+				'/#': `${path.resolve(__dirname, 'types')}`,
 				// 解决警告You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-				'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+				// 'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
 			},
 		},
 		plugins: createVitePlugins(),

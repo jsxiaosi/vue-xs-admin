@@ -11,8 +11,20 @@
 		"esModuleInterop": true,
 		"types": ["vite/client"],
 		"typeRoots": ["./node_modules/@types/", "./types"],
-		"lib": ["esnext", "dom"]
+		"lib": ["esnext", "dom"],
+		"paths": {
+			"@/*": ["src/*"],
+			"#/*": ["types/*"]
+		}
 	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"types/**/*.d.ts",
+		"types/**/*.ts",
+		"vite.config.ts"
+	],
 	"exclude": ["node_modules", "dist", "**/*.js"]
 }
