@@ -18,7 +18,8 @@
 		"lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
 		"lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
 		"lint:pretty": "pretty-quick --staged",
-		"lint:staged": "lint-staged"
+		"lint:staged": "lint-staged",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"element-plus": "^1.1.0-beta.12",
