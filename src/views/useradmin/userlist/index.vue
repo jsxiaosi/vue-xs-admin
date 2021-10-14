@@ -15,6 +15,7 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import { key } from '@/store'
 import mutation from '@/store/mutation'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
@@ -26,7 +27,7 @@ const value1 = ref()
 
 // console.log(t())
 
-const store = useStore()
+const store = useStore(key)
 console.log(store, mutation)
 store.commit(mutation.SET_USER, '进来了是吗？？？？')
 // console.log(useStore())

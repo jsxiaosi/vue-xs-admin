@@ -5,7 +5,7 @@ import 'element-plus/dist/index.css'
 import 'es6-promise/auto'
 import 'virtual:svg-icons-register'
 
-import Store from './store'
+import { store, key } from './store'
 import Router from './router'
 import I18n from './locales'
 import App from './App.vue'
@@ -22,7 +22,7 @@ app.config.globalProperties.foo = 'bar'
  */
 
 app
-	.use(Store)
+	.use(store, key)
 	.use(Router)
 	.use(ElementPlus, {
 		i18n: I18n.global.t,

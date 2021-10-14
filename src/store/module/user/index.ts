@@ -1,5 +1,4 @@
 import { Module } from 'vuex'
-import { AnyObject } from '#/vuex'
 
 const actionTypes = {}
 
@@ -23,7 +22,7 @@ const store: Module<StoreUser, Unknown> = {
 		}
 	},
 	mutations: {
-		[mutationTypes.SET_USER](state: StoreUser, payload: AnyObject) {
+		[mutationTypes.SET_USER](state: StoreUser, payload) {
 			state.user = payload
 		},
 	},

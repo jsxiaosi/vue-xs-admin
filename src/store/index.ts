@@ -1,4 +1,4 @@
-import { createStore, Store } from 'vuex'
+import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
 import { AnyObject } from '#/vuex'
 
@@ -10,7 +10,8 @@ export const key: InjectionKey<Store<State>> = Symbol('vuex')
 
 const modules: AnyObject[] = ((r) => {
 	return Object.keys(r).map((key) => {
-		const name: any = key.match(/^\.\/module\/([\s\S]+)\/index\.ts$/)
+		const name: Array<String> =
+			key.match(/^\.\/module\/([\s\S]+)\/index\.ts$/) || []
 		return {
 			name: name[1],
 			module: r[key].default,
@@ -18,16 +19,23 @@ const modules: AnyObject[] = ((r) => {
 	})
 })(import.meta.globEager('./module/**/index.ts'))
 
+console.log(modules)
+
 const modulesObj: AnyObject = {}
 
 modules.forEach((item) => {
 	modulesObj[item.name] = item.module
 })
 
-const store = createStore({
+export const store = createStore<State>({
 	modules: modulesObj,
 	strict: process.env.NODE_ENV !== 'production',
 })
+
+// 定义自己的 `useStore` 组合式函数
+export function useStore() {
+	return baseUseStore(key)
+}
 
 // 热重载
 // if (import.meta.hot) {
@@ -37,5 +45,3 @@ const store = createStore({
 // 		})
 // 	})
 // }
-
-export default store
