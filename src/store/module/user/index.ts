@@ -7,14 +7,10 @@ const mutationTypes = {
 }
 
 interface StoreUser {
-	user: Object
+	user: unknown
 }
 
-interface Unknown {
-	payload: Object
-}
-
-const store: Module<StoreUser, Unknown> = {
+const store: Module<StoreUser, unknown> = {
 	namespaced: false, // 是否加上所属的模块名
 	state() {
 		return {

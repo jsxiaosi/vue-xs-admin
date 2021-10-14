@@ -7,10 +7,10 @@ import { createVitePlugins } from './build/vite/plugin'
 export default ({ command, mode }: ConfigEnv): UserConfig => {
 	const root = process.cwd()
 
-	const env = loadEnv(mode, root)
+	const _env = loadEnv(mode, root)
 
 	// console.log(mode, process.cwd(), env)
-	console.log(command, env)
+	console.log(command)
 	return {
 		resolve: {
 			// 引用别名配置
