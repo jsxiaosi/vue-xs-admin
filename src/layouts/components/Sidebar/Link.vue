@@ -4,7 +4,7 @@
 	</component>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { isExternal as isExt } from '@/utils/validate'
 import { computed } from 'vue'
 
@@ -25,7 +25,7 @@ const type = computed(() => {
 	return 'router-link'
 })
 
-const linkProps = (to) => {
+const linkProps = (to: string) => {
 	if (isExternal.value) {
 		return {
 			href: to,

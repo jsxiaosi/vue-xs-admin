@@ -8,18 +8,17 @@
 	</section>
 </template>
 
-<script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-console.log(useRoute)
+<script setup lang="ts">
+// import { computed } from 'vue'
+// import { useRoute } from 'vue-router'
 
-const route = computed(() => {
-	const route = useRoute()
-	const { path } = route
-	console.log(path)
+// const route = computed(() => {
+// 	const route = useRoute()
+// 	const { path } = route
+// 	console.log(path)
 
-	return path
-})
+// 	return path
+// })
 </script>
 
 <style lang="scss" scoped>

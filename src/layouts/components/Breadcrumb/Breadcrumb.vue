@@ -13,12 +13,13 @@
 	</el-breadcrumb>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // import { compile } from "path-to-regexp";
-import { reactive, ref, watch } from 'vue'
+import type { RouteLocationMatched } from 'vue-router'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-const levelList = ref(null)
+const levelList = ref<Array<RouteLocationMatched>>([])
 const router = useRouter()
 // 当前路由
 const route = useRoute()
@@ -26,7 +27,9 @@ const route = useRoute()
 // 解析路由匹配的数组
 const getBreadcrumb = () => {
 	// 过滤留下只有meta和title
-	const matched = route.matched.filter((item) => item.meta && item.meta.title)
+	const matched: RouteLocationMatched[] = route.matched.filter(
+		(item) => item.meta && item.meta.title
+	)
 
 	// 拼出最终需要展示的跳转数据
 	levelList.value = matched.filter(
@@ -34,13 +37,13 @@ const getBreadcrumb = () => {
 	)
 }
 // 手动解析path中可能存在的参数
-const pathCompile = (path) => {
+const pathCompile = (path: any) => {
 	// var toPath = compile(path);
 	const toPath = path
 	return toPath(route.params)
 }
 // 跳转连接处理
-const handleLink = (item) => {
+const handleLink = (item: any) => {
 	const { redirect, path } = item
 	if (redirect) {
 		router.push(redirect)

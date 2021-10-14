@@ -3,7 +3,7 @@
 	<span v-if="title">{{ title }}</span>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
 	icon: {
 		type: String,

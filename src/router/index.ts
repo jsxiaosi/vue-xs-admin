@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { safeManagerRoutes } from './otherRoute'
+import { AppRouteRecordRaw } from './types'
 // import Layout from '@/layouts/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: Array<AppRouteRecordRaw> = [
 	...safeManagerRoutes, // 管理端
 	{
 		path: '/',
@@ -13,5 +14,5 @@ const routes: Array<RouteRecordRaw> = [
 
 export default createRouter({
 	history: createWebHistory(''),
-	routes,
+	routes: routes as unknown as RouteRecordRaw[],
 })

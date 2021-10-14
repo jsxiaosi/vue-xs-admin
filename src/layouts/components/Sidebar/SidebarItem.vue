@@ -40,17 +40,18 @@
 	</div>
 </template>
 
-<script setup>
-import { computed, ref } from 'vue'
+<script setup lang="ts">
+import { PropType, ref } from 'vue'
 import { isExternal } from '@/utils/validate'
+import { AppRouteRecordRaw } from '@/router/types'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
 
-const onlyOneChild = ref({})
+const onlyOneChild = ref<any>({})
 const props = defineProps({
 	// route object
 	item: {
-		type: Object,
+		type: Object as PropType<AppRouteRecordRaw>,
 		default: () => {},
 	},
 	isNest: {
@@ -63,8 +64,11 @@ const props = defineProps({
 	},
 })
 
-const hasOneShowingChild = (children = [], parent) => {
-	const showingChildren = children.filter((item) => {
+const hasOneShowingChild = (
+	children: Array<AppRouteRecordRaw> = [],
+	parent: AppRouteRecordRaw
+) => {
+	const showingChildren = children.filter((item: AppRouteRecordRaw) => {
 		if (item.hidden) {
 			return false
 		} else {
@@ -87,7 +91,7 @@ const hasOneShowingChild = (children = [], parent) => {
 
 	return false
 }
-const resolvePath = (routePath) => {
+const resolvePath = (routePath: string) => {
 	if (isExternal(routePath)) {
 		return routePath
 	}

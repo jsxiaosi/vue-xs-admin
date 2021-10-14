@@ -10,7 +10,7 @@ export const key: InjectionKey<Store<State>> = Symbol('vuex')
 
 const modules: AnyObject[] = ((r) => {
 	return Object.keys(r).map((key) => {
-		const name: Array<String> =
+		const name: Array<string> =
 			key.match(/^\.\/module\/([\s\S]+)\/index\.ts$/) || []
 		return {
 			name: name[1],
@@ -18,8 +18,6 @@ const modules: AnyObject[] = ((r) => {
 		}
 	})
 })(import.meta.globEager('./module/**/index.ts'))
-
-console.log(modules)
 
 const modulesObj: AnyObject = {}
 

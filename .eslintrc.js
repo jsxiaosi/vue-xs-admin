@@ -15,19 +15,29 @@ module.exports = {
 	extends: [
 		'standard',
 		'plugin:vue/vue3-recommended',
+		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
 	],
+	parser: 'vue-eslint-parser',
 	parserOptions: {
 		ecmaVersion: 2016,
+		parser: '@typescript-eslint/parser',
 		// 对Babel解析器的包装使其与 ESLint 兼容。
-		parser: 'babel-eslint',
+		// parser: 'babel-eslint',
 		// 代码是 ECMAScript 模块
 		sourceType: 'module',
 	},
 	plugins: ['vue'],
 	rules: {
 		// 'prettier/prettier': 'error',
-		'no-unused-vars': 'off',
+		// 是否禁止使用any类型
+		'@typescript-eslint/no-explicit-any': 'off',
+		// 是否开启函数必须要指定类型
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		// 是否禁止使用 @ts-ignore 注解
+		'@typescript-eslint/ban-ts-comment': 'off',
+		// 是否禁止空函数
+		'@typescript-eslint/no-empty-function': 'off',
 		'vue/no-multiple-template-root': 'off',
 		camelcase: 0,
 		'vue/component-tags-order': [

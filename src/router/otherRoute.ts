@@ -1,10 +1,8 @@
 /* Layout */
 import Layout from '@/layouts/index.vue'
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { AppRouteRecordRaw } from './types'
 
-type RouteConfig = RouteRecordRaw & { alwaysShow?: boolean } // alwaysShow 是可选属性
-
-export const safeManagerRoutes: Array<RouteConfig> = [
+export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 	{
 		path: '/useradmin',
 		component: Layout,

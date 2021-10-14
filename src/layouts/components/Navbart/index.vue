@@ -15,19 +15,19 @@
 	</div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+// import { ref } from 'vue'
 
-const options = ref([
-	{ name: '123', value: 'variables-theme-day' },
-	{ name: '456', value: 'variables-theme-dark' },
-])
+// const options = ref([
+// 	{ name: '123', value: 'variables-theme-day' },
+// 	{ name: '456', value: 'variables-theme-dark' },
+// ])
 
-const value = ref()
+// const value = ref()
 
-const toggleTheme = (scopeName = 'theme-default') => {
-	document.documentElement.className = scopeName
-}
+// const toggleTheme = (scopeName = 'theme-default') => {
+// 	document.documentElement.className = scopeName
+// }
 </script>
 
 <style lang="scss" scoped>

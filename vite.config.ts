@@ -10,7 +10,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode, root)
 
 	// console.log(mode, process.cwd(), env)
-	console.log(command)
+	console.log(command, env)
 	return {
 		resolve: {
 			// 引用别名配置
@@ -19,7 +19,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 				'@': `${path.resolve(__dirname, 'src')}`,
 				'/#': `${path.resolve(__dirname, 'types')}`,
 				// 解决警告You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-				// 'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+				'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
 			},
 		},
 		plugins: createVitePlugins(),
