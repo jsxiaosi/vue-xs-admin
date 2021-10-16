@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-// import { compile } from "path-to-regexp";
 import type { RouteLocationMatched } from 'vue-router'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -38,7 +37,6 @@ const getBreadcrumb = () => {
 }
 // 手动解析path中可能存在的参数
 const pathCompile = (path: any) => {
-	// var toPath = compile(path);
 	const toPath = path
 	return toPath(route.params)
 }
