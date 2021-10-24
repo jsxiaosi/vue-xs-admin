@@ -19,7 +19,9 @@
 		"lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
 		"lint:pretty": "pretty-quick --staged",
 		"lint:staged": "lint-staged",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"push": "scp -r dist/* root@服务器公网IP:/服务器资源存放地址",
+		"build:push": "npm run build && npm run push"
 	},
 	"dependencies": {
 		"element-plus": "^1.1.0-beta.12",
