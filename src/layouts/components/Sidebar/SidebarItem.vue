@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { PropType, ref } from 'vue'
 import { isExternal } from '@/utils/validate'
-import { AppRouteRecordRaw } from '@/router/types'
+import { AppRouteRecordRaw } from '#/route'
 import Item from './Item.vue'
 import AppLink from './Link.vue'
 

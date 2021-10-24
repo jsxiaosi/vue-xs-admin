@@ -24,7 +24,7 @@
 	"dependencies": {
 		"element-plus": "^1.1.0-beta.12",
 		"es6-promise": "^4.2.8",
-		"vue": "^3.2.11",
+		"vue": "^3.2.20",
 		"vue-i18n": "^9.1.9",
 		"vue-router": "^4.0.8",
 		"vuex": "^4.0.1"
@@ -38,7 +38,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.26.1",
 		"@typescript-eslint/parser": "^4.26.1",
 		"@vitejs/plugin-vue": "^1.2.3",
-		"@vue/compiler-sfc": "^3.2.11",
+		"@vue/compiler-sfc": "^3.2.20",
 		"@zougt/vite-plugin-theme-preprocessor": "^1.0.0",
 		"babel-eslint": "^10.1.0",
 		"commitizen": "^4.2.4",

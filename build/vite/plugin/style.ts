@@ -12,14 +12,14 @@ export function configStylePlugin(): Plugin | Plugin[] {
 				libraryName: 'element-plus',
 				esModule: true,
 				ensureStyleFile: true,
-				resolveStyle: (name) => {
+				resolveStyle: (name: any) => {
 					name = name.slice(3)
 					// 使用element scss样式
 					return `element-plus/packages/theme-chalk/src/${name}.scss`
 					// 使用element css样式
 					// return `element-plus/lib/theme-chalk/${name}.css`;
 				},
-				resolveComponent: (name) => {
+				resolveComponent: (name: any) => {
 					return `element-plus/lib/${name}`
 				},
 			},

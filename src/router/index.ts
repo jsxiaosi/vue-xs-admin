@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { safeManagerRoutes } from './otherRoute'
-import { AppRouteRecordRaw } from './types'
+import { AppRouteRecordRaw } from '#/route'
 // import Layout from '@/layouts/index.vue'
 
 const routes: Array<AppRouteRecordRaw> = [

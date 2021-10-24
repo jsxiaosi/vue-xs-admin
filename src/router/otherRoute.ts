@@ -1,6 +1,6 @@
 /* Layout */
 import Layout from '@/layouts/index.vue'
-import { AppRouteRecordRaw } from './types'
+import { AppRouteRecordRaw } from '#/route'
 
 export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 	{

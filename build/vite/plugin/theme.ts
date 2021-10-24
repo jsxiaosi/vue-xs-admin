@@ -51,6 +51,7 @@ export function configThemePlugin(): Plugin | Plugin[] {
 		//   ],
 		// },
 	}
+	// 此配置暂时禁止使用（原因不支持ts）
 	const plugin: Plugin[] = []
 	// const plugin: Plugin[] = [themePreprocessorPlugin(options)]
 	return plugin
