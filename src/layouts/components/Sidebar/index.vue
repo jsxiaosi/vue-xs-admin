@@ -1,19 +1,23 @@
 <template>
-	<el-scrollbar wrap-class="scrollbar-wrapper">
-		<el-menu
-			:default-active="activeMenyu"
-			:unique-opened="false"
-			mode="vertical"
-		>
-			<sidebar-item
-				v-for="route in safeManagerRoutes"
-				:key="route.path"
-				:item="route"
-				:is-nest="false"
-				:base-path="route.path"
-			/>
-		</el-menu>
-	</el-scrollbar>
+	<div>
+		<el-scrollbar wrap-class="scrollbar-wrapper">
+			<el-menu
+				:default-active="activeMenyu"
+				:unique-opened="false"
+				:collapse="isCollapseMenu"
+				mode="vertical"
+			>
+				<sidebar-item
+					v-for="route in safeManagerRoutes"
+					:key="route.path"
+					:item="route"
+					:is-nest="false"
+					:base-path="route.path"
+				/>
+			</el-menu>
+			<!-- <i class="breadcrumb-icon" :class="'el-icon-s-unfold'"></i> -->
+		</el-scrollbar>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +25,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import SidebarItem from './SidebarItem.vue'
 import { safeManagerRoutes } from '@/router/otherRoute'
+import { getAppCollapseMenu } from '@/hooks/appWindow'
 
 const activeMenyu = computed(() => {
 	const route = useRoute()
@@ -30,10 +35,25 @@ const activeMenyu = computed(() => {
 	}
 	return path
 })
+
+const isCollapseMenu = getAppCollapseMenu()
+
+// const isCollapse = ref(false)
 </script>
 
 <style lang="scss" scoped>
 .tac {
 	height: 100%;
+}
+
+.breadcrumb-icon {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 56px;
+	height: 56px;
+	font-size: 20px;
+	line-height: 56px;
+	text-align: center;
 }
 </style>

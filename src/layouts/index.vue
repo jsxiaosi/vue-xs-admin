@@ -1,5 +1,5 @@
 <template>
-	<div class="app-wrapper">
+	<div class="app-wrapper" :class="{ hideSidebar: isCollapseMenu }">
 		<!-- 顶部导航栏 -->
 		<NavBart />
 		<!-- 侧边导航栏 -->
@@ -20,6 +20,9 @@ import AppMain from './components/AppMain/index.vue'
 import NavBart from './components/Navbart/index.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import Breadcrumb from './components/Breadcrumb/Breadcrumb.vue'
+import { getAppCollapseMenu } from '@/hooks/appWindow'
+
+const isCollapseMenu = getAppCollapseMenu()
 </script>
 
 <style lang="scss" scoped></style>

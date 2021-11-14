@@ -165,6 +165,20 @@
 			}
 		}
 
+		.el-menu-item {
+			.svg-icon {
+				margin-left: 20px;
+			}
+
+			.sub-el-icon {
+				margin-left: 19px;
+			}
+
+			.el-sub-menu__icon-arrow {
+				display: none;
+			}
+		}
+
 		.el-menu--collapse {
 			.el-sub-menu {
 				& > .el-sub-menu__title {
@@ -175,6 +189,16 @@
 						overflow: hidden;
 						visibility: hidden;
 					}
+				}
+			}
+
+			.el-menu-item {
+				& > span {
+					display: inline-block;
+					width: 0;
+					height: 0;
+					overflow: hidden;
+					visibility: hidden;
 				}
 			}
 		}

@@ -14,10 +14,8 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex'
-import { key } from '@/store'
-import mutation from '@/store/mutation'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { getCurrentInstance } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 import { ref } from '@vue/reactivity'
@@ -25,11 +23,12 @@ const { t } = useI18n()
 
 const value1 = ref()
 
-// console.log(t())
+const instance = getCurrentInstance()
 
-const store = useStore(key)
-// console.log(store, mutation)
-store.commit(mutation.SET_USER, '进来了是吗？？？？')
+console.log(instance.appContext.config.globalProperties.foo)
+
+// console.log(t())
+// store.commit(mutation.SET_USER, '进来了是吗？？？？')
 // console.log(useStore())
 </script>
 

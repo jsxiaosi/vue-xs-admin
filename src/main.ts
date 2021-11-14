@@ -6,6 +6,7 @@ import 'es6-promise/auto'
 import 'virtual:svg-icons-register'
 
 import { store, key } from './store'
+import mutation from './store/mutation'
 import Router from './router'
 import I18n from './locales'
 import App from './App.vue'
@@ -20,6 +21,9 @@ app.config.globalProperties.foo = 'bar'
  * const { proxy } = getCurrentInstance()
  * proxy.foo
  */
+
+console.log(mutation)
+app.config.globalProperties.$mutation = mutation
 
 app
 	.use(store, key)
