@@ -13,9 +13,9 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		'standard',
 		'plugin:vue/vue3-recommended',
 		'plugin:@typescript-eslint/recommended',
+		'prettier',
 		'plugin:prettier/recommended',
 	],
 	parser: 'vue-eslint-parser',
@@ -44,6 +44,20 @@ module.exports = {
 			'error',
 			{
 				order: ['template', 'script', 'style'],
+			},
+		],
+		'@typescript-eslint/no-unused-vars': [
+			'error',
+			{
+				argsIgnorePattern: '^_',
+				varsIgnorePattern: '^_',
+			},
+		],
+		'no-unused-vars': [
+			'error',
+			{
+				argsIgnorePattern: '^_',
+				varsIgnorePattern: '^_',
 			},
 		],
 	},

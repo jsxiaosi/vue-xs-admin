@@ -10,10 +10,12 @@ import { configThemePlugin } from './theme'
 import { configSvgPlugin } from './svg'
 // 压缩
 import { configCompressPlugin } from './compress'
+// mock
+import { configMockPlugin } from './mock'
 
 // import viteESLint from '@ehutch79/vite-eslint'
 
-export function createVitePlugins() {
+export function createVitePlugins(isBuild = false) {
 	const vitePlugins: (Plugin | Plugin[])[] = [vue()]
 	vitePlugins.push(configStylePlugin())
 
@@ -22,6 +24,8 @@ export function createVitePlugins() {
 	vitePlugins.push(configSvgPlugin())
 
 	vitePlugins.push(configCompressPlugin('gzip', true))
+
+	vitePlugins.push(configMockPlugin(isBuild))
 
 	// vitePlugins.push(viteESLint())
 	return vitePlugins

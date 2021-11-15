@@ -16,7 +16,7 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"experimentalDecorators": true,
-		"types": ["vite/client"],
+		"types": ["vite/client", "jest"],
 		"typeRoots": ["./node_modules/@types/", "./types"],
 		"lib": ["esnext", "dom"],
 		"paths": {
@@ -31,6 +31,7 @@
 		"src/**/*.vue",
 		"types/**/*.d.ts",
 		"types/**/*.ts",
+		"mock/**/*.ts",
 		"vite.config.ts"
 	],
 	"exclude": ["node_modules", "dist", "**/*.js"]

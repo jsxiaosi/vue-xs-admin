@@ -24,8 +24,10 @@
 		"build:push": "npm run build && npm run push"
 	},
 	"dependencies": {
+		"axios": "^0.24.0",
 		"element-plus": "^1.1.0-beta.12",
 		"es6-promise": "^4.2.8",
+		"mockjs": "^1.1.0",
 		"vue": "^3.2.20",
 		"vue-i18n": "^9.1.9",
 		"vue-router": "^4.0.8",
@@ -68,6 +70,7 @@
 		"typescript": "^4.4.3",
 		"vite": "^2.3.5",
 		"vite-plugin-compression": "^0.2.5",
+		"vite-plugin-mock": "^2.9.6",
 		"vite-plugin-style-import": "^0.10.1",
 		"vite-plugin-svg-icons": "^0.7.0",
 		"vue-tsc": "^0.3.0"

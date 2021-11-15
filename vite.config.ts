@@ -14,13 +14,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
 	const _env = loadEnv(mode, root)
 
+	const isBuild = command === 'build'
+
 	return {
 		// 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下请通过 --clearScreen false 设置。
 		clearScreen: false,
 		// 解析配置
 		resolve: createViteResolve(mode, __dirname),
 		// 插件配置
-		plugins: createVitePlugins(),
+		plugins: createVitePlugins(isBuild),
 		// 服务配置
 		server: createViteServer(),
 		// 打包配置
