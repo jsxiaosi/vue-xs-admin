@@ -10,8 +10,8 @@ const messages = Object.fromEntries(
 
 const i18n = createI18n({
 	legacy: false,
-	locale: 'zh-tw',
-	fallbackLocale: 'zh-tw',
+	locale: 'zh-ch',
+	fallbackLocale: 'zh-ch',
 	messages,
 })
 

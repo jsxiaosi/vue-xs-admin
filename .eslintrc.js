@@ -38,6 +38,7 @@ module.exports = {
 		'@typescript-eslint/ban-ts-comment': 'off',
 		// 是否禁止空函数
 		'@typescript-eslint/no-empty-function': 'off',
+		'@typescript-eslint/ban-types': 'off',
 		'vue/no-multiple-template-root': 'off',
 		camelcase: 0,
 		'vue/component-tags-order': [
