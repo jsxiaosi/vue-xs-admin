@@ -1,14 +1,15 @@
-import { AxiosResponse } from 'axios'
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig'
 import { myAxios } from './myAxios'
 import { RequestOptions } from '#/axios'
 import { checkStatus } from './axiosStatus'
+import { isString } from 'lodash'
 
 const interceptor: AxiosInterceptor = {
 	/**
 	 * @description: 处理请求数据。如果数据不是预期格式，可直接抛出错误
 	 */
-	requestHook: (res: AxiosResponse, options: RequestOptions) => {
+	requestHook: (res, options) => {
 		if (options.isShowData) return res.data
 		return res
 	},
@@ -24,8 +25,10 @@ const interceptor: AxiosInterceptor = {
 	/**
 	 * @description: 请求之前处理config
 	 */
-	beforeRequestHook: (config: AxiosResponse, options: RequestOptions) => {
-		if (options) ''
+	beforeRequestHook: (config: AxiosRequestConfig, options: RequestOptions) => {
+		const { urlPrefix } = options
+		if (urlPrefix && isString(urlPrefix))
+			config.url = `${urlPrefix}${config.url}`
 		return config
 	},
 
@@ -33,8 +36,9 @@ const interceptor: AxiosInterceptor = {
 	 * @description: 请求拦截器处理
 	 */
 	requestInterceptors: (config: any, options: any) => {
-		if (options) ''
-		config.headers = { _token: 'myToken ' }
+		const { specialToken } = options
+		config.headers._token = 'myToken'
+		if (specialToken) config.headers._token = specialToken
 		return config
 	},
 

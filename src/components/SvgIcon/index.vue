@@ -1,5 +1,5 @@
 <template>
-	<svg aria-hidden="true">
+	<svg :class="className" aria-hidden="true">
 		<use :xlink:href="symbolId" :fill="color" />
 	</svg>
 </template>
@@ -20,6 +20,10 @@ const props = defineProps({
 	color: {
 		type: String,
 		default: '#333',
+	},
+	className: {
+		type: String,
+		default: '',
 	},
 })
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)

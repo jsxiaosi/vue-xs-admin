@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 import { useStore } from '@/store'
-import { request } from './utils/axios'
+// import { request } from './utils/axios'
 // import HelloWorld from './components/HelloWorld.vue'
 
 // const admin = 'asdasdasdas'
@@ -21,19 +21,23 @@ if (locstorCollapse) locMenu = JSON.parse(locstorCollapse)
 else locMenu = false
 store.commit(mutation.SET_COLLAPSEMENU, locMenu)
 
-const req = async () => {
-	const res = await request.post<void>({ url: '/mock_api/getUserInfo' })
-	console.log(res)
-}
-const req2 = async () => {
-	const res = await request.get<void>(
-		{ url: '/mock_api/getUserInfo' },
-		{ isShowData: true }
-	)
-	console.log(res)
-}
-req()
-req2()
+// const req = async () => {
+// 	const res = await request.post<void>({ url: '/mock_api/getUserInfo' })
+// 	console.log(res)
+// }
+// const req2 = async () => {
+// 	const res = await request.get<void>(
+// 		{ url: '/mock_api/getUserInfo' },
+// 		{ isShowData: true ,urlPrefix:'https://xiaosisi.com'}
+// 	)
+// 	console.log(res)
+// }
+// req()
+// req2()
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+	color: $menuText;
+}
+</style>

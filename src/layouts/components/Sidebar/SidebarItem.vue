@@ -13,6 +13,7 @@
 					:class="{ 'submenu-title-noDropdown': !isNest }"
 				>
 					<item
+						class-name="menu-item-svg"
 						:icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
 						:title="onlyOneChild.meta.title"
 					/>
@@ -24,6 +25,7 @@
 			<template #title>
 				<item
 					v-if="item.meta"
+					class-name="sub-menu-svg"
 					:icon="item.meta && item.meta.icon"
 					:title="item.meta.title"
 				/>

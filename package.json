@@ -24,6 +24,7 @@
 		"build:push": "npm run build && npm run push"
 	},
 	"dependencies": {
+		"@element-plus/icons": "^0.0.11",
 		"axios": "^0.24.0",
 		"element-plus": "^1.2.0-beta.3",
 		"es6-promise": "^4.2.8",

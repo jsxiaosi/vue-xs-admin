@@ -6,24 +6,20 @@ import 'es6-promise/auto'
 import 'virtual:svg-icons-register'
 
 import { store, key } from './store'
-import mutation from './store/mutation'
 import Router from './router'
 import I18n from './locales'
 import App from './App.vue'
 
+import {
+	configMainComponent,
+	configMainGlobalProperties,
+} from './utils/mainConfig'
+
 const app = createApp(App)
 
-// 全局定义属性
-app.config.globalProperties.foo = 'bar'
-/**
- * 页面使用方法：
- * import { getCurrentInstance } from 'vue';
- * const { proxy } = getCurrentInstance()
- * proxy.foo
- */
+configMainComponent(app)
 
-console.log(mutation)
-app.config.globalProperties.$mutation = mutation
+configMainGlobalProperties(app)
 
 app
 	.use(store, key)

@@ -1,15 +1,20 @@
 <template>
-	<i v-if="icon" class="sub-el-icon" :class="icon"></i>
+	<SvgIcon :class-name="className" :name="icon" color="#e3e3e3"></SvgIcon>
 	<span v-if="title">{{ title }}</span>
 </template>
 
 <script setup lang="ts">
+import SvgIcon from '@/components/SvgIcon/index.vue'
 defineProps({
 	icon: {
 		type: String,
 		default: '',
 	},
 	title: {
+		type: String,
+		default: '',
+	},
+	className: {
 		type: String,
 		default: '',
 	},

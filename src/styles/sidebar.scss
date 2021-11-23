@@ -32,12 +32,26 @@
 		.el-menu-item {
 			color: $menuText;
 			border-left: #{$menuItemBorderLeft} solid 3px;
+
+			.menu-item-svg {
+				width: 1em;
+				height: 1em;
+				margin-right: 16px;
+
+				use {
+					fill: $menuText;
+				}
+			}
 		}
 
 		.el-menu-item.is-active {
 			color: $menuItemActiveText;
 			background-color: $subMenuItemBg !important;
 			border-left: #{$subMenuItemBorderLeft} solid 3px !important;
+
+			.menu-item-svg > use {
+				fill: $menuItemActiveText !important;
+			}
 		}
 
 		// reset element-ui css
@@ -74,15 +88,15 @@
 			overflow: hidden;
 		}
 
-		.svg-icon {
-			margin-right: 16px;
-		}
+		// .svg-icon {
+		//   margin-right: 16px;
+		// }
 
-		.sub-el-icon {
-			margin-right: 12px;
-			margin-left: -2px;
-			color: currentColor;
-		}
+		// .sub-el-icon {
+		//   margin-right: 12px;
+		//   margin-left: -2px;
+		//   color: currentColor;
+		// }
 
 		.el-menu {
 			width: 100% !important;
@@ -97,14 +111,32 @@
 			background-color: $menuBg;
 			border-left: $menuBg solid 3px;
 
+			.sub-menu-svg {
+				width: 1em;
+				height: 1em;
+				margin-right: 16px;
+
+				use {
+					fill: $menuText;
+				}
+			}
+
 			&:hover {
 				color: $menuHoverText !important;
 				background-color: $menuHover;
+
+				use {
+					fill: $menuHoverText !important;
+				}
 			}
 		}
 
 		.is-active > .el-sub-menu__title {
 			color: $menuActiveText !important;
+
+			.sub-menu-svg > use {
+				fill: $menuActiveText !important;
+			}
 		}
 
 		& .nest-menu .el-sub-menu > .el-sub-menu__title,
@@ -115,6 +147,10 @@
 			&:hover {
 				color: $menuItemHoverText !important;
 				background-color: $menuItemHover;
+
+				use {
+					fill: $menuItemHoverText !important;
+				}
 			}
 		}
 	}
@@ -135,29 +171,33 @@
 			.el-tooltip {
 				padding: 0 !important;
 
-				.svg-icon {
-					margin-left: 20px;
-				}
+				// .svg-icon {
+				//   margin-left: 20px;
+				// }
 
-				.sub-el-icon {
-					margin-left: 19px;
-				}
+				// .sub-el-icon {
+				//   margin-left: 19px;
+				// }
 			}
 		}
 
 		.el-sub-menu {
 			overflow: hidden;
 
+			svg {
+				margin-left: 16px;
+			}
+
 			& > .el-sub-menu__title {
 				padding: 0 !important;
 
-				.svg-icon {
-					margin-left: 20px;
-				}
+				// .svg-icon {
+				//   margin-left: 20px;
+				// }
 
-				.sub-el-icon {
-					margin-left: 19px;
-				}
+				// .sub-el-icon {
+				//   margin-left: 19px;
+				// }
 
 				.el-sub-menu__icon-arrow {
 					display: none;
@@ -166,13 +206,16 @@
 		}
 
 		.el-menu-item {
-			.svg-icon {
-				margin-left: 20px;
-			}
+			// svg{
+			// 	margin-left: 16px;
+			// }
+			// .svg-icon {
+			//   margin-left: 20px;
+			// }
 
-			.sub-el-icon {
-				margin-left: 19px;
-			}
+			// .sub-el-icon {
+			//   margin-left: 19px;
+			// }
 
 			.el-sub-menu__icon-arrow {
 				display: none;
@@ -239,21 +282,33 @@
 // when menu collapsed
 .el-menu--vertical {
 	& > .el-menu {
-		.svg-icon {
-			margin-right: 16px;
-		}
+		// .svg-icon {
+		//   margin-right: 16px;
+		// }
 
-		.sub-el-icon {
-			margin-right: 12px;
-			margin-left: -2px;
-		}
+		// .sub-el-icon {
+		//   margin-right: 12px;
+		//   margin-left: -2px;
+		// }
 	}
 
 	.nest-menu .el-sub-menu > .el-sub-menu__title,
 	.el-menu-item {
 		&:hover {
-			// you can use $subMenuHover
-			// background-color: $menuHover !important;
+			color: $menuItemHoverText !important;
+			background-color: $menuItemHover;
+
+			use {
+				fill: $menuItemHoverText !important;
+			}
+		}
+	}
+
+	.nest-menu .is-active.el-menu-item {
+		color: $menuItemActiveText !important;
+
+		.menu-item-svg > use {
+			fill: $menuItemActiveText !important;
 		}
 	}
 
@@ -261,6 +316,12 @@
 	> .el-menu--popup {
 		max-height: 100vh;
 		overflow-y: auto;
+
+		.menu-item-svg {
+			width: 1em;
+			height: 1em;
+			margin-right: 16px;
+		}
 
 		&::-webkit-scrollbar-track-piece {
 			background: #d3dce6;

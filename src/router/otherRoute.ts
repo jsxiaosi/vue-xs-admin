@@ -9,19 +9,19 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 		redirect: '/useradmin/userlist/',
 		name: '用户管理',
 		alwaysShow: true,
-		meta: { title: '用户管理', icon: 'el-icon-user-solid' },
+		meta: { title: '用户管理', icon: 'daosanjiao' },
 		children: [
 			{
 				path: 'userlist',
 				name: 'userlist',
 				component: () => import('@/views/useradmin/userlist/index.vue'),
-				meta: { title: '用户列表', icon: 'el-icon-s-tools' },
+				meta: { title: '用户列表', icon: 'daosanjiao' },
 			},
 			{
 				path: 'index',
 				name: 'index',
 				component: () => import('@/views/index/index.vue'),
-				meta: { title: 'index', icon: 'el-icon-phone-outline' },
+				meta: { title: 'index', icon: 'daosanjiao' },
 			},
 		],
 	},
