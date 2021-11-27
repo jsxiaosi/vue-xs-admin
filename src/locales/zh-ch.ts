@@ -1,9 +1,11 @@
-import zhTWLocale from 'element-plus/es/locale/lang/zh-tw'
-
 export const lang = {
-	el: zhTWLocale.el,
 	login: {
 		title: '登陆',
+	},
+	route: {
+		userInfo: '用户管理',
+		userList: '用户列表',
+		userDateil: '用户详情',
 	},
 	api: {
 		errMsg401: '用户没有权限!',

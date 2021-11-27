@@ -1,9 +1,11 @@
-import enLocale from 'element-plus/es/locale/lang/en'
-
 export const lang = {
-	el: enLocale.el,
 	login: {
 		title: 'login',
+	},
+	route: {
+		userInfo: 'UserInfo',
+		userList: 'UserList',
+		userDateil: 'UserDateil',
 	},
 	api: {
 		errMsg401: 'The user does not have permission!',

@@ -1,10 +1,11 @@
 <template>
 	<SvgIcon :class-name="className" :name="icon" color="#e3e3e3"></SvgIcon>
-	<span v-if="title">{{ title }}</span>
+	<span v-if="title">{{ t(title) }}</span>
 </template>
 
 <script setup lang="ts">
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { useI18n } from '@/hooks/useI18n'
 defineProps({
 	icon: {
 		type: String,
@@ -19,6 +20,7 @@ defineProps({
 		default: '',
 	},
 })
+const { t } = useI18n()
 </script>
 
 <style scoped>

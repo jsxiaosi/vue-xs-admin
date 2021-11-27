@@ -1,31 +1,30 @@
 import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
 
-import 'element-plus/dist/index.css'
-import 'es6-promise/auto'
-import 'virtual:svg-icons-register'
-
-import { store, key } from './store'
-import Router from './router'
-import I18n from './locales'
 import App from './App.vue'
 
 import {
-	configMainComponent,
+	configMainElementPlus,
 	configMainGlobalProperties,
 } from './utils/mainConfig'
+import { configMainStore } from './store'
+import { configMainI18n } from './locales'
+import { configMainRouter } from './router'
 
 const app = createApp(App)
 
-configMainComponent(app)
-
+// 全局钩子
 configMainGlobalProperties(app)
 
-app
-	.use(store, key)
-	.use(Router)
-	.use(ElementPlus, {
-		i18n: I18n.global.t,
-	})
-	.use(I18n)
-	.mount('#app')
+// Vuex
+configMainStore(app)
+
+// 路由
+configMainRouter(app)
+
+// 国际化
+configMainI18n(app)
+
+// ElementPlus
+configMainElementPlus(app)
+
+app.mount('#app')

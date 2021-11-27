@@ -17,11 +17,11 @@
 				<span
 					v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
 					class="no-redirect"
-					>{{ item.meta.title }}</span
+					>{{ t(`${item.meta.title}`) }}</span
 				>
-				<a v-else class="redirect" @click.prevent="handleLink(item)">{{
-					item.meta.title
-				}}</a>
+				<a v-else class="redirect" @click.prevent="handleLink(item)">
+					{{ t(`${item.meta.title}`) }}
+				</a>
 			</el-breadcrumb-item>
 		</el-breadcrumb>
 	</div>
@@ -35,6 +35,9 @@ import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 import { useStore } from '@/store/index'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from '@/hooks/useI18n'
+
+const { t } = useI18n()
 
 const levelList = ref<Array<RouteLocationMatched>>([])
 // 获取路由配置
@@ -76,10 +79,10 @@ const store = useStore()
 // 当前是否折叠导航栏
 const isCollapseMenu = getAppCollapseMenu()
 // 获取Mutation 事件常量
-const mutation = useCurrentInstance().globalProperties.$mutation
+const { $mutation } = useCurrentInstance()
 // 折叠菜单事件
 const handerShowElmenu = () => {
-	store.commit(mutation.SET_COLLAPSEMENU, !store.state.app.collapseMenu)
+	store.commit($mutation.SET_COLLAPSEMENU, !store.state.app.collapseMenu)
 }
 </script>
 

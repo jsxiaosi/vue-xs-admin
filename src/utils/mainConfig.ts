@@ -1,9 +1,14 @@
-import * as ElIconModules from '@element-plus/icons'
 import { App } from 'vue'
 import mutation from '../store/mutation'
+import * as ElIconModules from '@element-plus/icons'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import 'es6-promise/auto'
+import 'virtual:svg-icons-register'
 
 // 注册element-plus icon
-export const configMainComponent = (app: App<Element>) => {
+export const configMainElementPlus = (app: App<Element>) => {
+	app.use(ElementPlus)
 	const myElIconModules: any = ElIconModules
 	for (const iconName in myElIconModules) {
 		app.component(iconName, myElIconModules[iconName])

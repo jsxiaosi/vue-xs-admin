@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { safeManagerRoutes } from './otherRoute'
 import { AppRouteRecordRaw } from '#/route'
+import { App } from 'vue'
 // import Layout from '@/layouts/index.vue'
 
 const routes: Array<AppRouteRecordRaw> = [
@@ -12,7 +13,11 @@ const routes: Array<AppRouteRecordRaw> = [
 	},
 ]
 
-export default createRouter({
+const route = createRouter({
 	history: createWebHistory(''),
 	routes: routes as unknown as RouteRecordRaw[],
 })
+
+export const configMainRouter = (app: App<Element>) => {
+	app.use(route)
+}

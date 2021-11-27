@@ -1,5 +1,5 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
-import { InjectionKey } from 'vue'
+import { App, InjectionKey } from 'vue'
 import { AnyObject } from '#/vuex'
 
 export interface State {
@@ -25,21 +25,26 @@ modules.forEach((item) => {
 	modulesObj[item.name] = item.module
 })
 
-export const store = createStore<State>({
+const store = createStore<State>({
 	modules: modulesObj,
 	strict: process.env.NODE_ENV !== 'production',
 })
+
+// 热重载
+if (import.meta.hot) {
+	import.meta.hot?.accept(Object.keys(modulesObj), () => {
+		console.log(modulesObj)
+		store.hotUpdate({
+			modules: modulesObj,
+		})
+	})
+}
+
+export const configMainStore = (app: App<Element>) => {
+	app.use(store, key)
+}
 
 // 定义自己的 `useStore` 组合式函数
 export function useStore() {
 	return baseUseStore(key)
 }
-
-// 热重载
-// if (import.meta.hot) {
-// 	import.meta.hot?.accept(Object.keys(modulesObj), () => {
-// 		store.hotUpdate({
-// 			modulesObj,
-// 		})
-// 	})
-// }

@@ -14,12 +14,12 @@ import { useStore } from '@/store'
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
 
 const store = useStore()
-const mutation = useCurrentInstance().globalProperties.$mutation
+const { $mutation } = useCurrentInstance()
 const locstorCollapse = localStorage.getItem('appCollapseMenu')
 let locMenu: boolean
 if (locstorCollapse) locMenu = JSON.parse(locstorCollapse)
 else locMenu = false
-store.commit(mutation.SET_COLLAPSEMENU, locMenu)
+store.commit($mutation.SET_COLLAPSEMENU, locMenu)
 
 // const req = async () => {
 // 	const res = await request.post<void>({ url: '/mock_api/getUserInfo' })

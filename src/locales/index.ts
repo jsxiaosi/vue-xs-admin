@@ -1,3 +1,4 @@
+import { App } from 'vue'
 import { createI18n } from 'vue-i18n'
 // import ElementLocale from 'element-plus/es/locale'
 
@@ -14,5 +15,9 @@ const i18n = createI18n({
 	fallbackLocale: 'zh-ch',
 	messages,
 })
+
+export const configMainI18n = (app: App<Element>) => {
+	app.use(i18n)
+}
 
 export default i18n

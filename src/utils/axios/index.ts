@@ -79,4 +79,4 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
 		...(opt || {}),
 	})
 }
-export const request = createAxios()
+export const deffHttp = createAxios()
