@@ -108,6 +108,10 @@
 		.submenu-title-noDropdown,
 		.el-sub-menu__title {
 			color: $menuText;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 			background-color: $menuBg;
 			border-left: $menuBg solid 3px;
 
