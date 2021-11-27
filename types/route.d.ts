@@ -19,7 +19,7 @@ export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
 	component?: Component
 	components?: { [name: string]: Component } // 命名视图组件
 	alias?: string | Array<string>
-	alwaysShow?: boolean
+	alwaysShow?: boolean //单个路由的时候是否开启折叠
 	hidden?: boolean
 	children?: Array<AppRouteRecordRaw>
 	meta?: Menu

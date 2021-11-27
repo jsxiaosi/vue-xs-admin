@@ -12,7 +12,6 @@ export const configMainElementPlus = (app: App<Element>) => {
 	const myElIconModules: any = ElIconModules
 	for (const iconName in myElIconModules) {
 		app.component(transElIconName(iconName), myElIconModules[iconName])
-		console.log('还是这里先来？')
 	}
 }
 
