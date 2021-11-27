@@ -30,26 +30,29 @@
 		transition: width 0.28s;
 
 		.el-menu-item {
-			color: $menuText;
+			color: $menuItemText;
 			border-left: #{$menuItemBorderLeft} solid 3px;
 
 			.menu-item-svg {
-				width: 1em;
-				height: 1em;
 				margin-right: 16px;
+				line-height: 0;
+
+				.el-icon {
+					font-size: 14px;
+				}
 
 				use {
-					fill: $menuText;
+					fill: $menuItemText;
 				}
 			}
 		}
 
 		.el-menu-item.is-active {
 			color: $menuItemActiveText;
-			background-color: $subMenuItemBg !important;
-			border-left: #{$subMenuItemBorderLeft} solid 3px !important;
+			background-color: $menuItemActiveBg !important;
+			border-left: #{$menuItemActiveBorderLeft} solid 3px !important;
 
-			.menu-item-svg > use {
+			.menu-item-svg use {
 				fill: $menuItemActiveText !important;
 			}
 		}
@@ -116,9 +119,12 @@
 			border-left: $menuBg solid 3px;
 
 			.sub-menu-svg {
-				width: 1em;
-				height: 1em;
 				margin-right: 16px;
+				line-height: 0;
+
+				.el-icon {
+					font-size: 14px;
+				}
 
 				use {
 					fill: $menuText;
@@ -138,7 +144,7 @@
 		.is-active > .el-sub-menu__title {
 			color: $menuActiveText !important;
 
-			.sub-menu-svg > use {
+			.sub-menu-svg use {
 				fill: $menuActiveText !important;
 			}
 		}
@@ -188,7 +194,7 @@
 		.el-sub-menu {
 			overflow: hidden;
 
-			svg {
+			.sub-menu-svg {
 				margin-left: 16px;
 			}
 
@@ -220,6 +226,9 @@
 			// .sub-el-icon {
 			//   margin-left: 19px;
 			// }
+			.menu-item-svg {
+				margin-left: 16px;
+			}
 
 			.el-sub-menu__icon-arrow {
 				display: none;
@@ -311,7 +320,7 @@
 	.nest-menu .is-active.el-menu-item {
 		color: $menuItemActiveText !important;
 
-		.menu-item-svg > use {
+		.menu-item-svg use {
 			fill: $menuItemActiveText !important;
 		}
 	}
@@ -322,9 +331,12 @@
 		overflow-y: auto;
 
 		.menu-item-svg {
-			width: 1em;
-			height: 1em;
 			margin-right: 16px;
+			line-height: 0;
+
+			use {
+				fill: $menuItemText;
+			}
 		}
 
 		&::-webkit-scrollbar-track-piece {

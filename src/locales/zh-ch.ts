@@ -6,6 +6,7 @@ export const lang = {
 		userInfo: '用户管理',
 		userList: '用户列表',
 		userDateil: '用户详情',
+		thirdParty: '第三方',
 	},
 	api: {
 		errMsg401: '用户没有权限!',

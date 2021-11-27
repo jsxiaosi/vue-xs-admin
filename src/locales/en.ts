@@ -6,6 +6,7 @@ export const lang = {
 		userInfo: 'UserInfo',
 		userList: 'UserList',
 		userDateil: 'UserDateil',
+		thirdParty: 'Third party',
 	},
 	api: {
 		errMsg401: 'The user does not have permission!',

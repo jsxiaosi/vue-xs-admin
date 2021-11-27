@@ -11,8 +11,15 @@ export const configMainElementPlus = (app: App<Element>) => {
 	app.use(ElementPlus)
 	const myElIconModules: any = ElIconModules
 	for (const iconName in myElIconModules) {
-		app.component(iconName, myElIconModules[iconName])
+		app.component(transElIconName(iconName), myElIconModules[iconName])
+		console.log('还是这里先来？')
 	}
+}
+
+function transElIconName(iconName: string) {
+	return (
+		'iEL' + iconName.replace(/[A-Z]/g, (match) => '-' + match.toLowerCase())
+	)
 }
 
 // 定义全局钩子
@@ -27,7 +34,3 @@ export const configMainGlobalProperties = (app: App<Element>) => {
 	 * proxy.foo
 	 */
 }
-
-// function transElIconName(iconName: string) {
-//   return 'i' + iconName.replace(/[A-Z]/g, (match) => '-' + match.toLowerCase())
-// }

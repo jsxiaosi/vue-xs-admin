@@ -1,6 +1,6 @@
 <template>
 	<div class="page-container">
-		<el-icon><baseball /></el-icon>
+		<el-icon><iEL-baseball /></el-icon>
 		<SvgIcon name="daosanjiao"></SvgIcon>
 		{{ t('login.title') }}
 		<el-date-picker
