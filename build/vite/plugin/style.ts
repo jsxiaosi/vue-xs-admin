@@ -19,9 +19,10 @@ export function configStylePlugin(): Plugin | Plugin[] {
 					// 使用element css样式
 					// return `element-plus/lib/theme-chalk/${name}.css`;
 				},
-				resolveComponent: (name: any) => {
-					return `element-plus/lib/${name}`
-				},
+				// resolveComponent: (name: any) => {
+				// 	console.log(name)
+				// 	return `element-plus/lib/${name}`
+				// },
 			},
 		],
 	}

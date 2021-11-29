@@ -1,10 +1,19 @@
 <template>
-	<router-view />
+	<el-config-provider :locale="tolocale">
+		<router-view />
+	</el-config-provider>
 </template>
 
 <script setup lang="ts">
+import { ElConfigProvider } from 'element-plus'
+import { deffElementLocale } from '@/hooks/useI18n'
 import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 import { useStore } from '@/store'
+
+const { tolocale } = deffElementLocale()
+
+console.log(tolocale.value)
+
 // import { request } from './utils/axios'
 // import HelloWorld from './components/HelloWorld.vue'
 

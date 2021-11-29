@@ -10,9 +10,7 @@
 				<Breadcrumb />
 			</div>
 			<!-- 内容区 -->
-			<el-config-provider :locale="tolocale">
-				<AppMain />
-			</el-config-provider>
+			<AppMain />
 		</div>
 	</div>
 </template>
@@ -23,10 +21,6 @@ import NavBart from './components/Navbart/index.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import Breadcrumb from './components/Breadcrumb/Breadcrumb.vue'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
-import { ElConfigProvider } from 'element-plus'
-import { deffElementLocale } from '@/hooks/useI18n'
-
-const { tolocale } = deffElementLocale()
 
 const isCollapseMenu = getAppCollapseMenu()
 </script>

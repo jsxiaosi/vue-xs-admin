@@ -1,6 +1,5 @@
 import { App } from 'vue'
 import { createI18n } from 'vue-i18n'
-// import ElementLocale from 'element-plus/es/locale'
 
 const messages = Object.fromEntries(
 	Object.entries(import.meta.globEager('./**.ts')).map(([key, value]) => {
