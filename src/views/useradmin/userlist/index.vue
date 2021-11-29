@@ -1,6 +1,7 @@
 <template>
 	<div class="page-container">
-		<el-icon><iEL-baseball /></el-icon>
+		<span>听说这个是用户列表</span>
+		<!-- <el-icon><iEL-baseball /></el-icon>
 		<SvgIcon name="daosanjiao"></SvgIcon>
 		{{ t('login.title') }}
 		<el-date-picker
@@ -8,19 +9,19 @@
 			type="datetimerange"
 			start-placeholder="开始日期"
 			end-placeholder="结束日期"
-		></el-date-picker>
+		></el-date-picker> -->
 	</div>
 </template>
 
 <script setup lang="ts">
-import SvgIcon from '@/components/SvgIcon/index.vue'
+// import SvgIcon from '@/components/SvgIcon/index.vue'
 // import { getCurrentInstance } from 'vue'
 
-import { useI18n } from 'vue-i18n'
-import { ref } from '@vue/reactivity'
-const { t } = useI18n()
+// import { useI18n } from 'vue-i18n'
+// import { ref } from '@vue/reactivity'
+// const { t } = useI18n()
 
-const value1 = ref()
+// const value1 = ref()
 
 // const instance = getCurrentInstance()
 

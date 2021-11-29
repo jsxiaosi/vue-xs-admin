@@ -1,5 +1,5 @@
 <template>
-	<div :class="className">
+	<div :class="className" style="line-height: 1px">
 		<el-icon v-if="isELIcon">
 			<component :is="name" />
 		</el-icon>
@@ -38,12 +38,17 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 
 <style lang="scss" scoped>
 .el-icon {
-	width: 1em;
-	height: 1em;
+	// 取父级的宽高
+	font-size: 1em;
+	color: currentColor;
 }
 
 .svg {
 	width: 1em;
 	height: 1em;
+
+	use {
+		fill: currentColor;
+	}
 }
 </style>

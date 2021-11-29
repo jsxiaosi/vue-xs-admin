@@ -51,7 +51,7 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 				path: 'menu1',
 				component: AppMain, // Parent router-view
 				name: 'Menu1',
-				redirect: '/nested/menu1/menu1-1',
+				redirect: '/nested/menu1/menu1-1/',
 				meta: { title: t('route.nested1') },
 				children: [
 					{

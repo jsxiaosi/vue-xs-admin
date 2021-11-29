@@ -36,14 +36,7 @@
 			.menu-item-svg {
 				margin-right: 16px;
 				line-height: 0;
-
-				.el-icon {
-					font-size: 14px;
-				}
-
-				use {
-					fill: $menuItemText;
-				}
+				color: $menuItemText;
 			}
 		}
 
@@ -52,8 +45,8 @@
 			background-color: $menuItemActiveBg !important;
 			border-left: #{$menuItemActiveBorderLeft} solid 3px !important;
 
-			.menu-item-svg use {
-				fill: $menuItemActiveText !important;
+			.menu-item-svg {
+				color: $menuItemActiveText !important;
 			}
 		}
 
@@ -121,22 +114,16 @@
 			.sub-menu-svg {
 				margin-right: 16px;
 				line-height: 0;
-
-				.el-icon {
-					font-size: 14px;
-				}
-
-				use {
-					fill: $menuText;
-				}
+				color: $menuText;
 			}
 
 			&:hover {
 				color: $menuHoverText !important;
 				background-color: $menuHover;
 
-				use {
-					fill: $menuHoverText !important;
+				.sub-menu-svg,
+				.menu-item-svg {
+					color: $menuHoverText !important;
 				}
 			}
 		}
@@ -144,8 +131,8 @@
 		.is-active > .el-sub-menu__title {
 			color: $menuActiveText !important;
 
-			.sub-menu-svg use {
-				fill: $menuActiveText !important;
+			.sub-menu-svg {
+				color: $menuActiveText !important;
 			}
 		}
 
@@ -158,8 +145,8 @@
 				color: $menuItemHoverText !important;
 				background-color: $menuItemHover;
 
-				use {
-					fill: $menuItemHoverText !important;
+				.menu-item-svg {
+					color: $menuItemHoverText !important;
 				}
 			}
 		}
@@ -311,6 +298,10 @@
 			color: $menuItemHoverText !important;
 			background-color: $menuItemHover;
 
+			.menu-item-svg {
+				color: $menuItemActiveText !important;
+			}
+
 			use {
 				fill: $menuItemHoverText !important;
 			}
@@ -320,8 +311,8 @@
 	.nest-menu .is-active.el-menu-item {
 		color: $menuItemActiveText !important;
 
-		.menu-item-svg use {
-			fill: $menuItemActiveText !important;
+		.menu-item-svg {
+			color: $menuItemActiveText !important;
 		}
 	}
 
@@ -333,10 +324,7 @@
 		.menu-item-svg {
 			margin-right: 16px;
 			line-height: 0;
-
-			use {
-				fill: $menuItemText;
-			}
+			color: $menuItemText;
 		}
 
 		&::-webkit-scrollbar-track-piece {

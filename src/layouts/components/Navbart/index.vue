@@ -1,8 +1,41 @@
 <template>
 	<div class="navbar">
-		<div @click="tolochos('zh-ch')">zh</div>
-		<div @click="tolochos('en')">en</div>
-		<SvgIcon name="locales" color="#000000"></SvgIcon>
+		<div class="navbar-left">
+			<span>这里本来是logo但是我还没想好放什么好看的logo</span>
+		</div>
+		<div class="navbar-right">
+			<el-dropdown class="popover-content" trigger="click" @command="tolochos">
+				<span>
+					<SvgIcon class="icon" name="locales"></SvgIcon>
+				</span>
+				<template #dropdown>
+					<el-dropdown-menu>
+						<el-dropdown-item command="zh-ch">中文简体</el-dropdown-item>
+						<el-dropdown-item command="en">English</el-dropdown-item>
+					</el-dropdown-menu>
+				</template>
+			</el-dropdown>
+			<SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
+		</div>
+		<el-drawer v-model="drawer" title="I am the title">
+			<span>Hi, there!</span>
+		</el-drawer>
+		<!-- <el-popover
+			placement="bottom"
+			:width="200"
+			trigger="click"
+			content="this is content, this is content, this is content"
+		>
+			<template #reference>
+				<SvgIcon class="icon" name="locales" color="#000000"></SvgIcon>
+			</template>
+			<div class="popover-content">
+				<el-button class="button" @click="tolochos('zh-ch')"
+					>中文简体</el-button
+				>
+				<el-button class="button" @click="tolochos('en')">English</el-button>
+			</div>
+		</el-popover>-->
 		<!-- <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
 			<el-option
 				v-for="item in options"
@@ -22,6 +55,14 @@
 // import { ref } from 'vue'
 import { useI18n } from '@/hooks/useI18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { ref } from '@vue/reactivity'
+
+const i18n = useI18n()
+const tolochos = (key: string) => {
+	i18n.locale.value = key
+}
+
+const drawer = ref(false)
 
 // const options = ref([
 // 	{ name: '123', value: 'variables-theme-day' },
@@ -33,10 +74,6 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 // const toggleTheme = (scopeName = 'theme-default') => {
 // 	document.documentElement.className = scopeName
 // }
-const i18n = useI18n()
-const tolochos = (key: string) => {
-	i18n.locale.value = key
-}
 </script>
 
 <style lang="scss" scoped>
@@ -46,10 +83,23 @@ const tolochos = (key: string) => {
 	left: 0;
 	z-index: 1002;
 	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	width: 100%;
 	height: #{$navBarHeight};
+	padding: 0 20px;
 	background-color: $navBarColor;
 	border-bottom: 1px solid $navBarBorderBottomColor;
 	box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
+
+	.navbar-right {
+		display: flex;
+		align-items: center;
+
+		.icon {
+			margin-left: 12px;
+			font-size: 22px;
+		}
+	}
 }
 </style>

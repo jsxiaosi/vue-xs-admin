@@ -47,6 +47,9 @@ store.commit($mutation.SET_COLLAPSEMENU, locMenu)
 
 <style lang="scss">
 #app {
-	color: $menuText;
+	color: #{$textColor};
+	// svg use {
+	// 	fill: #{$textColor};
+	// }
 }
 </style>
