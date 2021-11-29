@@ -11,6 +11,10 @@ const routes: Array<AppRouteRecordRaw> = [
 		redirect: '/useradmin',
 		meta: { title: '用户管理' },
 	},
+	{
+		path: '/404',
+		meta: { title: '404' },
+	},
 ]
 
 const route = createRouter({

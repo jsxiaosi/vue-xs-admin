@@ -2,6 +2,7 @@
 	<div class="navbar">
 		<div @click="tolochos('zh-ch')">zh</div>
 		<div @click="tolochos('en')">en</div>
+		<SvgIcon name="locales" color="#000000"></SvgIcon>
 		<!-- <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
 			<el-option
 				v-for="item in options"
@@ -20,6 +21,7 @@
 <script setup lang="ts">
 // import { ref } from 'vue'
 import { useI18n } from '@/hooks/useI18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 // const options = ref([
 // 	{ name: '123', value: 'variables-theme-day' },
