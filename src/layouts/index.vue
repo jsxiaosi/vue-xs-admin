@@ -1,9 +1,14 @@
 <template>
-	<div class="app-wrapper" :class="{ hideSidebar: isCollapseMenu }">
+	<div class="app-wrapper">
 		<!-- 顶部导航栏 -->
 		<NavBart />
 		<!-- 侧边导航栏 -->
-		<Sidebar class="sidebar-container" />
+		<Sidebar
+			v-show="sidebarMode === 'vertical'"
+			class="sidebar-container"
+			:class="{ hideSidebar: isCollapseMenu }"
+			mode="vertical"
+		/>
 		<div class="main-container">
 			<div class="main-container-breadcrumb">
 				<!-- 面包屑 -->
@@ -22,7 +27,7 @@ import Sidebar from './components/Sidebar/index.vue'
 import Breadcrumb from './components/Breadcrumb/Breadcrumb.vue'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 
-const isCollapseMenu = getAppCollapseMenu()
+const { isCollapseMenu, sidebarMode } = getAppCollapseMenu()
 </script>
 
 <style lang="scss" scoped></style>

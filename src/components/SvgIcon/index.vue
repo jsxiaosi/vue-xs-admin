@@ -38,6 +38,9 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 
 <style lang="scss" scoped>
 .el-icon {
+	width: 1em;
+	height: 1em;
+	margin: 0;
 	// 取父级的宽高
 	font-size: 1em;
 	color: currentColor;

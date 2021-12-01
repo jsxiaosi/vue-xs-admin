@@ -77,7 +77,7 @@ watch(route, getBreadcrumb)
 // 注入store
 const store = useStore()
 // 当前是否折叠导航栏
-const isCollapseMenu = getAppCollapseMenu()
+const { isCollapseMenu } = getAppCollapseMenu()
 // 获取Mutation 事件常量
 const { $mutation } = useCurrentInstance()
 // 折叠菜单事件
@@ -97,8 +97,6 @@ const handerShowElmenu = () => {
 	}
 
 	.breadcrumb-fold {
-		width: 20px;
-		height: 20px;
 		margin-right: 20px;
 	}
 

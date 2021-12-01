@@ -1,7 +1,14 @@
 <template>
 	<div class="navbar">
 		<div class="navbar-left">
-			<span>这里本来是logo但是我还没想好放什么好看的logo</span>
+			<span>这是一个logo</span>
+		</div>
+		<div class="navbar-center">
+			<Sidebar
+				v-show="sidebarMode === 'horizontal'"
+				class="sidebar-horizontal"
+				mode="horizontal"
+			/>
 		</div>
 		<div class="navbar-right">
 			<el-dropdown class="popover-content" trigger="click" @command="tolochos">
@@ -18,24 +25,9 @@
 			<SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
 		</div>
 		<el-drawer v-model="drawer" title="I am the title">
-			<span>Hi, there!</span>
+			<span @click="handerShowElmenu">Hi, there!</span>
 		</el-drawer>
-		<!-- <el-popover
-			placement="bottom"
-			:width="200"
-			trigger="click"
-			content="this is content, this is content, this is content"
-		>
-			<template #reference>
-				<SvgIcon class="icon" name="locales" color="#000000"></SvgIcon>
-			</template>
-			<div class="popover-content">
-				<el-button class="button" @click="tolochos('zh-ch')"
-					>中文简体</el-button
-				>
-				<el-button class="button" @click="tolochos('en')">English</el-button>
-			</div>
-		</el-popover>-->
+
 		<!-- <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
 			<el-option
 				v-for="item in options"
@@ -53,9 +45,14 @@
 
 <script setup lang="ts">
 // import { ref } from 'vue'
+import Sidebar from '../../components/Sidebar/index.vue'
+
 import { useI18n } from '@/hooks/useI18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { ref } from '@vue/reactivity'
+import { getAppCollapseMenu } from '@/hooks/appWindow'
+import { useStore } from '@/store'
+import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 
 const i18n = useI18n()
 const tolochos = (key: string) => {
@@ -64,6 +61,20 @@ const tolochos = (key: string) => {
 
 const drawer = ref(false)
 
+const { sidebarMode } = getAppCollapseMenu()
+
+// 注入store
+const store = useStore()
+// 获取Mutation 事件常量
+const { $mutation } = useCurrentInstance()
+// 折叠菜单事件
+const handerShowElmenu = () => {
+	let vale = ''
+	if (sidebarMode.value === 'vertical') vale = 'horizontal'
+	else vale = 'vertical'
+
+	store.commit($mutation.SET_SIDEBARMODE, vale)
+}
 // const options = ref([
 // 	{ name: '123', value: 'variables-theme-day' },
 // 	{ name: '456', value: 'variables-theme-dark' },
@@ -92,13 +103,25 @@ const drawer = ref(false)
 	border-bottom: 1px solid $navBarBorderBottomColor;
 	box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 
+	.navbar-left {
+		// flex: 1;
+		width: 200px;
+		height: 100%;
+	}
+
+	.navbar-center {
+		width: 100%;
+		height: 100%;
+	}
+
 	.navbar-right {
 		display: flex;
+		flex: 1;
 		align-items: center;
 
 		.icon {
 			margin-left: 12px;
-			font-size: 22px;
+			font-size: 18px;
 		}
 	}
 }

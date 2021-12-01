@@ -4,8 +4,8 @@
 			<el-menu
 				:default-active="activeMenyu"
 				:unique-opened="false"
-				:collapse="isCollapseMenu"
-				mode="vertical"
+				:collapse="sidebarMode === 'horizontal' ? false : isCollapseMenu"
+				:mode="mode"
 			>
 				<sidebar-item
 					v-for="route in safeManagerRoutes"
@@ -27,6 +27,15 @@ import SidebarItem from './SidebarItem.vue'
 import { safeManagerRoutes } from '@/router/otherRoute'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 
+const props = defineProps({
+	mode: {
+		type: String,
+		default: 'vertical',
+	},
+})
+
+console.log(props)
+
 const activeMenyu = computed(() => {
 	const route = useRoute()
 	const { meta, path } = route
@@ -36,7 +45,7 @@ const activeMenyu = computed(() => {
 	return path
 })
 
-const isCollapseMenu = getAppCollapseMenu()
+const { isCollapseMenu, sidebarMode } = getAppCollapseMenu()
 
 // const isCollapse = ref(false)
 </script>
