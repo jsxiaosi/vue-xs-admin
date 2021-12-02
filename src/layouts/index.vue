@@ -4,7 +4,7 @@
 		<NavBart />
 		<!-- 侧边导航栏 -->
 		<Sidebar
-			v-show="sidebarMode === 'vertical'"
+			v-if="sidebarMode === 'vertical'"
 			class="sidebar-container"
 			:class="{ hideSidebar: isCollapseMenu }"
 			mode="vertical"

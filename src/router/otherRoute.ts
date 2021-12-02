@@ -17,7 +17,7 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 				path: 'userlist',
 				name: 'userlist',
 				component: () => import('@/views/useradmin/userlist/index.vue'),
-				meta: { title: t('route.userList'), icon: 'iEL-avatar' },
+				meta: { title: t('route.userList') },
 			},
 			{
 				path: 'index',

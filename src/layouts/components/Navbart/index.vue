@@ -1,11 +1,11 @@
 <template>
 	<div class="navbar">
 		<div class="navbar-left">
-			<span>这是一个logo</span>
+			<SvgIcon class="logo" name="Vue" @click="drawer = true"></SvgIcon>
 		</div>
 		<div class="navbar-center">
 			<Sidebar
-				v-show="sidebarMode === 'horizontal'"
+				v-if="sidebarMode === 'horizontal'"
 				class="sidebar-horizontal"
 				mode="horizontal"
 			/>
@@ -104,14 +104,18 @@ const handerShowElmenu = () => {
 	box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 
 	.navbar-left {
+		.logo {
+			font-size: 38px;
+		}
 		// flex: 1;
-		width: 200px;
-		height: 100%;
+		// width: 200px;
+		// height: 100%;
 	}
 
 	.navbar-center {
 		width: 100%;
 		height: 100%;
+		padding: 0 20px;
 	}
 
 	.navbar-right {

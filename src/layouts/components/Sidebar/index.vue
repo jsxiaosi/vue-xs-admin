@@ -27,14 +27,12 @@ import SidebarItem from './SidebarItem.vue'
 import { safeManagerRoutes } from '@/router/otherRoute'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 
-const props = defineProps({
+defineProps({
 	mode: {
 		type: String,
 		default: 'vertical',
 	},
 })
-
-console.log(props)
 
 const activeMenyu = computed(() => {
 	const route = useRoute()
