@@ -20,7 +20,7 @@
 		"lint:pretty": "pretty-quick --staged",
 		"lint:staged": "lint-staged",
 		"prepare": "husky install",
-		"push": "scp -r dist/* root@121.37.230.193:/opt/myproject/vue3",
+		"push": "scp -r dist/* root@服务器公网IP:/服务器资源存放地址",
 		"build:push": "npm run build && npm run push"
 	},
 	"dependencies": {
