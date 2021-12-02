@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 
-import type { Plugin } from 'vite'
+import type { Plugin, ConfigEnv } from 'vite'
 
 // 按需加载样式配置
 import { configStylePlugin } from './style'
@@ -12,10 +12,12 @@ import { configSvgPlugin } from './svg'
 import { configCompressPlugin } from './compress'
 // mock
 import { configMockPlugin } from './mock'
+// eslint
+import { configEsLinterPlugin } from './eslinter'
 
 // import viteESLint from '@ehutch79/vite-eslint'
 
-export function createVitePlugins(isBuild = false) {
+export function createVitePlugins(isBuild = false, configEnv: ConfigEnv) {
 	const vitePlugins: (Plugin | Plugin[])[] = [vue()]
 	vitePlugins.push(configStylePlugin())
 
@@ -26,6 +28,8 @@ export function createVitePlugins(isBuild = false) {
 	vitePlugins.push(configCompressPlugin('gzip', true))
 
 	vitePlugins.push(configMockPlugin(isBuild))
+
+	vitePlugins.push(configEsLinterPlugin(configEnv))
 
 	// vitePlugins.push(viteESLint())
 	return vitePlugins
