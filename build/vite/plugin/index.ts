@@ -15,8 +15,6 @@ import { configMockPlugin } from './mock'
 // eslint
 import { configEsLinterPlugin } from './eslinter'
 
-// import viteESLint from '@ehutch79/vite-eslint'
-
 export function createVitePlugins(isBuild = false, configEnv: ConfigEnv) {
 	const vitePlugins: (Plugin | Plugin[])[] = [vue()]
 	vitePlugins.push(configStylePlugin())

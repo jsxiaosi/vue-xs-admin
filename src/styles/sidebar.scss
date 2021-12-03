@@ -304,36 +304,36 @@
 		}
 	}
 
-	.el-menu--collapse .el-menu .el-sub-menu {
-		min-width: $sideBarWidth !important;
-	}
+	// .el-menu--collapse .el-menu .el-sub-menu {
+	// 	min-width: $sideBarWidth !important;
+	// }
 
-	// mobile responsive
-	.mobile {
-		.main-container {
-			margin-left: 0;
-		}
+	// // mobile responsive
+	// .mobile {
+	// 	.main-container {
+	// 		margin-left: 0;
+	// 	}
 
-		.sidebar-container {
-			width: $sideBarWidth !important;
-			transition: transform 0.28s;
-		}
+	// 	.sidebar-container {
+	// 		width: $sideBarWidth !important;
+	// 		transition: transform 0.28s;
+	// 	}
 
-		&.hideSidebar {
-			.sidebar-container {
-				pointer-events: none;
-				transition-duration: 0.3s;
-				transform: translate3d(-$sideBarWidth, 0, 0);
-			}
-		}
-	}
+	// 	&.hideSidebar {
+	// 		.sidebar-container {
+	// 			pointer-events: none;
+	// 			transition-duration: 0.3s;
+	// 			transform: translate3d(-$sideBarWidth, 0, 0);
+	// 		}
+	// 	}
+	// }
 
-	.withoutAnimation {
-		.main-container,
-		.sidebar-container {
-			transition: none;
-		}
-	}
+	// .withoutAnimation {
+	// 	.main-container,
+	// 	.sidebar-container {
+	// 		transition: none;
+	// 	}
+	// }
 }
 
 // when menu collapsed
