@@ -10,6 +10,7 @@ const mutationTypes = {
 interface StoreUser {
 	collapseMenu: boolean
 	sidebarMode: string
+	layoute: object
 }
 
 const locstorCollapse = localStorage.getItem('appCollapseMenu') || 'false'
@@ -24,6 +25,7 @@ const store: Module<StoreUser, unknown> = {
 		return {
 			collapseMenu: locMenu || false,
 			sidebarMode: locstorsSidebarMode,
+			layoute: {},
 		}
 	},
 	mutations: {

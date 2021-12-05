@@ -24,9 +24,8 @@
 			</el-dropdown>
 			<SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
 		</div>
-		<el-drawer v-model="drawer" title="I am the title">
-			<span @click="handerShowElmenu">Hi, there!</span>
-		</el-drawer>
+
+		<Setting v-model:modelValue="drawer"></Setting>
 
 		<!-- <el-select v-model="value" placeholder="请选择" @change="toggleTheme">
 			<el-option
@@ -46,13 +45,12 @@
 <script setup lang="ts">
 // import { ref } from 'vue'
 import Sidebar from '../../components/Sidebar/index.vue'
+import Setting from '../../components/Seting/index.vue'
 
 import { useI18n } from '@/hooks/useI18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { ref } from '@vue/reactivity'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
-import { useStore } from '@/store'
-import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 
 const i18n = useI18n()
 const tolochos = (key: string) => {
@@ -63,18 +61,6 @@ const drawer = ref(false)
 
 const { sidebarMode } = getAppCollapseMenu()
 
-// 注入store
-const store = useStore()
-// 获取Mutation 事件常量
-const { $mutation } = useCurrentInstance()
-// 折叠菜单事件
-const handerShowElmenu = () => {
-	let vale = ''
-	if (sidebarMode.value === 'vertical') vale = 'horizontal'
-	else vale = 'vertical'
-
-	store.commit($mutation.SET_SIDEBARMODE, vale)
-}
 // const options = ref([
 // 	{ name: '123', value: 'variables-theme-day' },
 // 	{ name: '456', value: 'variables-theme-dark' },

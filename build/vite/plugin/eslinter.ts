@@ -25,7 +25,7 @@ export function configEsLinterPlugin(configEnv: ConfigEnv) {
 				// 环境变量
 				configEnv: configEnv,
 				// 运行时是否删除缓存文件
-				serveOptions: { clearCacheOnStart: false },
+				serveOptions: { clearCacheOnStart: true },
 			}),
 			new TypeScriptLinter(),
 		],
@@ -38,7 +38,7 @@ export function configEsLinterPlugin(configEnv: ConfigEnv) {
 		// dev配置
 		serve: {
 			disable: false,
-			includeMode: 'filesInFolder',
+			includeMode: 'processedFiles',
 		},
 		// 排除的文件
 		exclude: ['node_modules', 'dist', '**/*.js'],

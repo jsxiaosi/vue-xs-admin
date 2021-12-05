@@ -13,9 +13,9 @@ import { configCompressPlugin } from './compress'
 // mock
 import { configMockPlugin } from './mock'
 // eslint
-import { configEsLinterPlugin } from './eslinter'
+// import { configEsLinterPlugin } from './eslinter'
 
-export function createVitePlugins(isBuild = false, configEnv: ConfigEnv) {
+export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 	const vitePlugins: (Plugin | Plugin[])[] = [vue()]
 	vitePlugins.push(configStylePlugin())
 
@@ -27,7 +27,8 @@ export function createVitePlugins(isBuild = false, configEnv: ConfigEnv) {
 
 	vitePlugins.push(configMockPlugin(isBuild))
 
-	vitePlugins.push(configEsLinterPlugin(configEnv))
+	// 使用此插件会导致vite启动变慢 100ms左右
+	// vitePlugins.push(configEsLinterPlugin(configEnv))
 
 	// vitePlugins.push(viteESLint())
 	return vitePlugins

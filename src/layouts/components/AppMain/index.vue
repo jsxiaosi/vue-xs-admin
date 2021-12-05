@@ -1,9 +1,11 @@
 <template>
 	<section class="app-main">
-		<router-view v-slot="{ Component }">
-			<transition name="fade-transform" mode="out-in">
-				<component :is="Component"></component>
-			</transition>
+		<router-view>
+			<template #default="{ Component }">
+				<transition name="fade-transform" mode="out-in">
+					<component :is="Component"></component>
+				</transition>
+			</template>
 		</router-view>
 	</section>
 </template>
@@ -25,6 +27,7 @@
 .app-main {
 	position: relative;
 	width: 100%;
+	height: 100%;
 	min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
 	overflow: hidden;
 	background-color: #{$appMainBgColor};

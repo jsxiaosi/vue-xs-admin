@@ -24,7 +24,7 @@
 import AppMain from './components/AppMain/index.vue'
 import NavBart from './components/Navbart/index.vue'
 import Sidebar from './components/Sidebar/index.vue'
-import Breadcrumb from './components/Breadcrumb/Breadcrumb.vue'
+import Breadcrumb from './components/Breadcrumb/index.vue'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 
 const { isCollapseMenu, sidebarMode } = getAppCollapseMenu()
