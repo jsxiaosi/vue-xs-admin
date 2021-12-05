@@ -1,5 +1,4 @@
 import { App } from 'vue'
-import mutation from '../store/mutation'
 import * as ElIconModules from '@element-plus/icons'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -25,7 +24,6 @@ function transElIconName(iconName: string) {
 export const configMainGlobalProperties = (app: App<Element>) => {
 	// 全局定义属性
 	app.config.globalProperties.foo = 'bar'
-	app.config.globalProperties.$mutation = mutation
 	/**
 	 * 页面使用方法：
 	 * import { getCurrentInstance } from 'vue';

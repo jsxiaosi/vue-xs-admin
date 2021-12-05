@@ -31,11 +31,10 @@
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import type { RouteLocationMatched } from 'vue-router'
 import { ref, watch } from 'vue'
-import { useCurrentInstance } from '@/hooks/useCurrentInstance'
-import { useStore } from '@/store/index'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '@/hooks/useI18n'
+import { useAppStore } from '@/store/modules/app'
 
 const { t } = useI18n()
 
@@ -74,15 +73,12 @@ getBreadcrumb()
 // 监控route的变化，避免组件复用信息同步问题
 watch(route, getBreadcrumb)
 
-// 注入store
-const store = useStore()
 // 当前是否折叠导航栏
 const { isCollapseMenu } = getAppCollapseMenu()
-// 获取Mutation 事件常量
-const { $mutation } = useCurrentInstance()
+const appStore = useAppStore()
 // 折叠菜单事件
 const handerShowElmenu = () => {
-	store.commit($mutation.SET_COLLAPSEMENU, !store.state.app.collapseMenu)
+	appStore.setCollapseMenu(!isCollapseMenu.value)
 }
 </script>
 

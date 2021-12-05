@@ -35,10 +35,9 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from '@/store'
-import { useCurrentInstance } from '@/hooks/useCurrentInstance'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 import { watch, ref } from 'vue'
+import { useAppStore } from '@/store/modules/app'
 
 const props = defineProps({
 	modelValue: {
@@ -60,16 +59,10 @@ watch(
 
 const { sidebarMode } = getAppCollapseMenu()
 
-console.log(sidebarMode.value)
-
-// 注入store
-const store = useStore()
-// 获取Mutation 事件常量
-const { $mutation } = useCurrentInstance()
+const appStore = useAppStore()
 // 折叠菜单事件
 const handerShowElmenu = (vale: string) => {
-	console.log('??????')
-	store.commit($mutation.SET_SIDEBARMODE, vale)
+	appStore.setSidebarMode(vale)
 }
 </script>
 
