@@ -10,7 +10,7 @@ export function createViteOptimizeDeps(): DepOptimizationOptions {
 		// 默认情况下，Vite 会抓取你的 index.html 来检测需要预构建的依赖项。如果指定了 build.rollupOptions.input，Vite 将转而去抓取这些入口点。
 		entries: [],
 		// 在预构建中强制排除的依赖项。
-		exclude: [],
+		exclude: ['@zougt/vite-plugin-theme-preprocessor/dist/browser-utils'],
 	}
 	return viteOptimizeDeps
 }
