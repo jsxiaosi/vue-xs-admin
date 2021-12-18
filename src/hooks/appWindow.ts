@@ -1,11 +1,10 @@
 // import { useStore } from '@/store'
 import { computed } from 'vue'
-import { useAppStore, useAppStoreHook } from '@/store/modules/app'
+import { useAppStore } from '@/store/modules/app'
 
 export const getAppCollapseMenu = () => {
 	// const store = useStore()
 	const appStore = useAppStore()
-	console.log(appStore, useAppStoreHook())
 	const isCollapseMenu = computed(() => appStore.getCollapseMenu)
 	const sidebarMode = computed(() => appStore.getSidebarMode)
 	return { isCollapseMenu, sidebarMode }
