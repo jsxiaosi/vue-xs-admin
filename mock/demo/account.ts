@@ -43,6 +43,15 @@ const userInfo = {
 
 export default [
 	{
+		url: '/mock_api/login',
+		timeout: 1000,
+		method: 'post',
+		response: (data: any) => {
+			console.log(data)
+			return userInfo
+		},
+	},
+	{
 		url: '/mock_api/getUserInfo',
 		timeout: 1000,
 		method: 'get',

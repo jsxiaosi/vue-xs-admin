@@ -10,7 +10,7 @@ import { deffElementLocale } from '@/hooks/useI18n'
 
 const { tolocale } = deffElementLocale()
 
-// import { request } from './utils/axios'
+// import { deffHttp } from './utils/axios'
 // import HelloWorld from './components/HelloWorld.vue'
 
 // const admin = 'asdasdasdas'
@@ -21,7 +21,7 @@ const { tolocale } = deffElementLocale()
 // store.commit($mutation.SET_COLLAPSEMENU, locMenu)
 
 // const req = async () => {
-// 	const res = await request.post<void>({ url: '/mock_api/getUserInfo' })
+// 	const res = await deffHttp.post<void>({ url: '/mock_api/login',data:{username:'admin',password:'123123'} })
 // 	console.log(res)
 // }
 // const req2 = async () => {
@@ -38,8 +38,5 @@ const { tolocale } = deffElementLocale()
 <style lang="scss">
 #app {
 	color: #{$textColor};
-	// svg use {
-	// 	fill: #{$textColor};
-	// }
 }
 </style>

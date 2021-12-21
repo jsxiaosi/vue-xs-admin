@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig'
-import { myAxios } from './myAxios'
+import { iAxios } from './iAxios'
 import { RequestOptions } from '#/axios'
 import { checkStatus } from './axiosStatus'
 import { isString } from 'lodash'
@@ -67,7 +67,7 @@ const interceptor: AxiosInterceptor = {
 }
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
-	return new myAxios({
+	return new iAxios({
 		...{
 			// 请求时间
 			timeout: 10 * 1000,

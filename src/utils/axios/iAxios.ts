@@ -13,7 +13,7 @@ import { cloneDeep } from 'lodash-es'
 /**
  * @description: axios 模块
  */
-export class myAxios {
+export class iAxios {
 	private axiosInstance: AxiosInstance
 	private readonly options: CreateAxiosOptions
 
