@@ -25,3 +25,8 @@ const route = createRouter({
 export const configMainRouter = (app: App<Element>) => {
 	app.use(route)
 }
+
+route.beforeEach((to, _from, next) => {
+	console.log(to, _from)
+	next()
+})

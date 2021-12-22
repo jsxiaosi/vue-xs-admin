@@ -48,6 +48,12 @@ module.exports = {
 				order: ['template', 'script', 'style'],
 			},
 		],
+		'vue/multi-word-component-names': [
+			'error',
+			{
+				ignores: ['index'],
+			},
+		],
 		'@typescript-eslint/no-unused-vars': [
 			'error',
 			{

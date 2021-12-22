@@ -27,8 +27,8 @@
 .app-main {
 	position: relative;
 	width: 100%;
-	height: 100%;
-	min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
+	height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
+	// min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
 	overflow: hidden;
 	background-color: #{$appMainBgColor};
 
@@ -46,11 +46,11 @@
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 // fix css style bug in open el-dialog
 .el-popup-parent--hidden {
 	.fixed-header {
 		padding-right: 15px;
 	}
 }
-</style>
+</style> -->

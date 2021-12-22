@@ -1,7 +1,7 @@
 module.exports = {
 	plugins: ['stylelint-scss', 'stylelint-order'],
 	customSyntax: 'postcss-html',
-	extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
+	extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
 	rules: {
 		indentation: 2, // 缩进2个空格
 		'at-rule-no-unknown': [
