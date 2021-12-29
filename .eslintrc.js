@@ -40,6 +40,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		// 是否禁止使用特定类型
 		'@typescript-eslint/ban-types': 'off',
+		// 是否不允许向模板添加多个根节点
 		'vue/no-multiple-template-root': 'off',
 		camelcase: 0,
 		'vue/component-tags-order': [
@@ -48,6 +49,7 @@ module.exports = {
 				order: ['template', 'script', 'style'],
 			},
 		],
+		// 是否要求组件名称始终为多字
 		'vue/multi-word-component-names': [
 			'error',
 			{

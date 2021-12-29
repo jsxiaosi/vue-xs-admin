@@ -1,22 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { safeManagerRoutes } from './otherRoute'
-import { AppRouteRecordRaw } from '#/route'
 import { App } from 'vue'
-// import Layout from '@/layouts/index.vue'
+import { AppRouteRecordRaw } from '#/route'
+import routeModuleList from './modules'
 
 const routes: Array<AppRouteRecordRaw> = [
-	...safeManagerRoutes, // 管理端
+	...routeModuleList, // 管理端
 	{
 		path: '/',
-		redirect: '/useradmin',
-		meta: { title: '用户管理' },
+		redirect: routeModuleList[0].path,
+		meta: routeModuleList[0].meta,
 	},
 	{
-		path: '/404',
-		meta: { title: '404' },
+		path: '/login',
+		component: () => import('@/views/login/index.vue'),
+		name: 'login',
+		// meta: { title: 'login' },
 	},
 ]
-
+// console.log(routes)
 const route = createRouter({
 	history: createWebHistory(''),
 	routes: routes as unknown as RouteRecordRaw[],
@@ -27,6 +28,5 @@ export const configMainRouter = (app: App<Element>) => {
 }
 
 route.beforeEach((to, _from, next) => {
-	console.log(to, _from)
 	next()
 })

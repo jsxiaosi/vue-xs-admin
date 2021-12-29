@@ -8,7 +8,7 @@
 				:mode="mode"
 			>
 				<sidebar-item
-					v-for="route in safeManagerRoutes"
+					v-for="route in routeModuleList"
 					:key="route.path"
 					:item="route"
 					:is-nest="false"
@@ -24,7 +24,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import SidebarItem from './SidebarItem.vue'
-import { safeManagerRoutes } from '@/router/otherRoute'
+import routeModuleList from '@/router/modules'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
 
 defineProps({

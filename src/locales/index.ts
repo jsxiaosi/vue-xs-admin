@@ -1,12 +1,6 @@
 import { App } from 'vue'
 import { createI18n } from 'vue-i18n'
-
-const messages = Object.fromEntries(
-	Object.entries(import.meta.globEager('./**.ts')).map(([key, value]) => {
-		const keyName: any = key.match(/^\.\/([\s\S]+)\.ts$/)
-		return [keyName[1], value.lang]
-	})
-)
+import messages from './modules'
 
 const i18n = createI18n({
 	legacy: false,

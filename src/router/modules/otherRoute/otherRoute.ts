@@ -1,29 +1,32 @@
 /* Layout */
-import Layout from '@/layouts/index.vue'
-import AppMain from '@/layouts/components/AppMain/index.vue'
+// import Layout from '@/layouts/index.vue'
+// import AppMain from '@/layouts/components/AppMain/index.vue'
 import { AppRouteRecordRaw } from '#/route'
 import { t } from '@/hooks/useI18n'
 
-export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
+const Layout = () => import('@/layouts/index.vue')
+const AppMain = () => import('@/layouts/components/AppMain/index.vue')
+
+const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 	{
 		path: '/useradmin',
 		component: Layout,
-		redirect: '/useradmin/userlist/',
+		redirect: '/useradmin/userlist',
 		name: '用户管理',
 		alwaysShow: true,
-		meta: { title: t('route.userInfo'), icon: 'iEL-avatar' },
+		meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
 		children: [
 			{
 				path: 'userlist',
 				name: 'userlist',
 				component: () => import('@/views/useradmin/userlist/index.vue'),
-				meta: { title: t('route.userList') },
+				meta: { title: t('route.pathName.userList') },
 			},
 			{
 				path: 'index',
 				name: 'index',
 				component: () => import('@/views/index/index.vue'),
-				meta: { title: t('route.userDateil') },
+				meta: { title: t('route.pathName.userDateil') },
 			},
 		],
 	},
@@ -33,7 +36,7 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 		children: [
 			{
 				path: 'https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template',
-				meta: { title: t('route.thirdParty'), icon: 'iEL-operation' },
+				meta: { title: t('route.pathName.thirdParty'), icon: 'iEL-operation' },
 			},
 		],
 	},
@@ -43,7 +46,7 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 		redirect: '/nested/menu1',
 		name: 'Nested',
 		meta: {
-			title: t('route.nested'),
+			title: t('route.pathName.nested'),
 			icon: 'iEL-grid',
 		},
 		children: [
@@ -51,35 +54,35 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 				path: 'menu1',
 				component: AppMain, // Parent router-view
 				name: 'Menu1',
-				redirect: '/nested/menu1/menu1-1/',
-				meta: { title: t('route.nested1') },
+				redirect: '/nested/menu1/menu1-1',
+				meta: { title: t('route.pathName.nested1') },
 				children: [
 					{
 						path: 'menu1-1',
 						component: () => import('@/views/nested/menu1/menu1-1/index.vue'),
 						name: 'Menu1-1',
-						meta: { title: t('route.nested1_1') },
+						meta: { title: t('route.pathName.nested1_1') },
 					},
 					{
 						path: 'menu1-2',
 						component: AppMain,
 						name: 'Menu1-2',
-						redirect: '/nested/menu1/menu1-2/menu1-2-1/',
-						meta: { title: t('route.nested1_2') },
+						redirect: '/nested/menu1/menu1-2/menu1-2-1',
+						meta: { title: t('route.pathName.nested1_2') },
 						children: [
 							{
 								path: 'menu1-2-1',
 								component: () =>
 									import('@/views/nested/menu1/menu1-2/menu1-2-1/index.vue'),
 								name: 'Menu1-2',
-								meta: { title: t('route.nested1_2_1') },
+								meta: { title: t('route.pathName.nested1_2_1') },
 							},
 							{
 								path: 'menu1-2-2',
 								component: () =>
 									import('@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'),
 								name: 'Menu1-2-2',
-								meta: { title: t('route.nested1_2_2') },
+								meta: { title: t('route.pathName.nested1_2_2') },
 							},
 						],
 					},
@@ -87,7 +90,7 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 						path: 'menu1-3',
 						component: () => import('@/views/nested/menu1/menu1-3/index.vue'),
 						name: 'Menu1-3',
-						meta: { title: t('route.nested1_3') },
+						meta: { title: t('route.pathName.nested1_3') },
 					},
 				],
 			},
@@ -95,8 +98,10 @@ export const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 				path: 'menu2',
 				component: () => import('@/views/nested/menu2/index.vue'),
 				name: 'Menu2',
-				meta: { title: t('route.nested2') },
+				meta: { title: t('route.pathName.nested2') },
 			},
 		],
 	},
 ]
+
+export default safeManagerRoutes
