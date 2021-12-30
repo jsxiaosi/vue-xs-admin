@@ -1,5 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
 import type { Plugin, ConfigEnv } from 'vite'
 
 // 按需加载样式配置
@@ -16,7 +18,7 @@ import { configMockPlugin } from './mock'
 // import { configEsLinterPlugin } from './eslinter'
 
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
-	const vitePlugins: (Plugin | Plugin[])[] = [vue()]
+	const vitePlugins: (Plugin | Plugin[])[] = [vue(), vueJsx()]
 	vitePlugins.push(configStylePlugin())
 
 	vitePlugins.push(configThemePlugin())

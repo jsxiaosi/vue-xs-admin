@@ -1,6 +1,7 @@
 <template>
 	<div class="page-container">
 		<span>听说这个是用户列表</span>
+		<TsComponents />
 		<!-- <el-icon><iEL-baseball /></el-icon>
 		<SvgIcon name="daosanjiao"></SvgIcon>
 		{{ t('login.title') }}
@@ -14,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import TsComponents from '@/components/tscomponents.tsx'
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import { getCurrentInstance } from 'vue'
 
