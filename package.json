@@ -82,6 +82,7 @@
 		"vite-plugin-mock": "^2.9.6",
 		"vite-plugin-style-import": "^1.4.0",
 		"vite-plugin-svg-icons": "^1.0.5",
+		"vite-plugin-windicss": "^1.6.1",
 		"vue-tsc": "^0.29.8"
 	},
 	"license": "MIT",

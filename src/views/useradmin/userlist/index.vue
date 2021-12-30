@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import TsComponents from '@/components/tscomponents.tsx'
+import TsComponents from '@/components/tscomponents'
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import { getCurrentInstance } from 'vue'
 

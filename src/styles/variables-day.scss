@@ -1,6 +1,7 @@
 // 统一颜色主题
 $mianColor: #409eff; //主色
-$subColor: #ecf5ff; //灰色
+$subColor: #a5cfff; //浅蓝1
+$subColor1: #ecf5ff; //浅蓝2
 
 // 左侧导航栏
 $sideBarWidth: 210px;
@@ -20,7 +21,7 @@ $menuItemText: #909399; //二级文字颜色
 $menuItemHover: #f3f3f3; //二级焦点背景颜色
 $menuItemHoverText: $mianColor; //二级焦点文字颜色
 $menuItemActiveText: $mianColor;
-$menuItemActiveBg: $subColor; //二级选中背景颜色
+$menuItemActiveBg: $subColor1; //二级选中背景颜色
 $menuItemActiveBorderLeft: $mianColor; //二级左描边背景颜色
 
 $appMainBgColor: #f5f6fa; //app-mian背景颜色

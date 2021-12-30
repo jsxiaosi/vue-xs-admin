@@ -1,13 +1,13 @@
 <template>
-	<div class="container">
+	<div class="container mx-auto">
 		<img src="@/assets/login/bg.png" class="wave" />
-		<div class="img">
+		<div class="img -enter-x">
 			<img src="@/assets/login/illustration.svg" />
 		</div>
-		<div class="login-box">
+		<div class="login-box enter-x">
 			<div class="login-form">
-				<h2>SuperCuteXiaoSi</h2>
-				<div class="input-group user">
+				<h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
+				<div class="input-group user enter-x">
 					<SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
 					<div>
 						<h5>用户名</h5>
@@ -20,7 +20,7 @@
 						/>
 					</div>
 				</div>
-				<div class="input-group pwd">
+				<div class="input-group pwd enter-x">
 					<SvgIcon class-name="icon" name="password"></SvgIcon>
 
 					<div>
@@ -34,7 +34,7 @@
 						/>
 					</div>
 				</div>
-				<button class="btn" @click="onLogin">登录</button>
+				<button class="btn enter-x" @click="onLogin">登录</button>
 			</div>
 		</div>
 	</div>
@@ -89,11 +89,11 @@ function onPwdBlur() {
 }
 
 .container {
-	width: 100vw;
+	width: 70%;
 	height: 100vh;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 18rem;
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
 	padding: 0 2rem;
 }
 
@@ -237,7 +237,12 @@ a:hover {
 	font-size: 1.2rem;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #{$mianColor}, #{$subColor});
+	background-image: linear-gradient(
+		to right,
+		#{$mianColor},
+		#{$subColor},
+		#{$mianColor}
+	);
 	cursor: pointer;
 	color: #fff;
 	text-transform: uppercase;
@@ -247,61 +252,6 @@ a:hover {
 }
 
 .btn:hover {
-	background-position: center;
-}
-
-.copyright {
-	position: absolute;
-	width: 100%;
-	height: 50px;
-	bottom: 2px;
-	color: #5392f0;
-	text-align: center;
-	font-size: 18px;
-	font-family: 'Roboto', sans-serif;
-}
-
-@media screen and (max-width: 1080px) {
-	.container {
-		grid-gap: 9rem;
-	}
-}
-
-@media screen and (max-width: 1024px) {
-	.login-form {
-		width: 290px;
-	}
-
-	.login-form h2 {
-		font-size: 2.4rem;
-		margin: 8px 0;
-	}
-
-	.img img {
-		width: 360px;
-	}
-
-	.avatar {
-		width: 280px;
-		height: 80px;
-	}
-}
-
-@media screen and (max-width: 768px) {
-	.wave {
-		display: none;
-	}
-
-	.img {
-		display: none;
-	}
-
-	.container {
-		grid-template-columns: 1fr;
-	}
-
-	.login-box {
-		justify-content: center;
-	}
+	background-position: right;
 }
 </style>

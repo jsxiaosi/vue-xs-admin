@@ -11,7 +11,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 	{
 		path: '/useradmin',
 		component: Layout,
-		redirect: '/useradmin/userlist',
+		redirect: '/useradmin/userlist/',
 		name: '用户管理',
 		alwaysShow: true,
 		meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
@@ -43,7 +43,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 	{
 		path: '/nested',
 		component: Layout,
-		redirect: '/nested/menu1',
+		redirect: '/nested/menu1/',
 		name: 'Nested',
 		meta: {
 			title: t('route.pathName.nested'),
@@ -54,7 +54,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 				path: 'menu1',
 				component: AppMain, // Parent router-view
 				name: 'Menu1',
-				redirect: '/nested/menu1/menu1-1',
+				redirect: '/nested/menu1/menu1-1/',
 				meta: { title: t('route.pathName.nested1') },
 				children: [
 					{
@@ -67,7 +67,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
 						path: 'menu1-2',
 						component: AppMain,
 						name: 'Menu1-2',
-						redirect: '/nested/menu1/menu1-2/menu1-2-1',
+						redirect: '/nested/menu1/menu1-2/menu1-2-1/',
 						meta: { title: t('route.pathName.nested1_2') },
 						children: [
 							{
