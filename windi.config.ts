@@ -29,7 +29,6 @@ export default defineConfig({
  */
 function createEnterPlugin(maxOutput = 6) {
 	const createCss = (index: number, d = 'x') => {
-		console.log('启动了吗？')
 		const upd = d.toUpperCase()
 		return {
 			[`*> .enter-${d}:nth-child(${index})`]: {

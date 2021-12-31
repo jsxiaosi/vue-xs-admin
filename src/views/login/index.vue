@@ -89,7 +89,7 @@ function onPwdBlur() {
 }
 
 .container {
-	width: 70%;
+	width: 1600px;
 	height: 100vh;
 	display: flex;
 	margin: auto;
@@ -98,6 +98,7 @@ function onPwdBlur() {
 }
 
 .img {
+	width: 600px;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -108,6 +109,7 @@ function onPwdBlur() {
 }
 
 .login-box {
+	width: 600px;
 	display: flex;
 	align-items: center;
 	text-align: center;

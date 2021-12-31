@@ -37,6 +37,6 @@ export const getServerConfig = (): Promise<string> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve('')
-		}, 0)
+		}, 2000)
 	})
 }
