@@ -28,5 +28,14 @@ export const configMainRouter = (app: App<Element>) => {
 }
 
 route.beforeEach((to, _from, next) => {
-	next()
+	const userInfo = localStorage.getItem('userInfo')
+	if (userInfo) {
+		next()
+	} else {
+		if (to.path !== '/login') {
+			next({ path: '/login' })
+		} else {
+			next()
+		}
+	}
 })

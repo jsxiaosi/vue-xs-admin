@@ -7,33 +7,36 @@
 		<div class="login-box enter-x">
 			<div class="login-form">
 				<h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
-				<div class="input-group user enter-x">
-					<SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
-					<div>
-						<h5>用户名</h5>
-						<input
-							v-model="user"
-							type="text"
-							class="input"
-							@focus="onUserFocus"
-							@blur="onUserBlur"
-						/>
+				<form>
+					<div class="input-group user enter-x">
+						<SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
+						<div>
+							<h5>用户名</h5>
+							<input
+								v-model="user"
+								type="text"
+								class="input"
+								@focus="onUserFocus"
+								@blur="onUserBlur"
+							/>
+						</div>
 					</div>
-				</div>
-				<div class="input-group pwd enter-x">
-					<SvgIcon class-name="icon" name="password"></SvgIcon>
+					<div class="input-group pwd enter-x">
+						<SvgIcon class-name="icon" name="password"></SvgIcon>
 
-					<div>
-						<h5>密码</h5>
-						<input
-							v-model="pwd"
-							type="password"
-							class="input"
-							@focus="onPwdFocus"
-							@blur="onPwdBlur"
-						/>
+						<div>
+							<h5>密码</h5>
+							<input
+								v-model="pwd"
+								type="password"
+								class="input"
+								autocomplete="on"
+								@focus="onPwdFocus"
+								@blur="onPwdBlur"
+							/>
+						</div>
 					</div>
-				</div>
+				</form>
 				<button class="btn enter-x" @click="onLogin">登录</button>
 			</div>
 		</div>
@@ -42,22 +45,26 @@
 
 <script setup lang="ts">
 import SvgIcon from '@/components/SvgIcon/index.vue'
-
+import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import { addClass, removeClass } from '@/utils/operate'
+import { deffHttp } from '@/utils/axios'
 
-// eslint-disable-next-line vue/return-in-computed-property
+const router = useRouter()
 
 let user = ref('')
 let pwd = ref('')
 
-const onLogin = (): void => {
-	// storageSession.setItem('info', {
-	// 	username: 'admin',
-	// 	accessToken: 'eyJhbGciOiJIUzUxMiJ9.test',
-	// })
-	// initRouter('admin').then(() => {})
-	// router.push('/')
+const onLogin = async (): Promise<void> => {
+	const res = await deffHttp.post<any>(
+		{
+			url: '/mock_api/login',
+			data: { username: user.value, password: pwd.value },
+		},
+		{ isShowData: true }
+	)
+	localStorage.setItem('userInfo', JSON.stringify(res.data))
+	router.push('/')
 }
 
 function onUserFocus() {

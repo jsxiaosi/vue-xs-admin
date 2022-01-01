@@ -18,6 +18,7 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"experimentalDecorators": true,
+		"noImplicitAny": true,
 		"types": ["vite/client"],
 		"typeRoots": ["./node_modules/@types/", "./types"],
 		"lib": ["esnext", "dom"],
