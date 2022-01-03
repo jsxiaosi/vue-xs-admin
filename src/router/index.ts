@@ -29,8 +29,6 @@ export const configMainRouter = (app: App<Element>) => {
 
 route.beforeEach((to, _from, next) => {
   const userInfo = localStorage.getItem('userInfo');
-  next();
-  return;
   if (userInfo) {
     next();
   } else {
