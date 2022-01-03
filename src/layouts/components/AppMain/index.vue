@@ -36,7 +36,6 @@
       height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight+40px});
       margin: 20px;
       overflow: hidden;
-      background-color: #fff;
       border-radius: 10px;
     }
   }

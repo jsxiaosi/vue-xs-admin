@@ -9,10 +9,26 @@ const AppMain = () => import('@/layouts/components/AppMain/index.vue');
 
 const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
+    path: '',
+    component: Layout,
+    redirect: '/welcome',
+    name: 'home',
+    alwaysShow: false,
+    meta: { title: '', icon: 'iEL-home-filled' },
+    children: [
+      {
+        path: 'welcome',
+        name: 'welcome',
+        component: () => import('@/views/index/index.vue'),
+        meta: { title: t('route.pathName.index') },
+      },
+    ],
+  },
+  {
     path: '/useradmin',
     component: Layout,
     redirect: '/useradmin/userlist/',
-    name: '用户管理',
+    name: 'useradmin',
     alwaysShow: true,
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
     children: [
@@ -21,12 +37,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         name: 'userlist',
         component: () => import('@/views/useradmin/userlist/index.vue'),
         meta: { title: t('route.pathName.userList') },
-      },
-      {
-        path: 'index',
-        name: 'index',
-        component: () => import('@/views/index/index.vue'),
-        meta: { title: t('route.pathName.userDateil') },
       },
     ],
   },

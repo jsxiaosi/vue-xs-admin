@@ -1,5 +1,6 @@
 const route = {
   pathName: {
+    index: '首页',
     userInfo: '用户管理',
     userList: '用户列表',
     userDateil: '用户详情',

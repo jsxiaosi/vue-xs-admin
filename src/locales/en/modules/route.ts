@@ -1,5 +1,6 @@
 const route = {
   pathName: {
+    index: 'Home',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
