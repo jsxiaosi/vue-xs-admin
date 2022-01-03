@@ -5,15 +5,16 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item command="zh-ch">中文简体</el-dropdown-item>
-        <el-dropdown-item command="en">English</el-dropdown-item>
+        <el-dropdown-item v-for="item in localesList" :key="item.locale" :command="item.locale">{{
+          item.name
+        }}</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from '@/hooks/useI18n';
+  import { useI18n, localesList } from '@/hooks/useI18n';
   import SvgIcon from '@/components/SvgIcon/index.vue';
 
   const i18n = useI18n();
@@ -21,8 +22,6 @@
   const tolochos = (key: string) => {
     i18n.locale.value = key;
   };
-
-  console.log(i18n);
 
   // const options = ref([
   // 	{ name: '123', value: 'variables-theme-day' },
