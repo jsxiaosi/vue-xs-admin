@@ -1,1 +1,1 @@
-declare type RefType<T> = T | null
+declare type RefType<T> = T | null;

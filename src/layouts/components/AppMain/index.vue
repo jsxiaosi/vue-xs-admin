@@ -1,49 +1,49 @@
 <template>
-	<section class="app-main">
-		<router-view>
-			<template #default="{ Component }">
-				<transition name="fade-transform" mode="out-in">
-					<component :is="Component"></component>
-				</transition>
-			</template>
-		</router-view>
-	</section>
+  <section class="app-main">
+    <router-view>
+      <template #default="{ Component }">
+        <transition name="fade-transform" mode="out-in">
+          <component :is="Component"></component>
+        </transition>
+      </template>
+    </router-view>
+  </section>
 </template>
 
 <script setup lang="ts">
-// import { computed } from 'vue'
-// import { useRoute } from 'vue-router'
+  // import { computed } from 'vue'
+  // import { useRoute } from 'vue-router'
 
-// const route = computed(() => {
-// 	const route = useRoute()
-// 	const { path } = route
-// 	console.log(path)
+  // const route = computed(() => {
+  // 	const route = useRoute()
+  // 	const { path } = route
+  // 	console.log(path)
 
-// 	return path
-// })
+  // 	return path
+  // })
 </script>
 
 <style lang="scss" scoped>
-.app-main {
-	position: relative;
-	width: 100%;
-	height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
-	// min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
-	overflow: hidden;
-	background-color: #{$appMainBgColor};
+  .app-main {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
+    // min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
+    overflow: hidden;
+    background-color: #{$appMainBgColor};
 
-	.page-container {
-		height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight+40px});
-		margin: 20px;
-		overflow: hidden;
-		background-color: #fff;
-		border-radius: 10px;
-	}
-}
+    .page-container {
+      height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight+40px});
+      margin: 20px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+  }
 
-.fixed-header + .app-main {
-	padding-top: 50px;
-}
+  .fixed-header + .app-main {
+    padding-top: 50px;
+  }
 </style>
 
 <!-- <style lang="scss">

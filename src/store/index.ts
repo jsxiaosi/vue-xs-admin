@@ -1,10 +1,10 @@
-import { App } from 'vue'
-import { createPinia } from 'pinia'
+import { App } from 'vue';
+import { createPinia } from 'pinia';
 
-const store = createPinia()
+const store = createPinia();
 
 export const configMainStore = (app: App<Element>) => {
-	app.use(createPinia())
-}
+  app.use(createPinia());
+};
 
-export { store }
+export { store };

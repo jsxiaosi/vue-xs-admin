@@ -1,39 +1,35 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 
-import App from './App.vue'
+import App from './App.vue';
 
-import 'virtual:windi-base.css'
+import 'virtual:windi-base.css';
 // import 'virtual:windi-components.css'
 // import 'virtual:windi-utilities.css'
 // Register icon sprite
 // import 'virtual:svg-icons-register'
 
-import {
-	configMainElementPlus,
-	configMainGlobalProperties,
-	getServerConfig,
-} from './utils'
-import { configMainStore } from './store'
-import { configMainI18n } from './locales'
-import { configMainRouter } from './router'
+import { configMainElementPlus, configMainGlobalProperties, getServerConfig } from './utils';
+import { configMainStore } from './store';
+import { configMainI18n } from './locales';
+import { configMainRouter } from './router';
 
-const app = createApp(App)
+const app = createApp(App);
 
 getServerConfig().then((_config) => {
-	// 全局钩子
-	configMainGlobalProperties(app)
+  // 全局钩子
+  configMainGlobalProperties(app);
 
-	// Vuex
-	configMainStore(app)
+  // Vuex
+  configMainStore(app);
 
-	// 路由
-	configMainRouter(app)
+  // 路由
+  configMainRouter(app);
 
-	// 国际化
-	configMainI18n(app)
+  // 国际化
+  configMainI18n(app);
 
-	// ElementPlus
-	configMainElementPlus(app)
+  // ElementPlus
+  configMainElementPlus(app);
 
-	app.mount('#app')
-})
+  app.mount('#app');
+});
