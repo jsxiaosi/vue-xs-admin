@@ -32,16 +32,14 @@
 
           <div>
             <h5>{{ t('sys.login.password') }}</h5>
-            <form>
-              <input
-                v-model="pwd"
-                type="password"
-                class="input"
-                autocomplete="on"
-                @focus="onPwdFocus"
-                @blur="onPwdBlur"
-              />
-            </form>
+            <input
+              v-model="pwd"
+              type="password"
+              class="input"
+              autocomplete="on"
+              @focus="onPwdFocus"
+              @blur="onPwdBlur"
+            />
           </div>
         </div>
         <button class="btn enter-x" @click="onLogin">
@@ -104,6 +102,7 @@
 <style lang="scss" scoped>
   .wave {
     position: fixed;
+    width: 100vw;
     height: 100%;
     left: 0;
     bottom: 0;
