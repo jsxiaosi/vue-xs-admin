@@ -8,29 +8,31 @@
     <div class="application enter-x">
       <AppLocale class="icon-size enter-x"></AppLocale>
     </div>
-    <div class="login-box enter-x">
+    <div class="login-box">
       <div class="login-form">
         <h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
-        <span>{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</span>
-        <form>
-          <div class="input-group user enter-x">
-            <SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
-            <div>
-              <h5>{{ t('sys.login.userName') }}</h5>
-              <input
-                v-model="user"
-                type="text"
-                class="input"
-                @focus="onUserFocus"
-                @blur="onUserBlur"
-              />
-            </div>
+        <div class="enter-x"
+          >{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</div
+        >
+        <div class="input-group user enter-x">
+          <SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
+          <div>
+            <h5>{{ t('sys.login.userName') }}</h5>
+            <input
+              v-model="user"
+              type="text"
+              class="input"
+              @focus="onUserFocus"
+              @blur="onUserBlur"
+            />
           </div>
-          <div class="input-group pwd enter-x">
-            <SvgIcon class-name="icon" name="password"></SvgIcon>
+        </div>
+        <div class="input-group pwd enter-x">
+          <SvgIcon class-name="icon" name="password"></SvgIcon>
 
-            <div>
-              <h5>{{ t('sys.login.password') }}</h5>
+          <div>
+            <h5>{{ t('sys.login.password') }}</h5>
+            <form>
               <input
                 v-model="pwd"
                 type="password"
@@ -39,9 +41,9 @@
                 @focus="onPwdFocus"
                 @blur="onPwdBlur"
               />
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
         <button class="btn enter-x" @click="onLogin">
           {{ t('sys.login.loginButton') }}
         </button>
