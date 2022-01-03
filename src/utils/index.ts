@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import * as ElIconModules from '@element-plus/icons';
+import * as ElIconModules from '@element-plus/icons-vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import 'es6-promise/auto';

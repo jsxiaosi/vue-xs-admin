@@ -20,7 +20,9 @@ import { configMockPlugin } from './mock';
 // import { configEsLinterPlugin } from './eslinter'
 
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
-  const vitePlugins: (Plugin | Plugin[])[] = [vue(), vueJsx()];
+  const vitePlugins: (Plugin | Plugin[])[] = [vue()];
+
+  vitePlugins.push(vueJsx());
 
   vitePlugins.push(windiCSS());
 

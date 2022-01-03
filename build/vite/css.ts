@@ -5,8 +5,9 @@ export function createViteCSS(): CSSOptions {
     preprocessorOptions: {
       // 配置scss全局样式以及变量
       scss: {
-        additionalData: '@import "./src/styles/index.scss";',
         charset: false,
+        additionalData: '@import "./src/styles/index.scss";',
+        javascriptEnabled: true,
       },
     },
     postcss: {
