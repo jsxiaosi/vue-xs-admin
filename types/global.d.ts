@@ -3,3 +3,5 @@ declare module '*.vue' {
 	const componentOptions: ComponentOptions
 	export default componentOptions
 }
+
+declare type Recordable<T = any> = Record<string, T>

@@ -4,14 +4,22 @@
 		<div class="img -enter-x">
 			<img src="@/assets/login/illustration.svg" />
 		</div>
+
+		<div class="application enter-x">
+			<AppLocale class="icon-size enter-x"></AppLocale>
+		</div>
 		<div class="login-box enter-x">
 			<div class="login-form">
 				<h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
+				<span
+					>{{ t('sys.login.userName') }}：admin
+					{{ t('sys.login.password') }}：admin123</span
+				>
 				<form>
 					<div class="input-group user enter-x">
 						<SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
 						<div>
-							<h5>用户名</h5>
+							<h5>{{ t('sys.login.userName') }}</h5>
 							<input
 								v-model="user"
 								type="text"
@@ -25,7 +33,7 @@
 						<SvgIcon class-name="icon" name="password"></SvgIcon>
 
 						<div>
-							<h5>密码</h5>
+							<h5>{{ t('sys.login.password') }}</h5>
 							<input
 								v-model="pwd"
 								type="password"
@@ -37,7 +45,9 @@
 						</div>
 					</div>
 				</form>
-				<button class="btn enter-x" @click="onLogin">登录</button>
+				<button class="btn enter-x" @click="onLogin">
+					{{ t('sys.login.loginButton') }}
+				</button>
 			</div>
 		</div>
 	</div>
@@ -45,10 +55,15 @@
 
 <script setup lang="ts">
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { AppLocale } from '@/components/Application'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import { addClass, removeClass } from '@/utils/operate'
 import { deffHttp } from '@/utils/axios'
+
+import { useI18n } from '@/hooks/useI18n'
+
+const { t } = useI18n()
 
 const router = useRouter()
 
@@ -61,10 +76,13 @@ const onLogin = async (): Promise<void> => {
 			url: '/mock_api/login',
 			data: { username: user.value, password: pwd.value },
 		},
-		{ isShowData: true }
+		{ isShowData: true, errorMessageMode: 'modal', withToken: false }
 	)
-	localStorage.setItem('userInfo', JSON.stringify(res.data))
-	router.push('/')
+	console.log(res)
+	if (res.code === 1) {
+		localStorage.setItem('userInfo', JSON.stringify(res.data))
+		router.push('/')
+	}
 }
 
 function onUserFocus() {
@@ -93,6 +111,16 @@ function onPwdBlur() {
 	left: 0;
 	bottom: 0;
 	z-index: -1;
+}
+
+.application {
+	position: fixed;
+	right: 0;
+	top: 0;
+	padding: 10px 20px;
+	.icon-size {
+		font-size: 20px;
+	}
 }
 
 .container {

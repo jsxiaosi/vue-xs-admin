@@ -1,7 +1,12 @@
+import { ErrorMessageMode } from '#/axios'
 import i18n from '@/locales'
 import { ElMessage } from 'element-plus'
 
-export function checkStatus(status: number, msg: string): void {
+export function checkStatus(
+	status: number,
+	msg: string,
+	errorMessageMode: ErrorMessageMode = 'message'
+): void {
 	const { t } = i18n.global
 	let errMessage = ''
 
@@ -44,6 +49,13 @@ export function checkStatus(status: number, msg: string): void {
 			break
 		default:
 	}
-
-	ElMessage.error(errMessage)
+	console.log('errMessage', errMessage)
+	if (errMessage) {
+		if (errorMessageMode === 'modal') {
+			console.log('进来这里了吗？')
+			ElMessage.error(msg)
+		} else if (errorMessageMode === 'message') {
+			ElMessage.error(errMessage)
+		}
+	}
 }

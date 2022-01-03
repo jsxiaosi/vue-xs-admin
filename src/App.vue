@@ -10,7 +10,7 @@ import { deffElementLocale } from '@/hooks/useI18n'
 
 const { tolocale } = deffElementLocale()
 
-// import { deffHttp } from './utils/axios'
+// import { deffHttp } from './utils/axios';
 // import HelloWorld from './components/HelloWorld.vue'
 
 // const admin = 'asdasdasdas'
@@ -25,14 +25,19 @@ const { tolocale } = deffElementLocale()
 // 	console.log(res)
 // }
 // const req2 = async () => {
-// 	const res = await request.get<void>(
-// 		{ url: '/mock_api/getUserInfo' },
-// 		{ isShowData: true ,urlPrefix:'https://xiaosisi.com'}
-// 	)
-// 	console.log(res)
-// }
-// req()
-// req2()
+//   const res = await deffHttp.get<void>(
+//     {
+//       url: '/mock_api/getUserInfo',
+//     },
+//     {
+//       isShowData: true,
+//       urlPrefix: 'https://xiaosisi.com',
+//       specialToken: 'asdasdasdasd',
+//     },
+//   );
+//   console.log(res);
+// };
+// req2();
 </script>
 
 <style lang="scss">

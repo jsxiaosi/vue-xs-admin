@@ -7,7 +7,7 @@ import type {
 import axios from 'axios'
 import { isFunction } from '@/utils/is'
 import { CreateAxiosOptions } from './axiosConfig'
-import { RequestOptions } from '#/axios'
+import { RequestOptions, Result } from '#/axios'
 import { cloneDeep } from 'lodash-es'
 
 /**
@@ -69,8 +69,7 @@ export class iAxios {
 		requestInterceptors &&
 			isFunction(requestInterceptors) &&
 			this.axiosInstance.interceptors.request.use(
-				(config: AxiosRequestConfig) =>
-					requestInterceptors(config, this.options),
+				requestInterceptors,
 				undefined
 			)
 
@@ -160,12 +159,15 @@ export class iAxios {
 			conf = beforeRequestHook(conf, opt)
 		}
 
+		conf.requestOptions = opt
+
 		return new Promise((resolve, reject) => {
 			this.axiosInstance
-				.request<any, AxiosResponse>(conf)
-				.then((res: AxiosResponse) => {
+				.request<any, AxiosResponse<Result>>(conf)
+				.then((res: AxiosResponse<Result>) => {
 					if (requestHook && isFunction(requestHook)) {
 						try {
+							console.log(res)
 							resolve(requestHook(res, opt))
 						} catch (err) {
 							reject(err || new Error('request error!'))

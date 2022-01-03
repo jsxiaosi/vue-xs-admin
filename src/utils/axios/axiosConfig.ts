@@ -2,7 +2,7 @@
  * axios 数据处理类
  */
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { RequestOptions } from '#/axios'
+import { RequestOptions, Result } from '#/axios'
 
 export interface CreateAxiosOptions extends AxiosRequestConfig {
 	requestOptions?: RequestOptions
@@ -21,7 +21,7 @@ export abstract class AxiosInterceptor {
 	/**
 	 * @description: 请求成功的处理
 	 */
-	requestHook?: (res: AxiosResponse, options: RequestOptions) => any
+	requestHook?: (res: AxiosResponse<Result>, options: RequestOptions) => any
 
 	/**
 	 * @description: 请求失败处理
@@ -31,10 +31,7 @@ export abstract class AxiosInterceptor {
 	/**
 	 * @description: 请求之前的拦截器
 	 */
-	requestInterceptors?: (
-		config: AxiosRequestConfig,
-		options: CreateAxiosOptions
-	) => AxiosRequestConfig
+	requestInterceptors?: (config: CreateAxiosOptions) => CreateAxiosOptions
 
 	/**
 	 * @description: 请求之前的拦截器错误处理

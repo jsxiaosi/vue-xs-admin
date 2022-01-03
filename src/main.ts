@@ -12,7 +12,7 @@ import {
 	configMainElementPlus,
 	configMainGlobalProperties,
 	getServerConfig,
-} from './utils/mainConfig'
+} from './utils'
 import { configMainStore } from './store'
 import { configMainI18n } from './locales'
 import { configMainRouter } from './router'

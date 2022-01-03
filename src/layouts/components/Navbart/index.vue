@@ -11,17 +11,7 @@
 			/>
 		</div>
 		<div class="navbar-right">
-			<el-dropdown class="popover-content" trigger="click" @command="tolochos">
-				<span>
-					<SvgIcon class="icon" name="locales"></SvgIcon>
-				</span>
-				<template #dropdown>
-					<el-dropdown-menu>
-						<el-dropdown-item command="zh-ch">中文简体</el-dropdown-item>
-						<el-dropdown-item command="en">English</el-dropdown-item>
-					</el-dropdown-menu>
-				</template>
-			</el-dropdown>
+			<AppLocale class="icon"></AppLocale>
 			<SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
 		</div>
 
@@ -46,16 +36,11 @@
 // import { ref } from 'vue'
 import Sidebar from '../../components/Sidebar/index.vue'
 import Setting from '../../components/Seting/index.vue'
+import { AppLocale } from '@/components/Application'
 
-import { useI18n } from '@/hooks/useI18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { ref } from '@vue/reactivity'
 import { getAppCollapseMenu } from '@/hooks/appWindow'
-
-const i18n = useI18n()
-const tolochos = (key: string) => {
-	i18n.locale.value = key
-}
 
 const drawer = ref(false)
 

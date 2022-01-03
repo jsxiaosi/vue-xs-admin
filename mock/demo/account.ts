@@ -20,11 +20,27 @@ export default [
 			const { username, password } = body
 			if (username == 'admin' && password == 'admin123') {
 				userInfo.token = genID(16)
-				return { data: userInfo }
+				return {
+					data: userInfo,
+					code: 1,
+					message: 'ok',
+				}
 			} else {
-				return { data: { error: '账号密码错误' } }
+				return {
+					data: userInfo,
+					code: -1,
+					message: '账号密码错误',
+				}
 			}
 		},
+		// rawResponse: async (req, res) => {
+		//   console.log(req, res);
+		//   let reqbody = {};
+		//   res.setHeader('Content-Type', 'application/json');
+		//   reqbody = { data: userInfo };
+		//   res.statusCode = 500;
+		//   res.end(JSON.stringify(reqbody));
+		// },
 	},
 	{
 		url: '/mock_api/getUserInfo',
