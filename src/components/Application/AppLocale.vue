@@ -37,6 +37,7 @@
 
 <style lang="scss" scoped>
   .icon {
+    color: #{$textColor};
     font-size: 1em;
   }
 </style>

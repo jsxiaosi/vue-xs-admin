@@ -63,7 +63,7 @@
     }
 
     .el-menu-item.is-active {
-      color: $menuItemActiveText;
+      color: $menuItemActiveText !important;
       background-color: $menuItemActiveBg !important;
       // border-left: #{$menuItemActiveBorderLeft} solid 3px !important;
 

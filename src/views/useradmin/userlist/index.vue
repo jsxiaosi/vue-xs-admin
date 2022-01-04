@@ -34,4 +34,4 @@
   // console.log(useStore())
 </script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

@@ -7,6 +7,7 @@
       <Sidebar v-if="sidebarMode === 'horizontal'" class="sidebar-horizontal" mode="horizontal" />
     </div>
     <div class="navbar-right">
+      <AppTheme></AppTheme>
       <AppLocale class="icon"></AppLocale>
       <SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
     </div>
@@ -32,7 +33,7 @@
   // import { ref } from 'vue'
   import Sidebar from '../../components/Sidebar/index.vue';
   import Setting from '../../components/Seting/index.vue';
-  import { AppLocale } from '@/components/Application';
+  import { AppLocale, AppTheme } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { ref } from '@vue/reactivity';

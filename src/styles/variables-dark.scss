@@ -1,31 +1,40 @@
+// 统一颜色主题
+$mianColor: #ffffff; //主色
+$subColor: #212121;
+$subColor1: #151515;
+
+// 主题背景颜色
+$mainBgColor: #212121;
+$mainContentBg: #151515;
+
+// 主题文字颜色
+$textColor: #c9d1d9;
+
 // 左侧导航栏
 $sideBarWidth: 210px;
 $navBarHeight: 54px;
 $BreadcrumbHeight: 50px; //面包屑高度
 
-$menuBg: #212121; // 侧边栏背景颜色
-$menuHover: #212121; // 焦点背景色
-$menuHoverText: #fff; //焦点文字颜色
-$menuBorderLeft: #fff; //左描边背景颜色
-$menuText: #909399; //文字颜色
-$menuActiveText: #fff; //选中的文字颜色
+$menuBg: $mainBgColor; // 侧边栏背景颜色
+$menuHover: #2d2d2d; // 焦点背景色
+$menuHoverText: $mianColor; //焦点文字颜色
+$menuText: $textColor; //文字颜色
+$menuActiveText: $mianColor; //选中的文字颜色
 
-$menuItemBg: #212121; //二级背景颜色
-$menuItemBorderLeft: #212121; //未选中的背景颜色
-$menuItemText: #909399; //二级文字颜色
-$menuItemHover: #212121; //二级焦点背景颜色
-$menuItemHoverText: #fff;
-$menuItemActiveText: #fff;
+$menuItemBg: $mainBgColor; //二级背景颜色
+$menuItemBorderLeft: $mainBgColor; //未选中的背景颜色
+$menuItemText: $textColor; //二级文字颜色
+$menuItemHover: #2d2d2d; //二级焦点背景颜色
+$menuItemHoverText: $mianColor; //二级焦点文字颜色
+$menuItemActiveText: $mianColor;
 $menuItemActiveBg: #2d2d2d; //二级选中背景颜色
-$menuItemActiveBorderLeft: #409eff; //二级左描边背景颜色
+$menuItemActiveBorderLeft: $mianColor; //二级左描边背景颜色
 
-$appMainBgColor: #f5f6fa; //app-mian背景颜色
-$navBarColor: #151515; //顶部导航栏背景颜色
+$appMainBgColor: #000; //app-mian背景颜色
+$navBarColor: $mainBgColor; //顶部导航栏背景颜色
 $navBarBorderBottomColor: #4a4a4a;
-$BreadcrumbColor: #151515; //面包屑背景颜色
-$BreadcrumbText: #fff;
-
-$textColor: #606266;
+$BreadcrumbColor: $mainBgColor; //面包屑背景颜色
+$BreadcrumbText: $textColor;
 
 :export {
   menutext: $menuText;
