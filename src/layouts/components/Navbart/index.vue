@@ -4,7 +4,11 @@
       <SvgIcon class="logo" name="Vue" @click="drawer = true"></SvgIcon>
     </div>
     <div class="navbar-center">
-      <Sidebar v-if="sidebarMode === 'horizontal'" class="sidebar-horizontal" mode="horizontal" />
+      <Sidebar
+        v-if="appConfigMode.sidebarMode === 'horizontal'"
+        class="sidebar-horizontal"
+        mode="horizontal"
+      />
     </div>
     <div class="navbar-right">
       <AppTheme></AppTheme>
@@ -41,7 +45,7 @@
 
   const drawer = ref(false);
 
-  const { sidebarMode } = getAppCollapseMenu();
+  const { appConfigMode } = getAppCollapseMenu();
 
   // const options = ref([
   // 	{ name: '123', value: 'variables-theme-day' },
@@ -84,6 +88,9 @@
       width: 100%;
       height: 100%;
       padding: 0 20px;
+      // .sidebar-horizontal {
+      //   height: 54px;
+      // }
     }
 
     .navbar-right {

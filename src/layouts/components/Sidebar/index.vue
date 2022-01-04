@@ -4,7 +4,7 @@
       <el-menu
         :default-active="activeMenyu"
         :unique-opened="false"
-        :collapse="sidebarMode === 'horizontal' ? false : isCollapseMenu"
+        :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
         :mode="mode"
       >
         <sidebar-item
@@ -40,11 +40,10 @@
     if (meta.activeMenu) {
       return meta.activeMenu;
     }
-    console.log(path);
     return path;
   });
 
-  const { isCollapseMenu, sidebarMode } = getAppCollapseMenu();
+  const { appConfigMode } = getAppCollapseMenu();
 
   // const isCollapse = ref(false)
 </script>

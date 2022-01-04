@@ -4,9 +4,9 @@
     <NavBart />
     <!-- 侧边导航栏 -->
     <Sidebar
-      v-if="sidebarMode === 'vertical'"
+      v-if="appConfigMode.sidebarMode === 'vertical'"
       class="sidebar-container"
-      :class="{ hideSidebar: isCollapseMenu }"
+      :class="{ hideSidebar: appConfigMode.collapseMenu }"
       mode="vertical"
     />
     <div class="main-container">
@@ -27,7 +27,7 @@
   import Breadcrumb from './components/Breadcrumb/index.vue';
   import { getAppCollapseMenu } from '@/hooks/appWindow';
 
-  const { isCollapseMenu, sidebarMode } = getAppCollapseMenu();
+  const { appConfigMode } = getAppCollapseMenu();
 </script>
 
 <style lang="scss" scoped></style>

@@ -12,7 +12,7 @@ $textColor: #909399;
 
 // 左侧导航栏
 $sideBarWidth: 210px;
-$navBarHeight: 54px;
+$navBarHeight: 57px;
 $BreadcrumbHeight: 50px; //面包屑高度
 
 $menuBg: $mainBgColor; // 侧边栏背景颜色
@@ -35,6 +35,16 @@ $navBarColor: $mainBgColor; //顶部导航栏背景颜色
 $navBarBorderBottomColor: $mainBgColor;
 $BreadcrumbColor: $mainBgColor; //面包屑背景颜色
 $BreadcrumbText: $textColor;
+
+:root {
+  --el-border-color-light: #{$subColor1};
+
+  --el-drawer-bg-color: #{$subColor};
+}
+
+.el-drawer {
+  --el-drawer-bg-color: #{$mainBgColor};
+}
 
 :export {
   menutext: $menuText;

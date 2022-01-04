@@ -6,7 +6,7 @@
           <el-tooltip content="左侧菜单模式" placement="bottom">
             <div
               class="sidebar_mode"
-              :class="{ 'sidebar_mode-select': sidebarMode === 'vertical' }"
+              :class="{ 'sidebar_mode-select': appConfigMode.sidebarMode === 'vertical' }"
               @click="handerShowElmenu('vertical')"
             >
               <div></div>
@@ -17,7 +17,7 @@
           <el-tooltip content="顶部菜单模式" placement="bottom">
             <div
               class="sidebar_mode"
-              :class="{ 'sidebar_mode-select': sidebarMode === 'horizontal' }"
+              :class="{ 'sidebar_mode-select': appConfigMode.sidebarMode === 'horizontal' }"
               @click="handerShowElmenu('horizontal')"
             >
               <div></div>
@@ -53,12 +53,14 @@
     },
   );
 
-  const { sidebarMode } = getAppCollapseMenu();
+  const { appConfigMode } = getAppCollapseMenu();
+  const isAppConfigMode = ref(appConfigMode.value);
 
   const appStore = useAppStore();
   // 折叠菜单事件
   const handerShowElmenu = (vale: string) => {
-    appStore.setSidebarMode(vale);
+    isAppConfigMode.value.sidebarMode = vale;
+    appStore.setAppConfigMode(isAppConfigMode.value);
   };
 </script>
 
@@ -74,7 +76,7 @@
         justify-content: space-around;
 
         .sidebar_mode-select {
-          border: 2px solid #{$mianColor};
+          border: 2px solid #409eff;
         }
 
         .sidebar_mode {
@@ -90,7 +92,7 @@
               &:nth-child(1) {
                 width: 30%;
                 height: 100%;
-                background: #{$mianColor};
+                background: #409eff;
               }
 
               &:nth-child(2) {
@@ -110,7 +112,7 @@
               &:nth-child(1) {
                 width: 100%;
                 height: 30%;
-                background: #{$mianColor};
+                background: #409eff;
                 box-shadow: 0 0 1px #888;
               }
             }

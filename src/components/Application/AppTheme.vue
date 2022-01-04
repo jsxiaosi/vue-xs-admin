@@ -1,5 +1,5 @@
 <template>
-  <div class="theme" :class="{ 'theme-dark': isDark }" @click="toggleDarkMode">
+  <div class="theme" :class="{ 'theme-dark': isDark === 'dark' }" @click="toggleDarkMode">
     <div class="theme-inner"></div>
     <SvgIcon name="sun"></SvgIcon>
     <SvgIcon name="moon"></SvgIcon>
@@ -10,20 +10,27 @@
   import { ref } from 'vue';
   import SvgIcon from '../SvgIcon/index.vue';
   import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils';
+  import { useAppStore } from '@/store/modules/app';
+  import { getAppCollapseMenu } from '@/hooks/appWindow';
 
   // const toggleTheme = (scopeName = 'theme-default') => {
   // 	document.documentElement.className = scopeName
   // }
-  const isDark = ref<boolean>(false);
+
+  const appStore = useAppStore();
+  const { appConfigMode } = getAppCollapseMenu();
+  const isDark = ref<string>(appConfigMode.value.themeMode);
+  isDark.value = appConfigMode.value.themeMode;
+  toggleTheme({
+    scopeName: `variables-theme-${isDark.value}`,
+  });
+
   const toggleDarkMode = () => {
-    isDark.value = !isDark.value;
-    console.log(isDark.value);
-    let scopeName = 'variables-theme-day';
-    if (isDark.value) scopeName = 'variables-theme-dark';
-    else scopeName = 'variables-theme-day';
-    console.log(scopeName);
+    isDark.value = isDark.value === 'day' ? 'dark' : 'day';
+    appConfigMode.value.themeMode = isDark.value;
+    appStore.setAppConfigMode(appConfigMode.value);
     toggleTheme({
-      scopeName,
+      scopeName: `variables-theme-${isDark.value}`,
     });
   };
 </script>

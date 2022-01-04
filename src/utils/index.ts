@@ -4,6 +4,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import 'es6-promise/auto';
 import 'virtual:svg-icons-register';
+import { setWindowAppConfig } from '@/store/modules/app';
 
 // 注册element-plus icon
 export const configMainElementPlus = (app: App<Element>): void => {
@@ -32,6 +33,10 @@ export const configMainGlobalProperties = (app: App<Element>): void => {
 
 // 延迟进入vue，显示loding页
 export const getServerConfig = (): Promise<string> => {
+  const appConfigMode = localStorage.getItem('appConfigMode');
+  if (appConfigMode) {
+    setWindowAppConfig(JSON.parse(appConfigMode));
+  }
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('');

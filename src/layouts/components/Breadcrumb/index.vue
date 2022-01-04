@@ -7,7 +7,7 @@
 		></i>-->
     <SvgIcon
       class="breadcrumb-fold"
-      :class="{ 'breadcrumb-unfold': isCollapseMenu }"
+      :class="{ 'breadcrumb-unfold': isAppConfigMode.collapseMenu }"
       name="fold"
       color="#e3e3e3"
       @click="handerShowElmenu"
@@ -74,11 +74,13 @@
   watch(route, getBreadcrumb);
 
   // 当前是否折叠导航栏
-  const { isCollapseMenu } = getAppCollapseMenu();
+  const { appConfigMode } = getAppCollapseMenu();
+  const isAppConfigMode = ref(appConfigMode.value);
   const appStore = useAppStore();
   // 折叠菜单事件
   const handerShowElmenu = () => {
-    appStore.setCollapseMenu(!isCollapseMenu.value);
+    isAppConfigMode.value.collapseMenu = !isAppConfigMode.value.collapseMenu;
+    appStore.setAppConfigMode(isAppConfigMode.value);
   };
 </script>
 

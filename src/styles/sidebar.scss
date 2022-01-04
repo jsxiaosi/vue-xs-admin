@@ -184,6 +184,7 @@
     }
 
     .el-sub-menu {
+      background-color: $menuBg;
       overflow: hidden;
 
       .sub-menu-svg {
@@ -245,7 +246,6 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      background-color: $menuBg;
 
       .el-sub-menu__icon-arrow {
         position: relative !important;
@@ -338,7 +338,10 @@
 // when menu collapsed
 .el-menu--vertical,
 .el-menu--horizontal {
+  background-color: $menuBg;
+  border: none;
   .el-sub-menu > .el-sub-menu__title {
+    background-color: $menuItemBg;
     &:hover {
       color: $menuHoverText !important;
       background-color: $menuHover;
@@ -372,6 +375,7 @@
 
   .el-menu-item,
   > .el-menu--popup .el-menu-item {
+    background-color: $menuItemBg;
     // border-left: #{$menuItemBorderLeft} solid 3px;
     &:hover {
       color: $menuItemHoverText !important;

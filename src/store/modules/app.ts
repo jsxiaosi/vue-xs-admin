@@ -1,31 +1,31 @@
 import { defineStore } from 'pinia';
 import { store } from '@/store';
+import { appConfig } from '#/piniaStore';
 
 interface AppState {
-  collapseMenu: boolean;
-  sidebarMode: string;
+  appConfigMode: appConfig;
 }
+
+let localAppConfig: appConfig = {
+  collapseMenu: false,
+  sidebarMode: 'vertical',
+  themeMode: 'day',
+};
 
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
-    collapseMenu: false,
-    sidebarMode: 'vertical',
+    appConfigMode: localAppConfig,
   }),
   getters: {
-    getCollapseMenu(): boolean {
-      return this.collapseMenu;
-    },
-    getSidebarMode(): string {
-      return this.sidebarMode;
+    getAppConfigMode(): appConfig {
+      return this.appConfigMode;
     },
   },
   actions: {
-    setCollapseMenu(collapseMenu: boolean): void {
-      this.collapseMenu = collapseMenu;
-    },
-    setSidebarMode(sidebarMode: string): void {
-      this.sidebarMode = sidebarMode;
+    setAppConfigMode(appConfigMode: appConfig): void {
+      localStorage.setItem('appConfigMode', JSON.stringify(appConfigMode));
+      this.appConfigMode = appConfigMode;
     },
   },
 });
@@ -33,3 +33,7 @@ export const useAppStore = defineStore({
 export function useAppStoreHook() {
   return useAppStore(store);
 }
+
+export const setWindowAppConfig = (appConfig: appConfig) => {
+  if (appConfig) localAppConfig = appConfig;
+};

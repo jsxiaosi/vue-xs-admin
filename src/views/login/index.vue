@@ -1,50 +1,53 @@
 <template>
-  <div class="container mx-auto">
-    <img src="@/assets/login/bg.png" class="wave" />
-    <div class="img -enter-x">
-      <img src="@/assets/login/illustration.svg" />
-    </div>
+  <div class="page-container">
+    <div class="container mx-auto">
+      <img src="@/assets/login/bg.png" class="wave" />
+      <div class="img -enter-x">
+        <img src="@/assets/login/illustration.svg" />
+      </div>
 
-    <div class="application enter-x">
-      <AppLocale class="icon-size enter-x"></AppLocale>
-    </div>
-    <div class="login-box">
-      <div class="login-form">
-        <h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
-        <div class="enter-x"
-          >{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</div
-        >
-        <div class="input-group user enter-x">
-          <SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
-          <div>
-            <h5>{{ t('sys.login.userName') }}</h5>
-            <input
-              v-model="user"
-              type="text"
-              class="input"
-              @focus="onUserFocus"
-              @blur="onUserBlur"
-            />
+      <div class="application">
+        <AppLocale class="item icon-size enter-x"></AppLocale>
+        <AppTheme class="item enter-x"></AppTheme>
+      </div>
+      <div class="login-box">
+        <div class="login-form">
+          <h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
+          <div class="enter-x"
+            >{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</div
+          >
+          <div class="input-group user enter-x">
+            <SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
+            <div>
+              <h5>{{ t('sys.login.userName') }}</h5>
+              <input
+                v-model="user"
+                type="text"
+                class="input"
+                @focus="onUserFocus"
+                @blur="onUserBlur"
+              />
+            </div>
           </div>
-        </div>
-        <div class="input-group pwd enter-x">
-          <SvgIcon class-name="icon" name="password"></SvgIcon>
+          <div class="input-group pwd enter-x">
+            <SvgIcon class-name="icon" name="password"></SvgIcon>
 
-          <div>
-            <h5>{{ t('sys.login.password') }}</h5>
-            <input
-              v-model="pwd"
-              type="password"
-              class="input"
-              autocomplete="on"
-              @focus="onPwdFocus"
-              @blur="onPwdBlur"
-            />
+            <div>
+              <h5>{{ t('sys.login.password') }}</h5>
+              <input
+                v-model="pwd"
+                type="password"
+                class="input"
+                autocomplete="on"
+                @focus="onPwdFocus"
+                @blur="onPwdBlur"
+              />
+            </div>
           </div>
+          <button class="btn enter-x" @click="onLogin">
+            {{ t('sys.login.loginButton') }}
+          </button>
         </div>
-        <button class="btn enter-x" @click="onLogin">
-          {{ t('sys.login.loginButton') }}
-        </button>
       </div>
     </div>
   </div>
@@ -52,7 +55,7 @@
 
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { AppLocale } from '@/components/Application';
+  import { AppLocale, AppTheme } from '@/components/Application';
   import { useRouter } from 'vue-router';
   import { ref } from 'vue';
   import { addClass, removeClass } from '@/utils/operate';
@@ -100,13 +103,18 @@
 </script>
 
 <style lang="scss" scoped>
+  .page-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #{$mainContentBg};
+  }
   .wave {
     position: fixed;
     width: 100vw;
     height: 100%;
     left: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 0;
   }
 
   .application {
@@ -114,8 +122,14 @@
     right: 0;
     top: 0;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     .icon-size {
       font-size: 20px;
+    }
+    .item {
+      margin-left: 20px;
     }
   }
 
