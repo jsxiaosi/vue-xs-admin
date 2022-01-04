@@ -1,5 +1,5 @@
 <template>
-  <SvgIcon :class-name="className" :name="icon"></SvgIcon>
+  <SvgIcon :class-name="className" :name="icon" />
   <span v-if="title">{{ t(title) }}</span>
 </template>
 

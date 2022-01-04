@@ -10,7 +10,7 @@
     box-sizing: border-box;
     flex: 1;
     width: calc(100vw - #{$sideBarWidth});
-    width: 100%;
+    // width: 100%;
     min-height: 100%;
     padding-top: #{$navBarHeight};
     // margin-left: #{$sideBarWidth};
