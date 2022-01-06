@@ -106,7 +106,6 @@
   .page-container {
     width: 100vw;
     height: 100vh;
-    background-color: #{$mainContentBg};
   }
   .wave {
     position: fixed;
@@ -284,7 +283,7 @@
     font-size: 1.2rem;
     outline: none;
     border: none;
-    background-image: linear-gradient(to right, #{$mianColor}, #{$subColor}, #{$mianColor});
+    background-image: linear-gradient(to right, #{$mian-color}, #{$sub-color}, #{$mian-color});
     cursor: pointer;
     color: #fff;
     text-transform: uppercase;

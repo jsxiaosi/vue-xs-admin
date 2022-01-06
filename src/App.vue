@@ -42,6 +42,6 @@
 
 <style lang="scss">
   #app {
-    color: #{$textColor};
+    color: #{$text-color-primary};
   }
 </style>

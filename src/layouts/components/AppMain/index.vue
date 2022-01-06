@@ -29,15 +29,11 @@
     width: 100%;
     height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
     // min-height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight});
-    overflow: hidden;
-    background-color: #{$appMainBgColor};
+    overflow: auto;
+    padding: 20px;
+    background-color: #{$app-main-bg-color};
   }
   .page-container {
-    height: calc(100vh - #{$navBarHeight+$BreadcrumbHeight+40px});
-    margin: 20px;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: #{$mainContentBg};
   }
 
   .fixed-header + .app-main {

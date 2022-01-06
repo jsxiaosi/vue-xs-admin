@@ -1,0 +1,44 @@
+// 修改element主题
+:root {
+  --el-border-color-lighter: #{$text-color-placeholder};
+  --el-text-color-regular: #{$text-color-primary};
+}
+
+.el-drawer {
+  --el-drawer-bg-color: #{$main-bg-color};
+}
+
+.el-card {
+  --el-card-bg-color: #{$main-bg-color};
+  --el-card-border-color: #{$text-color-placeholder};
+}
+
+.el-descriptions {
+  --el-descriptions-item-bordered-label-background: #{$sub-main-bg-content};
+}
+
+// 左侧导航栏(此地方颜色全部改成自定义)
+$sideBarWidth: 210px;
+$navBarHeight: 57px;
+$BreadcrumbHeight: 50px; //面包屑高度
+
+$menuBg: $main-bg-color; // 侧边栏背景颜色
+$menuHover: $sub-main-bg-content; // 焦点背景色
+$menuHoverText: $mian-color; //焦点文字颜色
+$menuText: $text-color-primary; //文字颜色
+$menuActiveText: $mian-color; //选中的文字颜色
+
+$menuItemBg: $main-bg-color; //二级背景颜色
+$menuItemBorderLeft: $main-bg-color; //二级未选中的背景颜色
+$menuItemText: $text-color-primary; //二级文字颜色
+$menuItemHover: $sub-main-bg-content; //二级焦点背景颜色
+$menuItemHoverText: $mian-color; //二级焦点文字颜色
+$menuItemActiveText: $mian-color; //二级选中的背景颜色
+$menuItemActiveBg: $sub-color1; //二级选中背景颜色
+$menuItemActiveBorderLeft: $mian-color; //二级左描边背景颜色
+
+$app-main-bg-color: $sub-main-bg-content; //app-mian背景颜色
+$navBarColor: $main-bg-color; //顶部导航栏背景颜色
+$navBarBorderBottomColor: $main-bg-color;
+$BreadcrumbColor: $main-bg-color; //面包屑背景颜色
+$BreadcrumbText: $text-color-primary; //面包屑文字颜色

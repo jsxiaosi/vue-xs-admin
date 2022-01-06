@@ -44,7 +44,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: 151515;
-    border: 1px solid #{$textColor};
+    border: 1px solid #{$text-color-primary};
     padding: 0 6px;
     font-size: 1em;
     border-radius: 30px;
@@ -53,7 +53,7 @@
       z-index: 1;
       width: 18px;
       height: 18px;
-      background-color: #{$textColor};
+      background-color: #{$text-color-primary};
       border-radius: 50%;
       transition: transform 0.5s, background-color 0.5s;
       will-change: transform;
