@@ -33,6 +33,7 @@
     background-color: $menuBg;
     box-shadow: 1px 0 2px rgb(28 29 30 / 8%);
     transition: width 0.28s;
+    border-right: 1px solid #{$text-color-placeholder};
 
     .el-menu-item::before {
       position: absolute;

@@ -6,7 +6,7 @@
           <i class="el-icon-user"></i>
           用户名
         </template>
-        小斯斯
+        <span>小斯斯</span>
       </el-descriptions-item>
       <el-descriptions-item>
         <template #label>
@@ -73,6 +73,9 @@
     height: 255px;
     .el-tag--dark {
       margin-right: 10px !important;
+    }
+    .margin-top :deep(.el-descriptions__body) {
+      background-color: #{$main-bg-color};
     }
   }
 </style>

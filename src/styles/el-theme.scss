@@ -1,7 +1,10 @@
 // 修改element主题
 :root {
   --el-border-color-lighter: #{$text-color-placeholder};
-  --el-text-color-regular: #{$text-color-primary};
+  --el-text-color-primary: #{$text-color-primary};
+  --el-text-color-regular: #{$text-color-regular};
+  --el-text-color-secondary: #{$text-color-secondary};
+  --el-text-color-placeholder: #{$text-color-placeholder};
 }
 
 .el-drawer {
@@ -39,6 +42,6 @@ $menuItemActiveBorderLeft: $mian-color; //二级左描边背景颜色
 
 $app-main-bg-color: $sub-main-bg-content; //app-mian背景颜色
 $navBarColor: $main-bg-color; //顶部导航栏背景颜色
-$navBarBorderBottomColor: $main-bg-color;
+$navBarBorderBottomColor: $text-color-placeholder;
 $BreadcrumbColor: $main-bg-color; //面包屑背景颜色
 $BreadcrumbText: $text-color-primary; //面包屑文字颜色

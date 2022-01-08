@@ -152,19 +152,22 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        // color: #{$text-color-primary};
       }
 
       .infinite {
+        border: 1px solid #{$text-color-placeholder};
         .top {
-          width: 95%;
+          // width: 95%;
           height: 40px;
           line-height: 40px;
           display: flex;
           margin: 0 auto;
           font-size: 14px;
-          color: #909399;
+          // color: #909399;
           font-weight: 400;
-          background: #fafafa;
+          background: #{$sub-main-bg-content};
+          border-bottom: 1px solid #{$text-color-placeholder};
 
           li {
             width: 34%;

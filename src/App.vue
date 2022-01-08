@@ -39,9 +39,3 @@
   // };
   // req2();
 </script>
-
-<style lang="scss">
-  #app {
-    color: #{$text-color-primary};
-  }
-</style>

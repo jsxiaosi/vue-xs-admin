@@ -1,113 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite App</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
 
-	<body>
-		<div id="app">
-			<style>
-				* {
-					margin: 0;
-					padding: 0;
-				}
+  <body>
+    <div id="app">
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
 
-				html,
-				body {
-					width: 100%;
-					height: 100%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					background: #000;
-					overflow: hidden;
-					font-family: 'Reggae One', cursive;
-				}
+        html,
+        body {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #000;
+          overflow: hidden;
+          font-family: 'Reggae One', cursive;
+        }
 
-				p {
-					font-size: 8vw;
-					overflow: hidden;
-					-webkit-text-stroke: 3px #ffffff;
-				}
+        p {
+          font-size: 8vw;
+          overflow: hidden;
+          -webkit-text-stroke: 3px #7272a5;
+        }
 
-				span {
-					display: block;
-					font-size: 20px;
-					overflow: hidden;
-					color: green;
-					text-align: center;
-				}
+        span {
+          display: block;
+          font-size: 20px;
+          overflow: hidden;
+          color: green;
+          text-align: center;
+        }
 
-				p::before {
-					content: ' ';
-					width: 100%;
-					height: 100%;
-					position: absolute;
-					left: 0;
-					top: 0;
-					background-image: linear-gradient(45deg, #ff269b, #2ab5f5, #ffbf00);
-					mix-blend-mode: multiply;
-				}
+        p::before {
+          content: ' ';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-image: linear-gradient(45deg, #ff269b, #2ab5f5, #ffbf00);
+          mix-blend-mode: multiply;
+        }
 
-				p::after {
-					content: '';
-					background: radial-gradient(circle, #fff, #000 50%);
-					background-size: 25% 25%;
-					position: absolute;
-					top: -100%;
-					left: -100%;
-					right: 0;
-					bottom: 0;
-					mix-blend-mode: color-dodge;
-					animation: mix 2s linear infinite;
-				}
+        p::after {
+          content: '';
+          background: radial-gradient(circle, #fff, #000 50%);
+          background-size: 25% 25%;
+          position: absolute;
+          top: -100%;
+          left: -100%;
+          right: 0;
+          bottom: 0;
+          mix-blend-mode: color-dodge;
+          animation: mix 2s linear infinite;
+        }
 
-				@keyframes mix {
-					to {
-						transform: translate(50%, 50%);
-					}
-				}
-			</style>
-			<div class="g-container">
-				<p>SuperCuteXiaoSi</p>
-				<span class="_develop"></span>
-			</div>
-		</div>
-		<script>
-			// 此代码仅用于开发环境的友好提示，项目打包前请去掉这段js代码 This code is only used as a friendly reminder of the development environment, please remove this js code before packaging the project
-			window.onload = function () {
-				;(function () {
-					const ua = navigator.userAgent.toLowerCase()
-					const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/
-					const m = ua.match(re)
-					const Sys = {
-						browser: m[1].replace(/version/, "'safari"),
-						version: m[2],
-					}
+        @keyframes mix {
+          to {
+            transform: translate(50%, 50%);
+          }
+        }
+      </style>
+      <div class="g-container">
+        <p>SuperCuteXiaoSi</p>
+        <span class="_develop"></span>
+      </div>
+    </div>
+    <script>
+      // 此代码仅用于开发环境的友好提示，项目打包前请去掉这段js代码 This code is only used as a friendly reminder of the development environment, please remove this js code before packaging the project
+      window.onload = function () {
+        (function () {
+          const ua = navigator.userAgent.toLowerCase();
+          const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+          const m = ua.match(re);
+          const Sys = {
+            browser: m[1].replace(/version/, "'safari"),
+            version: m[2],
+          };
 
-					const browser = Array.of('chrome', 'firefox').includes(Sys.browser)
-					const version = parseFloat(Sys.version)
+          const browser = Array.of('chrome', 'firefox').includes(Sys.browser);
+          const version = parseFloat(Sys.version);
 
-					const el = document.querySelector('._develop')
+          const el = document.querySelector('._develop');
 
-					if (el) {
-						if (browser && version >= 90) {
-							let success = document.createTextNode('哈哈哈哈哈！帅吧？ 😃')
-							el.appendChild(success)
-						} else {
-							let warn =
-								document.createTextNode('你这浏览器不行啊，换一个吧！😯')
-							el.appendChild(warn)
-							el.style.color = 'red'
-						}
-					}
-					return Sys
-				})()
-			}
-		</script>
-		<script type="module" src="/src/main.ts"></script>
-	</body>
+          if (el) {
+            if (browser && version >= 90) {
+              let success = document.createTextNode('哈哈哈哈哈！帅吧？ 😃');
+              el.appendChild(success);
+            } else {
+              let warn = document.createTextNode('你这浏览器不行啊，换一个吧！😯');
+              el.appendChild(warn);
+              el.style.color = 'red';
+            }
+          }
+          return Sys;
+        })();
+      };
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
