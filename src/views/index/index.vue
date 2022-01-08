@@ -51,6 +51,12 @@
   </div>
 </template>
 
+<script lang="ts">
+  export default {
+    name: 'RtWelcome',
+  };
+</script>
+
 <script setup lang="ts">
   import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
   import WeDetails from './components/WeDetails.vue';

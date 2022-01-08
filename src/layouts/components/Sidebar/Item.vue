@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { useI18n } from '@/hooks/useI18n';
+  import { useI18n } from '@/hooks/web/useI18n';
   defineProps({
     icon: {
       type: String,

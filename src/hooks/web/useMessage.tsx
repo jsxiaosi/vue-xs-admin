@@ -1,5 +1,5 @@
 import { ElMessageBox, ElMessageBoxOptions } from 'element-plus';
-import { useI18n } from '@/hooks/useI18n';
+import { useI18n } from '@/hooks/web/useI18n';
 
 const { t } = useI18n();
 

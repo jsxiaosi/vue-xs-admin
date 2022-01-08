@@ -31,9 +31,9 @@
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import type { RouteLocationMatched } from 'vue-router';
   import { ref, watch } from 'vue';
-  import { getAppCollapseMenu } from '@/hooks/appWindow';
+  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useRoute, useRouter } from 'vue-router';
-  import { useI18n } from '@/hooks/useI18n';
+  import { useI18n } from '@/hooks/web/useI18n';
   import { useAppStore } from '@/store/modules/app';
 
   const { t } = useI18n();

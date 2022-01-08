@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useI18n, localesList } from '@/hooks/useI18n';
+  import { useI18n, localesList } from '@/hooks/web/useI18n';
   import SvgIcon from '@/components/SvgIcon/index.vue';
 
   const i18n = useI18n();

@@ -41,7 +41,7 @@
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { ref } from '@vue/reactivity';
-  import { getAppCollapseMenu } from '@/hooks/appWindow';
+  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   const drawer = ref(false);
 

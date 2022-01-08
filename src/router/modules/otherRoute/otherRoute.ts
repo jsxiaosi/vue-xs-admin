@@ -2,7 +2,7 @@
 // import Layout from '@/layouts/index.vue'
 // import AppMain from '@/layouts/components/AppMain/index.vue'
 import { AppRouteRecordRaw } from '#/route';
-import { t } from '@/hooks/useI18n';
+import { t } from '@/hooks/web/useI18n';
 
 const Layout = () => import('@/layouts/index.vue');
 const AppMain = () => import('@/layouts/components/AppMain/index.vue');
@@ -18,9 +18,25 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     children: [
       {
         path: 'welcome',
-        name: 'welcome',
+        name: 'RtWelcome',
         component: () => import('@/views/index/index.vue'),
         meta: { title: t('route.pathName.index') },
+      },
+    ],
+  },
+  {
+    path: '/components',
+    component: Layout,
+    redirect: '/components/drag',
+    name: 'components',
+    alwaysShow: true,
+    meta: { title: '组件', icon: 'iEL-home-filled' },
+    children: [
+      {
+        path: 'drag',
+        name: 'RtDrag',
+        component: () => import('@/views/components/drag/index.vue'),
+        meta: { title: '拖拽组件' },
       },
     ],
   },

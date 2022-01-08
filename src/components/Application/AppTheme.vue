@@ -11,7 +11,7 @@
   import SvgIcon from '../SvgIcon/index.vue';
   import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils';
   import { useAppStore } from '@/store/modules/app';
-  import { getAppCollapseMenu } from '@/hooks/appWindow';
+  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   // const toggleTheme = (scopeName = 'theme-default') => {
   // 	document.documentElement.className = scopeName

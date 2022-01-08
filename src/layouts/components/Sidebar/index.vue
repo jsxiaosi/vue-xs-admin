@@ -25,7 +25,7 @@
   import { useRoute } from 'vue-router';
   import SidebarItem from './SidebarItem.vue';
   import routeModuleList from '@/router/modules';
-  import { getAppCollapseMenu } from '@/hooks/appWindow';
+  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   defineProps({
     mode: {
