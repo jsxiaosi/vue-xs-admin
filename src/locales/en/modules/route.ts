@@ -1,6 +1,8 @@
 const route = {
   pathName: {
     index: 'Home',
+    components: 'Components',
+    dragCpts: 'DragComponents',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',

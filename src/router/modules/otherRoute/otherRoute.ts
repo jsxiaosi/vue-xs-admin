@@ -30,13 +30,13 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     redirect: '/components/drag',
     name: 'components',
     alwaysShow: true,
-    meta: { title: '组件', icon: 'iEL-home-filled' },
+    meta: { title: t('route.pathName.components'), icon: 'components' },
     children: [
       {
         path: 'drag',
         name: 'RtDrag',
         component: () => import('@/views/components/drag/index.vue'),
-        meta: { title: '拖拽组件' },
+        meta: { title: t('route.pathName.dragCpts') },
       },
     ],
   },
