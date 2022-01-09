@@ -6,6 +6,7 @@ const route = {
     userInfo: '用户管理',
     userList: '用户列表',
     userDateil: '用户详情',
+    guide: '引导页',
     thirdParty: '第三方',
     nested: '嵌套路由',
     nested1: '路由1',

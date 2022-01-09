@@ -6,6 +6,7 @@ const route = {
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
+    guide: 'GuidePage',
     thirdParty: 'Third party',
     nested: 'Nested Route',
     nested1: 'Route1',

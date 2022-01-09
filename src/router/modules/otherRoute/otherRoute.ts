@@ -57,6 +57,22 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     ],
   },
   {
+    path: '',
+    component: Layout,
+    redirect: '/guide',
+    name: '',
+    alwaysShow: false,
+    meta: { title: '', icon: 'guide' },
+    children: [
+      {
+        path: 'guide',
+        name: 'RtGuide',
+        component: () => import('@/views/guide/index.vue'),
+        meta: { title: t('route.pathName.guide') },
+      },
+    ],
+  },
+  {
     path: '/external-link',
     component: Layout,
     children: [
