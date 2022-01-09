@@ -1,0 +1,11 @@
+<template>
+  <router-view>
+    <template #default="{ Component }">
+      <transition name="fade-transform" mode="out-in">
+        <component :is="Component"></component>
+      </transition>
+    </template>
+  </router-view>
+</template>
+
+<script setup lang="ts"></script>

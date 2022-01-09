@@ -33,8 +33,6 @@
     padding: 20px;
     background-color: #{$app-main-bg-color};
   }
-  .page-container {
-  }
 
   .fixed-header + .app-main {
     padding-top: 50px;

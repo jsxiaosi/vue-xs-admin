@@ -1,5 +1,5 @@
 <template>
-  <div class="page-content">
+  <div class="page-container">
     <el-button type="primary" @click="handleIntro">引导页</el-button>
   </div>
 </template>
@@ -14,10 +14,8 @@
 </script>
 
 <style scoped lang="scss">
-  .page-content {
-    background-color: #{$main-bg-color};
-    width: 100%;
-    height: 100%;
+  .page-container {
     padding: 20px;
+    background-color: #{$main-bg-color};
   }
 </style>

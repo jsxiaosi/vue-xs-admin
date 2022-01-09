@@ -4,8 +4,8 @@
 import { AppRouteRecordRaw } from '#/route';
 import { t } from '@/hooks/web/useI18n';
 
-const Layout = () => import('@/layouts/index.vue');
-const AppMain = () => import('@/layouts/components/AppMain/index.vue');
+const Layout = () => import('@/layouts/pageLayouts/index.vue');
+const emptyLayouts = () => import('@/layouts/emptyLayouts/index.vue');
 
 const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
@@ -94,7 +94,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     children: [
       {
         path: 'menu1',
-        component: AppMain, // Parent router-view
+        component: emptyLayouts, // Parent router-view
         name: 'Menu1',
         redirect: '/nested/menu1/menu1-1/',
         meta: { title: t('route.pathName.nested1') },
@@ -107,7 +107,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
           },
           {
             path: 'menu1-2',
-            component: AppMain,
+            component: emptyLayouts,
             name: 'Menu1-2',
             redirect: '/nested/menu1/menu1-2/menu1-2-1/',
             meta: { title: t('route.pathName.nested1_2') },
