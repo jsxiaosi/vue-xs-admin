@@ -3,6 +3,7 @@ const route = {
     index: 'Home',
     components: 'Components',
     dragCpts: 'DragComponents',
+    countTo: 'DigitalAnimation',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',

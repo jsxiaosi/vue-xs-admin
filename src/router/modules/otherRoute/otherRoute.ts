@@ -38,6 +38,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         component: () => import('@/views/components/drag/index.vue'),
         meta: { title: t('route.pathName.dragCpts') },
       },
+      {
+        path: 'count-to',
+        name: 'RtCountTo',
+        component: () => import('@/views/components/count-to/index.vue'),
+        meta: { title: t('route.pathName.countTo') },
+      },
     ],
   },
   {

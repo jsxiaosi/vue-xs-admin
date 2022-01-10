@@ -54,3 +54,6 @@ export const withInstall = <T>(component: T, alias?: string) => {
   };
   return component as T & Plugin;
 };
+
+export const converToArray = (number: number): Array<Number> =>
+  [...`${number}`].map((el) => parseInt(el));

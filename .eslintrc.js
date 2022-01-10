@@ -20,12 +20,12 @@ module.exports = {
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2016,
+    ecmaVersion: 2020,
     parser: '@typescript-eslint/parser',
-    // 对Babel解析器的包装使其与 ESLint 兼容。
-    // parser: 'babel-eslint',
-    // 代码是 ECMAScript 模块
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   // plugins: ['vue'],
   rules: {
