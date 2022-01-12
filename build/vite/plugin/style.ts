@@ -15,7 +15,7 @@ export function configStylePlugin(): Plugin | Plugin[] {
         resolveStyle: (name: any) => {
           name = name.slice(3);
           // 使用element scss样式
-          return `element-plus/packages/theme-chalk/src/${name}.scss`;
+          return `element-plus/theme-chalk/src/${name}.scss`;
           // 使用element css样式
           // return `element-plus/lib/theme-chalk/${name}.css`;
         },

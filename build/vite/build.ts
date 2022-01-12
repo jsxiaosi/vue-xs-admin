@@ -8,7 +8,7 @@ export function createViteBuild(): BuildOptions {
     // 指定生成静态资源的存放路径
     assetsDir: 'static',
     // 启用/禁用 CSS 代码拆分。当启用时，在异步 chunk 中导入的 CSS 将内联到异步 chunk 本身，并在块加载时插入 如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     // 构建后是否生成 source map 文件。
     sourcemap: false,
     // 启用/禁用 brotli 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
