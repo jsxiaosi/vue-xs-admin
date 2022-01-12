@@ -6,7 +6,7 @@ import { createVitePlugins } from './build/vite/plugin';
 import { createViteResolve } from './build/vite/resolve';
 import { createViteBuild } from './build/vite/build';
 import { createViteServer } from './build/vite/server';
-import { createViteOptimizeDeps } from './build/vite/optimizeDeps';
+// import { createViteOptimizeDeps } from './build/vite/optimizeDeps';
 import { createViteCSS } from './build/vite/css';
 
 export default (configEnv: ConfigEnv): UserConfig => {
@@ -30,7 +30,7 @@ export default (configEnv: ConfigEnv): UserConfig => {
     // 打包配置
     build: createViteBuild(),
     // 依赖优化配置
-    optimizeDeps: createViteOptimizeDeps(),
+    // optimizeDeps: createViteOptimizeDeps(),
     // css预处理配置
     css: createViteCSS(),
   };
