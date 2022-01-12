@@ -44,6 +44,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         component: () => import('@/views/components/count-to/index.vue'),
         meta: { title: t('route.pathName.countTo') },
       },
+      {
+        path: 'form',
+        name: 'RtForm',
+        component: () => import('@/views/components/form/index.vue'),
+        meta: { title: t('route.pathName.form') },
+      },
     ],
   },
   {

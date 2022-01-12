@@ -4,6 +4,7 @@ const route = {
     components: 'Components',
     dragCpts: 'DragComponents',
     countTo: 'DigitalAnimation',
+    form: 'Form',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',

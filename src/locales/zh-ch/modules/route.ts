@@ -4,6 +4,7 @@ const route = {
     components: '组件',
     dragCpts: '拖拽组件',
     countTo: '数字动画',
+    form: '表单',
     userInfo: '用户管理',
     userList: '用户列表',
     userDateil: '用户详情',

@@ -1,14 +1,59 @@
 // 修改element主题
 :root {
   --el-border-color-lighter: #{$text-color-placeholder};
+  --el-datepicker-border-color: #{$text-color-placeholder};
   --el-text-color-primary: #{$text-color-primary};
   --el-text-color-regular: #{$text-color-regular};
   --el-text-color-secondary: #{$text-color-secondary};
   --el-text-color-placeholder: #{$text-color-placeholder};
+  --el-input-bg-color: #{$main-bg-color};
+  --el-disabled-bg-color: #{$main-bg-color};
+  // --el-disabled-border-color: #{$text-color-placeholder};
+}
+
+// input
+.el-input {
+  --el-input-bg-color: #{$main-bg-color};
+}
+.el-textarea {
+  --el-input-bg-color: #{$main-bg-color};
+}
+// button
+.el-button {
+  --el-button-bg-color: #{$main-bg-color};
 }
 
 .el-drawer {
   --el-drawer-bg-color: #{$main-bg-color};
+}
+
+.el-scrollbar {
+  --el-scrollbar-bg-color: #{$main-bg-color};
+}
+
+// 时间选择器
+.el-date-range-picker {
+  --el-datepicker-inner-border-color: #{$text-color-placeholder};
+  --el-datepicker-inrange-bg-color: #{$sub-main-bg-content};
+  --el-datepicker-inrange-hover-bg-color: #{$sub-main-bg-content};
+}
+.el-picker-panel {
+  background-color: #{$main-bg-color};
+}
+.el-picker-panel__footer {
+  background-color: #{$main-bg-color};
+}
+
+// select颜色
+.el-select__popper.el-popper {
+  background-color: #{$main-bg-color};
+}
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background-color: #{$sub-main-bg-content};
+}
+.el-popper.is-light .el-popper__arrow::before {
+  background-color: #{$main-bg-color};
 }
 
 .el-card {
