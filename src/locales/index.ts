@@ -1,3 +1,4 @@
+import { appConfig } from '#/piniaStore';
 import { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 interface localesType {
@@ -15,10 +16,16 @@ Object.keys(config).forEach((key) => {
   localesList.push({ name: config[key].name, locale: name[1] });
 });
 
+const locStoAPP = localStorage.getItem('appConfigMode');
+let appConfigMode: appConfig = {} as appConfig;
+if (locStoAPP) {
+  appConfigMode = JSON.parse(locStoAPP);
+}
+
 const i18n = createI18n({
   legacy: false,
-  locale: 'zh-ch',
-  fallbackLocale: 'zh-ch',
+  locale: appConfigMode.locale || 'zh-ch',
+  fallbackLocale: appConfigMode.locale || 'zh-ch',
   messages,
 });
 

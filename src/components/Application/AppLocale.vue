@@ -16,11 +16,17 @@
 <script setup lang="ts">
   import { useI18n, localesList } from '@/hooks/web/useI18n';
   import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { useAppStore } from '@/store/modules/app';
+  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   const i18n = useI18n();
+  const appStore = useAppStore();
+  const { appConfigMode } = getAppCollapseMenu();
   // const availableLocales = i18n.availableLocales;
   const tolochos = (key: string) => {
     i18n.locale.value = key;
+    appConfigMode.value.locale = key;
+    appStore.setAppConfigMode(appConfigMode.value);
   };
 
   // const options = ref([

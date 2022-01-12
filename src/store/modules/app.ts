@@ -10,6 +10,7 @@ let localAppConfig: appConfig = {
   collapseMenu: false,
   sidebarMode: 'vertical',
   themeMode: 'day',
+  locale: 'zh-en',
 };
 
 export const useAppStore = defineStore({
