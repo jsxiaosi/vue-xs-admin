@@ -35,6 +35,5 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   // 使用此插件会导致vite启动变慢 100ms左右
   // vitePlugins.push(configEsLinterPlugin(configEnv))
 
-  // vitePlugins.push(viteESLint())
   return vitePlugins;
 }
