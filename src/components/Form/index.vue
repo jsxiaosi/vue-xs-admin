@@ -2,10 +2,12 @@
   <div class="page-container">
     <el-form
       ref="formRef"
+      :rules="rules"
       :model="form"
       :label-position="formOption.labelPosition"
       label-width="120px"
     >
+      <h1>{{ formOption }}</h1>
       <!-- <div class="">标题</div> -->
       <el-row v-for="(f, fix) in formOption.formIten" :key="fix" :gutter="f.gutter || 30">
         <el-col
@@ -18,9 +20,15 @@
           :xl="f.xl || 8"
         >
           <el-form-item :label="fItem.label" :prop="fItem.prop">
+            <slot
+              v-if="fItem.isSlot"
+              :form-item="fItem"
+              :form-mode="form"
+              :name="fItem.prop"
+            ></slot>
             <!-- 输入框 -->
             <el-input
-              v-if="fItem.type === 'input'"
+              v-else-if="fItem.type === 'input'"
               v-model="form[fItem.prop]"
               :type="fItem.inputType"
             ></el-input>
@@ -75,23 +83,41 @@
 </template>
 
 <script lang="ts" setup>
-  import { onMounted, reactive, PropType } from 'vue';
-  import { FormProps } from './types/from';
-  const props = defineProps({
+  import { onMounted, reactive, PropType, ref } from 'vue';
+  import { FormProps, FormItemListProps } from './types/from';
+
+  defineProps({
     formOption: {
       type: Object as PropType<FormProps>,
       default: () => {},
     },
+    rules: {
+      type: Object,
+      default: () => {},
+    },
   });
 
-  console.log(props);
-
+  const emit = defineEmits<{
+    (e: 'submitForm', form: FormItemListProps): void;
+  }>();
   const form = reactive<any>({});
+
+  const formRef = ref();
 
   onMounted(() => {});
 
-  const submitForm = () => {};
+  const submitForm = () => {
+    formRef.value.validate((value: any) => {
+      console.log(value);
+    });
+    // console.log(formRef.value.validate());
+    emit('submitForm', form);
+  };
   const resetForm = () => {};
+
+  defineExpose({
+    form,
+  });
 </script>
 
 <style scoped lang="scss">

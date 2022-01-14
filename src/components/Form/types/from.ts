@@ -17,6 +17,7 @@ export interface FormItemProps {
  * @param(type) input：输入框、dataTime：日期选择器、radio：单选框、select：下拉选择框
  * @param(label) 标签名
  * @param(prop) form表单双向绑定字段
+ * @param(isSlot) 是否自定义内容
  * @param(options) 选择项数据
  * @param(inputType) input输入框类型 type为input生效
  * @param(placeholder) 占位符
@@ -25,6 +26,7 @@ export interface FormItemListProps {
   type: string;
   label: string;
   prop: string;
+  isSlot?: boolean;
   options?: Array<FormSelectOptProps>;
   inputType?: string;
   placeholder?: string;
