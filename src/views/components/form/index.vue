@@ -3,9 +3,9 @@
     <el-button @click="handlerForm('vertical')">垂直</el-button>
     <el-button @click="handlerForm('horizontal')">水平</el-button>
     <Form ref="formRef" :form-option="formOption" @submit-form="submitForm">
-      <template #password="{ formMode, formItem }">
+      <template #slotInput="{ formModel, formItem }">
         <el-input
-          v-model="formMode[formItem.prop]"
+          v-model="formModel[formItem.prop]"
           :type="formItem.inputType"
           placeholder="自定义输入框"
         ></el-input>
@@ -17,33 +17,320 @@
 <script lang="ts" setup>
   import Form from '@/components/Form/index.vue';
   import { FormProps } from '@/components/Form/types/from';
-  import { reactive, ref } from 'vue';
+  import { h, reactive, ref } from 'vue';
 
   const form = ref<{
     textarea: number;
   }>({ textarea: 0 });
 
+  console.log(h);
+  const cascaderOptions = [
+    {
+      value: 'guide',
+      label: 'Guide',
+      children: [
+        {
+          value: 'disciplines',
+          label: 'Disciplines',
+          children: [
+            {
+              value: 'consistency',
+              label: 'Consistency',
+            },
+            {
+              value: 'feedback',
+              label: 'Feedback',
+            },
+            {
+              value: 'efficiency',
+              label: 'Efficiency',
+            },
+            {
+              value: 'controllability',
+              label: 'Controllability',
+            },
+          ],
+        },
+        {
+          value: 'navigation',
+          label: 'Navigation',
+          children: [
+            {
+              value: 'side nav',
+              label: 'Side Navigation',
+            },
+            {
+              value: 'top nav',
+              label: 'Top Navigation',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'component',
+      label: 'Component',
+      children: [
+        {
+          value: 'basic',
+          label: 'Basic',
+          children: [
+            {
+              value: 'layout',
+              label: 'Layout',
+            },
+            {
+              value: 'color',
+              label: 'Color',
+            },
+            {
+              value: 'typography',
+              label: 'Typography',
+            },
+            {
+              value: 'icon',
+              label: 'Icon',
+            },
+            {
+              value: 'button',
+              label: 'Button',
+            },
+          ],
+        },
+        {
+          value: 'form',
+          label: 'Form',
+          children: [
+            {
+              value: 'radio',
+              label: 'Radio',
+            },
+            {
+              value: 'checkbox',
+              label: 'Checkbox',
+            },
+            {
+              value: 'input',
+              label: 'Input',
+            },
+            {
+              value: 'input-number',
+              label: 'InputNumber',
+            },
+            {
+              value: 'select',
+              label: 'Select',
+            },
+            {
+              value: 'cascader',
+              label: 'Cascader',
+            },
+            {
+              value: 'switch',
+              label: 'Switch',
+            },
+            {
+              value: 'slider',
+              label: 'Slider',
+            },
+            {
+              value: 'time-picker',
+              label: 'TimePicker',
+            },
+            {
+              value: 'date-picker',
+              label: 'DatePicker',
+            },
+            {
+              value: 'datetime-picker',
+              label: 'DateTimePicker',
+            },
+            {
+              value: 'upload',
+              label: 'Upload',
+            },
+            {
+              value: 'rate',
+              label: 'Rate',
+            },
+            {
+              value: 'form',
+              label: 'Form',
+            },
+          ],
+        },
+        {
+          value: 'data',
+          label: 'Data',
+          children: [
+            {
+              value: 'table',
+              label: 'Table',
+            },
+            {
+              value: 'tag',
+              label: 'Tag',
+            },
+            {
+              value: 'progress',
+              label: 'Progress',
+            },
+            {
+              value: 'tree',
+              label: 'Tree',
+            },
+            {
+              value: 'pagination',
+              label: 'Pagination',
+            },
+            {
+              value: 'badge',
+              label: 'Badge',
+            },
+          ],
+        },
+        {
+          value: 'notice',
+          label: 'Notice',
+          children: [
+            {
+              value: 'alert',
+              label: 'Alert',
+            },
+            {
+              value: 'loading',
+              label: 'Loading',
+            },
+            {
+              value: 'message',
+              label: 'Message',
+            },
+            {
+              value: 'message-box',
+              label: 'MessageBox',
+            },
+            {
+              value: 'notification',
+              label: 'Notification',
+            },
+          ],
+        },
+        {
+          value: 'navigation',
+          label: 'Navigation',
+          children: [
+            {
+              value: 'menu',
+              label: 'Menu',
+            },
+            {
+              value: 'tabs',
+              label: 'Tabs',
+            },
+            {
+              value: 'breadcrumb',
+              label: 'Breadcrumb',
+            },
+            {
+              value: 'dropdown',
+              label: 'Dropdown',
+            },
+            {
+              value: 'steps',
+              label: 'Steps',
+            },
+          ],
+        },
+        {
+          value: 'others',
+          label: 'Others',
+          children: [
+            {
+              value: 'dialog',
+              label: 'Dialog',
+            },
+            {
+              value: 'tooltip',
+              label: 'Tooltip',
+            },
+            {
+              value: 'popover',
+              label: 'Popover',
+            },
+            {
+              value: 'card',
+              label: 'Card',
+            },
+            {
+              value: 'carousel',
+              label: 'Carousel',
+            },
+            {
+              value: 'collapse',
+              label: 'Collapse',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'resource',
+      label: 'Resource',
+      children: [
+        {
+          value: 'axure',
+          label: 'Axure Components',
+        },
+        {
+          value: 'sketch',
+          label: 'Sketch Templates',
+        },
+        {
+          value: 'docs',
+          label: 'Design Documentation',
+        },
+      ],
+    },
+  ];
+
   const formOption = reactive<FormProps>({
     labelPosition: 'right',
-    formIten: [
+    formItem: [
       {
         gutter: 30,
         itemList: [
           {
-            type: 'input',
+            component: 'ElInput',
             label: '输入框1号',
             prop: 'name',
+            rules: [{ required: true, type: 'string' }],
+            props: {
+              onChange: (e: any) => {
+                console.log(e);
+              },
+            },
           },
           {
-            isSlot: true,
-            type: 'input',
-            label: '自定义',
-            prop: 'password',
-          },
-          {
-            type: 'dateTime',
+            component: 'ElDatePicker',
             label: '时间选择器',
             prop: 'dateTime',
+            props: {
+              type: 'datetimerange',
+              rangeSeparator: 'To',
+              startPlaceholder: 'Start date',
+              endPlaceholder: 'End date',
+            },
+          },
+          {
+            component: 'ElCascader',
+            label: '多级选择器',
+            prop: 'cascader',
+            props: {
+              options: cascaderOptions,
+              onVisibleChange: (e: any) => {
+                console.log(e);
+              },
+            },
           },
         ],
       },
@@ -51,51 +338,145 @@
         gutter: 30,
         itemList: [
           {
-            type: 'radio',
-            label: '晚上吃什么',
-            prop: 'radio',
-            options: [
-              { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
-              { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
-            ],
-          },
-          {
-            type: 'select',
+            component: 'ElSelect',
             label: '晚上吃什么',
             prop: 'select',
-            options: [
-              { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
-              { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
-            ],
+            childrenComponent: {
+              options: [
+                { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
+                { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
+              ],
+            },
           },
           {
-            type: 'checkbox',
+            component: 'ElCheckboxGroup',
             label: '晚上吃什么',
             prop: 'checkbox',
-            options: [
-              { label: '选项1', value: '' },
-              { label: '选项2', value: '' },
-              { label: '选项3', value: '' },
-              { label: '选项4', value: '' },
-            ],
+            childrenComponent: {
+              options: [
+                { label: '选项1', value: '' },
+                { label: '选项2', value: '' },
+                { label: '选项3', value: '' },
+                { label: '选项4', value: '' },
+              ],
+            },
+          },
+          {
+            component: 'ElRadioGroup',
+            label: '晚上吃什么',
+            prop: 'radio',
+            childrenComponent: {
+              options: [
+                { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
+                { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
+              ],
+            },
           },
         ],
       },
       {
         gutter: 30,
-        md: 24,
-        lg: 24,
-        xl: 24,
         itemList: [
           {
-            type: 'input',
-            label: '长长的输入框',
-            inputType: 'textarea',
-            prop: 'textarea',
+            component: 'ElInput',
+            label: 'slot组件',
+            prop: 'slotInput',
+            isSlot: true,
+            rules: [{ required: true, type: 'string' }],
+          },
+          {
+            component: '',
+            label: 'render组件',
+            prop: 'renderInput',
+            render: () => {
+              return h('input', {
+                placeholder: '请输入',
+                onChange: () => {},
+              });
+            },
           },
         ],
       },
     ],
+    // formIten: [
+    //   {
+    //     gutter: 30,
+    //     itemList: [
+    //       {
+    //         type: 'input',
+    //         label: '输入框1号',
+    //         prop: 'name',
+    //         render: ({ formMode, formItem }) => {
+    //           return h('input', {
+    //             placeholder: '请输入',
+    //             modelValue: formMode[formItem.prop],
+    //             onChange: () => {
+    //             },
+    //           });
+    //         },
+    //       },
+    //       {
+    //         isSlot: true,
+    //         type: 'input',
+    //         label: '自定义',
+    //         prop: 'password',
+    //       },
+    //       {
+    //         type: 'dateTime',
+    //         label: '时间选择器',
+    //         prop: 'dateTime',
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     gutter: 30,
+    //     itemList: [
+    //       {
+    //         type: 'radio',
+    //         label: '晚上吃什么',
+    //         prop: 'radio',
+    //         options: [
+    //           { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
+    //           { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
+    //         ],
+    //       },
+    //       {
+    //         type: 'ElSelect',
+    //         label: '晚上吃什么',
+    //         prop: 'select',
+    //         options: [
+    //           { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
+    //           { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
+    //         ],
+    //       },
+    //       {
+    //         type: 'checkbox',
+    //         label: '晚上吃什么',
+    //         prop: 'checkbox',
+    //         options: [
+    //           { label: '选项1', value: '' },
+    //           { label: '选项2', value: '' },
+    //           { label: '选项3', value: '' },
+    //           { label: '选项4', value: '' },
+    //         ],
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     gutter: 30,
+    //     md: 24,
+    //     lg: 24,
+    //     xl: 24,
+    //     itemList: [
+    //       {
+    //         type: 'input',
+    //         label: '长长的输入框',
+    //         inputType: 'textarea',
+    //         prop: 'textarea',
+    //       },
+    //     ],
+    //   },
+    // ],
   });
 
   // // 自定义规则需要获取组件里面的数据进行校验的话通过 formRef.value.form 获取组件里面的form数据
@@ -120,14 +501,14 @@
 
   const handlerForm = async (val: string) => {
     if (val == 'vertical') {
-      formOption.formIten.map((res) => {
+      formOption.formItem.map((res) => {
         res.md = 24;
         res.lg = 24;
         res.xl = 24;
         return res;
       });
     } else if (val == 'horizontal') {
-      formOption.formIten.map((res) => {
+      formOption.formItem.map((res) => {
         delete res.md;
         delete res.lg;
         delete res.xl;

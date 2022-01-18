@@ -7,9 +7,7 @@
       :label-position="formOption.labelPosition"
       label-width="120px"
     >
-      <h1>{{ formOption }}</h1>
-      <!-- <div class="">标题</div> -->
-      <el-row v-for="(f, fix) in formOption.formIten" :key="fix" :gutter="f.gutter || 30">
+      <el-row v-for="(f, fix) in formOption.formItem" :key="fix" :gutter="f.gutter || 30">
         <el-col
           v-for="(fItem, fItemIx) in f.itemList"
           :key="fItemIx"
@@ -19,59 +17,11 @@
           :lg="f.lg || 8"
           :xl="f.xl || 8"
         >
-          <el-form-item :label="fItem.label" :prop="fItem.prop">
-            <slot
-              v-if="fItem.isSlot"
-              :form-item="fItem"
-              :form-mode="form"
-              :name="fItem.prop"
-            ></slot>
-            <!-- 输入框 -->
-            <el-input
-              v-else-if="fItem.type === 'input'"
-              v-model="form[fItem.prop]"
-              :type="fItem.inputType"
-            ></el-input>
-            <!-- 日期选择器 -->
-            <el-date-picker
-              v-else-if="fItem.type === 'dateTime'"
-              v-model="form[fItem.prop]"
-              type="datetimerange"
-              range-separator="To"
-              start-placeholder="Start date"
-              end-placeholder="End date"
-            >
-            </el-date-picker>
-            <!-- 单选框 -->
-            <el-radio-group v-else-if="fItem.type === 'radio'" v-model="form.resource">
-              <el-radio
-                v-for="(radio, radioIx) in fItem.options"
-                :key="radioIx"
-                :label="radio.label"
-              ></el-radio>
-            </el-radio-group>
-            <!-- 下拉选择框 -->
-            <el-select
-              v-else-if="fItem.type === 'select'"
-              v-model="form[fItem.prop]"
-              :placeholder="fItem.placeholder"
-            >
-              <el-option
-                v-for="(select, selectIx) in fItem.options"
-                :key="selectIx"
-                :label="select.label"
-                :value="select.value"
-              ></el-option>
-            </el-select>
-            <el-checkbox-group v-else-if="fItem.type === 'checkbox'" v-model="form[fItem.prop]">
-              <el-checkbox
-                v-for="(checkbox, checkboxIx) in fItem.options"
-                :key="checkboxIx"
-                :label="checkbox.label"
-                :name="form[fItem.prop]"
-              ></el-checkbox>
-            </el-checkbox-group>
-          </el-form-item>
+          <FormItem :form-item="fItem" :form-model="form" :set-form-model="setFormModel">
+            <template v-for="item in Object.keys($slots)" #[item]="data">
+              <slot :name="item" v-bind="data || {}"></slot>
+            </template>
+          </FormItem>
         </el-col>
       </el-row>
       <el-form-item>
@@ -85,6 +35,7 @@
 <script lang="ts" setup>
   import { onMounted, reactive, PropType, ref } from 'vue';
   import { FormProps, FormItemListProps } from './types/from';
+  import FormItem from './src/components/FormItem.vue';
 
   defineProps({
     formOption: {
@@ -100,19 +51,24 @@
   const emit = defineEmits<{
     (e: 'submitForm', form: FormItemListProps): void;
   }>();
-  const form = reactive<any>({});
+  const form = reactive<any>({ name: '' });
 
   const formRef = ref();
 
   onMounted(() => {});
 
+  function setFormModel(key: string, value: any) {
+    form[key] = value;
+  }
+
   const submitForm = () => {
     formRef.value.validate((value: any) => {
       console.log(value);
     });
-    // console.log(formRef.value.validate());
+    console.log(form);
     emit('submitForm', form);
   };
+
   const resetForm = () => {};
 
   defineExpose({

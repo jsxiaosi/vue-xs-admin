@@ -1,6 +1,8 @@
+import { VNode } from 'vue';
+
 export interface FormProps {
   labelPosition: string;
-  formIten: Array<FormItemProps>;
+  formItem: Array<FormItemProps>;
 }
 
 export interface FormItemProps {
@@ -14,22 +16,29 @@ export interface FormItemProps {
 }
 
 /**
- * @param(type) input：输入框、dataTime：日期选择器、radio：单选框、select：下拉选择框
+ * @param(component) 组件名称，ElInput，ElSelect
  * @param(label) 标签名
  * @param(prop) form表单双向绑定字段
  * @param(isSlot) 是否自定义内容
- * @param(options) 选择项数据
- * @param(inputType) input输入框类型 type为input生效
- * @param(placeholder) 占位符
+ * @param(props) 组件属性
+ * @param(rules) 表单校验
+ * @param(childrenComponent) 子组件属性 类似ElSelect、ElCheckboxGroup、ElRadioGroup等组件
  */
 export interface FormItemListProps {
-  type: string;
+  component: string;
   label: string;
   prop: string;
   isSlot?: boolean;
-  options?: Array<FormSelectOptProps>;
-  inputType?: string;
-  placeholder?: string;
+  props?: object;
+  rules?: object | Array<object>;
+  childrenComponent?: {
+    props?: object;
+    options?: Array<FormSelectOptProps>;
+  };
+  render?: (data: {
+    formModel: Recordable;
+    formItem: FormItemListProps;
+  }) => VNode | VNode[] | string;
 }
 
 export interface FormSelectOptProps {
