@@ -10,6 +10,25 @@
           placeholder="自定义输入框"
         ></el-input>
       </template>
+      <template #dateTime="{ formModel, formItem }">
+        <el-date-picker
+          v-model="formModel[formItem.prop]"
+          type="datetimerange"
+          range-separator="To"
+          start-placeholder="Start date"
+          end-placeholder="End date"
+        ></el-date-picker>
+      </template>
+      <template #cascader="{ formModel, formItem }">
+        <el-cascader
+          v-model="formModel[formItem.prop]"
+          :options="cascaderOptions"
+          type="datetimerange"
+          range-separator="To"
+          start-placeholder="Start date"
+          end-placeholder="End date"
+        />
+      </template>
     </Form>
   </div>
 </template>
@@ -312,28 +331,14 @@
           {
             component: 'ElDatePicker',
             label: '时间选择器',
+            isSlot: true,
             prop: 'dateTime',
-            props: {
-              type: 'datetimerange',
-              rangeSeparator: 'To',
-              startPlaceholder: 'Start date',
-              endPlaceholder: 'End date',
-            },
           },
           {
             component: 'ElCascader',
             label: '多级选择器',
+            isSlot: true,
             prop: 'cascader',
-            props: {
-              options: cascaderOptions,
-              props: {
-                value: 'value',
-                label: 'label',
-              },
-              onVisibleChange: (e: any) => {
-                console.log(e);
-              },
-            },
           },
         ],
       },
@@ -404,106 +409,7 @@
         ],
       },
     ],
-    // formIten: [
-    //   {
-    //     gutter: 30,
-    //     itemList: [
-    //       {
-    //         type: 'input',
-    //         label: '输入框1号',
-    //         prop: 'name',
-    //         render: ({ formMode, formItem }) => {
-    //           return h('input', {
-    //             placeholder: '请输入',
-    //             modelValue: formMode[formItem.prop],
-    //             onChange: () => {
-    //             },
-    //           });
-    //         },
-    //       },
-    //       {
-    //         isSlot: true,
-    //         type: 'input',
-    //         label: '自定义',
-    //         prop: 'password',
-    //       },
-    //       {
-    //         type: 'dateTime',
-    //         label: '时间选择器',
-    //         prop: 'dateTime',
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     gutter: 30,
-    //     itemList: [
-    //       {
-    //         type: 'radio',
-    //         label: '晚上吃什么',
-    //         prop: 'radio',
-    //         options: [
-    //           { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
-    //           { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
-    //         ],
-    //       },
-    //       {
-    //         type: 'ElSelect',
-    //         label: '晚上吃什么',
-    //         prop: 'select',
-    //         options: [
-    //           { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
-    //           { label: '饿着吧！饿死算了', value: '饿着吧！饿死算了' },
-    //         ],
-    //       },
-    //       {
-    //         type: 'checkbox',
-    //         label: '晚上吃什么',
-    //         prop: 'checkbox',
-    //         options: [
-    //           { label: '选项1', value: '' },
-    //           { label: '选项2', value: '' },
-    //           { label: '选项3', value: '' },
-    //           { label: '选项4', value: '' },
-    //         ],
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     gutter: 30,
-    //     md: 24,
-    //     lg: 24,
-    //     xl: 24,
-    //     itemList: [
-    //       {
-    //         type: 'input',
-    //         label: '长长的输入框',
-    //         inputType: 'textarea',
-    //         prop: 'textarea',
-    //       },
-    //     ],
-    //   },
-    // ],
   });
-
-  // // 自定义规则需要获取组件里面的数据进行校验的话通过 formRef.value.form 获取组件里面的form数据
-  // const validatePass = (rule: any, value: any, callback: any) => {
-  //   callback(new Error('自定义校验规则'));
-  // };
-  // const validatePass2 = (rule: any, value: any, callback: any) => {
-  //   if (!value) {
-  //     callback(new Error('Please input the password'));
-  //   } else {
-  //     callback();
-  //   }
-  // };
-
-  // const rules = reactive({
-  //   name: [
-  //     { required: true, message: '只有表单里面的组件才能使用默认规则', trigger: 'blur' },
-  //     { validator: validatePass, trigger: 'blur' },
-  //   ],
-  //   textarea: [{ validator: validatePass2, trigger: 'blur' }],
-  // });
 
   const handlerForm = async (val: string) => {
     if (val == 'vertical') {
