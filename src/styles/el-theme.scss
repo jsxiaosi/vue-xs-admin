@@ -8,6 +8,8 @@
   --el-text-color-placeholder: #{$text-color-placeholder};
   --el-input-bg-color: #{$main-bg-color};
   --el-disabled-bg-color: #{$main-bg-color};
+  --el-fill-base: #{$main-bg-color};
+  --el-bg-color: #{$sub-main-bg-content};
   // --el-disabled-border-color: #{$text-color-placeholder};
 }
 
@@ -31,6 +33,10 @@
   --el-scrollbar-bg-color: #{$main-bg-color};
 }
 
+.el-range-input {
+  background-color: #{$main-bg-color};
+}
+
 // 时间选择器
 .el-date-range-picker {
   --el-datepicker-inner-border-color: #{$text-color-placeholder};
@@ -48,10 +54,14 @@
 .el-select__popper.el-popper {
   background-color: #{$main-bg-color};
 }
-.el-select-dropdown__item.hover,
-.el-select-dropdown__item:hover {
-  background-color: #{$sub-main-bg-content};
+
+.el-dropdown-menu {
+  background-color: #{$main-bg-color};
 }
+// .el-select-dropdown__item.hover,
+// .el-select-dropdown__item:hover {
+//   background-color: #{$sub-main-bg-content};
+// }
 .el-popper.is-light .el-popper__arrow::before {
   background-color: #{$main-bg-color};
 }
