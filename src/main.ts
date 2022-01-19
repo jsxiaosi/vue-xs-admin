@@ -8,10 +8,11 @@ import App from './App.vue';
 // Register icon sprite
 // import 'virtual:svg-icons-register'
 
-import { configMainElementPlus, configMainGlobalProperties, getServerConfig } from './utils';
+import { configMainGlobalProperties, getServerConfig } from './utils';
 import { configMainStore } from './store';
 import { configMainI18n } from './locales';
 import { configMainRouter } from './router';
+import { useElementPlus } from './utils/plugin/element';
 
 const app = createApp(App);
 
@@ -29,7 +30,7 @@ getServerConfig().then((_config) => {
   configMainI18n(app);
 
   // ElementPlus
-  configMainElementPlus(app);
+  useElementPlus(app);
 
   app.mount('#app');
 });
