@@ -23,6 +23,14 @@ import {
   ElForm,
   ElFormItem,
   ElAlert,
+  ElDatePicker,
+  ElCascader,
+  ElSelect,
+  ElOption,
+  ElCheckboxGroup,
+  ElCheckbox,
+  ElRadioGroup,
+  ElRadio,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -55,6 +63,14 @@ const components = [
   ElForm,
   ElFormItem,
   ElAlert,
+  ElDatePicker,
+  ElCascader,
+  ElSelect,
+  ElOption,
+  ElCheckboxGroup,
+  ElCheckbox,
+  ElRadioGroup,
+  ElRadio,
 ];
 
 // https://element-plus.org/zh-CN/component/icon.html

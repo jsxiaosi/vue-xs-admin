@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { isFunction } from '@/utils/is';
-  import { defineComponent, PropType, Slots } from 'vue';
-  import { componentMap, elComponentItem } from '../../componentMap';
+  import { defineComponent, PropType, resolveComponent, Slots } from 'vue';
+  import { elComponentItem } from '../../componentMap';
   import { FormItemListProps } from '../../types/from';
   export default defineComponent({
     props: {
@@ -23,7 +23,8 @@
       };
 
       function renderComponent() {
-        const Comp = componentMap.get(formItem.component) as ReturnType<typeof defineComponent>;
+        // const Comp = componentMap.get(formItem.component) as ReturnType<typeof defineComponent>;
+        const Comp = resolveComponent(formItem.component) as ReturnType<typeof defineComponent>;
         return (
           <Comp v-model={formModel[formItem.prop]} {...formItem.props}>
             {childrenComponent()}
@@ -35,7 +36,9 @@
         if (formItem.childrenComponent) {
           const { options } = formItem.childrenComponent;
           const compName = elComponentItem[formItem.component];
-          const Comp = componentMap.get(compName) as ReturnType<typeof defineComponent>;
+          // const Comp = componentMap.get(compName) as ReturnType<typeof defineComponent>;
+          const Comp = resolveComponent(compName) as ReturnType<typeof defineComponent>;
+
           return (
             <>
               {options?.map((res) => (

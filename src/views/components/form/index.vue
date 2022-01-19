@@ -23,7 +23,6 @@
     textarea: number;
   }>({ textarea: 0 });
 
-  console.log(h);
   const cascaderOptions = [
     {
       value: 'guide',
@@ -327,6 +326,10 @@
             prop: 'cascader',
             props: {
               options: cascaderOptions,
+              props: {
+                value: 'value',
+                label: 'label',
+              },
               onVisibleChange: (e: any) => {
                 console.log(e);
               },
@@ -388,10 +391,13 @@
             component: '',
             label: 'render组件',
             prop: 'renderInput',
-            render: () => {
+            render: ({ formModel, formItem }) => {
               return h('input', {
                 placeholder: '请输入',
-                onChange: () => {},
+                value: formModel[formItem.prop],
+                onChange: (e: any) => {
+                  formModel[formItem.prop] = e.target.value;
+                },
               });
             },
           },
