@@ -108,7 +108,7 @@
 
   function run() {
     currentOption = currentOption === mapOption ? barOption : mapOption;
-    setOptions(currentOption, true);
+    setOptions(currentOption, false);
   }
 </script>
 
