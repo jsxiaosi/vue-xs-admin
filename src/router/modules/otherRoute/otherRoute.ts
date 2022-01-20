@@ -50,6 +50,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         component: () => import('@/views/components/form/index.vue'),
         meta: { title: t('route.pathName.form') },
       },
+      {
+        path: 'seamless-scroll',
+        name: 'RtSeamlessScroll',
+        component: () => import('@/views/components/seamless-scroll/index.vue'),
+        meta: { title: t('route.pathName.seamlessScroll') },
+      },
     ],
   },
   {

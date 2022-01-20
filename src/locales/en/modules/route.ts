@@ -5,6 +5,7 @@ const route = {
     dragCpts: 'DragComponents',
     countTo: 'DigitalAnimation',
     form: 'Form',
+    seamlessScroll: 'SeamlessScroll',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
