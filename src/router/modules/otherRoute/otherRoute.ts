@@ -59,6 +59,28 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     ],
   },
   {
+    path: '/echarts',
+    component: Layout,
+    redirect: '/echarts/bar/',
+    name: 'echarts',
+    alwaysShow: true,
+    meta: { title: t('route.pathName.echarts'), icon: 'echarts' },
+    children: [
+      {
+        path: 'bar',
+        name: 'RtBar',
+        component: () => import('@/views/echarts/bar/index.vue'),
+        meta: { title: t('route.pathName.echarts_bar') },
+      },
+      {
+        path: 'line',
+        name: 'RtLine',
+        component: () => import('@/views/echarts/line/index.vue'),
+        meta: { title: t('route.pathName.echarts_line') },
+      },
+    ],
+  },
+  {
     path: '/useradmin',
     component: Layout,
     redirect: '/useradmin/userlist/',

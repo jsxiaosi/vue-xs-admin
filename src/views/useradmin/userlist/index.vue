@@ -2,7 +2,6 @@
   <div class="page-container">
     <span>听说这个是用户列表</span>
     <TsComponents />
-    <TsComponents2></TsComponents2>
     <!-- <el-icon><iEL-baseball /></el-icon>
 		<SvgIcon name="daosanjiao"></SvgIcon>
 		{{ t('login.title') }}
@@ -17,7 +16,6 @@
 
 <script setup lang="ts">
   import TsComponents from '@/components/tscomponents';
-  import TsComponents2 from '@/components/tscomponents2.vue';
 
   // import SvgIcon from '@/components/SvgIcon/index.vue'
   // import { getCurrentInstance } from 'vue'

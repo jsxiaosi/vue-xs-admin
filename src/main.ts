@@ -7,7 +7,6 @@ import App from './App.vue';
 // import 'virtual:windi-utilities.css'
 // Register icon sprite
 // import 'virtual:svg-icons-register'
-
 import { configMainGlobalProperties, getServerConfig } from './utils';
 import { configMainStore } from './store';
 import { configMainI18n } from './locales';

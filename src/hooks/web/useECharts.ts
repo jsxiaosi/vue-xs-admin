@@ -4,6 +4,8 @@ import { useDebounceFn, tryOnUnmounted } from '@vueuse/core';
 import echarts from '@/utils/plugin/echarts';
 import { useEventListener } from '@/hooks/event/useEventListener';
 
+export type createEChartsOption = EChartsOption;
+
 export function useECharts(elRef: Ref<HTMLDivElement>) {
   let chartInstance: echarts.ECharts | null = null;
   const cacheOptions = ref({}) as Ref<EChartsOption>;

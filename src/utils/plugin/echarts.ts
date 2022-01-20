@@ -6,7 +6,7 @@ import {
   ToolboxComponent,
   LegendComponent,
 } from 'echarts/components';
-import { LineChart } from 'echarts/charts';
+import { LineChart, BarChart } from 'echarts/charts';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
@@ -19,6 +19,7 @@ echarts.use([
   LegendComponent,
   CanvasRenderer,
   UniversalTransition,
+  BarChart,
 ]);
 
 export default echarts;

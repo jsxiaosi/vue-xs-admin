@@ -100,7 +100,6 @@
     if (isExternal(props.basePath)) {
       return props.basePath;
     }
-    console.log(`${props.basePath}     ${routePath}`);
     return `${props.basePath}${routePath ? '/' + routePath : routePath}`;
   };
 </script>
