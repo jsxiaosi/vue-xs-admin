@@ -23,12 +23,12 @@
       };
 
       function renderComponent() {
-        // const Comp = componentMap.get(formItem.component) as ReturnType<typeof defineComponent>;
         const Comp = resolveComponent(formItem.component) as ReturnType<typeof defineComponent>;
-        if (elComponentItem[formItem.component]) {
+        const childerCompName = elComponentItem[formItem.component];
+        if (childerCompName) {
           return (
             <Comp v-model={formModel[formItem.prop]} {...formItem.props}>
-              {childrenComponent()}
+              {childrenComponent(childerCompName)}
             </Comp>
           );
         } else {
@@ -36,13 +36,10 @@
         }
       }
 
-      function childrenComponent() {
+      function childrenComponent(compName: string) {
         if (formItem.childrenComponent) {
           const { options } = formItem.childrenComponent;
-          const compName = elComponentItem[formItem.component];
-          // const Comp = componentMap.get(compName) as ReturnType<typeof defineComponent>;
           const Comp = resolveComponent(compName) as ReturnType<typeof defineComponent>;
-
           return (
             <>
               {options?.map((res) => (
