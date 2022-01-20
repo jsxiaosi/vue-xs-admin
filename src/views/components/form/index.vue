@@ -10,25 +10,6 @@
           placeholder="自定义输入框"
         ></el-input>
       </template>
-      <template #dateTime="{ formModel, formItem }">
-        <el-date-picker
-          v-model="formModel[formItem.prop]"
-          type="datetimerange"
-          range-separator="To"
-          start-placeholder="Start date"
-          end-placeholder="End date"
-        ></el-date-picker>
-      </template>
-      <template #cascader="{ formModel, formItem }">
-        <el-cascader
-          v-model="formModel[formItem.prop]"
-          :options="cascaderOptions"
-          type="datetimerange"
-          range-separator="To"
-          start-placeholder="Start date"
-          end-placeholder="End date"
-        />
-      </template>
     </Form>
   </div>
 </template>
@@ -331,13 +312,23 @@
           {
             component: 'ElDatePicker',
             label: '时间选择器',
-            isSlot: true,
             prop: 'dateTime',
+            props: {
+              type: 'datetimerange',
+              rangeSeparator: 'To',
+              startPlaceholder: 'Start date',
+              endPlaceholder: 'End date',
+            },
           },
           {
             component: 'ElCascader',
             label: '多级选择器',
-            isSlot: true,
+            props: {
+              options: cascaderOptions,
+              onVisibleChange: (e: any) => {
+                console.log(e);
+              },
+            },
             prop: 'cascader',
           },
         ],
@@ -389,7 +380,6 @@
             component: 'ElInput',
             label: 'slot组件',
             prop: 'slotInput',
-            isSlot: true,
             rules: [{ required: true, type: 'string' }],
           },
           {

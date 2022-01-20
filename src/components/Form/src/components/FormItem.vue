@@ -25,11 +25,15 @@
       function renderComponent() {
         // const Comp = componentMap.get(formItem.component) as ReturnType<typeof defineComponent>;
         const Comp = resolveComponent(formItem.component) as ReturnType<typeof defineComponent>;
-        return (
-          <Comp v-model={formModel[formItem.prop]} {...formItem.props}>
-            {childrenComponent()}
-          </Comp>
-        );
+        if (elComponentItem[formItem.component]) {
+          return (
+            <Comp v-model={formModel[formItem.prop]} {...formItem.props}>
+              {childrenComponent()}
+            </Comp>
+          );
+        } else {
+          return <Comp v-model={formModel[formItem.prop]} {...formItem.props} />;
+        }
       }
 
       function childrenComponent() {
@@ -47,7 +51,7 @@
             </>
           );
         } else {
-          return null;
+          return;
         }
       }
 
@@ -66,11 +70,11 @@
 
       return () => {
         const { formItem } = props;
-        const { prop, render, rules, label, isSlot } = formItem;
+        const { prop, render, rules, label } = formItem;
         const values = { formModel: formModel, formItem: formItem };
         const solfn = getSlot(slots, prop, values);
         const getContent = () => {
-          return isSlot ? solfn : render ? render(values) : renderComponent();
+          return solfn ? solfn : render ? render(values) : renderComponent();
         };
         return (
           <el-form-item label={label} prop={prop} rules={rules}>
