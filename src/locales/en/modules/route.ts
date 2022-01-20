@@ -8,7 +8,7 @@ const route = {
     seamlessScroll: 'SeamlessScroll',
     echarts: 'Echarts',
     echarts_bar: 'Bar',
-    echarts_line: 'Line',
+    echarts_map: 'Map',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',

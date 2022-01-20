@@ -8,7 +8,7 @@ const route = {
     seamlessScroll: '无限滚动',
     echarts: '图表',
     echarts_bar: '柱状图',
-    echarts_line: '折线图',
+    echarts_map: '地图',
     userInfo: '用户管理',
     userList: '用户列表',
     userDateil: '用户详情',

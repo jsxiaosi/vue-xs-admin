@@ -5,8 +5,10 @@ import {
   TitleComponent,
   ToolboxComponent,
   LegendComponent,
+  VisualMapComponent,
+  GeoComponent,
 } from 'echarts/components';
-import { LineChart, BarChart } from 'echarts/charts';
+import { LineChart, BarChart, MapChart } from 'echarts/charts';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
@@ -20,6 +22,9 @@ echarts.use([
   CanvasRenderer,
   UniversalTransition,
   BarChart,
+  VisualMapComponent,
+  GeoComponent,
+  MapChart,
 ]);
 
 export default echarts;
