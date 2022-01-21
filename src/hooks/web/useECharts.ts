@@ -43,8 +43,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>) {
 
       // 清空当前实例，会移除实例中所有的组件和图表
       clear && chartInstance?.clear();
-
-      chartInstance?.setOption(unref(cacheOptions));
+      chartInstance?.setOption(unref(cacheOptions), true);
     });
   }
 

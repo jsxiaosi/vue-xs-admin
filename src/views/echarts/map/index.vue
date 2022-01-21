@@ -56,7 +56,7 @@
     ],
   };
 
-  mapData.sort(function (a, b) {
+  mapData.sort(function (a: Recordable, b: Recordable) {
     return a.value - b.value;
   });
 
