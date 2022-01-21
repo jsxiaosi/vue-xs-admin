@@ -81,6 +81,22 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     ],
   },
   {
+    path: '/editor',
+    component: Layout,
+    redirect: '/editor/logic-flow/',
+    name: 'editor',
+    alwaysShow: true,
+    meta: { title: t('route.pathName.editor'), icon: 'editor' },
+    children: [
+      {
+        path: 'logic-flow',
+        name: 'RtLogicFlow',
+        component: () => import('@/views/editor/logicFlow/index.vue'),
+        meta: { title: t('route.pathName.editor_logicFlow') },
+      },
+    ],
+  },
+  {
     path: '/useradmin',
     component: Layout,
     redirect: '/useradmin/userlist/',
@@ -93,32 +109,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         name: 'userlist',
         component: () => import('@/views/useradmin/userlist/index.vue'),
         meta: { title: t('route.pathName.userList') },
-      },
-    ],
-  },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/guide',
-    name: '',
-    alwaysShow: false,
-    meta: { title: '', icon: 'guide' },
-    children: [
-      {
-        path: 'guide',
-        name: 'RtGuide',
-        component: () => import('@/views/guide/index.vue'),
-        meta: { title: t('route.pathName.guide') },
-      },
-    ],
-  },
-  {
-    path: '/external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template',
-        meta: { title: t('route.pathName.thirdParty'), icon: 'iEL-operation' },
       },
     ],
   },
@@ -179,6 +169,32 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         component: () => import('@/views/nested/menu2/index.vue'),
         name: 'Menu2',
         meta: { title: t('route.pathName.nested2') },
+      },
+    ],
+  },
+  {
+    path: '',
+    component: Layout,
+    redirect: '/guide',
+    name: '',
+    alwaysShow: false,
+    meta: { title: '', icon: 'guide' },
+    children: [
+      {
+        path: 'guide',
+        name: 'RtGuide',
+        component: () => import('@/views/guide/index.vue'),
+        meta: { title: t('route.pathName.guide') },
+      },
+    ],
+  },
+  {
+    path: '/external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template',
+        meta: { title: t('route.pathName.thirdParty'), icon: 'iEL-operation' },
       },
     ],
   },

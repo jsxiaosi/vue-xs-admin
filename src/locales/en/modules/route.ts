@@ -9,6 +9,8 @@ const route = {
     echarts: 'Echarts',
     echarts_bar: 'Bar',
     echarts_map: 'Map',
+    editor: 'Editor',
+    editor_logicFlow: 'LogicFlow',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
