@@ -95,6 +95,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         meta: { title: t('route.pathName.editor_richText') },
       },
       {
+        path: 'markdown',
+        name: 'RtMarkdown',
+        component: () => import('@/views/editor/markdown/index.vue'),
+        meta: { title: t('route.pathName.editor_markdown') },
+      },
+      {
         path: 'logic-flow',
         name: 'RtLogicFlow',
         component: () => import('@/views/editor/logicFlow/index.vue'),

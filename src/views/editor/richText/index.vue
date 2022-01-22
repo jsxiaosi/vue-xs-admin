@@ -9,7 +9,9 @@
   import wangeDitor from 'wangeditor';
   import i18next from 'i18next';
   import { useI18n } from '@/hooks/web/useI18n';
+  import ment from '@/styles/mycolor.module.scss';
 
+  console.log(ment.mainBgColor);
   const editorELRef = ref<HTMLElement>({} as HTMLElement);
   const editor = ref<wangeDitor>({} as wangeDitor);
   const html = ref<string>('');
@@ -17,9 +19,10 @@
 
   function init() {
     editor.value = new wangeDitor(unref(editorELRef));
+    console.log(editor.value.config);
     editor.value.config.lang = locale.value === 'zh-ch' ? 'zh-ch' : 'en';
-    editor.value.i18next = i18next;
     editor.value.config.height = 500;
+    editor.value.i18next = i18next;
     Object.assign(editor.value.config, {
       onchange() {
         html.value = editor.value.txt.html() as string;

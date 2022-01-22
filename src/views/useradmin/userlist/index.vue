@@ -16,6 +16,8 @@
 
 <script setup lang="ts">
   import TsComponents from '@/components/tscomponents';
+  import packagepath from '../../../../package.json';
+  console.log(packagepath);
 
   // import SvgIcon from '@/components/SvgIcon/index.vue'
   // import { getCurrentInstance } from 'vue'

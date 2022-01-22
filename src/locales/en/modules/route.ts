@@ -12,6 +12,7 @@ const route = {
     editor: 'Editor',
     editor_logicFlow: 'LogicFlow',
     editor_richText: 'RichText Editor',
+    editor_markdown: 'Markdown',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
