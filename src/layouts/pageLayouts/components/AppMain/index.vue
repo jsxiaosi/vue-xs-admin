@@ -23,7 +23,7 @@
   // })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .app-main {
     position: relative;
     width: 100%;
