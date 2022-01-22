@@ -21,7 +21,13 @@ import ElementPlus from 'unplugin-element-plus/vite';
 // import { configEsLinterPlugin } from './eslinter'
 
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
-  const vitePlugins: (Plugin | Plugin[])[] = [vue()];
+  const vitePlugins: (Plugin | Plugin[])[] = [
+    vue({
+      script: {
+        refSugar: true,
+      },
+    }),
+  ];
 
   vitePlugins.push(vueJsx());
 
