@@ -118,9 +118,7 @@
     height: 100%;
   }
   .page-container {
-    padding: 20px;
     width: 100%;
     height: 100%;
-    background-color: #{$main-bg-color};
   }
 </style>

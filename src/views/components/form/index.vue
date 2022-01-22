@@ -425,10 +425,3 @@
     // console.log(form.value);
   };
 </script>
-
-<style scoped lang="scss">
-  .page-container {
-    padding: 20px;
-    background-color: #{$main-bg-color};
-  }
-</style>

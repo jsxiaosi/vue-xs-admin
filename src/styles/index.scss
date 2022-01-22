@@ -75,6 +75,8 @@ div:focus {
   width: 100%;
   min-height: 100%;
   border-radius: 10px;
+  background-color: #{$main-bg-color};
+  padding: 20px;
 }
 
 ul {

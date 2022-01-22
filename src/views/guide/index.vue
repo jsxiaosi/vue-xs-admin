@@ -13,9 +13,4 @@
   };
 </script>
 
-<style scoped lang="scss">
-  .page-container {
-    padding: 20px;
-    background-color: #{$main-bg-color};
-  }
-</style>
+<style scoped lang="scss"></style>

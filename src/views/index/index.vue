@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div>
     <el-row :gutter="30" class="enter-y">
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="box-card">
@@ -148,80 +148,78 @@
 </script>
 
 <style lang="scss" scoped>
-  .page-container {
-    .el-col {
-      margin-bottom: 30px;
+  .el-col {
+    margin-bottom: 30px;
+  }
+  .box-card {
+    // width: 480px;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // color: #{$text-color-primary};
     }
-    .box-card {
-      // width: 480px;
-      .card-header {
+
+    .infinite {
+      border: 1px solid #{$text-color-placeholder};
+      .top {
+        // width: 95%;
+        height: 40px;
+        line-height: 40px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        // color: #{$text-color-primary};
-      }
-
-      .infinite {
-        border: 1px solid #{$text-color-placeholder};
-        .top {
-          // width: 95%;
-          height: 40px;
-          line-height: 40px;
-          display: flex;
-          margin: 0 auto;
-          font-size: 14px;
-          // color: #909399;
-          font-weight: 400;
-          background: #{$sub-main-bg-content};
-          border-bottom: 1px solid #{$text-color-placeholder};
-
-          li {
-            width: 34%;
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
-
-        .warp {
-          width: 95%;
-          height: 215px;
-          margin: 0 auto;
-          overflow: hidden;
-
-          ul {
-            margin: 0;
-            li {
-              height: 30px;
-              line-height: 30px;
-              display: flex;
-              font-size: 15px;
-            }
-          }
-
-          span {
-            width: 34%;
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
-      }
-
-      .text {
+        margin: 0 auto;
         font-size: 14px;
+        // color: #909399;
+        font-weight: 400;
+        background: #{$sub-main-bg-content};
+        border-bottom: 1px solid #{$text-color-placeholder};
+
+        li {
+          width: 34%;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
 
-      .item {
-        margin-bottom: 18px;
+      .warp {
+        width: 95%;
+        height: 215px;
+        margin: 0 auto;
+        overflow: hidden;
+
+        ul {
+          margin: 0;
+          li {
+            height: 30px;
+            line-height: 30px;
+            display: flex;
+            font-size: 15px;
+          }
+        }
+
+        span {
+          width: 34%;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
 
-    .line {
-      width: 100%;
-      height: 100%;
+    .text {
+      font-size: 14px;
     }
+
+    .item {
+      margin-bottom: 18px;
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 100%;
   }
 </style>

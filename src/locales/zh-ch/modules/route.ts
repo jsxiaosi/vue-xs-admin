@@ -11,6 +11,7 @@ const route = {
     echarts_map: '地图',
     editor: '编辑器',
     editor_logicFlow: '流程图',
+    editor_richText: '富文本编辑器',
     userInfo: '用户管理',
     userList: '用户列表',
     userDateil: '用户详情',

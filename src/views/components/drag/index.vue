@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div>
     <el-row :gutter="30" class="enter-y">
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="box-card">
@@ -75,41 +75,36 @@
 </script>
 
 <style scoped lang="scss">
-  .page-container {
-    // width: 100%;
-    // height: 100%;
-    // background-color: #{$main-bg-color};
-    .card-content {
-      height: 300px;
-      overflow: auto;
-    }
-    .list {
+  .card-content {
+    height: 300px;
+    overflow: auto;
+  }
+  .list {
+    width: 100%;
+    .list-item {
       width: 100%;
-      .list-item {
-        width: 100%;
-        padding: 20px;
-        // line-height: 50px;
-        border: 1px solid #{$text-color-placeholder};
-        .handle {
-          margin-right: 20px;
-          cursor: move;
-        }
-      }
-      .sortable-chosen {
-        border: 1px solid red;
+      padding: 20px;
+      // line-height: 50px;
+      border: 1px solid #{$text-color-placeholder};
+      .handle {
+        margin-right: 20px;
+        cursor: move;
       }
     }
-    .listgrid {
-      display: grid;
-      grid-template-columns: 33.3% 33.3% 33.3%;
-      grid-template-rows: 100px 100px 100px;
-      .list-item {
-        cursor: move;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #{$text-color-placeholder};
-      }
+    .sortable-chosen {
+      border: 1px solid red;
+    }
+  }
+  .listgrid {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 100px 100px 100px;
+    .list-item {
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #{$text-color-placeholder};
     }
   }
 </style>

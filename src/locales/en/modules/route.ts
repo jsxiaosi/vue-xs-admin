@@ -11,6 +11,7 @@ const route = {
     echarts_map: 'Map',
     editor: 'Editor',
     editor_logicFlow: 'LogicFlow',
+    editor_richText: 'RichText Editor',
     userInfo: 'UserInfo',
     userList: 'UserList',
     userDateil: 'UserDateil',
