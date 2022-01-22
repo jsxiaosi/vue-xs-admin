@@ -36,7 +36,7 @@
   });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .innerHTML {
     margin-top: 20px;
     min-height: 50px;

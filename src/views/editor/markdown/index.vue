@@ -13,7 +13,7 @@
   const html = computed(() => marked.parse(inputText.value));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .page-container {
     height: 100%;
     display: flex;
