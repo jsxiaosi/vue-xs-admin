@@ -21,10 +21,11 @@
     .input {
       width: 49%;
       height: 100%;
-      .el-textarea__inner {
+      :deep(.el-textarea__inner) {
         height: 100% !important;
       }
     }
+
     .marked {
       width: 49%;
       height: 100%;
