@@ -3,7 +3,7 @@
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenyu"
-        :unique-opened="false"
+        :unique-opened="true"
         :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
         :mode="mode"
       >
