@@ -74,8 +74,5 @@
     .el-tag--dark {
       margin-right: 10px !important;
     }
-    .margin-top :deep(.el-descriptions__body) {
-      background-color: #{$main-bg-color};
-    }
   }
 </style>

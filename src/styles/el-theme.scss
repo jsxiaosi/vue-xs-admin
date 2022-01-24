@@ -73,6 +73,9 @@
 
 .el-descriptions {
   --el-descriptions-item-bordered-label-background: #{$sub-main-bg-content};
+  :deep(.el-descriptions__body) {
+    background-color: #{$main-bg-color};
+  }
 }
 
 // 左侧导航栏(此地方颜色全部改成自定义)
