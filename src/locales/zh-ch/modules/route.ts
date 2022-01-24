@@ -26,6 +26,7 @@ const route = {
     nested1_2_2: '路由1-2-2',
     nested1_3: '路由1-3',
     nested2: '路由2',
+    about: '关于',
   },
   log: {
     importError: '文件没有默认导出',

@@ -26,6 +26,7 @@ const route = {
     nested1_2_2: 'Route1-2-2',
     nested1_3: 'Route1-3',
     nested2: 'Route2',
+    about: 'About',
   },
   log: {
     importError: 'The file has no default export',

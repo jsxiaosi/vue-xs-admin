@@ -206,7 +206,23 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     children: [
       {
         path: 'https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template',
-        meta: { title: t('route.pathName.thirdParty'), icon: 'iEL-operation' },
+        meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
+      },
+    ],
+  },
+  {
+    path: '',
+    component: Layout,
+    redirect: '/about',
+    name: '',
+    alwaysShow: false,
+    meta: { title: '', icon: 'about' },
+    children: [
+      {
+        path: 'about',
+        name: 'RtAbout',
+        component: () => import('@/views/about/index.vue'),
+        meta: { title: t('route.pathName.about') },
       },
     ],
   },
