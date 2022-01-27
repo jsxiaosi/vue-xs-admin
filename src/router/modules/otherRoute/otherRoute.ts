@@ -27,11 +27,23 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/components',
     component: Layout,
-    redirect: '/components/drag',
+    redirect: '/components/form',
     name: 'components',
     alwaysShow: true,
     meta: { title: t('route.pathName.components'), icon: 'components' },
     children: [
+      {
+        path: 'form',
+        name: 'RtForm',
+        component: () => import('@/views/components/form/index.vue'),
+        meta: { title: t('route.pathName.form') },
+      },
+      {
+        path: 'table',
+        name: 'RtTable',
+        component: () => import('@/views/components/table/index.vue'),
+        meta: { title: t('route.pathName.table') },
+      },
       {
         path: 'drag',
         name: 'RtDrag',
@@ -43,12 +55,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         name: 'RtCountTo',
         component: () => import('@/views/components/count-to/index.vue'),
         meta: { title: t('route.pathName.countTo') },
-      },
-      {
-        path: 'form',
-        name: 'RtForm',
-        component: () => import('@/views/components/form/index.vue'),
-        meta: { title: t('route.pathName.form') },
       },
       {
         path: 'seamless-scroll',

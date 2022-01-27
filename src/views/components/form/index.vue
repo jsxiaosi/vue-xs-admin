@@ -1,7 +1,9 @@
 <template>
   <div class="page-container">
-    <el-button @click="handlerForm('vertical')">垂直</el-button>
-    <el-button @click="handlerForm('horizontal')">水平</el-button>
+    <div class="config">
+      <el-button @click="handlerForm('vertical')">垂直</el-button>
+      <el-button @click="handlerForm('horizontal')">水平</el-button>
+    </div>
     <Form ref="formRef" :form-option="formOption" @submit-form="submitForm">
       <template #slotInput="{ formModel, formItem }">
         <el-input
@@ -425,3 +427,9 @@
     // console.log(form.value);
   };
 </script>
+
+<style lang="scss" scoped>
+  .config {
+    margin-bottom: 20px;
+  }
+</style>

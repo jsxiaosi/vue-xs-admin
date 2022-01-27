@@ -31,6 +31,8 @@ import {
   ElCheckbox,
   ElRadioGroup,
   ElRadio,
+  ElTable,
+  ElTableColumn,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -71,6 +73,8 @@ const components = [
   ElCheckbox,
   ElRadioGroup,
   ElRadio,
+  ElTable,
+  ElTableColumn,
 ];
 
 // https://element-plus.org/zh-CN/component/icon.html

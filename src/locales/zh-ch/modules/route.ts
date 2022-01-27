@@ -6,6 +6,7 @@ const route = {
     countTo: '数字动画',
     form: '表单',
     seamlessScroll: '无限滚动',
+    table: '表格',
     echarts: '图表',
     echarts_bar: '柱状图',
     echarts_map: '地图',
