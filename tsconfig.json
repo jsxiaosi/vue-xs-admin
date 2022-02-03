@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "types": ["vite/client", "node", "element-plus/global"],
+    "types": ["vite/client", "element-plus/global"],
     "typeRoots": ["./node_modules", "./types"],
     "lib": ["esnext", "dom"],
     "paths": {
