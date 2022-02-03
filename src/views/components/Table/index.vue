@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <Table border :list="tabList" :option="option">
+    <Table :attribute="attribute" :option="option">
       <template #name_header="slotData">
         <span>{{ `插槽：${slotData.customItem.label}` }}</span>
       </template>
@@ -36,7 +36,6 @@
     },
   ];
 
-  console.log(option);
   const tabList = [
     {
       date: '2016-05-03',
@@ -59,5 +58,10 @@
       address: 'No. 189, Grove St, Los Angeles',
     },
   ];
+
+  const attribute = {
+    data: tabList,
+    border: true,
+  };
 </script>
 <style lang="scss" scoped></style>
