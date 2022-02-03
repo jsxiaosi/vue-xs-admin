@@ -1,6 +1,6 @@
 <script lang="tsx">
-  import { isFunction } from '@/utils/is';
-  import { defineComponent, PropType, resolveComponent, Slots } from 'vue';
+  import { getSlot } from '@/utils/slotsHelper';
+  import { defineComponent, PropType, resolveComponent } from 'vue';
   import { elComponentItem } from '../../componentMap';
   import { FormItemListProps } from '../../types/from';
   export default defineComponent({
@@ -50,19 +50,6 @@
         } else {
           return;
         }
-      }
-
-      function getSlot(slots: Slots, slot = 'default', data?: any) {
-        if (!slots || !Reflect.has(slots, slot)) {
-          return null;
-        }
-        if (!isFunction(slots[slot])) {
-          console.error(`${slot} is not a function!`);
-          return null;
-        }
-        const slotFn = slots[slot];
-        if (!slotFn) return null;
-        return slotFn(data);
       }
 
       return () => {
