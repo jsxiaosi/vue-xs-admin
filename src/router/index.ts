@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
 import { AppRouteRecordRaw } from '#/route';
 import routeModuleList from './modules';
+import { handleAliveRoute } from './utils';
 
 const routes: Array<AppRouteRecordRaw> = [
   ...routeModuleList, // 管理端
@@ -28,6 +29,15 @@ export const configMainRouter = (app: App<Element>) => {
 };
 
 route.beforeEach((to, _from, next) => {
+  if (to.meta?.keepAlive) {
+    const newMatched = to.matched;
+    handleAliveRoute(newMatched, 'add');
+    // 页面整体刷新和点击标签页刷新
+    if (_from.name === undefined || _from.name === 'redirect') {
+      handleAliveRoute(newMatched);
+    }
+  }
+
   const userInfo = localStorage.getItem('userInfo');
   if (userInfo) {
     if (to.path === '/login') next(_from.path);

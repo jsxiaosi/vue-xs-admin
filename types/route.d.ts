@@ -10,6 +10,7 @@ export interface Menu {
   title: string;
   icon?: string;
   breadcrumb?: boolean;
+  keepAlive?: boolean;
 }
 
 // @ts-ignore

@@ -3,7 +3,9 @@
     <router-view>
       <template #default="{ Component }">
         <transition name="fade-transform" mode="out-in">
-          <component :is="Component"></component>
+          <keep-alive :include="getInclude">
+            <component :is="Component"></component>
+          </keep-alive>
         </transition>
       </template>
     </router-view>
@@ -11,16 +13,9 @@
 </template>
 
 <script setup lang="ts">
-  // import { computed } from 'vue'
-  // import { useRoute } from 'vue-router'
-
-  // const route = computed(() => {
-  // 	const route = useRoute()
-  // 	const { path } = route
-  // 	console.log(path)
-
-  // 	return path
-  // })
+  import { usePermissionStoreHook } from '@/store/modules/permission';
+  import { computed } from 'vue';
+  const getInclude = computed<string[]>(() => usePermissionStoreHook().cachePageList as string[]);
 </script>
 
 <style lang="scss">
@@ -38,12 +33,3 @@
     padding-top: 50px;
   }
 </style>
-
-<!-- <style lang="scss">
-// fix css style bug in open el-dialog
-.el-popup-parent--hidden {
-	.fixed-header {
-		padding-right: 15px;
-	}
-}
-</style> -->

@@ -1,4 +1,4 @@
-import { appConfig } from '#/piniaStore';
+import { appConfig } from '@/store/types';
 import { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 interface localesType {

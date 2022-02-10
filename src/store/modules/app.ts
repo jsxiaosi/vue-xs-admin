@@ -1,10 +1,6 @@
 import { defineStore } from 'pinia';
 import { store } from '@/store';
-import { appConfig } from '#/piniaStore';
-
-interface AppState {
-  appConfigMode: appConfig;
-}
+import type { AppState, appConfig } from '../types';
 
 let localAppConfig: appConfig = {
   collapseMenu: false,

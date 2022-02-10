@@ -16,6 +16,12 @@
   </div>
 </template>
 
+<script lang="ts">
+  export default {
+    name: 'RtForm',
+  };
+</script>
+
 <script lang="ts" setup>
   import Form from '@/components/Form/index.vue';
   import { FormProps } from '@/components/Form/types/from';
