@@ -8,8 +8,8 @@ const handleAliveRoute = (matched: RouteRecordNormalized[], mode?: string) => {
   const name: RouteRecordName = matched[matched.length - 1].name as RouteRecordName;
   switch (mode) {
     case 'add':
-      matched.forEach((v) => {
-        usePermissionStoreHook().cacheOperate({ mode: 'add', name: v.name });
+      matched.forEach((v: RouteRecordNormalized) => {
+        usePermissionStoreHook().cacheOperate({ mode: 'add', name: v.name as RouteRecordName });
       });
       break;
     case 'delete':
@@ -24,8 +24,8 @@ const handleAliveRoute = (matched: RouteRecordNormalized[], mode?: string) => {
         name,
       });
       useTimeoutFn(() => {
-        matched.forEach((v) => {
-          usePermissionStoreHook().cacheOperate({ mode: 'add', name: v.name });
+        matched.forEach((v: RouteRecordNormalized) => {
+          usePermissionStoreHook().cacheOperate({ mode: 'add', name: v.name as RouteRecordName });
         });
       }, 100);
   }

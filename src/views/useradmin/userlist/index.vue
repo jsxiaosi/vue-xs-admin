@@ -1,35 +1,56 @@
 <template>
   <div class="page-container">
-    <span>听说这个是用户列表</span>
     <TsComponents />
-    <!-- <el-icon><iEL-baseball /></el-icon>
-		<SvgIcon name="daosanjiao"></SvgIcon>
-		{{ t('login.title') }}
-		<el-date-picker
-			v-model="value1"
-			type="datetimerange"
-			start-placeholder="开始日期"
-			end-placeholder="结束日期"
-		></el-date-picker> -->
+    <div>获取环境变量：{{ env.VITE_ENV }}</div>
+    <div>获取原型方法：{{ instance?.appContext.config.globalProperties.foo }}</div>
+    <div v-my-directive="dirValue"></div>
   </div>
 </template>
 
 <script setup lang="ts">
   import TsComponents from '@/components/tscomponents';
+  import { DirectiveBinding, getCurrentInstance, nextTick, ref, VNode } from 'vue';
+  const env = import.meta.env;
+  nextTick(() => {
+    console.log('渲染完了？');
+  });
 
-  // import SvgIcon from '@/components/SvgIcon/index.vue'
-  // import { getCurrentInstance } from 'vue'
+  const dirValue = ref('');
 
-  // import { useI18n } from 'vue-i18n'
-  // import { ref } from '@vue/reactivity'
-  // const { t } = useI18n()
+  const vMyDirective = {
+    // 指令具有一组生命周期钩子：
+    // 在绑定元素的 attribute 或事件监听器被应用之前调用
+    created(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
+      console.log('created', el, binding, vnode);
+    },
+    // 在绑定元素的父组件挂载之前调用
+    beforeMount(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
+      console.log('beforeMount', el, binding, vnode);
+    },
+    // 在绑定元素的父组件挂载之后调用
+    mounted(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
+      console.log('mounted', el, binding, vnode);
+    },
+    // 在包含组件的 VNode 更新之前调用
+    beforeUpdate(el: HTMLElement, binding: DirectiveBinding, vnode: VNode, prevVNode: VNode) {
+      console.log('beforeUpdate', el, binding, vnode, prevVNode);
+    },
+    // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
+    updated(el: HTMLElement, binding: DirectiveBinding, vnode: VNode, prevVNode: VNode) {
+      el.innerHTML = binding.value;
+      console.log('updated', el, binding, vnode, prevVNode);
+    },
+    // 在绑定元素的父组件卸载之前调用
+    beforeUnmount() {},
+    // 在绑定元素的父组件卸载之后调用
+    unmounted() {},
+  };
 
-  // const value1 = ref()
+  setTimeout(() => {
+    dirValue.value = '通过自定义指令插入的内容';
+  }, 2000);
 
-  // const instance = getCurrentInstance()
-
-  // console.log(instance.appContext.config.globalProperties.foo)
-
+  const instance = getCurrentInstance();
   // console.log(t())
   // store.commit(mutation.SET_USER, '进来了是吗？？？？')
   // console.log(useStore())

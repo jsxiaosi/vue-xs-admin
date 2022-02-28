@@ -27,13 +27,13 @@
           font-family: 'Reggae One', cursive;
         }
 
-        p {
+        .develop-p {
           font-size: 8vw;
           overflow: hidden;
           -webkit-text-stroke: 3px #7272a5;
         }
 
-        span {
+        .develop-span {
           display: block;
           font-size: 20px;
           overflow: hidden;
@@ -41,7 +41,7 @@
           text-align: center;
         }
 
-        p::before {
+        .develop-p::before {
           content: ' ';
           width: 100%;
           height: 100%;
@@ -52,7 +52,7 @@
           mix-blend-mode: multiply;
         }
 
-        p::after {
+        .develop-p::after {
           content: '';
           background: radial-gradient(circle, #fff, #000 50%);
           background-size: 25% 25%;
@@ -72,8 +72,8 @@
         }
       </style>
       <div class="g-container">
-        <p>SuperCuteXiaoSi</p>
-        <span class="_develop"></span>
+        <p class="develop-p">SuperCuteXiaoSi</p>
+        <span class="develop-span"></span>
       </div>
     </div>
     <script>
@@ -91,7 +91,7 @@
           const browser = Array.of('chrome', 'firefox').includes(Sys.browser);
           const version = parseFloat(Sys.version);
 
-          const el = document.querySelector('._develop');
+          const el = document.querySelector('.develop');
 
           if (el) {
             if (browser && version >= 90) {

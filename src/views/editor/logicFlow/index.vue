@@ -69,3 +69,9 @@
     initLf();
   });
 </script>
+
+<style scoped>
+  .page-container {
+    height: 100%;
+  }
+</style>
