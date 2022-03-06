@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template"><h1>Vue3</h1></a>
+<div align="center"> <a href="https://github.com/SuperCuteXiaoSi/xiaosiAdmin"><h1>Vue3</h1></a>
 </div>
 
 ## 简介
@@ -26,9 +26,9 @@
 - 获取项目代码（https or ssh）
 
 ```bash
-git clone https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template.git
+git clone https://github.com/SuperCuteXiaoSi/xiaosiAdmin.git
 
-git clone git@gitlab.com:SuperCuteXiaoSi/vite-vue3-template.git
+git clone git@github.com:SuperCuteXiaoSi/xiaosiAdmin.git
 ```
 
 - 安装依赖
@@ -58,7 +58,7 @@ npm run build
 
 ## 项目地址
 
-- [vite-vue3-template](https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template)
+- [vite-vue3-template](https://github.com/SuperCuteXiaoSi/xiaosiAdmin)
 
 ## 如何贡献
 
@@ -90,8 +90,8 @@ npm run build
 支持现代浏览器, 不支持 IE
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                             not support                                                                                              |                                                                                            last 2 versions                                                                                             |                                                                                                  last 2 versions                                                                                                  |                                                                                                last 2 versions                                                                                                |                                                                                                last 2 versions                                                                                                |
+| :-: | :-: | :-: | :-: | :-: |
+| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 ## 项目中使用的相关仓库
 
@@ -148,7 +148,7 @@ npm run build
 
 ## 维护者
 
-[@SuperCuteXiaoSi](https://gitlab.com/SuperCuteXiaoSi)
+[@SuperCuteXiaoSi](https://github.com/SuperCuteXiaoSi)
 
 ## License
 
