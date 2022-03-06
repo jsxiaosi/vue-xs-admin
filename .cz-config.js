@@ -41,7 +41,7 @@ module.exports = {
   },
 
   // 跳过步骤
-  skipQuestions: ['customScope', 'body', 'footer'],
+  skipQuestions: ['scope', 'customScope', 'body', 'footer'],
 
   // 默认长度
   subjectLimit: 100,
