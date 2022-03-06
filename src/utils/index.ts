@@ -23,7 +23,7 @@ export const getServerConfig = (): Promise<string> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('');
-    }, 2000);
+    }, 0);
   });
 };
 

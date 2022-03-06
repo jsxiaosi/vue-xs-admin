@@ -13,13 +13,13 @@ export function createViteBuild(): BuildOptions {
     sourcemap: false,
     // 启用/禁用 brotli 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
     brotliSize: false,
-    terserOptions: {
-      compress: {
-        keep_infinity: true,
-        // Used to delete console in production environment
-        drop_console: true,
-      },
-    },
+    // terserOptions: {
+    //   compress: {
+    //     keep_infinity: true,
+    //     // Used to delete console in production environment
+    //     drop_console: true,
+    //   },
+    // },
     // chunk 大小警告的限制（以 kbs 为单位）
     chunkSizeWarningLimit: 2000,
   };
