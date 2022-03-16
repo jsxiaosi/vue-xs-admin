@@ -1,6 +1,7 @@
 import { ErrorMessageMode } from '#/axios';
 import i18n from '@/locales';
-import { ElMessage } from 'element-plus';
+import { useMessage } from '@/hooks/web/useMessage';
+const { createErrorModal, createErrorMsg } = useMessage();
 
 export function checkStatus(
   status: number,
@@ -53,9 +54,9 @@ export function checkStatus(
   if (errMessage) {
     if (errorMessageMode === 'modal') {
       console.log('进来这里了吗？');
-      ElMessage.error(msg);
+      createErrorModal(msg);
     } else if (errorMessageMode === 'message') {
-      ElMessage.error(errMessage);
+      createErrorMsg(errMessage);
     }
   }
 }

@@ -4,22 +4,35 @@ import { checkStatus } from './axiosStatus';
 import { isString } from 'lodash';
 import { useMessage } from '@/hooks/web/useMessage';
 
-const { createErrorModal } = useMessage();
+const { createErrorModal, createErrorMsg } = useMessage();
 
+/**
+ * @description:一下所有拦截器请根据自身使用场景更改
+ */
 const interceptor: AxiosInterceptor = {
   /**
    * @description: 处理请求数据。如果数据不是预期格式，可直接抛出错误
    */
   requestHook: (res, options) => {
+    /**
+     * 此处方法是对请求回来的数据进行处理，
+     * 根据自己的使用场景更改
+     */
     const { data } = res;
+    const { isShowData, errorMessageMode } = options;
 
-    if (!data) return res;
+    if (!data.data) return res;
 
     if (data.code === -1) {
-      createErrorModal(data.message);
+      if (errorMessageMode === 'modal') {
+        console.log('进来这里了吗？');
+        createErrorModal(data.errMsg);
+      } else if (errorMessageMode === 'message') {
+        createErrorMsg(data.errMsg);
+      }
     }
 
-    if (options.isShowData) return data;
+    if (isShowData) return data;
 
     return res;
   },
@@ -76,7 +89,7 @@ const interceptor: AxiosInterceptor = {
   responseInterceptorsCatch: (error: any) => {
     const { response, message, config } = error || {};
     const errorMessageMode = config.requestOptions.errorMessageMode || 'none';
-    checkStatus(response.status, message, errorMessageMode);
+    checkStatus(response ? response.status : 404, message, errorMessageMode);
     return error;
   },
 };
@@ -90,7 +103,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
       // (拦截器)数据处理方式
       interceptor,
       headers: { 'Content-Type': 'application/json' },
-      // 配置项，下面的选项都可以在独立的接口请求中覆盖
+      // 配置项（需要在拦截器中做的处理），下面的选项都可以在独立的接口请求中覆盖
       requestOptions: {
         withToken: true,
         errorMessageMode: 'message',
