@@ -25,10 +25,10 @@ const interceptor: AxiosInterceptor = {
 
     if (data.code === -1) {
       if (errorMessageMode === 'modal') {
-        console.log('进来这里了吗？');
-        createErrorModal(data.errMsg);
+        console.log('进来这里了吗？', data);
+        createErrorModal(data.message);
       } else if (errorMessageMode === 'message') {
-        createErrorMsg(data.errMsg);
+        createErrorMsg(data.message);
       }
     }
 
