@@ -211,7 +211,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: 'https://gitlab.com/SuperCuteXiaoSi/vite-vue3-template',
+        path: 'https://github.com/SuperCuteXiaoSi/xiaosiAdmin',
         meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
       },
     ],
