@@ -16,6 +16,7 @@ const route = {
     editor_markdown: 'Markdown',
     userInfo: '用户管理',
     userList: '用户列表',
+    refSyntax: 'ref语法糖',
     userDateil: '用户详情',
     guide: '引导页',
     thirdParty: '第三方',

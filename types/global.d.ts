@@ -1,7 +1,7 @@
 declare module '*.vue' {
-  import { ComponentOptions } from 'vue';
-  const componentOptions: ComponentOptions;
-  export default componentOptions;
+  import { DefineComponent } from 'vue';
+  const Component: DefineComponent<{}, {}, any>;
+  export default Component;
 }
 
 declare type Recordable<T = any> = Record<string, T>;

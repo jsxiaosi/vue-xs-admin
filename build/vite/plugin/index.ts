@@ -23,9 +23,7 @@ import ElementPlus from 'unplugin-element-plus/vite';
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue({
-      script: {
-        refSugar: true,
-      },
+      reactivityTransform: true,
     }),
   ];
 

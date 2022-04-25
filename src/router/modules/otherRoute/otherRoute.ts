@@ -123,6 +123,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
     children: [
       {
+        path: 'refSyntax',
+        name: 'refSyntax',
+        component: () => import('@/views/useradmin/refSyntax/index.vue'),
+        meta: { title: t('route.pathName.refSyntax') },
+      },
+      {
         path: 'userlist',
         name: 'userlist',
         component: () => import('@/views/useradmin/userlist/index.vue'),

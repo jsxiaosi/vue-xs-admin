@@ -16,6 +16,7 @@ const route = {
     editor_markdown: 'Markdown',
     userInfo: 'UserInfo',
     userList: 'UserList',
+    refSyntax: 'RefSyntax',
     userDateil: 'UserDateil',
     guide: 'GuidePage',
     thirdParty: 'Third party',
