@@ -1,105 +1,25 @@
-// 修改element主题
-:root {
-  --el-border-color-lighter: #{$text-color-placeholder};
-  --el-datepicker-border-color: #{$text-color-placeholder};
-  --el-text-color-primary: #{$text-color-primary};
-  --el-text-color-regular: #{$text-color-regular};
-  --el-text-color-secondary: #{$text-color-secondary};
-  --el-text-color-placeholder: #{$text-color-placeholder};
-  --el-input-bg-color: #{$main-bg-color};
-  --el-disabled-bg-color: #{$main-bg-color};
-  --el-fill-base: #{$main-bg-color};
-  --el-bg-color: #{$sub-main-bg-content};
-  // --el-disabled-border-color: #{$text-color-placeholder};
-}
-
-// input
-.el-input {
-  --el-input-bg-color: #{$main-bg-color};
-}
-.el-textarea {
-  --el-input-bg-color: #{$main-bg-color};
-}
-
-.el-date-editor {
-  --el-input-bg-color: #{$main-bg-color};
-}
-
-.el-drawer {
-  --el-drawer-bg-color: #{$main-bg-color};
-}
-
-.el-scrollbar {
-  --el-scrollbar-bg-color: #{$main-bg-color};
-}
-
-.el-range-input {
-  background-color: #{$main-bg-color};
-}
-
-// 时间选择器
-.el-date-range-picker {
-  --el-datepicker-inner-border-color: #{$text-color-placeholder};
-  --el-datepicker-inrange-bg-color: #{$sub-main-bg-content};
-  --el-datepicker-inrange-hover-bg-color: #{$sub-main-bg-content};
-}
-.el-picker-panel {
-  background-color: #{$main-bg-color};
-}
-.el-picker-panel__footer {
-  background-color: #{$main-bg-color};
-}
-
-// select颜色
-.el-select__popper.el-popper {
-  background-color: #{$main-bg-color};
-}
-
-.el-dropdown-menu {
-  background-color: #{$main-bg-color};
-}
-// .el-select-dropdown__item.hover,
-// .el-select-dropdown__item:hover {
-//   background-color: #{$sub-main-bg-content};
-// }
-.el-popper.is-light .el-popper__arrow::before {
-  background-color: #{$main-bg-color};
-}
-
-.el-card {
-  --el-card-bg-color: #{$main-bg-color};
-  --el-card-border-color: #{$text-color-placeholder};
-}
-
-.el-descriptions {
-  --el-descriptions-item-bordered-label-background: #{$sub-main-bg-content};
-  :deep(.el-descriptions__body) {
-    background-color: #{$main-bg-color};
-  }
-}
-
 // 左侧导航栏(此地方颜色全部改成自定义)
 $sideBarWidth: 210px;
 $navBarHeight: 57px;
 $BreadcrumbHeight: 50px; //面包屑高度
 
-$menuBg: $main-bg-color; // 侧边栏背景颜色
-$menuHover: $sub-main-bg-content; // 焦点背景色
-$menuHoverText: $mian-color; //焦点文字颜色
-$menuText: $text-color-primary; //文字颜色
-$menuActiveText: $mian-color; //选中的文字颜色
+$menuBg: var(--main-bg-color); // 侧边栏背景颜色
+$menuHover: var(--sub-main-bg-content); // 焦点背景色
+$menuHoverText: var(--mian-color); //焦点文字颜色
+$menuText: var(--text-color-primary); //文字颜色
+$menuActiveText: var(--mian-color); //选中的文字颜色
 
-$menuItemBg: $main-bg-color; //二级背景颜色
-$menuItemBorderLeft: $main-bg-color; //二级未选中的背景颜色
-$menuItemText: $text-color-primary; //二级文字颜色
-$menuItemHover: $sub-main-bg-content; //二级焦点背景颜色
-$menuItemHoverText: $mian-color; //二级焦点文字颜色
-$menuItemActiveText: $mian-color; //二级选中的背景颜色
-$menuItemActiveBg: $sub-color1; //二级选中背景颜色
-$menuItemActiveBorderLeft: $mian-color; //二级左描边背景颜色
+$menuItemBg: var(--main-bg-color); //二级背景颜色
+$menuItemBorderLeft: var(--main-bg-color); //二级未选中的背景颜色
+$menuItemText: var(--text-color-primary); //二级文字颜色
+$menuItemHover: var(--sub-main-bg-content); //二级焦点背景颜色
+$menuItemHoverText: var(--mian-color); //二级焦点文字颜色
+$menuItemActiveText: var(--mian-color); //二级选中的背景颜色
+$menuItemActiveBg: var(--sub-color1); //二级选中背景颜色
+$menuItemActiveBorderLeft: var(--mian-color); //二级左描边背景颜色
 
-$app-main-bg-color: $sub-main-bg-content; //app-mian背景颜色
-$navBarColor: $main-bg-color; //顶部导航栏背景颜色
-$navBarBorderBottomColor: $text-color-placeholder;
-$BreadcrumbColor: $main-bg-color; //面包屑背景颜色
-$BreadcrumbText: $text-color-primary; //面包屑文字颜色
+$app-main-bg-color: var(--sub-main-bg-content); //app-mian背景颜色
+$navBarColor: var(--main-bg-color); //顶部导航栏背景颜色
+$navBarBorderBottomColor: var(--text-color-placeholder);
+$BreadcrumbColor: var(--main-bg-color); //面包屑背景颜色
+$BreadcrumbText: var(--text-color-primary); //面包屑文字颜色

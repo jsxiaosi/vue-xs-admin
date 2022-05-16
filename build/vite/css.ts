@@ -6,7 +6,7 @@ export function createViteCSS(): CSSOptions {
       // 配置scss全局样式以及变量
       scss: {
         charset: false,
-        additionalData: '@import "./src/styles/index.scss";',
+        additionalData: '@use "./src/styles/element/index.scss" as *;',
         javascriptEnabled: true,
       },
     },

@@ -7,7 +7,7 @@ import type { Plugin, ConfigEnv } from 'vite';
 // 按需加载样式配置
 import { configStylePlugin } from './style';
 // 主题切换配置
-import { configThemePlugin } from './theme';
+// import { configThemePlugin } from './theme';
 // svg配置
 import { configSvgPlugin } from './svg';
 // 压缩
@@ -31,7 +31,7 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(configStylePlugin());
 
-  vitePlugins.push(configThemePlugin());
+  // vitePlugins.push(configThemePlugin());
 
   vitePlugins.push(configSvgPlugin());
 
@@ -39,7 +39,11 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(configMockPlugin(isBuild));
 
-  vitePlugins.push(ElementPlus());
+  vitePlugins.push(
+    ElementPlus({
+      useSource: true,
+    }),
+  );
 
   // 使用此插件会导致vite启动变慢 100ms左右
   // vitePlugins.push(configEsLinterPlugin(configEnv))

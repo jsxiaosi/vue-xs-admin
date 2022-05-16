@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { computed, PropType } from 'vue';
   import { useRoute } from 'vue-router';
   import SidebarItem from './SidebarItem.vue';
   import routeModuleList from '@/router/modules';
@@ -29,16 +29,16 @@
 
   defineProps({
     mode: {
-      type: String,
+      type: String as PropType<'vertical' | 'horizontal'>,
       default: 'vertical',
     },
   });
 
-  const activeMenyu = computed(() => {
+  const activeMenyu = computed<string>(() => {
     const route = useRoute();
     const { meta, path } = route;
     if (meta.activeMenu) {
-      return meta.activeMenu;
+      return meta.activeMenu as string;
     }
     return path;
   });

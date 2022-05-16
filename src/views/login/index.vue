@@ -283,7 +283,12 @@
     font-size: 1.2rem;
     outline: none;
     border: none;
-    background-image: linear-gradient(to right, #{$mian-color}, #{$sub-color}, #{$mian-color});
+    background-image: linear-gradient(
+      to right,
+      var(--mian-color),
+      var(--sub-color),
+      var(--mian-color)
+    );
     cursor: pointer;
     color: #fff;
     text-transform: uppercase;

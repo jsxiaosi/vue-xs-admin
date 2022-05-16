@@ -1,5 +1,5 @@
 <template>
-  <div class="theme" :class="{ 'theme-dark': isDark === 'dark' }" @click="toggleDarkMode">
+  <div class="theme" :class="{ 'theme-dark': color === 'dark' }" @click="toggleDarkMode">
     <div class="theme-inner"></div>
     <SvgIcon name="sun"></SvgIcon>
     <SvgIcon name="moon"></SvgIcon>
@@ -10,14 +10,15 @@
   import { ref } from 'vue';
   import SvgIcon from '../SvgIcon/index.vue';
   import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils';
-  import { useAppStore } from '@/store/modules/app';
+  // import { useAppStore } from '@/store/modules/app';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
+  import { useColorMode } from '@vueuse/core';
 
   // const toggleTheme = (scopeName = 'theme-default') => {
   // 	document.documentElement.className = scopeName
   // }
 
-  const appStore = useAppStore();
+  // const appStore = useAppStore();
   const { appConfigMode } = getAppCollapseMenu();
   const isDark = ref<string>(appConfigMode.value.themeMode);
   isDark.value = appConfigMode.value.themeMode;
@@ -25,13 +26,15 @@
     scopeName: `variables-theme-${isDark.value}`,
   });
 
+  const color = useColorMode();
   const toggleDarkMode = () => {
     isDark.value = isDark.value === 'day' ? 'dark' : 'day';
-    appConfigMode.value.themeMode = isDark.value;
-    appStore.setAppConfigMode(appConfigMode.value);
-    toggleTheme({
-      scopeName: `variables-theme-${isDark.value}`,
-    });
+    color.value = color.value === 'dark' ? 'light' : 'dark';
+    // appConfigMode.value.themeMode = isDark.value;
+    // appStore.setAppConfigMode(appConfigMode.value);
+    // toggleTheme({
+    //   scopeName: `variables-theme-${isDark.value}`,
+    // });
   };
 </script>
 
@@ -44,7 +47,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: 151515;
-    border: 1px solid #{$text-color-primary};
+    border: 1px solid var(--text-color-primary);
     padding: 0 6px;
     font-size: 1em;
     border-radius: 30px;
@@ -53,7 +56,7 @@
       z-index: 1;
       width: 18px;
       height: 18px;
-      background-color: #{$text-color-primary};
+      background-color: var(--text-color-primary);
       border-radius: 50%;
       transition: transform 0.5s, background-color 0.5s;
       will-change: transform;

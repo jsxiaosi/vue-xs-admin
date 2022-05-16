@@ -157,11 +157,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      // color: #{$text-color-primary};
+      // color: var(--text-color-primary);
     }
 
     .infinite {
-      border: 1px solid #{$text-color-placeholder};
+      border: 1px solid var(--text-color-placeholder);
       .top {
         // width: 95%;
         height: 40px;
@@ -171,8 +171,8 @@
         font-size: 14px;
         // color: #909399;
         font-weight: 400;
-        background: #{$sub-main-bg-content};
-        border-bottom: 1px solid #{$text-color-placeholder};
+        background: var(--sub-main-bg-content);
+        border-bottom: 1px solid var(--text-color-placeholder);
 
         li {
           width: 34%;

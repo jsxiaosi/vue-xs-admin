@@ -56,7 +56,7 @@
     margin-bottom: 20px;
     .margin-top :deep(.el-descriptions__body) {
       margin: 20px;
-      background-color: #{$main-bg-color} !important;
+      background-color: #{--main-bg-color} !important;
     }
   }
 </style>

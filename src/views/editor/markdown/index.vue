@@ -30,7 +30,7 @@
       width: 49%;
       height: 100%;
       padding: 0 20px;
-      border: 1px solid #{$text-color-placeholder};
+      border: 1px solid var(--text-color-placeholder);
     }
   }
 </style>

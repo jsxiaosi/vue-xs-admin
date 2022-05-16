@@ -43,7 +43,7 @@
 
 <style lang="scss" scoped>
   .icon {
-    color: #{$text-color-primary};
+    color: var(--text-color-primary);
     font-size: 1em;
   }
 </style>
