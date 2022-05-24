@@ -9,32 +9,18 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import SvgIcon from '../SvgIcon/index.vue';
-  import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils';
-  // import { useAppStore } from '@/store/modules/app';
+
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useColorMode } from '@vueuse/core';
 
-  // const toggleTheme = (scopeName = 'theme-default') => {
-  // 	document.documentElement.className = scopeName
-  // }
-
-  // const appStore = useAppStore();
   const { appConfigMode } = getAppCollapseMenu();
   const isDark = ref<string>(appConfigMode.value.themeMode);
   isDark.value = appConfigMode.value.themeMode;
-  toggleTheme({
-    scopeName: `variables-theme-${isDark.value}`,
-  });
 
   const color = useColorMode();
   const toggleDarkMode = () => {
     isDark.value = isDark.value === 'day' ? 'dark' : 'day';
     color.value = color.value === 'dark' ? 'light' : 'dark';
-    // appConfigMode.value.themeMode = isDark.value;
-    // appStore.setAppConfigMode(appConfigMode.value);
-    // toggleTheme({
-    //   scopeName: `variables-theme-${isDark.value}`,
-    // });
   };
 </script>
 

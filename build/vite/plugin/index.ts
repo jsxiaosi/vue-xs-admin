@@ -6,8 +6,6 @@ import type { Plugin, ConfigEnv } from 'vite';
 
 // 按需加载样式配置
 import { configStylePlugin } from './style';
-// 主题切换配置
-// import { configThemePlugin } from './theme';
 // svg配置
 import { configSvgPlugin } from './svg';
 // 压缩
@@ -30,8 +28,6 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(vueJsx());
 
   vitePlugins.push(configStylePlugin());
-
-  // vitePlugins.push(configThemePlugin());
 
   vitePlugins.push(configSvgPlugin());
 
