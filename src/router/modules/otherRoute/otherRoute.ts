@@ -41,7 +41,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
       {
         path: 'table',
         name: 'RtTable',
-        component: () => import('@/views/components/table/index.vue'),
+        component: () => import('@/views/components/TablePage/index.vue'),
         meta: { title: t('route.pathName.table') },
       },
       {
@@ -61,6 +61,12 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         name: 'RtSeamlessScroll',
         component: () => import('@/views/components/seamless-scroll/index.vue'),
         meta: { title: t('route.pathName.seamlessScroll') },
+      },
+      {
+        path: 'date',
+        name: 'RtDate',
+        component: () => import('@/views/components/date/index.vue'),
+        meta: { title: t('route.pathName.date') },
       },
     ],
   },

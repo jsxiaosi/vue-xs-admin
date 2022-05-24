@@ -6,6 +6,7 @@ const route = {
     countTo: 'DigitalAnimation',
     form: 'Form',
     seamlessScroll: 'SeamlessScroll',
+    date: 'Date',
     table: 'Table',
     echarts: 'Echarts',
     echarts_bar: 'Bar',
