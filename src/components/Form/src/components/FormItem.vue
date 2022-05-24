@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { getSlot } from '@/utils/slotsHelper';
-  import { defineComponent, PropType, resolveComponent } from 'vue';
+  import { DefineComponent, defineComponent, PropType, resolveComponent } from 'vue';
   import { elComponentItem } from '../../componentMap';
   import { FormItemListProps } from '../../types/from';
   export default defineComponent({
@@ -23,7 +23,7 @@
       };
 
       function renderComponent() {
-        const Comp = resolveComponent(formItem.component) as ReturnType<typeof defineComponent>;
+        const Comp = resolveComponent(formItem.component) as DefineComponent;
         const childerCompName = elComponentItem[formItem.component];
         if (childerCompName) {
           return (
@@ -39,7 +39,7 @@
       function childrenComponent(compName: string) {
         if (formItem.childrenComponent) {
           const { options } = formItem.childrenComponent;
-          const Comp = resolveComponent(compName) as ReturnType<typeof defineComponent>;
+          const Comp = resolveComponent(compName) as DefineComponent;
           return (
             <>
               {options?.map((res) => (
