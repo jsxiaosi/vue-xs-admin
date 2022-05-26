@@ -7,6 +7,8 @@ const route = {
     form: '表单',
     seamlessScroll: '无限滚动',
     date: '日期组件',
+    dateSelect: '日期选择器',
+    calendar: '日历',
     table: '表格',
     echarts: '图表',
     echarts_bar: '柱状图',

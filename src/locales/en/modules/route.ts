@@ -7,6 +7,8 @@ const route = {
     form: 'Form',
     seamlessScroll: 'SeamlessScroll',
     date: 'Date',
+    dateSelect: 'DateSelect',
+    calendar: 'Calendar',
     table: 'Table',
     echarts: 'Echarts',
     echarts_bar: 'Bar',

@@ -33,6 +33,7 @@ import {
   ElRadio,
   ElTable,
   ElTableColumn,
+  ElCalendar,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -75,6 +76,7 @@ const components = [
   ElRadio,
   ElTable,
   ElTableColumn,
+  ElCalendar,
 ];
 
 // https://element-plus.org/zh-CN/component/icon.html

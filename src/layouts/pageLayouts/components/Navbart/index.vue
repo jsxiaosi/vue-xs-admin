@@ -40,7 +40,7 @@
   import { AppLocale, AppTheme } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { ref } from '@vue/reactivity';
+  import { ref } from 'vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   const drawer = ref(false);

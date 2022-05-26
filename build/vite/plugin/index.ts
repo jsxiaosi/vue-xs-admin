@@ -37,7 +37,7 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(
     ElementPlus({
-      useSource: true,
+      // useSource: true,
     }),
   );
 

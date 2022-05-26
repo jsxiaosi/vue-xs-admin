@@ -63,17 +63,32 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         meta: { title: t('route.pathName.seamlessScroll') },
       },
       {
-        path: 'date',
-        name: 'RtDate',
-        component: () => import('@/views/components/date/index.vue'),
+        path: 'date-time',
+        component: emptyLayouts, // Parent router-view
+        name: 'DateTime',
+        redirect: '/components/date-time/date',
         meta: { title: t('route.pathName.date') },
+        children: [
+          {
+            path: 'date-select',
+            name: 'RtDate',
+            component: () => import('@/views/components/date/index.vue'),
+            meta: { title: t('route.pathName.dateSelect') },
+          },
+          {
+            path: 'calendar',
+            name: 'RtCalendar',
+            component: () => import('@/views/components/calendar/index.vue'),
+            meta: { title: t('route.pathName.calendar') },
+          },
+        ],
       },
     ],
   },
   {
     path: '/echarts',
     component: Layout,
-    redirect: '/echarts/bar/',
+    redirect: '/echarts/bar',
     name: 'echarts',
     alwaysShow: true,
     meta: { title: t('route.pathName.echarts'), icon: 'echarts' },
@@ -95,7 +110,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/editor',
     component: Layout,
-    redirect: '/editor/logic-flow/',
+    redirect: '/editor/logic-flow',
     name: 'editor',
     alwaysShow: true,
     meta: { title: t('route.pathName.editor'), icon: 'editor' },
@@ -123,7 +138,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/useradmin',
     component: Layout,
-    redirect: '/useradmin/userlist/',
+    redirect: '/useradmin/userlist',
     name: 'useradmin',
     alwaysShow: true,
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
@@ -145,7 +160,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/nested',
     component: Layout,
-    redirect: '/nested/menu1/',
+    redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
       title: t('route.pathName.nested'),
@@ -156,7 +171,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         path: 'menu1',
         component: emptyLayouts, // Parent router-view
         name: 'Menu1',
-        redirect: '/nested/menu1/menu1-1/',
+        redirect: '/nested/menu1/menu1-1',
         meta: { title: t('route.pathName.nested1') },
         children: [
           {
@@ -169,7 +184,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
             path: 'menu1-2',
             component: emptyLayouts,
             name: 'Menu1-2',
-            redirect: '/nested/menu1/menu1-2/menu1-2-1/',
+            redirect: '/nested/menu1/menu1-2/menu1-2-1',
             meta: { title: t('route.pathName.nested1_2') },
             children: [
               {

@@ -5,17 +5,18 @@
       v-model="value"
       type="date"
       placeholder="Pick a day"
+      :teleported="false"
       :disabled-date="disabledDate"
     >
-      <template #default="picker"> {{ reader(picker) }}</template>
+      <template #default="picker"> <DateItem v-bind="picker" /></template>
     </el-date-picker>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
   import { DateCell } from 'element-plus/lib/components/date-picker/src/date-picker.type';
   import { ref } from 'vue';
-  import calendar from './calendar/index.js';
+  import calendar from '@/utils/date/calendar/index.js';
 
   const value = ref<string>();
 
@@ -23,14 +24,56 @@
     return time.getTime() < Date.now();
   };
 
-  const reader = (v: DateCell) => {
+  const DateItem = (v: DateCell) => {
     const { date } = v;
     var year = date?.getFullYear();
     var month = (date?.getMonth() as number) + 1;
     var day = date?.getDate();
     const day1 = calendar.solar2lunar(year, month, day);
-    return day1.cDay;
+    let color = '';
+    if (day1.festival) color = '#f5222d';
+    if (day1.Term) color = '#096dd9';
+    return (
+      <div class="el-date-table-cell">
+        <span class="el-date-table-cell__text">
+          <span>{day1.cDay}</span>
+          <span style={{ color }}>{day1.festival || day1.Term || day1.IDayCn}</span>
+        </span>
+      </div>
+    );
   };
+
+  DateItem.inheritAttrs = false;
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  .page-container {
+    :deep(.el-picker__popper) {
+      .el-date-range-picker {
+        width: 800px;
+      }
+      .el-picker-panel__content {
+        .el-date-table td.start-date .el-date-table-cell {
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        .el-date-table td.end-date .el-date-table-cell {
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
+        .el-date-table-cell {
+          height: 42px;
+          .el-date-table-cell__text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            width: 36px;
+            line-height: 15px;
+          }
+        }
+      }
+    }
+  }
+</style>

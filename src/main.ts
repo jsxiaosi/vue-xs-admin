@@ -13,6 +13,8 @@ import { configMainI18n } from './locales';
 import { configMainRouter } from './router';
 import { useElementPlus } from './utils/plugin/element';
 
+import '@/styles/index.scss';
+
 const app = createApp(App);
 
 getServerConfig().then((_config) => {
