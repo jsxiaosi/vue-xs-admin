@@ -39,7 +39,7 @@
       function childrenComponent(compName: string) {
         if (formItem.childrenComponent) {
           const { options } = formItem.childrenComponent;
-          const Comp = resolveComponent(compName) as DefineComponent;
+          const Comp = resolveComponent(compName) as DefineComponent<Recordable>;
           return (
             <>
               {options?.map((res) => (

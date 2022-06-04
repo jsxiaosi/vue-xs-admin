@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown class="popover-content" trigger="click" @command="tolochos">
+  <el-dropdown trigger="click" @command="tolochos">
     <span>
       <SvgIcon class="icon" name="locales"></SvgIcon>
     </span>

@@ -3,13 +3,13 @@
     <el-icon v-if="isELIcon">
       <component :is="name" />
     </el-icon>
-    <svg v-else class="svg" aria-hidden="true">
+    <svg v-else class="svg" :aria-hidden="true">
       <use :xlink:href="symbolId" :fill="color" />
     </svg>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue';
   const props = defineProps({
     // route object
