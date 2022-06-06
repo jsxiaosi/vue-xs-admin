@@ -12,9 +12,10 @@ import { configSvgPlugin } from './svg';
 import { configCompressPlugin } from './compress';
 // mock
 import { configMockPlugin } from './mock';
+// pwd
+import { configPwaPlugin } from './pwa';
 // 按需element样式
 import ElementPlus from 'unplugin-element-plus/vite';
-
 // eslint
 // import { configEsLinterPlugin } from './eslinter'
 
@@ -34,6 +35,8 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configCompressPlugin('gzip', true));
 
   vitePlugins.push(configMockPlugin(isBuild));
+
+  vitePlugins.push(configPwaPlugin());
 
   vitePlugins.push(
     ElementPlus({
