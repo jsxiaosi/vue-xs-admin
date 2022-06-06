@@ -1,7 +1,7 @@
 import i18n, { availableLocales } from '@/locales/index';
 import zh_Cn from 'element-plus/lib/locale/lang/zh-cn';
 import en from 'element-plus/lib/locale/lang/en';
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
 
 export const useI18n = () => i18n.global;
 
