@@ -5,7 +5,7 @@
 
 基于`vue3`,`vite2`,`element-push`等主流技术开发的后台框架模板  
 预览地址：https://www.supercutexiaosi.top/  
-账号：admin   
+账号：admin  
 密码：admin123
 
 ## 特性
@@ -13,6 +13,8 @@
 - **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发
 - **主题**：可配置的主题
 - **国际化**：内置完善的国际化方案
+- **常用组件**：内置完善的常用组件封装
+- **Pwa**：内置 pwa
 
 ## 准备
 
@@ -104,6 +106,7 @@ npm run build
 - [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import/) - 动态引入组件库样式
 - [vite-plugin-svg-icons](https://github.com/anncwb/vite-plugin-svg-icons/) - svg 雪碧图
 - [vite-plugin-theme-preprocessor](https://github.com/GitOfZGT/vite-plugin-theme-preprocessor/) - 动态改变主题样式
+- [vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/) - pwa
 
 ### 规范相关
 
