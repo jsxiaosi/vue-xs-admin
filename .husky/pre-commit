@@ -8,7 +8,7 @@
 # npm run lint:eslint
 # npm run lint:prettier
 # npm run lint:stylelint
-npm run lint:lint-staged
+npm run lint:staged
 
 npm run lint:pretty
 # git add .

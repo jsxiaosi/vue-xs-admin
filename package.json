@@ -16,7 +16,6 @@
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,js,tsx,jsx}\" --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,css,scss,vue,ts,tsx,jsx,html,md}\"",
     "lint:stylelint": "stylelint --syntax scss \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
     "commit": "git-cz",
@@ -109,7 +108,7 @@
     }
   },
   "lint-staged": {
-    "{src,mock}/**/*.{vue,ts,js,tsx,jsx}": [
+    "˜{src,mock,build}/**/*.{ts,js,tsx,jsx}": [
       "eslint --fix",
       "prettier --write"
     ],
