@@ -8,6 +8,7 @@ const userInfo = {
   introduction: '微笑着，努力着，欣赏着',
   title: '小斯斯',
   token: '',
+  power: 'admin',
 };
 
 export default [

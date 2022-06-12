@@ -1,3 +1,4 @@
+import { AppRouteRecordRaw } from '#/route';
 import { RouteRecordName } from 'vue-router';
 
 export type AppState = {
@@ -12,5 +13,6 @@ export interface appConfig {
 }
 
 export type PermissionState = {
+  wholeMenus: AppRouteRecordRaw[];
   cachePageList: RouteRecordName[];
 };

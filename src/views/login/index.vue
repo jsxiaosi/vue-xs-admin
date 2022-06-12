@@ -76,7 +76,7 @@
         url: '/mock_api/login',
         data: { username: user.value, password: pwd.value },
       },
-      { isShowData: true, errorMessageMode: 'modal', withToken: false },
+      { errorMessageMode: 'modal', withToken: false },
     );
     console.log(res);
     if (res.code === 1) {

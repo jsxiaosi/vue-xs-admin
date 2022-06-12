@@ -30,7 +30,6 @@
   //       url: '/mock_api/getUserInfo',
   //     },
   //     {
-  //       isShowData: true,
   //       urlPrefix: 'https://xiaosisi.com',
   //       specialToken: 'asdasdasdasd',
   //     },

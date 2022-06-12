@@ -3,6 +3,8 @@ import { iAxios } from './iAxios';
 import { checkStatus } from './axiosStatus';
 import { isString } from 'lodash';
 import { useMessage } from '@/hooks/web/useMessage';
+import { AxiosError } from 'axios';
+import { errorData } from './errorConfig';
 
 const { createErrorModal, createErrorMsg } = useMessage();
 
@@ -19,29 +21,24 @@ const interceptor: AxiosInterceptor = {
      * 根据自己的使用场景更改
      */
     const { data } = res;
-    const { isShowData, errorMessageMode } = options;
-
-    if (!data.data) return res;
+    const { errorMessageMode } = options;
+    if (!data || !data.data) return errorData(res as unknown as AxiosError);
 
     if (data.code === -1) {
       if (errorMessageMode === 'modal') {
-        console.log('进来这里了吗？', data);
         createErrorModal(data.message);
       } else if (errorMessageMode === 'message') {
         createErrorMsg(data.message);
       }
     }
 
-    if (isShowData) return data;
-
-    return res;
+    return data;
   },
 
   /**
    * @description: 请求失败的错误处理
    */
-  requestCatchHook: (e, options) => {
-    if (options) '';
+  requestCatchHook: (e, _options) => {
     return Promise.reject(e);
   },
 
@@ -51,7 +48,6 @@ const interceptor: AxiosInterceptor = {
   beforeRequestHook: (config, options) => {
     const { urlPrefix } = options;
     if (urlPrefix && isString(urlPrefix)) config.url = `${urlPrefix}${config.url}`;
-    console.log(config);
     return config;
   },
 

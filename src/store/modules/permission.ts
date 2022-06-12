@@ -2,14 +2,20 @@ import { defineStore } from 'pinia';
 import { store } from '@/store';
 import { RouteRecordName } from 'vue-router';
 import type { PermissionState } from '../types';
+import { AppRouteRecordRaw } from '#/route';
 
 export const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({
+    // 路由菜单
+    wholeMenus: [],
     // 缓存页面keepAlive
     cachePageList: [],
   }),
   actions: {
+    setWholeMenus(routeList: AppRouteRecordRaw[]) {
+      this.wholeMenus = [...routeList];
+    },
     cacheOperate({ mode, name = '' }: { mode: string; name: RouteRecordName }) {
       switch (mode) {
         case 'add':

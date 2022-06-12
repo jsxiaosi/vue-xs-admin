@@ -9,15 +9,15 @@ const emptyLayouts = () => import('@/layouts/emptyLayouts/index.vue');
 
 const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
-    path: '',
+    path: '/welcome',
     component: Layout,
     redirect: '/welcome',
-    name: 'home',
+    name: 'RtHome',
     alwaysShow: false,
     meta: { title: '', icon: 'iEL-home-filled' },
     children: [
       {
-        path: 'welcome',
+        path: '',
         name: 'RtWelcome',
         component: () => import('@/views/index/index.vue'),
         meta: { title: t('route.pathName.index') },
@@ -28,7 +28,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/components',
     component: Layout,
     redirect: '/components/form',
-    name: 'components',
+    name: 'RtComponents',
     alwaysShow: true,
     meta: { title: t('route.pathName.components'), icon: 'components' },
     children: [
@@ -36,7 +36,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
         path: 'form',
         name: 'RtForm',
         component: () => import('@/views/components/form/index.vue'),
-        meta: { title: t('route.pathName.form'), keepAlive: true },
+        meta: { title: t('route.pathName.form') },
       },
       {
         path: 'table',
@@ -89,7 +89,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/echarts',
     component: Layout,
     redirect: '/echarts/bar',
-    name: 'echarts',
+    name: 'RtEcharts',
     alwaysShow: true,
     meta: { title: t('route.pathName.echarts'), icon: 'echarts' },
     children: [
@@ -111,7 +111,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/editor',
     component: Layout,
     redirect: '/editor/logic-flow',
-    name: 'editor',
+    name: 'RtEditor',
     alwaysShow: true,
     meta: { title: t('route.pathName.editor'), icon: 'editor' },
     children: [
@@ -139,19 +139,19 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/useradmin',
     component: Layout,
     redirect: '/useradmin/userlist',
-    name: 'useradmin',
+    name: 'RtUseradmin',
     alwaysShow: true,
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
     children: [
       {
         path: 'refSyntax',
-        name: 'refSyntax',
+        name: 'RtRefSyntax',
         component: () => import('@/views/useradmin/refSyntax/index.vue'),
         meta: { title: t('route.pathName.refSyntax') },
       },
       {
         path: 'userlist',
-        name: 'userlist',
+        name: 'RtUserlist',
         component: () => import('@/views/useradmin/userlist/index.vue'),
         meta: { title: t('route.pathName.userList') },
       },
@@ -161,7 +161,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
-    name: 'Nested',
+    name: 'RtNested',
     meta: {
       title: t('route.pathName.nested'),
       icon: 'iEL-grid',
@@ -170,33 +170,33 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
       {
         path: 'menu1',
         component: emptyLayouts, // Parent router-view
-        name: 'Menu1',
+        name: 'RtMenu1',
         redirect: '/nested/menu1/menu1-1',
         meta: { title: t('route.pathName.nested1') },
         children: [
           {
             path: 'menu1-1',
             component: () => import('@/views/nested/menu1/menu1-1/index.vue'),
-            name: 'Menu1-1',
+            name: 'RtMenu1-1',
             meta: { title: t('route.pathName.nested1_1') },
           },
           {
             path: 'menu1-2',
             component: emptyLayouts,
-            name: 'Menu1-2',
+            name: 'RtMenu1-2',
             redirect: '/nested/menu1/menu1-2/menu1-2-1',
             meta: { title: t('route.pathName.nested1_2') },
             children: [
               {
                 path: 'menu1-2-1',
                 component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1/index.vue'),
-                name: 'Menu1-2',
+                name: 'RtMenu1-2-1',
                 meta: { title: t('route.pathName.nested1_2_1') },
               },
               {
                 path: 'menu1-2-2',
                 component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'),
-                name: 'Menu1-2-2',
+                name: 'RtMenu1-2-2',
                 meta: { title: t('route.pathName.nested1_2_2') },
               },
             ],
@@ -204,7 +204,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
           {
             path: 'menu1-3',
             component: () => import('@/views/nested/menu1/menu1-3/index.vue'),
-            name: 'Menu1-3',
+            name: 'RtMenu1-3',
             meta: { title: t('route.pathName.nested1_3') },
           },
         ],
@@ -212,21 +212,21 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
       {
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index.vue'),
-        name: 'Menu2',
+        name: 'RtMenu2',
         meta: { title: t('route.pathName.nested2') },
       },
     ],
   },
   {
-    path: '',
+    path: '/guide',
     component: Layout,
     redirect: '/guide',
-    name: '',
+    name: 'RtSystem',
     alwaysShow: false,
     meta: { title: '', icon: 'guide' },
     children: [
       {
-        path: 'guide',
+        path: '',
         name: 'RtGuide',
         component: () => import('@/views/guide/index.vue'),
         meta: { title: t('route.pathName.guide') },
@@ -236,23 +236,25 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/external-link',
     component: Layout,
+    name: 'RtExternal',
     children: [
       {
         path: 'https://github.com/SuperCuteXiaoSi/xiaosiAdmin',
+        name: 'RtGitLink',
         meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
       },
     ],
   },
   {
-    path: '',
+    path: '/about',
     component: Layout,
     redirect: '/about',
-    name: '',
+    name: 'RtAdminInfo',
     alwaysShow: false,
     meta: { title: '', icon: 'about' },
     children: [
       {
-        path: 'about',
+        path: '',
         name: 'RtAbout',
         component: () => import('@/views/about/index.vue'),
         meta: { title: t('route.pathName.about') },

@@ -37,7 +37,11 @@
   import { FormProps, FormItemListProps } from './types/from';
   import FormItem from './src/components/FormItem.vue';
 
-  defineProps({
+  const props = defineProps({
+    formData: {
+      type: Object as PropType<Recordable>,
+      default: () => {},
+    },
     formOption: {
       type: Object as PropType<FormProps>,
       default: () => {},
@@ -51,7 +55,7 @@
   const emit = defineEmits<{
     (e: 'submitForm', form: FormItemListProps): void;
   }>();
-  const form = reactive<any>({ name: '' });
+  const form = reactive<any>(props.formData || {});
 
   const formRef = ref();
 

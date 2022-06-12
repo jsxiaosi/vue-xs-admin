@@ -84,35 +84,35 @@ export class iAxios {
   /**
    * @description get请求（config：axios请求配置, options：数据的特殊处理）
    */
-  get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'GET' }, options);
+  get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<Result<T>> {
+    return this.request<T>({ ...config, method: 'GET' }, options);
   }
 
   /**
    * @description post请求（config：axios请求配置, options：数据的特殊处理）
    */
-  post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'POST' }, options);
+  post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<Result<T>> {
+    return this.request<T>({ ...config, method: 'POST' }, options);
   }
 
   /**
    * @description put请求（config：axios请求配置, options：数据的特殊处理）
    */
-  put<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'PUT' }, options);
+  put<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<Result<T>> {
+    return this.request<T>({ ...config, method: 'PUT' }, options);
   }
 
   /**
    * @description delete请求（config：axios请求配置, options：数据的特殊处理）
    */
-  delete<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'DELETE' }, options);
+  delete<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<Result<T>> {
+    return this.request<T>({ ...config, method: 'DELETE' }, options);
   }
 
   /**
    * @description 请求体
    */
-  request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+  request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<Result<T>> {
     let conf: CreateAxiosOptions = cloneDeep(config);
 
     const interceptor = this.getInterceptor();
@@ -130,18 +130,17 @@ export class iAxios {
 
     return new Promise((resolve, reject) => {
       this.axiosInstance
-        .request<any, AxiosResponse<Result>>(conf)
-        .then((res: AxiosResponse<Result>) => {
+        .request<T, AxiosResponse<Result<T>>>(conf)
+        .then((res: AxiosResponse<Result<T>>) => {
           if (requestHook && isFunction(requestHook)) {
             try {
-              console.log(res);
               resolve(requestHook(res, opt));
             } catch (err) {
               reject(err || new Error('request error!'));
             }
             return;
           }
-          resolve(res as unknown as Promise<T>);
+          resolve(res as unknown as Promise<Result<T>>);
         })
         .catch((e: Error | AxiosError) => {
           if (requestCatchHook && isFunction(requestCatchHook)) {
