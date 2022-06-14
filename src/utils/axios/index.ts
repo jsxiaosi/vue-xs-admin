@@ -3,7 +3,6 @@ import { iAxios } from './iAxios';
 import { checkStatus } from './axiosStatus';
 import { isString } from 'lodash';
 import { useMessage } from '@/hooks/web/useMessage';
-import { AxiosError } from 'axios';
 import { errorData } from './errorConfig';
 
 const { createErrorModal, createErrorMsg } = useMessage();
@@ -22,7 +21,6 @@ const interceptor: AxiosInterceptor = {
      */
     const { data } = res;
     const { errorMessageMode } = options;
-    if (!data || !data.data) return errorData(res as unknown as AxiosError);
 
     if (data.code === -1) {
       if (errorMessageMode === 'modal') {
@@ -30,6 +28,7 @@ const interceptor: AxiosInterceptor = {
       } else if (errorMessageMode === 'message') {
         createErrorMsg(data.message);
       }
+      return errorData(res);
     }
 
     return data;
