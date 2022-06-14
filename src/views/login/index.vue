@@ -56,19 +56,20 @@
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { AppLocale, AppTheme } from '@/components/Application';
-  import { useRouter } from 'vue-router';
   import { ref } from 'vue';
   import { addClass, removeClass } from '@/utils/operate';
   import { deffHttp } from '@/utils/axios';
 
   import { useI18n } from '@/hooks/web/useI18n';
+  import { initAsyncRoute } from '@/router/utils';
+  import { useRouter } from 'vue-router';
 
   const { t } = useI18n();
 
-  const router = useRouter();
-
   let user = ref('');
   let pwd = ref('');
+
+  const router = useRouter();
 
   const onLogin = async (): Promise<void> => {
     const res = await deffHttp.post<any>(
@@ -81,6 +82,7 @@
     console.log(res);
     if (res.code === 1) {
       localStorage.setItem('userInfo', JSON.stringify(res.data));
+      await initAsyncRoute(res.data.power);
       router.push('/');
     }
   };

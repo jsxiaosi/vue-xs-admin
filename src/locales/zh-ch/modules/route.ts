@@ -21,6 +21,8 @@ const route = {
     userList: '用户列表',
     refSyntax: 'ref语法糖',
     userDateil: '用户详情',
+    system: '系统',
+    power: '权限',
     guide: '引导页',
     thirdParty: '第三方',
     nested: '嵌套路由',

@@ -53,7 +53,7 @@ const power = [
   },
   {
     path: '/echarts',
-    name: 'echarts',
+    name: 'RtEcharts',
 
     children: [
       {
@@ -68,7 +68,7 @@ const power = [
   },
   {
     path: '/editor',
-    name: 'RtEcharts',
+    name: 'RtEditor',
     children: [
       {
         path: 'rich-text',
@@ -84,6 +84,23 @@ const power = [
       },
     ],
   },
+  {
+    path: '/system',
+    name: 'RtSystem',
+    children: [
+      {
+        path: 'power',
+        name: 'RtPower',
+      },
+      {
+        path: 'guide',
+        name: 'RtGuide',
+      },
+    ],
+  },
+];
+
+const adminRoute = [
   {
     path: '/useradmin',
     name: 'RtUseradmin',
@@ -137,16 +154,6 @@ const power = [
     ],
   },
   {
-    path: '/guide',
-    name: 'RtSystem',
-    children: [
-      {
-        path: '',
-        name: 'RtGuide',
-      },
-    ],
-  },
-  {
     path: '/external-link',
     name: 'RtExternal',
     children: [
@@ -178,15 +185,21 @@ export default [
       const { name } = body;
       if (name == 'admin') {
         return {
-          data: power,
+          data: [...power, ...adminRoute],
+          code: 1,
+          message: 'ok',
+        };
+      } else if (name == 'test') {
+        return {
+          data: [...power],
           code: 1,
           message: 'ok',
         };
       } else {
         return {
-          data: power,
+          data: [],
           code: -1,
-          message: '账号密码错误',
+          message: '账号错误',
         };
       }
     },

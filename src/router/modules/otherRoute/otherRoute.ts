@@ -218,17 +218,22 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     ],
   },
   {
-    path: '/guide',
+    path: '/system',
     component: Layout,
-    redirect: '/guide',
+    redirect: '/system/power',
     name: 'RtSystem',
-    alwaysShow: false,
-    meta: { title: '', icon: 'guide' },
+    meta: { title: 'route.pathName.system', icon: 'guide' },
     children: [
       {
-        path: '',
+        path: 'power',
+        name: 'RtPower',
+        component: () => import('@/views/system/power/index.vue'),
+        meta: { title: t('route.pathName.power') },
+      },
+      {
+        path: 'guide',
         name: 'RtGuide',
-        component: () => import('@/views/guide/index.vue'),
+        component: () => import('@/views/system/guide/index.vue'),
         meta: { title: t('route.pathName.guide') },
       },
     ],

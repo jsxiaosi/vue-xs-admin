@@ -11,6 +11,17 @@ const userInfo = {
   power: 'admin',
 };
 
+const userInfo2 = {
+  name: 'test',
+  userid: '00000002',
+  email: '12312311223@qq.com',
+  signature: '小啊小啊浪',
+  introduction: '一个只会喝蜂蜜绿的小前端',
+  title: '咪咪咪',
+  token: '',
+  power: 'test',
+};
+
 export default [
   {
     url: '/mock_api/login',
@@ -25,9 +36,16 @@ export default [
           code: 1,
           message: 'ok',
         };
+      } else if (username == 'test' && password == 'test123') {
+        userInfo2.token = genID(16);
+        return {
+          data: userInfo2,
+          code: 1,
+          message: 'ok',
+        };
       } else {
         return {
-          data: userInfo,
+          data: null,
           code: -1,
           message: '账号密码错误',
         };

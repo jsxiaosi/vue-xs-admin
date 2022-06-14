@@ -40,25 +40,28 @@ router.beforeEach((to, from, next) => {
   }
 
   const userInfo = localStorage.getItem('userInfo');
-
   if (userInfo) {
     if (from.name) {
-      next();
+      // 已登陆状态不允许去登录页
+      if (to.path === '/login') {
+        next({ path: from.path });
+      } else {
+        next();
+      }
     } else {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
-        initAsyncRoute(JSON.parse(userInfo).power || '').then(() => {
-          if (router.hasRoute(to.name || '')) {
+        initAsyncRoute(JSON.parse(userInfo).power || '').then((res) => {
+          if (res.length) {
             router.push(to.path);
           } else {
-            router.push('/');
+            localStorage.removeItem('userInfo');
+            router.push('login');
           }
         });
       } else {
         next();
       }
     }
-    // if (to.path === '/login') next(from.path);
-    // else next();
   } else {
     if (to.path !== '/login') {
       next({ path: '/login' });

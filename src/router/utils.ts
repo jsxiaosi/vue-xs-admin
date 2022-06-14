@@ -5,18 +5,26 @@ import { getRouteApi, RouteDataItemType } from '@/server/route';
 import { router } from './index';
 import { AppRouteRecordRaw } from '#/route';
 
+const whiteList = ['login'];
+
 // 初始化路由
 export const initAsyncRoute = async (power: string) => {
   const res = await getRouteApi({ name: power });
-  const routeList = handleRouteList(router.options.routes, res.data);
-  router.addRoute({
-    path: '/',
-    redirect: routeList[1].redirect,
-    name: '/',
-  });
+  let routeList = [];
+  if (res.data.length) {
+    routeList = handleRouteList(router.options.routes, res.data);
+    routeList.forEach((item) => {
+      router.addRoute(item);
+    });
+    router.addRoute({
+      path: '/',
+      redirect: routeList[0].redirect,
+      name: '/',
+    });
+    usePermissionStoreHook().setWholeMenus(routeList as AppRouteRecordRaw[]);
+  }
 
-  usePermissionStoreHook().setWholeMenus(routeList as AppRouteRecordRaw[]);
-  return res;
+  return routeList;
 };
 
 // 处理路由列表
@@ -34,7 +42,8 @@ const handleRouteList = (routerList: any[], dataRouter: RouteDataItemType[]) => 
       }
     } else {
       // 这里需要重置不在接口返回的路由，否则输入地址还是可以打开页面
-      router.removeRoute(i.name as RouteRecordName);
+      const white = whiteList.indexOf(i.name);
+      if (white === -1) router.removeRoute(i.name as RouteRecordName);
     }
   });
   return newRouteList;

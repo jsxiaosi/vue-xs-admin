@@ -21,6 +21,8 @@ const route = {
     userList: 'UserList',
     refSyntax: 'RefSyntax',
     userDateil: 'UserDateil',
+    system: 'System',
+    power: 'Power',
     guide: 'GuidePage',
     thirdParty: 'Third party',
     nested: 'Nested Route',

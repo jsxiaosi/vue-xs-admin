@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container" @click="updateStem">{{ stem }}-{{ x }}-{{ y }}</div>
+  <div class="page-container" @click="updateStem"> {{ stem }}-{{ x }}-{{ y }} </div>
 </template>
 
 <script setup lang="ts">

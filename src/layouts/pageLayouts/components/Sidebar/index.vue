@@ -27,7 +27,7 @@
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { usePermissionStoreHook } from '@/store/modules/permission';
 
-  const routeModuleList = usePermissionStoreHook().wholeMenus;
+  const routeModuleList = computed(() => usePermissionStoreHook().wholeMenus);
 
   defineProps({
     mode: {

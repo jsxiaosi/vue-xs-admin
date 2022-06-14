@@ -13,6 +13,7 @@
     <div class="navbar-right">
       <AppTheme></AppTheme>
       <AppLocale class="icon"></AppLocale>
+      <AppAccount></AppAccount>
       <SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
     </div>
 
@@ -37,7 +38,7 @@
   // import { ref } from 'vue'
   import Sidebar from '../../components/Sidebar/index.vue';
   import Setting from '../../components/Seting/index.vue';
-  import { AppLocale, AppTheme } from '@/components/Application';
+  import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { ref } from 'vue';
@@ -100,7 +101,7 @@
 
       .icon {
         margin-left: 12px;
-        font-size: 18px;
+        font-size: 20px;
       }
     }
   }
