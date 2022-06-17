@@ -24,6 +24,8 @@ const route = {
     system: '系统',
     power: '权限',
     guide: '引导页',
+    error: 'error',
+    error404: '404',
     thirdParty: '第三方',
     nested: '嵌套路由',
     nested1: '路由1',

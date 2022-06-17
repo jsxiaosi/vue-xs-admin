@@ -239,6 +239,22 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     ],
   },
   {
+    path: '/error',
+    component: Layout,
+    redirect: '/error/404',
+    name: 'error',
+    alwaysShow: true,
+    meta: { title: 'route.pathName.error', icon: 'iEL-remove-filled' },
+    children: [
+      {
+        path: '404',
+        name: '404',
+        component: () => import('@/views/error/404.vue'),
+        meta: { title: t('route.pathName.error404') },
+      },
+    ],
+  },
+  {
     path: '/external-link',
     component: Layout,
     name: 'RtExternal',

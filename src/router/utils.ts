@@ -5,7 +5,7 @@ import { getRouteApi, RouteDataItemType } from '@/server/route';
 import { router } from './index';
 import { AppRouteRecordRaw } from '#/route';
 
-const whiteList = ['login'];
+const whiteList = ['login', 'error'];
 
 // 初始化路由
 export const initAsyncRoute = async (power: string) => {
@@ -44,6 +44,7 @@ const handleRouteList = (routerList: any[], dataRouter: RouteDataItemType[]) => 
       // 这里需要重置不在接口返回的路由，否则输入地址还是可以打开页面
       const white = whiteList.indexOf(i.name);
       if (white === -1) router.removeRoute(i.name as RouteRecordName);
+      else newRouteList.push(i);
     }
   });
   return newRouteList;

@@ -15,7 +15,6 @@
   import { useRouter } from 'vue-router';
   const router = useRouter();
   const command = (value: string) => {
-    console.log(value);
     if (value === 'signOut') {
       localStorage.removeItem('userInfo');
       router.push('/login');
