@@ -1,34 +1,33 @@
 <template>
-  <div>
-    <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu
-        :default-active="activeMenyu"
-        :unique-opened="true"
-        :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
-        :mode="mode"
-      >
-        <sidebar-item
-          v-for="route in routeModuleList"
-          :key="route.path"
-          :item="route"
-          :is-nest="false"
-          :base-path="route.path"
-        />
-      </el-menu>
-      <!-- <i class="breadcrumb-icon" :class="'el-icon-s-unfold'"></i> -->
-    </el-scrollbar>
-  </div>
+  <el-scrollbar wrap-class="scrollbar-wrapper">
+    <el-menu
+      :default-active="activeMenyu"
+      :unique-opened="true"
+      :collapse="appConfigMode.sidebarMode !== 'vertical' ? false : appConfigMode.collapseMenu"
+      :mode="mode"
+    >
+      <sidebar-item
+        v-for="menuRoute in menuData"
+        :key="menuRoute.path"
+        :item="menuRoute"
+        :is-nest="false"
+        :base-path="menuRoute.basePath || menuRoute.path"
+      />
+    </el-menu>
+  </el-scrollbar>
 </template>
 
 <script setup lang="ts">
-  import { computed, PropType } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { computed, PropType, ref, watch } from 'vue';
+  import { RouteRecordName, useRoute } from 'vue-router';
   import SidebarItem from './SidebarItem.vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { usePermissionStoreHook } from '@/store/modules/permission';
+  import { AppRouteRecordRaw } from '#/route';
+  import { getParentPaths, findRouteByPath } from '@/router/utils';
 
-  const routeModuleList = computed(() => usePermissionStoreHook().wholeMenus);
-
+  const route = useRoute();
+  const { appConfigMode } = getAppCollapseMenu();
   defineProps({
     mode: {
       type: String as PropType<'vertical' | 'horizontal'>,
@@ -36,8 +35,42 @@
     },
   });
 
+  let subMenuData = ref(usePermissionStoreHook().wholeMenus);
+
+  const menuData = computed<AppRouteRecordRaw[]>(() => {
+    return appConfigMode.value.sidebarMode === 'blend'
+      ? subMenuData.value
+      : usePermissionStoreHook().wholeMenus;
+  });
+
+  function getSubMenuData(path: RouteRecordName) {
+    // path的上级路由组成的数组
+    const parentPathArr = getParentPaths(path, usePermissionStoreHook().wholeMenus);
+    // 当前路由的父级路由信息
+    const parenetRoute = findRouteByPath(
+      parentPathArr[0] || path,
+      usePermissionStoreHook().wholeMenus,
+    );
+    if (!parenetRoute?.children) return;
+    let children = parenetRoute.children;
+    children = children.map((i: AppRouteRecordRaw) => {
+      i.basePath = parentPathArr[0] + '/' + i.path;
+      return i;
+    });
+    subMenuData.value = children;
+  }
+
+  getSubMenuData(route.name as RouteRecordName);
+  watch(
+    () => route.path,
+    () => {
+      if (appConfigMode.value.sidebarMode === 'blend') {
+        getSubMenuData(route.name as RouteRecordName);
+      }
+    },
+  );
+
   const activeMenyu = computed<string>(() => {
-    const route = useRoute();
     const { meta, path } = route;
     if (meta.activeMenu) {
       return meta.activeMenu as string;
@@ -45,24 +78,7 @@
     return path;
   });
 
-  const { appConfigMode } = getAppCollapseMenu();
-
   // const isCollapse = ref(false)
 </script>
 
-<style lang="scss" scoped>
-  .tac {
-    height: 100%;
-  }
-
-  .breadcrumb-icon {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
-    line-height: 56px;
-    text-align: center;
-  }
-</style>
+<style lang="scss" scoped></style>

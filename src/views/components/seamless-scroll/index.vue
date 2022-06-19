@@ -3,10 +3,10 @@
     <template #header>
       <div class="card-header">
         <span>无缝滚动示例</span>
-        <el-button class="button" type="text" @click="changeDirection('top')">
+        <el-button class="button" @click="changeDirection('top')">
           <span :style="{ color: classOption.direction === 'top' ? 'red' : '' }">向上滚动</span>
         </el-button>
-        <el-button class="button" type="text" @click="changeDirection('bottom')">
+        <el-button class="button" @click="changeDirection('bottom')">
           <span
             :style="{
               color: classOption.direction === 'bottom' ? 'red' : '',
@@ -14,10 +14,10 @@
             >向下滚动</span
           >
         </el-button>
-        <el-button class="button" type="text" @click="changeDirection('left')">
+        <el-button class="button" @click="changeDirection('left')">
           <span :style="{ color: classOption.direction === 'left' ? 'red' : '' }">向左滚动</span>
         </el-button>
-        <el-button class="button" type="text" @click="changeDirection('right')">
+        <el-button class="button" @click="changeDirection('right')">
           <span :style="{ color: classOption.direction === 'right' ? 'red' : '' }">向右滚动</span>
         </el-button>
       </div>

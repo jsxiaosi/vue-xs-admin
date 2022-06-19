@@ -14,7 +14,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     redirect: '/welcome',
     name: 'RtHome',
     alwaysShow: false,
-    meta: { title: '', icon: 'iEL-home-filled' },
+    meta: { title: t('route.pathName.index'), icon: 'iEL-home-filled' },
     children: [
       {
         path: '',
@@ -29,7 +29,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/components/form',
     name: 'RtComponents',
-    alwaysShow: true,
     meta: { title: t('route.pathName.components'), icon: 'components' },
     children: [
       {
@@ -90,7 +89,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/echarts/bar',
     name: 'RtEcharts',
-    alwaysShow: true,
     meta: { title: t('route.pathName.echarts'), icon: 'echarts' },
     children: [
       {
@@ -112,7 +110,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/editor/logic-flow',
     name: 'RtEditor',
-    alwaysShow: true,
     meta: { title: t('route.pathName.editor'), icon: 'editor' },
     children: [
       {
@@ -140,7 +137,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/useradmin/userlist',
     name: 'RtUseradmin',
-    alwaysShow: true,
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar' },
     children: [
       {
@@ -243,7 +239,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/error/404',
     name: 'error',
-    alwaysShow: true,
     meta: { title: 'route.pathName.error', icon: 'iEL-remove-filled' },
     children: [
       {
@@ -258,6 +253,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     path: '/external-link',
     component: Layout,
     name: 'RtExternal',
+    meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
     children: [
       {
         path: 'https://github.com/SuperCuteXiaoSi/xiaosiAdmin',
@@ -272,7 +268,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     redirect: '/about',
     name: 'RtAdminInfo',
     alwaysShow: false,
-    meta: { title: '', icon: 'about' },
+    meta: { title: t('route.pathName.about'), icon: 'about' },
     children: [
       {
         path: '',

@@ -3,6 +3,25 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .app-logo {
+    width: $sideBarWidth;
+    height: #{$navBarHeight};
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    .logo {
+      width: 54px;
+      text-align: center;
+    }
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      margin-left: 12px;
+    }
   }
 
   .main-container {
@@ -10,24 +29,21 @@
     box-sizing: border-box;
     flex: 1;
     width: calc(100vw - #{$sideBarWidth});
-    // width: 100%;
     min-height: 100%;
-    padding-top: #{$navBarHeight};
-    // margin-left: #{$sideBarWidth};
     transition: margin-left 0.28s;
 
-    .main-container-breadcrumb {
+    .main-container-tabs {
       width: 100%;
-      height: #{$BreadcrumbHeight};
+      height: #{$TabsPageHeight};
       padding: 0 20px;
-      background-color: $BreadcrumbColor;
+      background-color: $TabsPageColor;
     }
   }
 
   .sidebar-container {
     width: $sideBarWidth !important;
-    padding: 26px 0;
-    margin-top: #{$navBarHeight};
+    // padding: 26px 0;
+    // margin-top: #{$navBarHeight};
     overflow: hidden;
     font-size: 0;
     background-color: $menuBg;
@@ -166,7 +182,7 @@
   }
 
   .hideSidebar {
-    width: 54px !important;
+    width: $sideHideBarWidth !important;
     // .sidebar-container {
     // 	width: 54px !important;
     // }

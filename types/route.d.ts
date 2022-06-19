@@ -22,6 +22,7 @@ export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   alias?: string | Array<string>;
   alwaysShow?: boolean; //单个路由的时候是否开启折叠
   hidden?: boolean;
-  children?: Array<AppRouteRecordRaw>;
+  children?: AppRouteRecordRaw[];
   meta?: Menu;
+  basePath?: string; // 父级路由
 }

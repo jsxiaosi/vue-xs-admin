@@ -5,9 +5,11 @@ export type AppState = {
   appConfigMode: appConfig;
 };
 
+export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
+
 export interface appConfig {
   collapseMenu: boolean;
-  sidebarMode: string;
+  sidebarMode: SidebarMode;
   themeMode: string;
   locale: string;
 }

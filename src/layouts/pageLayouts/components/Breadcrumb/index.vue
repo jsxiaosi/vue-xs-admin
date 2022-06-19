@@ -1,10 +1,5 @@
 <template>
   <div class="breadcrumb">
-    <!-- <i
-			class="breadcrumb-icon"
-			:class="[isCollapseMenu ? 'el-icon-s-unfold' : 'el-icon-s-fold']"
-			@click="handerShowElmenu"
-		></i>-->
     <SvgIcon
       class="breadcrumb-fold"
       :class="{ 'breadcrumb-unfold': isAppConfigMode.collapseMenu }"
@@ -12,17 +7,23 @@
       color="#e3e3e3"
       @click="handerShowElmenu"
     ></SvgIcon>
-    <el-breadcrumb class="app-breadcrumb" separator="/">
-      <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span
-          v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
-          class="no-redirect"
-          >{{ t(`${item.meta.title}`) }}</span
-        >
-        <a v-else class="redirect" @click.prevent="handleLink(item)">
-          {{ t(`${item.meta.title}`) }}
-        </a>
-      </el-breadcrumb-item>
+    <el-breadcrumb
+      v-show="appConfigMode.sidebarMode === 'vertical'"
+      class="app-breadcrumb"
+      separator="/"
+    >
+      <transition-group name="breadcrumb">
+        <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
+          <span
+            v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+            class="no-redirect"
+            >{{ t(`${item.meta.title}`) }}</span
+          >
+          <a v-else class="redirect" @click.prevent="handleLink(item)">
+            {{ t(`${item.meta.title}`) }}
+          </a>
+        </el-breadcrumb-item>
+      </transition-group>
     </el-breadcrumb>
   </div>
 </template>
@@ -103,10 +104,6 @@
     }
 
     .app-breadcrumb.el-breadcrumb {
-      // display: inline-block;
-      // font-size: 14px;
-      line-height: #{$BreadcrumbHeight};
-      // margin-left: 8px;
       .redirect {
         color: $BreadcrumbText;
       }

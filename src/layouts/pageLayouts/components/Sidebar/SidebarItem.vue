@@ -15,7 +15,7 @@
           <item
             class-name="menu-item-svg"
             :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
-            :title="onlyOneChild.meta.title"
+            :title="onlyOneChild.meta.title || (item.meta && item.meta.title)"
           />
         </el-menu-item>
       </app-link>
@@ -43,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+  import path from 'path';
   import { PropType, ref } from 'vue';
   import { isExternal } from '@/utils/validate';
   import { AppRouteRecordRaw } from '#/route';
@@ -100,7 +101,7 @@
     if (isExternal(props.basePath)) {
       return props.basePath;
     }
-    return `${props.basePath}${routePath ? '/' + routePath : routePath}`;
+    return path.resolve(props.basePath, routePath);
   };
 </script>
 
