@@ -1,57 +1,140 @@
 import { usePermissionStoreHook } from '@/store/modules/permission';
-import { RouteRecordName, RouteRecordNormalized } from 'vue-router';
+import { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import { useTimeoutFn } from '@vueuse/core';
 import { getRouteApi, RouteDataItemType } from '@/server/route';
 import { router } from './index';
-import { AppRouteRecordRaw } from '#/route';
+import { AppRouteRecordRaw, Menu } from '#/route';
+import { sidebarRouteList } from './modules';
+import { isExternal } from '@/utils/validate';
 
-const whiteList = ['login', 'error'];
-
-// 初始化路由
-export const initAsyncRoute = async (power: string) => {
+async function initAsyncRoute(power: string) {
+  resetRouter();
   const res = await getRouteApi({ name: power });
-  let routeList = [];
+  let routeList: AppRouteRecordRaw[] = [];
   if (res.data.length) {
-    routeList = handleRouteList(router.options.routes, res.data);
-    routeList.forEach((item) => {
-      router.addRoute(item);
-    });
-    router.addRoute({
-      path: '/',
-      redirect: routeList[0].redirect,
-      name: '/',
-    });
-    usePermissionStoreHook().setWholeMenus(routeList as AppRouteRecordRaw[]);
+    // 更具接口返回的路由列表生成新的理由
+    routeList = handleRouteList(sidebarRouteList, res.data);
+    privilegeRouting(
+      router.options.routes,
+      formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
+    );
+    console.log(router.options.routes);
+    usePermissionStoreHook().setWholeMenus(routeList);
+  } else {
+    console.error('No requested route');
   }
 
   return routeList;
-};
+}
 
-// 处理路由列表
-const handleRouteList = (routerList: any[], dataRouter: RouteDataItemType[]) => {
-  const newRouteList: any[] = [];
+// 根据返回的权限路由，处理路由列表
+function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataItemType[]) {
+  const newRouteList: AppRouteRecordRaw[] = [];
   routerList.forEach((i) => {
-    const rItem = dataRouter.find((r) => r.name === i.name);
-    if (rItem) {
-      if (rItem.children && rItem.children.length) {
-        const children = handleRouteList(i.children, rItem.children);
-        i.children = children;
-        if (children) newRouteList.push(i);
-      } else {
-        newRouteList.push(i);
+    if (!i.meta?.whiteList) {
+      const rItem = dataRouter.find((r) => r.name === i.name);
+      if (rItem) {
+        if (rItem.children && rItem.children.length && i.children && i.children.length) {
+          const children = handleRouteList(i.children, rItem.children);
+          i.children = children;
+          if (children) newRouteList.push(i);
+        } else {
+          newRouteList.push(i);
+        }
       }
     } else {
-      // 这里需要重置不在接口返回的路由，否则输入地址还是可以打开页面
-      const white = whiteList.indexOf(i.name);
-      if (white === -1) router.removeRoute(i.name as RouteRecordName);
-      else newRouteList.push(i);
+      newRouteList.push(i);
     }
   });
   return newRouteList;
-};
+}
+
+// 更新route的路由列表
+function privilegeRouting(routeList: RouteRecordRaw[], dataRouter: AppRouteRecordRaw[]) {
+  const homeIndex = routeList.findIndex((i) => i.path === '/');
+  if (homeIndex !== -1) {
+    routeList[homeIndex].redirect = dataRouter[0].path;
+    routeList[homeIndex].children = [];
+    dataRouter.forEach((i) => {
+      routeList[homeIndex].children?.push(i as RouteRecordRaw);
+    });
+    router.addRoute(routeList[homeIndex]);
+  }
+}
+
+// 匹配不被清除的文件夹和文件
+function pathNamekeyCheck(key: string, whiteCatalogue: string[]) {
+  const pathName = key.split('/')[1];
+  const index = whiteCatalogue.findIndex((i: string) => {
+    if (pathName.indexOf(i) != -1) {
+      if (pathName === i) return true;
+      else if (/^[\s\S]*\.(ts|tsx|js|jsx)$/.test(pathName)) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  });
+  return index !== -1;
+}
+
+// 扁平路由
+function formatFlatteningRoutes(routesList: AppRouteRecordRaw[]) {
+  if (routesList.length === 0) return routesList;
+  let hierarchyList = routesList;
+  for (let i = 0; i < hierarchyList.length; i++) {
+    if (hierarchyList[i].children) {
+      hierarchyList = hierarchyList
+        .slice(0, i + 1)
+        .concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
+    }
+  }
+  return hierarchyList;
+}
+
+// 拼接路径 伪path resolve
+function pathResolve(...paths: string[]) {
+  let resolvePath = '';
+  let isAbsolutePath = false;
+  for (let i = paths.length - 1; i > -1; i--) {
+    const path = paths[i];
+    if (isAbsolutePath) {
+      break;
+    }
+    if (!path) {
+      continue;
+    }
+    resolvePath = path + '/' + resolvePath;
+    isAbsolutePath = path.charCodeAt(0) === 47;
+  }
+  if (/^\/+$/.test(resolvePath)) {
+    resolvePath = resolvePath.replace(/(\/+)/, '/');
+  } else {
+    resolvePath = resolvePath
+      .replace(/(?!^)\w+\/+\.{2}\//g, '')
+      .replace(/(?!^)\.\//g, '')
+      .replace(/\/+$/, '');
+  }
+  return resolvePath;
+}
+
+// 设置路由path,并创建路由层级
+function setUpRoutePath(routeList: AppRouteRecordRaw[], pathName = '', pathList: number[] = []) {
+  for (const [key, node] of routeList.entries()) {
+    node.meta = { ...(node.meta as Menu), pathList: [...pathList, key] };
+    if (pathName && !isExternal(node.path)) {
+      // nodePath 被静态提升？？？？？？
+      node.path = pathResolve(pathName, node.path || '');
+    }
+    if (node.children && node.children.length) {
+      setUpRoutePath(node.children, node.path, node.meta?.pathList);
+    }
+  }
+  return routeList;
+}
 
 // 处理缓存路由（添加、删除、刷新）
-export const handleAliveRoute = (matched: RouteRecordNormalized[], mode?: string) => {
+function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
   const name: RouteRecordName = matched[matched.length - 1].name as RouteRecordName;
   switch (mode) {
     case 'add':
@@ -76,16 +159,16 @@ export const handleAliveRoute = (matched: RouteRecordNormalized[], mode?: string
         });
       }, 100);
   }
-};
+}
 
 // 通过path获取父级路径
-export const getParentPaths = (path: RouteRecordName, routes: AppRouteRecordRaw[]) => {
+function getParentPaths(routeName: RouteRecordName, routes: AppRouteRecordRaw[]) {
   // 深度遍历查找
   function dfs(routes: AppRouteRecordRaw[], path: RouteRecordName, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i];
       // 找到path则返回父级path
-      if (item.name === path) return parents;
+      if (item.name === path) return [item.name];
       // children不存在或为空则不递归
       if (!item.children || !item.children.length) continue;
       // 往下查找时将当前path入栈
@@ -98,15 +181,14 @@ export const getParentPaths = (path: RouteRecordName, routes: AppRouteRecordRaw[
     // 未找到时返回空数组
     return [];
   }
-
-  return dfs(routes, path, []);
-};
+  return dfs(routes, routeName, []);
+}
 
 // 查找对应path的路由信息
-export const findRouteByPath: (
+function findRouteByPath(
   path: RouteRecordName,
   routes: AppRouteRecordRaw[],
-) => AppRouteRecordRaw | null = (path, routes) => {
+): AppRouteRecordRaw | null {
   let res = routes.find((item: { path: RouteRecordName }) => item.path == path) || null;
   if (res) {
     return res;
@@ -117,8 +199,31 @@ export const findRouteByPath: (
         if (res) {
           return res;
         }
+      } else {
+        return routes[i];
       }
     }
     return null;
   }
+}
+
+// 重置路由 不重置白名单
+function resetRouter() {
+  sidebarRouteList.forEach((route) => {
+    const { name, meta } = route;
+    if (name && !meta?.whiteList) {
+      router.hasRoute(name) && router.removeRoute(name);
+    }
+  });
+}
+
+export {
+  initAsyncRoute,
+  pathNamekeyCheck,
+  formatFlatteningRoutes,
+  setUpRoutePath,
+  handleAliveRoute,
+  getParentPaths,
+  findRouteByPath,
+  resetRouter,
 };

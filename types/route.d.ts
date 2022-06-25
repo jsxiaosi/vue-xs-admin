@@ -1,4 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw, RouteMeta } from 'vue-router';
 import { defineComponent } from 'vue';
 
 export type Component<T = any> =
@@ -6,11 +6,13 @@ export type Component<T = any> =
   | (() => Promise<typeof import('*.vue')>)
   | (() => Promise<T>);
 
-export interface Menu {
+export interface Menu extends RouteMeta {
   title: string;
   icon?: string;
   breadcrumb?: boolean;
   keepAlive?: boolean;
+  whiteList?: boolean;
+  pathList?: number[];
 }
 
 // @ts-ignore

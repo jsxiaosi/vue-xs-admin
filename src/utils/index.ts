@@ -21,9 +21,9 @@ export const getServerConfig = (): Promise<string> => {
     setWindowAppConfig(JSON.parse(appConfigMode));
   }
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('');
-    }, 0);
+    resolve('');
+
+    setTimeout(() => {}, 0);
   });
 };
 

@@ -1,13 +1,36 @@
 import { AppRouteRecordRaw } from '#/route';
+import { pathNamekeyCheck, setUpRoutePath } from '../utils';
 
-const modules = import.meta.globEager('./**/*.ts');
+function configRouteList() {
+  // 白名单目录/文件
+  const whiteCatalogue = ['root', 'whiteList'];
 
-const routeModuleList: AppRouteRecordRaw[] = [];
+  let routeModulesList: AppRouteRecordRaw[] = []; //菜单路由
+  const whiteRouteModulesList: AppRouteRecordRaw[] = []; // 不参与菜单处理的路由
 
-Object.keys(modules).forEach((key) => {
-  const mod = modules[key].default || {};
-  const modList = Array.isArray(mod) ? [...mod] : [mod];
-  routeModuleList.push(...modList);
-});
+  // 自动查找路由配置文件
+  const modules = import.meta.globEager('./**/*.ts');
+  Object.keys(modules).forEach((key) => {
+    const mod = modules[key].default;
+    if (!mod) return;
+    const modList = Array.isArray(mod) ? [...mod] : [mod];
+    if (pathNamekeyCheck(key, whiteCatalogue)) {
+      whiteRouteModulesList.push(...modList);
+    } else {
+      routeModulesList.push(...modList);
+    }
+  });
 
-export default routeModuleList;
+  // 菜单路由 根据父级重新处理子路由的path路径
+  routeModulesList = setUpRoutePath(routeModulesList);
+
+  // 先把菜单路由插入根路径 '/' 防止route 初始化警告查找不到路由
+  const whIndex = whiteRouteModulesList.findIndex((i) => i.path === '/');
+  whiteRouteModulesList[whIndex]['children'] = routeModulesList;
+  return { whiteRouteModulesList, routeModulesList };
+}
+
+const { whiteRouteModulesList, routeModulesList } = configRouteList();
+
+export default whiteRouteModulesList;
+export const sidebarRouteList = routeModulesList;

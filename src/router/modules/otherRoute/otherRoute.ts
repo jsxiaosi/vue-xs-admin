@@ -5,34 +5,23 @@ import { AppRouteRecordRaw } from '#/route';
 import { t } from '@/hooks/web/useI18n';
 
 const Layout = () => import('@/layouts/pageLayouts/index.vue');
-const emptyLayouts = () => import('@/layouts/emptyLayouts/index.vue');
 
 const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/welcome',
-    component: Layout,
-    redirect: '/welcome',
-    name: 'RtHome',
-    alwaysShow: false,
+    name: 'RtWelcome',
+    component: () => import('@/views/index/index.vue'),
     meta: { title: t('route.pathName.index'), icon: 'iEL-home-filled' },
-    children: [
-      {
-        path: '',
-        name: 'RtWelcome',
-        component: () => import('@/views/index/index.vue'),
-        meta: { title: t('route.pathName.index') },
-      },
-    ],
   },
   {
     path: '/components',
-    component: Layout,
+    // component: Layout,
     redirect: '/components/form',
     name: 'RtComponents',
     meta: { title: t('route.pathName.components'), icon: 'components' },
     children: [
       {
-        path: 'form',
+        path: '/components/form',
         name: 'RtForm',
         component: () => import('@/views/components/form/index.vue'),
         meta: { title: t('route.pathName.form') },
@@ -63,16 +52,16 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
       },
       {
         path: 'date-time',
-        component: emptyLayouts, // Parent router-view
+        // Parent router-view
         name: 'DateTime',
         redirect: '/components/date-time/date',
         meta: { title: t('route.pathName.date') },
         children: [
           {
-            path: 'date-select',
+            path: '/components/date-time/date-select',
             name: 'RtDate',
             component: () => import('@/views/components/date/index.vue'),
-            meta: { title: t('route.pathName.dateSelect') },
+            meta: { title: t('route.pathName.dateSelect'), keepAlive: true },
           },
           {
             path: 'calendar',
@@ -165,7 +154,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     children: [
       {
         path: 'menu1',
-        component: emptyLayouts, // Parent router-view
         name: 'RtMenu1',
         redirect: '/nested/menu1/menu1-1',
         meta: { title: t('route.pathName.nested1') },
@@ -178,7 +166,6 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
           },
           {
             path: 'menu1-2',
-            component: emptyLayouts,
             name: 'RtMenu1-2',
             redirect: '/nested/menu1/menu1-2/menu1-2-1',
             meta: { title: t('route.pathName.nested1_2') },
@@ -239,7 +226,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
     component: Layout,
     redirect: '/error/404',
     name: 'error',
-    meta: { title: 'route.pathName.error', icon: 'iEL-remove-filled' },
+    meta: { title: 'route.pathName.error', icon: 'iEL-remove-filled', whiteList: true },
     children: [
       {
         path: '404',
@@ -251,7 +238,7 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   },
   {
     path: '/external-link',
-    component: Layout,
+    // component: Layout,
     name: 'RtExternal',
     meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
     children: [
@@ -265,13 +252,13 @@ const safeManagerRoutes: Array<AppRouteRecordRaw> = [
   {
     path: '/about',
     component: Layout,
-    redirect: '/about',
+    redirect: '/about/index',
     name: 'RtAdminInfo',
     alwaysShow: false,
     meta: { title: t('route.pathName.about'), icon: 'about' },
     children: [
       {
-        path: '',
+        path: 'index',
         name: 'RtAbout',
         component: () => import('@/views/about/index.vue'),
         meta: { title: t('route.pathName.about') },

@@ -13,10 +13,20 @@
   </div>
 </template>
 
+<script lang="tsx">
+  export default {
+    name: 'RtDate',
+  };
+</script>
+
 <script lang="tsx" setup>
   import { DateCell } from 'element-plus/lib/components/date-picker/src/date-picker.type';
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import calendar from '@/utils/date/calendar/index.js';
+
+  onMounted(() => {
+    console.log('缓存');
+  });
 
   const value = ref<string>();
 

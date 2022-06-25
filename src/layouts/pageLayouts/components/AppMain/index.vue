@@ -1,10 +1,10 @@
 <template>
   <section class="app-main">
     <router-view>
-      <template #default="{ Component }">
+      <template #default="{ Component, route }">
         <transition name="fade-transform" mode="out-in">
           <keep-alive :include="getInclude">
-            <component :is="Component"></component>
+            <component :is="Component" :key="route.fullPath"></component>
           </keep-alive>
         </transition>
       </template>

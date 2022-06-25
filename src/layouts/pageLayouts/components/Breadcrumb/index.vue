@@ -17,10 +17,10 @@
           <span
             v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
             class="no-redirect"
-            >{{ t(`${item.meta.title}`) }}</span
+            >{{ t(`${item.meta?.title}`) }}</span
           >
           <a v-else class="redirect" @click.prevent="handleLink(item)">
-            {{ t(`${item.meta.title}`) }}
+            {{ t(`${item.meta?.title}`) }}
           </a>
         </el-breadcrumb-item>
       </transition-group>
@@ -30,31 +30,44 @@
 
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import type { RouteLocationMatched } from 'vue-router';
   import { ref, watch } from 'vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useRoute, useRouter } from 'vue-router';
   import { useI18n } from '@/hooks/web/useI18n';
   import { useAppStore } from '@/store/modules/app';
+  import { AppRouteRecordRaw } from '#/route';
+  import { getParentPaths, findRouteByPath } from '@/router/utils';
 
   const { t } = useI18n();
 
-  const levelList = ref<Array<RouteLocationMatched>>([]);
+  const levelList = ref<Array<AppRouteRecordRaw>>([]);
   // 获取路由配置
   const router = useRouter();
   // 当前路由
   const route = useRoute();
+
+  const routes = router.options.routes as AppRouteRecordRaw[];
+
   // 解析路由匹配的数组
   const getBreadcrumb = () => {
-    // 过滤留下只有meta和title
-    const matched: RouteLocationMatched[] = route.matched.filter(
-      (item) => item.meta && item.meta.title,
-    );
-    // 拼出最终需要展示的跳转数据
+    const matched: AppRouteRecordRaw[] = [];
+    const parentRoutes = getParentPaths(router.currentRoute.value.name || '', routes);
+    // 获取每个父级路径对应的路由信息
+    parentRoutes.forEach((path) => {
+      if (path !== '/') {
+        matched.push(findRouteByPath(path, routes) as AppRouteRecordRaw);
+      }
+    });
+    const item = route.matched.find(
+      (item) => route.name === item.name,
+    ) as unknown as AppRouteRecordRaw;
+
+    matched.push(item);
     levelList.value = matched.filter(
-      (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false,
+      (item) => item.meta && item.meta.title && !item.meta.breadcrumb,
     );
   };
+
   // 手动解析path中可能存在的参数
   const pathCompile = (path: any) => {
     const toPath = path;
@@ -67,6 +80,7 @@
       router.push(redirect);
       return;
     }
+    // console.log();
     router.push(pathCompile(path));
   };
   // 首次调用

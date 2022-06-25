@@ -11,7 +11,7 @@
         :key="menuRoute.path"
         :item="menuRoute"
         :is-nest="false"
-        :base-path="menuRoute.basePath || menuRoute.path"
+        :base-path="menuRoute.path"
       />
     </el-menu>
   </el-scrollbar>
@@ -35,7 +35,7 @@
     },
   });
 
-  let subMenuData = ref(usePermissionStoreHook().wholeMenus);
+  let subMenuData = ref<AppRouteRecordRaw[]>(usePermissionStoreHook().wholeMenus);
 
   const menuData = computed<AppRouteRecordRaw[]>(() => {
     return appConfigMode.value.sidebarMode === 'blend'
@@ -43,26 +43,24 @@
       : usePermissionStoreHook().wholeMenus;
   });
 
-  function getSubMenuData(path: RouteRecordName) {
+  function getSubMenuData(name: RouteRecordName) {
+    console.log('不执行了是吗？');
     // path的上级路由组成的数组
-    const parentPathArr = getParentPaths(path, usePermissionStoreHook().wholeMenus);
+    const parentPathArr = getParentPaths(name, usePermissionStoreHook().wholeMenus);
     // 当前路由的父级路由信息
     const parenetRoute = findRouteByPath(
-      parentPathArr[0] || path,
+      parentPathArr[0] || name,
       usePermissionStoreHook().wholeMenus,
     );
-    if (!parenetRoute?.children) return;
-    let children = parenetRoute.children;
-    children = children.map((i: AppRouteRecordRaw) => {
-      i.basePath = parentPathArr[0] + '/' + i.path;
-      return i;
-    });
-    subMenuData.value = children;
+    if (parenetRoute) {
+      if (parenetRoute.children) subMenuData.value = parenetRoute.children;
+      else subMenuData.value = [parenetRoute];
+    }
   }
 
   getSubMenuData(route.name as RouteRecordName);
   watch(
-    () => route.path,
+    () => [route.path, appConfigMode.value.sidebarMode],
     () => {
       if (appConfigMode.value.sidebarMode === 'blend') {
         getSubMenuData(route.name as RouteRecordName);

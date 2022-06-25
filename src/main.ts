@@ -17,15 +17,15 @@ import '@/styles/index.scss';
 
 const app = createApp(App);
 
-getServerConfig().then((_config) => {
+getServerConfig().then(async (_config) => {
+  // 路由
+  await configMainRouter(app);
+
   // 全局钩子
   configMainGlobalProperties(app);
 
   // Vuex
   configMainStore(app);
-
-  // 路由
-  configMainRouter(app);
 
   // 国际化
   configMainI18n(app);

@@ -1,31 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
-import { AppRouteRecordRaw } from '#/route';
 import routeModuleList from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 
-const routes: Array<AppRouteRecordRaw> = [
-  ...routeModuleList, // 管理端
-  {
-    path: '/',
-    // redirect: routeModuleList[0].path,
-    name: '/',
-  },
-  {
-    path: '/login',
-    component: () => import('@/views/login/index.vue'),
-    name: 'login',
-  },
-];
-// console.log(routes)
 export const router = createRouter({
   history: createWebHistory(''),
-  routes: routes as unknown as RouteRecordRaw[],
+  routes: routeModuleList as unknown as RouteRecordRaw[],
 });
 
-export const configMainRouter = (app: App<Element>) => {
+export const configMainRouter = async (app: App<Element>) => {
   app.use(router);
+  await router.isReady();
 };
 
 // 路由守卫

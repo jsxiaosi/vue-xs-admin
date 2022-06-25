@@ -44,6 +44,8 @@
     width: $sideBarWidth !important;
     // padding: 26px 0;
     // margin-top: #{$navBarHeight};
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     font-size: 0;
     background-color: $menuBg;

@@ -13,7 +13,6 @@
   const value = ref<Date>();
 
   const DateItem = (v) => {
-    console.log(v);
     const { day } = v.data;
     const date = new Date(day);
     var year = date?.getFullYear();

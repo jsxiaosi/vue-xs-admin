@@ -3,13 +3,7 @@ import { MockMethod, Recordable } from 'vite-plugin-mock';
 const power = [
   {
     path: '/welcome',
-    name: 'RtHome',
-    children: [
-      {
-        path: '',
-        name: 'RtWelcome',
-      },
-    ],
+    name: 'RtWelcome',
   },
   {
     path: '/components',
@@ -133,7 +127,7 @@ const adminRoute = [
             children: [
               {
                 path: 'menu1-2-1',
-                name: 'RtMenu1-2',
+                name: 'RtMenu1-2-1',
               },
               {
                 path: 'menu1-2-2',

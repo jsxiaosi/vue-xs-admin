@@ -5,7 +5,6 @@
     :active="activeMenyu"
     class="horizontal-header-menu"
     mode="horizontal"
-    router
   >
     <app-link
       v-for="menusRoute in usePermissionStoreHook().wholeMenus"
