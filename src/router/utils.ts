@@ -13,12 +13,11 @@ async function initAsyncRoute(power: string) {
   let routeList: AppRouteRecordRaw[] = [];
   if (res.data.length) {
     // 更具接口返回的路由列表生成新的理由
-    routeList = handleRouteList(sidebarRouteList, res.data);
+    routeList = handleRouteList(sortRouteList(sidebarRouteList), res.data);
     privilegeRouting(
       router.options.routes,
       formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
     );
-    console.log(router.options.routes);
     usePermissionStoreHook().setWholeMenus(routeList);
   } else {
     console.error('No requested route');
@@ -214,6 +213,19 @@ function resetRouter() {
     if (name && !meta?.whiteList) {
       router.hasRoute(name) && router.removeRoute(name);
     }
+  });
+}
+
+// 按照路由中meta下的rank等级升序来排序路由
+function sortRouteList(arr: any[]) {
+  arr.forEach((v) => {
+    if (v?.meta?.rank === null) v.meta.rank = undefined;
+    if (v.children) {
+      v.children = sortRouteList(v.children);
+    }
+  });
+  return arr.sort((a: { meta: { position: number } }, b: { meta: { position: number } }) => {
+    return a?.meta?.position - b?.meta?.position;
   });
 }
 

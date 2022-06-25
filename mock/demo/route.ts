@@ -78,20 +78,6 @@ const power = [
       },
     ],
   },
-  {
-    path: '/system',
-    name: 'RtSystem',
-    children: [
-      {
-        path: 'power',
-        name: 'RtPower',
-      },
-      {
-        path: 'guide',
-        name: 'RtGuide',
-      },
-    ],
-  },
 ];
 
 const adminRoute = [
@@ -144,6 +130,20 @@ const adminRoute = [
       {
         path: 'menu2',
         name: 'RtMenu2',
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: 'RtSystem',
+    children: [
+      {
+        path: 'power',
+        name: 'RtPower',
+      },
+      {
+        path: 'guide',
+        name: 'RtGuide',
       },
     ],
   },

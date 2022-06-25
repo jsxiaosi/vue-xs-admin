@@ -7,14 +7,23 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, unref } from 'vue';
   import { initAsyncRoute } from '@/router/utils';
-  import { useRouter } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '');
+  const route = useRoute();
+
   const power = ref<string>(userInfo.power);
   const powerChange = async () => {
     power.value = power.value === 'admin' ? 'test' : 'admin';
     initAsyncRoute(power.value);
+
+    console.log(route);
+    const { fullPath, query } = unref(route);
+    router.replace({
+      path: '/redirect' + fullPath,
+      query: query,
+    });
   };
 
   const router = useRouter();

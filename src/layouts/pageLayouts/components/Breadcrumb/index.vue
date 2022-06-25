@@ -64,7 +64,7 @@
 
     matched.push(item);
     levelList.value = matched.filter(
-      (item) => item.meta && item.meta.title && !item.meta.breadcrumb,
+      (item) => item && item.meta && item.meta.title && !item.meta.breadcrumb,
     );
   };
 

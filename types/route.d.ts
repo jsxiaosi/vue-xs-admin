@@ -13,6 +13,7 @@ export interface Menu extends RouteMeta {
   keepAlive?: boolean;
   whiteList?: boolean;
   pathList?: number[];
+  position?: number; //排序位置
 }
 
 // @ts-ignore

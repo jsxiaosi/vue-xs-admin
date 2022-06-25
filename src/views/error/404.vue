@@ -18,13 +18,20 @@
           >Please check that the URL you entered is correct, or click the button below to return to
           the homepage.</div
         >
-        <a href="" class="bullshit__return-home">Back to home</a>
+        <el-button class="bullshit__return-home" @click="toHome">Back to home</el-button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+  const toHome = () => {
+    router.push('/');
+  };
+</script>
 
 <style lang="scss" scoped>
   .wscn-http404-container {
@@ -192,7 +199,7 @@
       &__return-home {
         display: block;
         float: left;
-        width: 110px;
+        width: 120px;
         height: 36px;
         background: #1482f0;
         border-radius: 100px;
@@ -200,7 +207,7 @@
         color: #ffffff;
         opacity: 0;
         font-size: 14px;
-        line-height: 36px;
+        // line-height: 36px;
         cursor: pointer;
         animation-name: slideUp;
         animation-duration: 0.5s;

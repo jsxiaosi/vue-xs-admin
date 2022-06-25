@@ -1,8 +1,9 @@
+import { AppRouteRecordRaw } from '#/route';
 import { t } from '@/hooks/web/useI18n';
 
 const Layout = () => import('@/layouts/pageLayouts/index.vue');
 
-export default [
+const root: Array<AppRouteRecordRaw> = [
   {
     path: '/',
     component: Layout,
@@ -14,4 +15,19 @@ export default [
     component: () => import('@/views/login/index.vue'),
     name: 'login',
   },
+  {
+    path: '/redirect',
+    component: Layout,
+    meta: { title: '', icon: 'home-filled' },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        name: 'Redirect',
+        component: () => import('@/layouts/redirect/index.vue'),
+      },
+    ],
+  },
+  { path: '/:path(.*)', redirect: '/error/404' },
 ];
+
+export default root;
