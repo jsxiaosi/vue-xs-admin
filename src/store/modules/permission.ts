@@ -1,16 +1,18 @@
 import { defineStore } from 'pinia';
 import { store } from '@/store';
 import { RouteRecordName } from 'vue-router';
-import type { PermissionState } from '../types';
+import type { MultiTabsType, PermissionState } from '../types';
 import { AppRouteRecordRaw } from '#/route';
 
-export const usePermissionStore = defineStore({
+const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({
     // 路由菜单
     wholeMenus: [],
     // 缓存页面keepAlive
     cachePageList: [],
+    // 标签页（路由记录）
+    multiTabs: [],
   }),
   actions: {
     setWholeMenus(routeList: AppRouteRecordRaw[]) {
@@ -31,6 +33,23 @@ export const usePermissionStore = defineStore({
     // 清空缓存页面
     clearAllCachePage() {
       this.cachePageList = [];
+    },
+    handleMultiTabs<T>(type: 'add' | 'delete', value: T | MultiTabsType) {
+      switch (type) {
+        case 'add':
+          const route = value as MultiTabsType;
+          const isAlike = this.multiTabs.find((i) => i.path === route.path);
+          if (isAlike) return;
+          this.multiTabs.push(route);
+          break;
+        case 'delete':
+          const index = this.multiTabs.findIndex((i) => i.path === (value as unknown as string));
+          if (index === -1) return;
+          this.multiTabs.splice(index, 1);
+          break;
+        default:
+          break;
+      }
     },
   },
 });

@@ -22,8 +22,8 @@
   .app-main {
     position: relative;
     width: 100%;
-    height: calc(100vh - #{$navBarHeight+$TabsPageHeight});
-    // min-height: calc(100vh - #{$navBarHeight+$TabsPageHeight});
+    height: calc(100vh - #{$navBarHeight+$tabsPageHeight});
+    // min-height: calc(100vh - #{$navBarHeight+$tabsPageHeight});
     overflow: auto;
     padding: 20px;
     background-color: #{$app-main-bg-color};

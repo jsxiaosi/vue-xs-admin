@@ -3,7 +3,7 @@
     <el-menu
       :default-active="activeMenyu"
       :unique-opened="true"
-      :collapse="appConfigMode.sidebarMode !== 'vertical' ? false : appConfigMode.collapseMenu"
+      :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
       :mode="mode"
     >
       <sidebar-item
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
   import { computed, PropType, ref, watch } from 'vue';
-  import { RouteRecordName, useRoute } from 'vue-router';
+  import { useRoute } from 'vue-router';
   import SidebarItem from './SidebarItem.vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { usePermissionStoreHook } from '@/store/modules/permission';
@@ -43,27 +43,23 @@
       : usePermissionStoreHook().wholeMenus;
   });
 
-  function getSubMenuData(name: RouteRecordName) {
-    console.log('不执行了是吗？');
+  function getSubMenuData(path: string) {
     // path的上级路由组成的数组
-    const parentPathArr = getParentPaths(name, usePermissionStoreHook().wholeMenus);
+    const parentPathArr = getParentPaths(path, usePermissionStoreHook().wholeMenus);
     // 当前路由的父级路由信息
-    const parenetRoute = findRouteByPath(
-      parentPathArr[0] || name,
-      usePermissionStoreHook().wholeMenus,
-    );
+    const parenetRoute = findRouteByPath(parentPathArr[0], usePermissionStoreHook().wholeMenus);
     if (parenetRoute) {
       if (parenetRoute.children) subMenuData.value = parenetRoute.children;
       else subMenuData.value = [parenetRoute];
     }
   }
 
-  getSubMenuData(route.name as RouteRecordName);
+  getSubMenuData(route.path);
   watch(
     () => [route.path, appConfigMode.value.sidebarMode],
     () => {
       if (appConfigMode.value.sidebarMode === 'blend') {
-        getSubMenuData(route.name as RouteRecordName);
+        getSubMenuData(route.path);
       }
     },
   );

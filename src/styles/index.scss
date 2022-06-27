@@ -83,6 +83,10 @@ ul {
   margin: 0;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 @for $i from 1 to 6 {
   * > .enter-x:nth-child(#{$i}) {
     transform: translateX(50px);

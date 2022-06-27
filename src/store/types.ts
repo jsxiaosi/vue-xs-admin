@@ -1,5 +1,5 @@
 import { AppRouteRecordRaw } from '#/route';
-import { RouteRecordName } from 'vue-router';
+import { RouteRecordName, _RouteLocationBase } from 'vue-router';
 
 export type AppState = {
   appConfigMode: appConfig;
@@ -14,7 +14,12 @@ export interface appConfig {
   locale: string;
 }
 
+export type MultiTabsType = Omit<
+  _RouteLocationBase,
+  'fullPath' | 'hash' | 'params' | 'redirectedFrom'
+>;
 export type PermissionState = {
   wholeMenus: AppRouteRecordRaw[];
   cachePageList: RouteRecordName[];
+  multiTabs: MultiTabsType[];
 };

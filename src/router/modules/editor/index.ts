@@ -4,7 +4,7 @@ import { t } from '@/hooks/web/useI18n';
 const editor: AppRouteRecordRaw[] = [
   {
     path: '/editor',
-    redirect: '/editor/logic-flow',
+    redirect: '/editor/rich-text',
     name: 'RtEditor',
     meta: { title: t('route.pathName.editor'), icon: 'editor', position: 4 },
     children: [

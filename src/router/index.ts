@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
-import routeModuleList from './modules';
+import whiteRouteModulesList from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 
+const routeList = whiteRouteModulesList;
+
 export const router = createRouter({
   history: createWebHistory(''),
-  routes: routeModuleList as unknown as RouteRecordRaw[],
+  routes: routeList as unknown as RouteRecordRaw[],
 });
 
 export const configMainRouter = async (app: App<Element>) => {
@@ -20,7 +22,7 @@ router.beforeEach((to, from, next) => {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, 'add');
     // 页面整体刷新
-    if (from.name === undefined || from.name === 'redirect') {
+    if (from.name === undefined || from.name === 'Redirect') {
       handleAliveRoute(newMatched);
     }
   }

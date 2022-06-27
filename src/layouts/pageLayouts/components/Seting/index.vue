@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { watch, ref } from 'vue';
-  import { useAppStore } from '@/store/modules/app';
+  import { useAppStoreHook } from '@/store/modules/app';
   import { SidebarMode } from '@/store/types';
 
   const props = defineProps({
@@ -65,7 +65,7 @@
     },
   ];
 
-  const appStore = useAppStore();
+  const appStore = useAppStoreHook();
   // 折叠菜单事件
   const handerShowElmenu = (vale: SidebarMode) => {
     isAppConfigMode.value.sidebarMode = vale;

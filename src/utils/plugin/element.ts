@@ -34,6 +34,8 @@ import {
   ElTable,
   ElTableColumn,
   ElCalendar,
+  ElTabs,
+  ElTabPane,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -77,6 +79,8 @@ const components = [
   ElTable,
   ElTableColumn,
   ElCalendar,
+  ElTabs,
+  ElTabPane,
 ];
 
 // https://element-plus.org/zh-CN/component/icon.html
@@ -87,10 +91,11 @@ import {
   Grid,
   Setting,
   RemoveFilled,
+  Refresh,
 } from '@element-plus/icons-vue';
 
 // Icon
-export const iconComponents = [HomeFilled, Avatar, Operation, Grid, Setting, RemoveFilled];
+export const iconComponents = [HomeFilled, Avatar, Operation, Grid, Setting, RemoveFilled, Refresh];
 
 export function useElementPlus(app: App) {
   // 注册组件

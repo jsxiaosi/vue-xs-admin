@@ -4,7 +4,7 @@ import { t } from '@/hooks/web/useI18n';
 const useradmin: AppRouteRecordRaw[] = [
   {
     path: '/useradmin',
-    redirect: '/useradmin/userlist',
+    redirect: '/useradmin/refSyntax',
     name: 'RtUseradmin',
     meta: { title: t('route.pathName.userInfo'), icon: 'iEL-avatar', position: 5 },
     children: [

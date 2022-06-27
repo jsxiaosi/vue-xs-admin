@@ -161,13 +161,13 @@ function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
 }
 
 // 通过path获取父级路径
-function getParentPaths(routeName: RouteRecordName, routes: AppRouteRecordRaw[]) {
+function getParentPaths(routePath: string, routes: AppRouteRecordRaw[]) {
   // 深度遍历查找
-  function dfs(routes: AppRouteRecordRaw[], path: RouteRecordName, parents: string[]) {
+  function dfs(routes: AppRouteRecordRaw[], path: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i];
       // 找到path则返回父级path
-      if (item.name === path) return [item.name];
+      if (item.path === path) return [item.path];
       // children不存在或为空则不递归
       if (!item.children || !item.children.length) continue;
       // 往下查找时将当前path入栈
@@ -180,26 +180,23 @@ function getParentPaths(routeName: RouteRecordName, routes: AppRouteRecordRaw[])
     // 未找到时返回空数组
     return [];
   }
-  return dfs(routes, routeName, []);
+  return dfs(routes, routePath, []);
 }
 
 // 查找对应path的路由信息
-function findRouteByPath(
-  path: RouteRecordName,
-  routes: AppRouteRecordRaw[],
-): AppRouteRecordRaw | null {
-  let res = routes.find((item: { path: RouteRecordName }) => item.path == path) || null;
+function findRouteByPath(path: string, routes: AppRouteRecordRaw[]): AppRouteRecordRaw | null {
+  const res = routes.find((item: { path: string }) => item.path == path) || null;
   if (res) {
     return res;
   } else {
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].children instanceof Array && routes[i].children?.length) {
-        res = findRouteByPath(path, routes[i].children as AppRouteRecordRaw[]);
-        if (res) {
-          return res;
+        const miRes = findRouteByPath(path, routes[i].children as AppRouteRecordRaw[]);
+        if (miRes) {
+          return miRes;
+        } else {
+          if (routes[i].path == path) return routes[i];
         }
-      } else {
-        return routes[i];
       }
     }
     return null;

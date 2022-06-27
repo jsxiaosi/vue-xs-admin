@@ -49,7 +49,6 @@ export function useECharts(elRef: Ref<HTMLDivElement>) {
 
   // 改变图表大小
   function resize() {
-    console.log('每次都执行？');
     chartInstance?.resize();
   }
 

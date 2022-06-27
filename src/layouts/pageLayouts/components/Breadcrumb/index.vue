@@ -34,7 +34,7 @@
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useRoute, useRouter } from 'vue-router';
   import { useI18n } from '@/hooks/web/useI18n';
-  import { useAppStore } from '@/store/modules/app';
+  import { useAppStoreHook } from '@/store/modules/app';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
 
@@ -51,7 +51,7 @@
   // 解析路由匹配的数组
   const getBreadcrumb = () => {
     const matched: AppRouteRecordRaw[] = [];
-    const parentRoutes = getParentPaths(router.currentRoute.value.name || '', routes);
+    const parentRoutes = getParentPaths(router.currentRoute.value.path || '', routes);
     // 获取每个父级路径对应的路由信息
     parentRoutes.forEach((path) => {
       if (path !== '/') {
@@ -91,7 +91,7 @@
   // 当前是否折叠导航栏
   const { appConfigMode } = getAppCollapseMenu();
   const isAppConfigMode = ref(appConfigMode.value);
-  const appStore = useAppStore();
+  const appStore = useAppStoreHook();
   // 折叠菜单事件
   const handerShowElmenu = () => {
     isAppConfigMode.value.collapseMenu = !isAppConfigMode.value.collapseMenu;

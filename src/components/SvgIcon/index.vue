@@ -1,12 +1,10 @@
 <template>
-  <div :class="className" style="line-height: 1px">
-    <el-icon v-if="isELIcon">
-      <component :is="name" />
-    </el-icon>
-    <svg v-else class="svg" :aria-hidden="true">
-      <use :xlink:href="symbolId" :fill="color" />
-    </svg>
-  </div>
+  <el-icon v-if="isELIcon" :class="className">
+    <component :is="name" />
+  </el-icon>
+  <svg v-else :class="className" class="svg" :aria-hidden="true">
+    <use :xlink:href="symbolId" :fill="color" />
+  </svg>
 </template>
 
 <script setup lang="ts">

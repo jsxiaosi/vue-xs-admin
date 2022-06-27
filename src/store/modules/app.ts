@@ -9,7 +9,7 @@ let localAppConfig: appConfig = {
   locale: 'zh-ch',
 };
 
-export const useAppStore = defineStore({
+const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
     appConfigMode: localAppConfig,
