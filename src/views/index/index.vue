@@ -161,7 +161,7 @@
     }
 
     .infinite {
-      border: 1px solid var(--text-color-placeholder);
+      border: 1px solid var(--border-color-light);
       .top {
         // width: 95%;
         height: 40px;
@@ -172,7 +172,7 @@
         // color: #909399;
         font-weight: 400;
         background: var(--sub-main-bg-content);
-        border-bottom: 1px solid var(--text-color-placeholder);
+        border-bottom: 1px solid var(--border-color-light);
 
         li {
           width: 34%;

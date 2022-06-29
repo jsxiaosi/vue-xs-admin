@@ -38,9 +38,10 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(configPwaPlugin());
 
+  /* 会重复引入与组件数量相等的主题变量 */
   vitePlugins.push(
     ElementPlus({
-      // useSource: true,
+      useSource: true,
     }),
   );
 

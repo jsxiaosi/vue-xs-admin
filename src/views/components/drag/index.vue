@@ -85,7 +85,7 @@
       width: 100%;
       padding: 20px;
       // line-height: 50px;
-      border: 1px solid var(--text-color-placeholder);
+      border: 1px solid var(--border-color-light);
       .handle {
         margin-right: 20px;
         cursor: move;
@@ -104,7 +104,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--text-color-placeholder);
+      border: 1px solid var(--border-color-light);
     }
   }
 </style>

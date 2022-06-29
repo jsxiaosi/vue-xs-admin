@@ -1,14 +1,12 @@
+$text-color-base: #909399;
+
 /* 修改element颜色变量 */
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors: (
-//     'primary': (
-//       'base': green,
-//     ),
-//   )
-// );
-// @use "element-plus/theme-chalk/src/index.scss" as *;
-
-@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
-
-@import '../theme.scss';
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (),
+  $text-color: (
+    'primary': #909399,
+    'regular': #606266,
+    'placeholder': #ebeef5,
+  )
+);
 @import '../el-theme.scss';

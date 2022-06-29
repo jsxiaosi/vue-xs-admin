@@ -58,7 +58,7 @@
     height: #{$navBarHeight};
     padding: 0 20px;
     background-color: $navBarColor;
-    border-bottom: 1px solid $navBarBorderBottomColor;
+    border-bottom: 1px solid var(--border-color-light);
     box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 
     .navbar-left {

@@ -118,7 +118,7 @@
         text-align: center;
         line-height: $tabsPageHeight;
         font-size: 16px;
-        border: 1px solid var(--text-color-placeholder);
+        border: 1px solid var(--border-color-light);
       }
     }
     // .el-tabs :deep(.el-tabs__header) {
@@ -150,7 +150,7 @@
               height: 100%;
               line-height: $tabsPageHeight - 10;
               border-radius: 4px;
-              border: 1px solid var(--text-color-placeholder);
+              border: 1px solid var(--border-color-light);
               margin-right: 4px;
             }
           }
