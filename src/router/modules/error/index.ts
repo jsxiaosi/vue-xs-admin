@@ -10,7 +10,7 @@ const error: AppRouteRecordRaw[] = [
       title: 'route.pathName.error',
       icon: 'iEL-remove-filled',
       whiteList: true,
-      position: 8,
+      position: 9,
     },
     children: [
       {

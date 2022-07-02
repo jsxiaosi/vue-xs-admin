@@ -78,6 +78,10 @@ const power = [
       },
     ],
   },
+  {
+    path: '/details_page',
+    name: 'RtDetailsPage',
+  },
 ];
 
 const adminRoute = [

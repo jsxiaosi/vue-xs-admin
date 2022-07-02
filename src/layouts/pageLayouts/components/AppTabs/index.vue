@@ -3,24 +3,66 @@
     <el-tabs
       v-model="editableTabsValue"
       type="card"
-      class="demo-tabs"
+      class="tabs-view"
       :closable="multiTabs.length > 1"
-      @tab-remove="removeTab"
-      @tab-change="changeTab"
+      @tab-remove="tabRemoveChange"
     >
       <el-tab-pane
         v-for="item in multiTabs"
-        :key="item.path"
+        :key="setTabPaneKey(item)"
         :label="t(item.meta.title as string)"
-        :name="item.path"
+        :name="setTabPaneKey(item)"
       >
+        <template #label>
+          <div
+            class="tabs-view-item"
+            @click="changeTab(item)"
+            @contextmenu.prevent="contextmenu(item.path, $event)"
+          ></div>
+          <span>{{t(item.meta.title as string)}}</span>
+        </template>
       </el-tab-pane>
     </el-tabs>
-    <ul>
-      <li class="cursor" @click="onFresh">
-        <svg-icon class="rotate" name="iEL-refresh"></svg-icon>
-      </li>
-    </ul>
+    <transition name="el-zoom-in-top">
+      <ul v-show="visible" class="right-view" :style="rightViewStyle">
+        <div
+          v-for="(item, key) in rightClickTags"
+          :key="key"
+          class="right-view-item cursor"
+          :class="{ disabled: item.disabled }"
+          @click="rightViewChange(item)"
+        >
+          <li>
+            <span>{{ item.text }}</span>
+          </li>
+        </div>
+      </ul>
+    </transition>
+    <div class="right-button">
+      <ul>
+        <li class="cursor" @click="onFresh()">
+          <svg-icon class="rotate" name="iEL-refresh"></svg-icon>
+        </li>
+        <li>
+          <el-dropdown trigger="click" placement="bottom-end">
+            <svg-icon class="action-item" name="iEL-arrow-down"></svg-icon>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item
+                  v-for="(item, key) in rightClickTags"
+                  :key="key"
+                  :command="{ key, item }"
+                  :disabled="item.disabled"
+                  @click="rightViewChange(item)"
+                >
+                  {{ item.text }}
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -28,102 +70,74 @@
   import { useI18n } from '@/hooks/web/useI18n';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { MultiTabsType } from '@/store/types';
-  import { ref, onMounted, computed, watch, unref } from 'vue';
+  import { ref, computed, watch, onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { removeClass, toggleClass } from '@/utils/operate';
-  import { sidebarRouteList } from '@/router/modules';
-  import { findRouteByPath } from '@/router/utils';
-  const { t } = useI18n();
+  import { useTabsView } from './hooks/useTabsView';
+  import { useTabsChange } from './hooks/useTabsChange';
+  import { emitter } from '@/utils/mitt';
 
+  const { t } = useI18n();
   const route = useRoute();
   const router = useRouter();
 
   const multiTabs = computed<MultiTabsType[]>(() => usePermissionStoreHook().multiTabs);
-  const editableTabsValue = ref(route.path);
+
+  const { setTabPaneKey, addRouteTabs, onFresh, removeTab } = useTabsChange(multiTabs);
+
+  const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
+    useTabsView(multiTabs);
+
+  const editableTabsValue = ref(setTabPaneKey(route));
 
   watch(
     () => route.path,
     () => {
-      editableTabsValue.value = route.path;
-      addRouteTabs();
+      editableTabsValue.value = setTabPaneKey(route);
     },
   );
 
-  onMounted(() => {
-    addRouteTabs();
+  onBeforeMount(() => {
+    addRouteTabs(route);
+    contextmenu(route.path);
+    emitter.on('siteBarChange', ({ routeRow }) => {
+      addRouteTabs(routeRow as unknown as MultiTabsType);
+      contextmenu(routeRow.path);
+    });
   });
 
-  const addRouteTabs = () => {
-    const { path, name, query, meta } = route;
-
-    const routeIndex = findRouteByPath(path, sidebarRouteList);
-    if (!routeIndex) return;
-    const currentRoute = { path, query, meta, name };
-    usePermissionStoreHook().handleMultiTabs('add', currentRoute);
-  };
-
-  const removeTab = (e: string) => {
-    const valueIndex = multiTabs.value.findIndex((i) => i.path === e);
-    const tabsLength = multiTabs.value.length;
-    let value,
-      toRoute = {};
-    if (valueIndex === tabsLength - 1) {
-      value = multiTabs.value[valueIndex - 1];
-      toRoute = {
-        path: value.path,
-        query: value.query,
-      };
-    } else {
-      value = multiTabs.value[tabsLength - 1];
-      toRoute = {
-        path: value.path,
-        query: value.query,
-      };
-    }
-    router.push(toRoute);
-    usePermissionStoreHook().cacheOperate({
-      mode: 'delete',
-      name: multiTabs.value[valueIndex].name || '',
-    });
-    usePermissionStoreHook().handleMultiTabs('delete', e);
-  };
-
-  // 重新加载
-  function onFresh() {
-    const refreshButton = 'refresh-button';
-    toggleClass(true, refreshButton, document.querySelector('.rotate'));
-    const { fullPath, query } = unref(route);
-    router.replace({
-      path: '/redirect' + fullPath,
-      query: query,
-    });
+  const tabRemoveChange = (e: string) => {
+    removeTab(e);
     setTimeout(() => {
-      removeClass(document.querySelector('.rotate'), refreshButton);
-    }, 600);
-  }
+      contextmenu(route.path);
+    });
+  };
 
-  const changeTab = (e: string) => {
-    router.push(e);
+  const changeTab = (e: MultiTabsType) => {
+    router.push({
+      path: e.path,
+      query: e.query,
+    });
+    contextmenu(e.path);
   };
 </script>
 
 <style lang="scss" scoped>
   .main-container-tabs {
     display: flex;
-    ul {
-      li {
-        width: $tabsPageHeight;
-        height: 100%;
-        text-align: center;
-        line-height: $tabsPageHeight;
-        font-size: 16px;
-        border: 1px solid var(--border-color-light);
-      }
-    }
+    position: relative;
+
     // .el-tabs :deep(.el-tabs__header) {
     //   margin: 0;
     // }
+    .tabs-view {
+      .tabs-view-item {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+      }
+    }
     .el-tabs {
       width: 0;
       height: $tabsPageHeight;
@@ -166,18 +180,56 @@
         // }
       }
     }
-    /* 刷新按钮动画效果 */
-    .refresh-button {
-      animation: rotate 600ms linear infinite;
+    .right-view {
+      position: fixed;
+      z-index: 999;
+      background-color: var(--main-bg-color);
+      border: 1px solid var(--border-color-light);
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0px 0px 12px rgb(28 29 30 / 8%);
+      .right-view-item {
+        padding: 5px 10px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        .right-view-item-icon {
+          margin-right: 5px;
+        }
+        &:hover {
+          background-color: var(--sub-color-2);
+        }
+      }
     }
 
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
+    .right-button {
+      ul {
+        display: flex;
+        li {
+          width: $tabsPageHeight;
+          height: 100%;
+          text-align: center;
+          line-height: $tabsPageHeight;
+          font-size: 16px;
+          border: 1px solid var(--border-color-light);
+          .action-item {
+            height: $tabsPageHeight;
+          }
+        }
+        /* 刷新按钮动画效果 */
+        .refresh-button {
+          animation: rotate 600ms linear infinite;
+        }
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
 
-      to {
-        transform: rotate(-360deg);
+          to {
+            transform: rotate(-360deg);
+          }
+        }
       }
     }
   }

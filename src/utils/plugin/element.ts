@@ -92,10 +92,26 @@ import {
   Setting,
   RemoveFilled,
   Refresh,
+  CaretLeft,
+  CaretRight,
+  ArrowDown,
+  Management,
 } from '@element-plus/icons-vue';
 
 // Icon
-export const iconComponents = [HomeFilled, Avatar, Operation, Grid, Setting, RemoveFilled, Refresh];
+export const iconComponents = [
+  HomeFilled,
+  Avatar,
+  Operation,
+  Grid,
+  Setting,
+  RemoveFilled,
+  Refresh,
+  CaretLeft,
+  CaretRight,
+  ArrowDown,
+  Management,
+];
 
 export function useElementPlus(app: App) {
   // 注册组件

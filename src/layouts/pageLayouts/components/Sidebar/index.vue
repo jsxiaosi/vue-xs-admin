@@ -5,6 +5,7 @@
       :unique-opened="true"
       :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
       :mode="mode"
+      @select="(indexPath) => selectMenu(indexPath)"
     >
       <sidebar-item
         v-for="menuRoute in menuData"
@@ -25,6 +26,9 @@
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
+  import { useSelectMenu } from './hooks/useSelectMenu';
+
+  const { selectMenu } = useSelectMenu();
 
   const route = useRoute();
   const { appConfigMode } = getAppCollapseMenu();

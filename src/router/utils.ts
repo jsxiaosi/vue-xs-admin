@@ -4,7 +4,7 @@ import { useTimeoutFn } from '@vueuse/core';
 import { getRouteApi, RouteDataItemType } from '@/server/route';
 import { router } from './index';
 import { AppRouteRecordRaw, Menu } from '#/route';
-import { sidebarRouteList } from './modules';
+import { sidebarRouteList } from './index';
 import { isExternal } from '@/utils/validate';
 
 async function initAsyncRoute(power: string) {

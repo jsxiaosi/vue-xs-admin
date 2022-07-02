@@ -24,6 +24,7 @@ const route = {
     system: 'System',
     power: 'Power',
     guide: 'GuidePage',
+    detailsPage: 'DetailsPage',
     error: 'error',
     error404: '404',
     thirdParty: 'Third party',

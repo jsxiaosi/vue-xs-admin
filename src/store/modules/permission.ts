@@ -3,6 +3,8 @@ import { store } from '@/store';
 import { RouteRecordName } from 'vue-router';
 import type { MultiTabsType, PermissionState } from '../types';
 import { AppRouteRecordRaw } from '#/route';
+import { isEqual } from 'lodash';
+import { getlocalStorage, setlocalStorage } from '@/utils/storage';
 
 const usePermissionStore = defineStore({
   id: 'permission',
@@ -12,7 +14,7 @@ const usePermissionStore = defineStore({
     // 缓存页面keepAlive
     cachePageList: [],
     // 标签页（路由记录）
-    multiTabs: [],
+    multiTabs: getlocalStorage('multiTabsList') || [],
   }),
   actions: {
     setWholeMenus(routeList: AppRouteRecordRaw[]) {
@@ -35,21 +37,23 @@ const usePermissionStore = defineStore({
       this.cachePageList = [];
     },
     handleMultiTabs<T>(type: 'add' | 'delete', value: T | MultiTabsType) {
+      const route = value as MultiTabsType;
+      const index = this.multiTabs.findIndex(
+        (i) => i.path === route.path && isEqual(i.query, route.query),
+      );
       switch (type) {
         case 'add':
-          const route = value as MultiTabsType;
-          const isAlike = this.multiTabs.find((i) => i.path === route.path);
-          if (isAlike) return;
+          if (index !== -1) return;
           this.multiTabs.push(route);
           break;
         case 'delete':
-          const index = this.multiTabs.findIndex((i) => i.path === (value as unknown as string));
           if (index === -1) return;
           this.multiTabs.splice(index, 1);
           break;
         default:
           break;
       }
+      setlocalStorage('multiTabsList', this.multiTabs);
     },
   },
 });

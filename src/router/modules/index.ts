@@ -1,7 +1,7 @@
 import { AppRouteRecordRaw } from '#/route';
 import { pathNamekeyCheck, setUpRoutePath } from '../utils';
 
-function configRouteList() {
+export function configRouteList() {
   // 白名单目录/文件
   const whiteCatalogue = ['root', 'whiteList'];
 
@@ -29,8 +29,3 @@ function configRouteList() {
   whiteRouteModulesList[whIndex]['children'] = routeModulesList;
   return { whiteRouteModulesList, routeModulesList };
 }
-
-const { whiteRouteModulesList, routeModulesList } = configRouteList();
-
-export default whiteRouteModulesList;
-export const sidebarRouteList = routeModulesList;

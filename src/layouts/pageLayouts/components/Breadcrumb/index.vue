@@ -37,6 +37,10 @@
   import { useAppStoreHook } from '@/store/modules/app';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
+  import { usePermissionStoreHook } from '@/store/modules/permission';
+  import { isEqual } from 'lodash';
+
+  const { multiTabs } = usePermissionStoreHook();
 
   const { t } = useI18n();
 
@@ -58,11 +62,14 @@
         matched.push(findRouteByPath(path, routes) as AppRouteRecordRaw);
       }
     });
-    const item = route.matched.find(
-      (item) => route.name === item.name,
-    ) as unknown as AppRouteRecordRaw;
-
-    matched.push(item);
+    const item = multiTabs.find((item) => {
+      let itemQuery = {};
+      if (item.query) {
+        itemQuery = JSON.parse(JSON.stringify(item.query));
+      }
+      return route.name === item.name && isEqual(route.query, itemQuery);
+    });
+    if (item) matched.push(item as unknown as AppRouteRecordRaw);
     levelList.value = matched.filter(
       (item) => item && item.meta && item.meta.title && !item.meta.breadcrumb,
     );

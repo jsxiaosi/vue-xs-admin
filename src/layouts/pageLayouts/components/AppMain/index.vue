@@ -15,7 +15,9 @@
 <script setup lang="ts">
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { computed } from 'vue';
-  const getInclude = computed<string[]>(() => usePermissionStoreHook().cachePageList as string[]);
+  const getInclude = computed<string[]>(() => {
+    return usePermissionStoreHook().cachePageList as string[];
+  });
 </script>
 
 <style lang="scss">

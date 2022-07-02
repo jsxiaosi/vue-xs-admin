@@ -6,7 +6,7 @@ const externalLink: AppRouteRecordRaw[] = [
     path: '/external-link',
     // component: Layout,
     name: 'RtExternal',
-    meta: { title: t('route.pathName.thirdParty'), icon: 'link', position: 9 },
+    meta: { title: t('route.pathName.thirdParty'), icon: 'link', position: 10 },
     children: [
       {
         path: 'https://github.com/SuperCuteXiaoSi/xiaosiAdmin',

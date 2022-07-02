@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { App } from 'vue';
-import whiteRouteModulesList from './modules';
+import { configRouteList } from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 
-const routeList = whiteRouteModulesList;
+const { whiteRouteModulesList, routeModulesList } = configRouteList();
+
+export const sidebarRouteList = routeModulesList;
 
 export const router = createRouter({
   history: createWebHistory(''),
-  routes: routeList as unknown as RouteRecordRaw[],
+  routes: whiteRouteModulesList as unknown as RouteRecordRaw[],
 });
 
 export const configMainRouter = async (app: App<Element>) => {
@@ -32,7 +34,10 @@ router.beforeEach((to, from, next) => {
     if (from.name) {
       // 已登陆状态不允许去登录页
       if (to.path === '/login') {
-        next({ path: from.path });
+        next({
+          path: from.path,
+          query: from.query,
+        });
       } else {
         next();
       }
@@ -40,7 +45,10 @@ router.beforeEach((to, from, next) => {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
         initAsyncRoute(JSON.parse(userInfo).power || '').then((res) => {
           if (res.length) {
-            router.push(to.path);
+            router.push({
+              path: to.path,
+              query: to.query,
+            });
           } else {
             localStorage.removeItem('userInfo');
             router.push('login');
