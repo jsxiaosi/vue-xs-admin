@@ -37,34 +37,38 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
         mode: 'delete',
         name: i.name || '',
       });
-      usePermissionStoreHook().handleMultiTabs('delete', i.path);
+      usePermissionStoreHook().handleMultiTabs('delete', i);
     });
-
-    router.push({
-      path: multiTabs.value[valueIndex].path,
-      query: multiTabs.value[valueIndex].query,
-    });
+    // console.log(multiTabs.value[valueIndex], valueIndex, multiTabs.value);
+    // router.push({
+    //   path: multiTabs.value[valueIndex].path,
+    //   query: multiTabs.value[valueIndex].query,
+    // });
   };
 
   // 关闭当前导航
   const removeTab = (e: string) => {
     const valueIndex = multiTabs.value.findIndex((i) => setTabPaneKey(i) === e);
     const tabsLength = multiTabs.value.length;
-    let value, toRoute;
-    if (valueIndex === tabsLength - 1) {
-      value = multiTabs.value[valueIndex - 1];
-      toRoute = {
-        path: value.path,
-        query: value.query,
-      };
-    } else if (multiTabs.value[valueIndex].name === route.name) {
-      value = multiTabs.value[tabsLength - 1];
-      toRoute = {
-        path: value.path,
-        query: value.query,
-      };
+    if (multiTabs.value[valueIndex].name === route.name) {
+      let value, toRoute;
+      if (valueIndex === tabsLength - 1) {
+        value = multiTabs.value[valueIndex - 1];
+        toRoute = {
+          path: value.path,
+          query: value.query,
+        };
+      } else {
+        console.log(valueIndex, tabsLength, multiTabs.value[valueIndex].name, route.name);
+
+        value = multiTabs.value[tabsLength - 1];
+        toRoute = {
+          path: value.path,
+          query: value.query,
+        };
+      }
+      if (toRoute) router.push(toRoute);
     }
-    if (toRoute) router.push(toRoute);
     usePermissionStoreHook().cacheOperate({
       mode: 'delete',
       name: multiTabs.value[valueIndex].name || '',
