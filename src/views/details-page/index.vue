@@ -16,7 +16,7 @@
       name: 'RtDetailsInfo',
       query,
       meta: {
-        title: `详情页-${item}`,
+        title: { 'zh-ch': `详情页-${item}`, en: `pageDatails-${item}` },
       },
     });
     router.push({ name: 'RtDetailsInfo', query });

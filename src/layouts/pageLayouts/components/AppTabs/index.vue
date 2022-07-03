@@ -7,19 +7,14 @@
       :closable="multiTabs.length > 1"
       @tab-remove="tabRemoveChange"
     >
-      <el-tab-pane
-        v-for="item in multiTabs"
-        :key="setTabPaneKey(item)"
-        :label="t(item.meta.title as string)"
-        :name="setTabPaneKey(item)"
-      >
+      <el-tab-pane v-for="item in multiTabs" :key="setTabPaneKey(item)" :name="setTabPaneKey(item)">
         <template #label>
           <div
             class="tabs-view-item"
             @click="changeTab(item)"
             @contextmenu.prevent="contextmenu(item.path, $event)"
           ></div>
-          <span>{{t(item.meta.title as string)}}</span>
+          <span>{{ translateI18n(item.meta.title) }}</span>
         </template>
       </el-tab-pane>
     </el-tabs>
@@ -67,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from '@/hooks/web/useI18n';
+  import { translateI18n } from '@/hooks/web/useI18n';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { MultiTabsType } from '@/store/types';
   import { ref, computed, watch, onBeforeMount } from 'vue';
@@ -77,7 +72,6 @@
   import { useTabsChange } from './hooks/useTabsChange';
   import { emitter } from '@/utils/mitt';
 
-  const { t } = useI18n();
   const route = useRoute();
   const router = useRouter();
 
@@ -100,9 +94,9 @@
   onBeforeMount(() => {
     addRouteTabs(route);
     contextmenu(route.path);
-    emitter.on('siteBarChange', ({ routeRow }) => {
-      addRouteTabs(routeRow as unknown as MultiTabsType);
-      contextmenu(routeRow.path);
+    emitter.on('siteBarChange', ({ routeRaw }) => {
+      addRouteTabs(routeRaw as unknown as MultiTabsType);
+      contextmenu(routeRaw.path);
     });
   });
 

@@ -7,6 +7,7 @@ import { AppRouteRecordRaw, Menu } from '#/route';
 import { sidebarRouteList } from './index';
 import { isExternal } from '@/utils/validate';
 
+// 初始化权限路由
 async function initAsyncRoute(power: string) {
   resetRouter();
   const res = await getRouteApi({ name: power });

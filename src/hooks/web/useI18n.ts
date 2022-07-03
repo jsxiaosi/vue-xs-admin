@@ -19,3 +19,19 @@ export const deffElementLocale = () => {
 
   return { tolocale };
 };
+
+// 转换国际化，适用于不在i18n配置的国际化语言
+export function translateI18n(message: any = '') {
+  if (!message) {
+    return '';
+  }
+  const locale = i18n.global.locale.value;
+  if (typeof message === 'object') {
+    return message[locale];
+  }
+  const key = message.split('.')[0];
+  if (key && Object.keys(i18n.global.messages.value[locale]).includes(key)) {
+    return i18n.global.t(message);
+  }
+  return message;
+}

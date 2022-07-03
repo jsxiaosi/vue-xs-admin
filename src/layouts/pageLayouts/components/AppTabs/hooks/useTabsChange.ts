@@ -25,13 +25,19 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
 
   // 关闭标签
   const closeTabsRoute = (e: string, type: 'other' | 'left' | 'right') => {
-    const valueIndex = multiTabs.value.findIndex((i) => i.path === e);
+    const item = multiTabs.value.findIndex((i) => i.path === e);
     const mapList = multiTabs.value.filter((i, index) => {
       if (i.path !== e && type === 'other') return true;
-      else if (index < valueIndex && type === 'left') return true;
-      else if (index > valueIndex && type === 'right') return true;
+      else if (index < item && type === 'left') return true;
+      else if (index > item && type === 'right') return true;
       return false;
     });
+    if (mapList.find((i) => i.path === route.path)) {
+      router.push({
+        path: multiTabs.value[item].path,
+        query: multiTabs.value[item].query,
+      });
+    }
     mapList.forEach((i) => {
       usePermissionStoreHook().cacheOperate({
         mode: 'delete',
@@ -39,27 +45,22 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
       });
       usePermissionStoreHook().handleMultiTabs('delete', i);
     });
-    // console.log(multiTabs.value[valueIndex], valueIndex, multiTabs.value);
-    // router.push({
-    //   path: multiTabs.value[valueIndex].path,
-    //   query: multiTabs.value[valueIndex].query,
-    // });
   };
 
   // 关闭当前导航
   const removeTab = (e: string) => {
-    const valueIndex = multiTabs.value.findIndex((i) => setTabPaneKey(i) === e);
+    const item = multiTabs.value.findIndex((i) => setTabPaneKey(i) === e);
     const tabsLength = multiTabs.value.length;
-    if (multiTabs.value[valueIndex].name === route.name) {
+    if (multiTabs.value[item].name === route.name) {
       let value, toRoute;
-      if (valueIndex === tabsLength - 1) {
-        value = multiTabs.value[valueIndex - 1];
+      if (item === tabsLength - 1) {
+        value = multiTabs.value[item - 1];
         toRoute = {
           path: value.path,
           query: value.query,
         };
       } else {
-        console.log(valueIndex, tabsLength, multiTabs.value[valueIndex].name, route.name);
+        console.log(item, tabsLength, multiTabs.value[item].name, route.name);
 
         value = multiTabs.value[tabsLength - 1];
         toRoute = {
@@ -71,9 +72,9 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
     }
     usePermissionStoreHook().cacheOperate({
       mode: 'delete',
-      name: multiTabs.value[valueIndex].name || '',
+      name: multiTabs.value[item].name || '',
     });
-    usePermissionStoreHook().handleMultiTabs('delete', multiTabs.value[valueIndex]);
+    usePermissionStoreHook().handleMultiTabs('delete', multiTabs.value[item]);
   };
 
   // 重新加载

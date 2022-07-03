@@ -6,8 +6,12 @@ export const useSelectMenu = () => {
   const selectMenu = (path: string) => {
     const findRoute = findRouteByPath(path, sidebarRouteList);
     if (findRoute) {
+      if (findRoute.redirect && findRoute.children && findRoute.children.length) {
+        selectMenu(findRoute.children[0].path);
+        return;
+      }
       emitter.emit('siteBarChange', {
-        routeRow: findRoute,
+        routeRaw: findRoute,
       });
     }
   };

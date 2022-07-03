@@ -48,9 +48,9 @@
   });
 
   function getSubMenuData(path: string) {
-    // path的上级路由组成的数组
+    // path的父级路由组成的数组
     const parentPathArr = getParentPaths(path, usePermissionStoreHook().wholeMenus);
-    // 当前路由的父级路由信息
+    // 当前路由的信息
     const parenetRoute = findRouteByPath(parentPathArr[0], usePermissionStoreHook().wholeMenus);
     if (parenetRoute) {
       if (parenetRoute.children) subMenuData.value = parenetRoute.children;

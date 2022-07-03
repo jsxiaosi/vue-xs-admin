@@ -4,7 +4,7 @@ import mitt from 'mitt';
 
 type Events = {
   siteBarChange: {
-    routeRow: AppRouteRecordRaw;
+    routeRaw: AppRouteRecordRaw;
   };
 };
 

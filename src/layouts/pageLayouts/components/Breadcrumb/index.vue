@@ -17,10 +17,10 @@
           <span
             v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
             class="no-redirect"
-            >{{ t(`${item.meta?.title}`) }}</span
+            >{{ translateI18n(item.meta?.title) }}</span
           >
           <a v-else class="redirect" @click.prevent="handleLink(item)">
-            {{ t(`${item.meta?.title}`) }}
+            {{ translateI18n(item.meta?.title) }}
           </a>
         </el-breadcrumb-item>
       </transition-group>
@@ -33,7 +33,7 @@
   import { ref, watch } from 'vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useRoute, useRouter } from 'vue-router';
-  import { useI18n } from '@/hooks/web/useI18n';
+  import { translateI18n } from '@/hooks/web/useI18n';
   import { useAppStoreHook } from '@/store/modules/app';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
@@ -41,8 +41,6 @@
   import { isEqual } from 'lodash';
 
   const { multiTabs } = usePermissionStoreHook();
-
-  const { t } = useI18n();
 
   const levelList = ref<Array<AppRouteRecordRaw>>([]);
   // 获取路由配置

@@ -28,7 +28,7 @@ module.exports = {
   },
   // plugins: ['vue'],
   rules: {
-    // 'prettier/prettier': 'error',
+    'prettier/prettier': 'error',
     // 是否禁止使用any类型
     '@typescript-eslint/no-explicit-any': 'off',
     // 是否开启函数必须要指定类型
