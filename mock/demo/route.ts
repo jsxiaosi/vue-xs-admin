@@ -97,6 +97,10 @@ const adminRoute = [
         path: 'userlist',
         name: 'RtUserlist',
       },
+      {
+        path: 'asyncComponent',
+        name: 'RtAsyncComponent',
+      },
     ],
   },
   {

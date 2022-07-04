@@ -19,6 +19,7 @@ const route = {
     editor_markdown: 'Markdown',
     userInfo: '用户管理',
     userList: '用户列表',
+    asyncComponent: '异步组件',
     refSyntax: 'ref语法糖',
     userDateil: '用户详情',
     system: '系统',

@@ -20,6 +20,12 @@ const useradmin: AppRouteRecordRaw[] = [
         component: () => import('@/views/useradmin/userlist/index.vue'),
         meta: { title: t('route.pathName.userList') },
       },
+      {
+        path: 'asyncComponent',
+        name: 'RtAsyncComponent',
+        component: () => import('@/views/useradmin/async-component/index.vue'),
+        meta: { title: t('route.pathName.asyncComponent') },
+      },
     ],
   },
 ];

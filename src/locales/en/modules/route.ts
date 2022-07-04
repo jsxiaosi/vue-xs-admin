@@ -19,6 +19,7 @@ const route = {
     editor_markdown: 'Markdown',
     userInfo: 'UserInfo',
     userList: 'UserList',
+    asyncComponent: 'AsyncComponent',
     refSyntax: 'RefSyntax',
     userDateil: 'UserDateil',
     system: 'System',
