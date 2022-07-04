@@ -24,17 +24,17 @@
   </div>
 </template>
 
-<script lang="ts">
-  // VueSeamlessScroll 插件本身不支持vue3写法，只能把源码拷贝下来自己手动转
-  export default { name: 'SeamlessScroll' };
-</script>
-
 <script setup lang="ts">
   import { computed, ref, unref, nextTick, Ref } from 'vue';
   import type { CSSProperties } from 'vue';
   import { tryOnMounted, tryOnUnmounted, templateRef, useDebounceFn } from '@vueuse/core';
   import * as utilsMethods from './utils';
   const { animationFrame, copyObj } = utilsMethods;
+
+  defineOptions({
+    name: 'SeamlessScroll',
+  });
+
   animationFrame();
 
   const props = defineProps({

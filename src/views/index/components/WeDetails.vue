@@ -53,14 +53,13 @@
   </div>
 </template>
 
-<script lang="ts">
-  export default {
-    name: 'WeDetails',
-  };
-</script>
-
 <script setup lang="ts">
   import { ref } from 'vue';
+
+  defineOptions({
+    name: 'WeDetails',
+  });
+
   const lists = ref([
     { type: '', label: '吃饭' },
     { type: 'success', label: '睡觉' },

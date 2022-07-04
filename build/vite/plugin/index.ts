@@ -16,6 +16,9 @@ import { configMockPlugin } from './mock';
 import { configPwaPlugin } from './pwa';
 // 按需element样式
 import ElementPlus from 'unplugin-element-plus/vite';
+// setip使用Options API
+import DefineOptions from 'unplugin-vue-define-options/vite';
+
 // eslint
 // import { configEsLinterPlugin } from './eslinter'
 
@@ -37,6 +40,8 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configMockPlugin(isBuild));
 
   vitePlugins.push(configPwaPlugin());
+
+  vitePlugins.push(DefineOptions());
 
   /* 会重复引入与组件数量相等的主题变量 */
   vitePlugins.push(

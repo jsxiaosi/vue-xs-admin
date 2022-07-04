@@ -37,14 +37,15 @@
     </el-row>
   </div>
 </template>
-<script lang="ts">
-  export default {
-    name: 'RtDrag',
-  };
-</script>
+
 <script lang="ts" setup>
   import useSortable from '@/hooks/web/useSortable';
   import { ref } from 'vue';
+
+  defineOptions({
+    name: 'RtDrag',
+  });
+
   const list = ref<Array<string>>([]);
   for (let i = 0; i < 7; i++) {
     list.value.push(`第${i + 1}个`);

@@ -13,7 +13,7 @@ const component: AppRouteRecordRaw[] = [
         path: '/components/form',
         name: 'RtForm',
         component: () => import('@/views/components/form/index.vue'),
-        meta: { title: t('route.pathName.form') },
+        meta: { title: t('route.pathName.form'), keepAlive: true },
       },
       {
         path: 'table',

@@ -51,12 +51,6 @@
   </div>
 </template>
 
-<script lang="ts">
-  export default {
-    name: 'RtWelcome',
-  };
-</script>
-
 <script setup lang="ts">
   import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
   import WeDetails from './components/WeDetails.vue';
@@ -64,6 +58,10 @@
   import { ref, Ref, onMounted, reactive } from 'vue';
 
   import { useECharts } from '@/hooks/web/useECharts';
+
+  defineOptions({
+    name: 'RtWelcome',
+  });
 
   const chartRef = ref<HTMLDivElement | null>(null);
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
