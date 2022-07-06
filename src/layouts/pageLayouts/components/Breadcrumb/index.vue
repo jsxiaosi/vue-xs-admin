@@ -57,7 +57,7 @@
     // 获取每个父级路径对应的路由信息
     parentRoutes.forEach((path) => {
       if (path !== '/') {
-        matched.push(findRouteByPath(path, routes) as AppRouteRecordRaw);
+        matched.push(findRouteByPath(path, routes[0].children || []) as AppRouteRecordRaw);
       }
     });
     const item = multiTabs.find((item) => {
