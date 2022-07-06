@@ -37,7 +37,7 @@
 
   const resolvePath = (routeRaw: AppRouteRecordRaw): string => {
     let path = routeRaw.path;
-    if (routeRaw.children && routeRaw.children.length) {
+    if (routeRaw.children && routeRaw.children.length && !routeRaw.children[0].hidden) {
       path = routeRaw.children[0].path;
     }
     return path;
@@ -49,7 +49,7 @@
     // 当前路由的父级路径
     const parentRoutes = getParentPaths(path, wholeMenus)[0];
     const routeByPath = findRouteByPath(parentRoutes, wholeMenus);
-    if (routeByPath?.children && routeByPath.children.length) {
+    if (routeByPath?.children && routeByPath.children.length && !routeByPath.children[0].hidden) {
       return routeByPath.children[0].path;
     }
     return path;

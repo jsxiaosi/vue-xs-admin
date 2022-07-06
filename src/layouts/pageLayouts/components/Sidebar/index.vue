@@ -53,7 +53,8 @@
     // 当前路由的信息
     const parenetRoute = findRouteByPath(parentPathArr[0], usePermissionStoreHook().wholeMenus);
     if (parenetRoute) {
-      if (parenetRoute.children) subMenuData.value = parenetRoute.children;
+      if (parenetRoute.children && !parenetRoute.children[0].hidden)
+        subMenuData.value = parenetRoute.children;
       else subMenuData.value = [parenetRoute];
     }
   }
