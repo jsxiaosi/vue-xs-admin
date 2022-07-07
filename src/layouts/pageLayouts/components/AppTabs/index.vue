@@ -71,6 +71,7 @@
   import { useTabsView } from './hooks/useTabsView';
   import { useTabsChange } from './hooks/useTabsChange';
   import { emitter } from '@/utils/mitt';
+  import { useSelectMenu } from '../../hooks/useSelectMenu';
 
   const route = useRoute();
   const router = useRouter();
@@ -78,6 +79,8 @@
   const multiTabs = computed<MultiTabsType[]>(() => usePermissionStoreHook().multiTabs);
 
   const { setTabPaneKey, addRouteTabs, onFresh, removeTab } = useTabsChange(multiTabs);
+
+  const { selectMenu } = useSelectMenu();
 
   const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
     useTabsView(multiTabs);
@@ -92,12 +95,13 @@
   );
 
   onBeforeMount(() => {
-    addRouteTabs(route);
-    contextmenu(route.path);
     emitter.on('siteBarChange', ({ routeRaw }) => {
       addRouteTabs(routeRaw as unknown as MultiTabsType);
       contextmenu(routeRaw.path);
     });
+
+    selectMenu(route.path);
+    contextmenu(route.path);
   });
 
   const tabRemoveChange = (e: string) => {

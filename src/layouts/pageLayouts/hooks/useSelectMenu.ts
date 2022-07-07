@@ -4,9 +4,12 @@ import { emitter } from '@/utils/mitt';
 import { useRouter } from 'vue-router';
 
 export const useSelectMenu = () => {
-  const router = useRouter().options.routes as AppRouteRecordRaw[];
+  const router = (useRouter().options.routes.find((i) => i.path === '/') ||
+    []) as AppRouteRecordRaw;
   const selectMenu = (path: string) => {
-    const findRoute = findRouteByPath(path, router[0]?.children || []);
+    console.log(router);
+    const findRoute = findRouteByPath(path, router.children || []);
+    console.log(findRoute);
     if (findRoute) {
       if (findRoute.redirect && findRoute.children && findRoute.children.length) {
         selectMenu(findRoute.children[0].path);

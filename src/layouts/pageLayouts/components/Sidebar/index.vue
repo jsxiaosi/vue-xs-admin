@@ -26,7 +26,7 @@
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
-  import { useSelectMenu } from './hooks/useSelectMenu';
+  import { useSelectMenu } from '../../hooks/useSelectMenu';
 
   const { selectMenu } = useSelectMenu();
 

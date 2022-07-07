@@ -6,6 +6,7 @@ import { usePermissionStoreHook } from '@/store/modules/permission';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
 
+// 在导航栏上的路由
 export const sidebarRouteList = routeModulesList;
 
 export const router = createRouter({

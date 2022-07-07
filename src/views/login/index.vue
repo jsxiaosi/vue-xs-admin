@@ -79,7 +79,7 @@
       },
       { errorMessageMode: 'modal', withToken: false },
     );
-    console.log(res);
+
     if (res.code === 1) {
       localStorage.setItem('userInfo', JSON.stringify(res.data));
       await initAsyncRoute(res.data.power);
@@ -178,8 +178,8 @@
 
   .input-group {
     position: relative;
-    display: grid;
-    grid-template-columns: 7% 93%;
+    display: flex;
+    align-items: center;
     margin: 25px 0;
     padding: 5px 0;
     border-bottom: 2px solid #d9d9d9;
@@ -220,6 +220,7 @@
   .input-group > div {
     position: relative;
     height: 45px;
+    flex: 1;
   }
 
   .input-group > div > h5 {

@@ -58,7 +58,6 @@ function privilegeRouting(routeList: RouteRecordRaw[], dataRouter: AppRouteRecor
     dataRouter.forEach((i) => {
       routeList[homeIndex].children?.push(i as RouteRecordRaw);
     });
-    console.log('routeList[homeIndex]', routeList[homeIndex]);
     router.addRoute(routeList[homeIndex]);
   }
 }
@@ -188,11 +187,9 @@ function getParentPaths(routePath: string, routes: AppRouteRecordRaw[]) {
 // 查找对应path的路由信息
 function findRouteByPath(path: string, routes: AppRouteRecordRaw[]): AppRouteRecordRaw | null {
   const res = routes.find((item: { path: string }) => item.path == path) || null;
-  console.log(res);
   if (res) {
     return res;
   } else {
-    console.log('什么情况下才走这里？');
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].children instanceof Array && routes[i].children?.length) {
         const miRes = findRouteByPath(path, routes[i].children as AppRouteRecordRaw[]);
@@ -210,8 +207,9 @@ function findRouteByPath(path: string, routes: AppRouteRecordRaw[]): AppRouteRec
 // 重置路由 不重置白名单
 function resetRouter() {
   sidebarRouteList.forEach((route) => {
-    const { name, meta } = route;
-    if (name && !meta?.whiteList) {
+    const { name } = route;
+    console.log(name);
+    if (name) {
       router.hasRoute(name) && router.removeRoute(name);
     }
   });

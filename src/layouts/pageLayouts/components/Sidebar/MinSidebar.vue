@@ -27,7 +27,7 @@
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
-  import { useSelectMenu } from './hooks/useSelectMenu';
+  import { useSelectMenu } from '../../hooks/useSelectMenu';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
 
