@@ -208,7 +208,6 @@ function findRouteByPath(path: string, routes: AppRouteRecordRaw[]): AppRouteRec
 function resetRouter() {
   sidebarRouteList.forEach((route) => {
     const { name } = route;
-    console.log(name);
     if (name) {
       router.hasRoute(name) && router.removeRoute(name);
     }

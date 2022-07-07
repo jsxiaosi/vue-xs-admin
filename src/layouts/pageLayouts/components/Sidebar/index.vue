@@ -26,9 +26,9 @@
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
-  import { useSelectMenu } from '../../hooks/useSelectMenu';
+  import { useNavSideBar } from '../../hooks/useNavSideBar';
 
-  const { selectMenu } = useSelectMenu();
+  const { selectMenu } = useNavSideBar();
 
   const route = useRoute();
   const { appConfigMode } = getAppCollapseMenu();

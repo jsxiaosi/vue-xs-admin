@@ -55,6 +55,11 @@ const usePermissionStore = defineStore({
       }
       setlocalStorage('multiTabsList', this.multiTabs);
     },
+    handleRemoveMultiTabs() {
+      setlocalStorage('multiTabsList');
+      this.multiTabs = [];
+      this.clearAllCachePage();
+    },
   },
 });
 

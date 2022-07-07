@@ -71,7 +71,7 @@
   import { useTabsView } from './hooks/useTabsView';
   import { useTabsChange } from './hooks/useTabsChange';
   import { emitter } from '@/utils/mitt';
-  import { useSelectMenu } from '../../hooks/useSelectMenu';
+  import { useNavSideBar } from '../../hooks/useNavSideBar';
 
   const route = useRoute();
   const router = useRouter();
@@ -80,7 +80,7 @@
 
   const { setTabPaneKey, addRouteTabs, onFresh, removeTab } = useTabsChange(multiTabs);
 
-  const { selectMenu } = useSelectMenu();
+  const { selectMenu } = useNavSideBar();
 
   const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
     useTabsView(multiTabs);
