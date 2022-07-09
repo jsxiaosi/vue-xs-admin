@@ -3,6 +3,7 @@ import { App } from 'vue';
 import { configRouteList } from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
+import NProgress from '@/utils/plugin/progress';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
 
@@ -21,6 +22,7 @@ export const configMainRouter = async (app: App<Element>) => {
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
+  NProgress.start();
   if (to.meta?.keepAlive) {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, 'add');
@@ -66,4 +68,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });

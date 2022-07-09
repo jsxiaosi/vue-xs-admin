@@ -1,8 +1,10 @@
-$text-color-base: #909399;
-
 /* 修改element颜色变量 */
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (),
+  $colors: (
+    'primary': (
+      'base': #409eff,
+    ),
+  ),
   $text-color: (
     'primary': #909399,
     'regular': #606266,
