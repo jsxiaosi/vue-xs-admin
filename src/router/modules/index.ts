@@ -26,6 +26,6 @@ export function configRouteList() {
 
   // 先把菜单路由插入根路径 '/' 防止route 初始化警告查找不到路由
   const whIndex = whiteRouteModulesList.findIndex((i) => i.path === '/');
-  whiteRouteModulesList[whIndex]['children'] = routeModulesList;
+  if (whiteRouteModulesList[whIndex]) whiteRouteModulesList[whIndex]['children'] = routeModulesList;
   return { whiteRouteModulesList, routeModulesList };
 }

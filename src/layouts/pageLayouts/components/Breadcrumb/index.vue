@@ -48,16 +48,17 @@
   // 当前路由
   const route = useRoute();
 
-  const routes = router.options.routes as AppRouteRecordRaw[];
+  const routes = (useRouter().options.routes.find((i) => i.path === '/')?.children ||
+    []) as AppRouteRecordRaw[];
 
   // 解析路由匹配的数组
   const getBreadcrumb = () => {
     const matched: AppRouteRecordRaw[] = [];
-    const parentRoutes = getParentPaths(router.currentRoute.value.path || '', routes);
+    const parentRoutes = getParentPaths(router.currentRoute.value.path || '', routes || []);
     // 获取每个父级路径对应的路由信息
     parentRoutes.forEach((path) => {
       if (path !== '/') {
-        matched.push(findRouteByPath(path, routes[0].children || []) as AppRouteRecordRaw);
+        matched.push(findRouteByPath(path, routes || []) as AppRouteRecordRaw);
       }
     });
     const item = multiTabs.find((item) => {
@@ -65,8 +66,10 @@
       if (item.query) {
         itemQuery = JSON.parse(JSON.stringify(item.query));
       }
+      if (matched.find((i) => i.path === item.path)) return false;
       return route.name === item.name && isEqual(route.query, itemQuery);
     });
+    console.log(matched);
     if (item) matched.push(item as unknown as AppRouteRecordRaw);
     levelList.value = matched.filter(
       (item) => item && item.meta && item.meta.title && !item.meta.breadcrumb,

@@ -1,6 +1,7 @@
 import { AppRouteRecordRaw } from '#/route';
 import { findRouteByPath } from '@/router/utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
+import { isUrl } from '@/utils/is';
 import { emitter } from '@/utils/mitt';
 import { useRouter } from 'vue-router';
 
@@ -15,6 +16,7 @@ export const useNavSideBar = () => {
         selectMenu(findRoute.children[0].path);
         return;
       }
+      if (isUrl(findRoute.path)) return;
       emitter.emit('siteBarChange', {
         routeRaw: findRoute,
       });
