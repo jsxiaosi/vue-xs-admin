@@ -40,17 +40,21 @@
           height: 72px;
         }
 
+        .loading,
         .loading > div {
           position: relative;
           box-sizing: border-box;
-          display: inline-block;
-          float: none;
-          background-color: currentcolor;
-          border: 0 solid currentcolor;
         }
 
         .loading.la-dark {
           color: #333;
+        }
+
+        .loading > div {
+          display: inline-block;
+          float: none;
+          background-color: currentcolor;
+          border: 0 solid currentcolor;
         }
 
         .loading > div:nth-child(1) {
