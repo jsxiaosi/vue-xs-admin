@@ -183,7 +183,7 @@
 
       .warp {
         width: 95%;
-        height: 215px;
+        height: 202px;
         margin: 0 auto;
         overflow: hidden;
 

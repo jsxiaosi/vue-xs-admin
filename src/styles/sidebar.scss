@@ -372,10 +372,10 @@
 
   .el-sub-menu.is-active > .el-sub-menu__title,
   .nest-menu .is-active .el-sub-menu__title {
-    color: $menuActiveText !important;
+    color: $menuActiveText;
 
     .sub-menu-svg {
-      color: $menuActiveText !important;
+      color: $menuActiveText;
     }
   }
 
@@ -396,11 +396,11 @@
     background-color: $menuItemBg;
     // border-left: #{$menuItemBorderLeft} solid 3px;
     &:hover {
-      color: $menuItemHoverText !important;
+      color: $menuItemHoverText;
       background-color: $menuItemHover;
 
       .menu-item-svg {
-        color: $menuItemHoverText !important;
+        color: $menuItemHoverText;
       }
     }
   }

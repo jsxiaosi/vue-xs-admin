@@ -69,7 +69,7 @@
 
 <style lang="scss" scoped>
   .wedetails {
-    height: 255px;
+    height: 244px;
     .el-tag--dark {
       margin-right: 10px !important;
     }
