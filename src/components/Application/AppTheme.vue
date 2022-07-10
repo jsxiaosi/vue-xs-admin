@@ -7,20 +7,16 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
   import SvgIcon from '../SvgIcon/index.vue';
-
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { useColorMode } from '@vueuse/core';
+  import { useAppStoreHook } from '@/store/modules/app';
 
-  const { appConfigMode } = getAppCollapseMenu();
-  const isDark = ref<string>(appConfigMode.value.themeMode);
-  isDark.value = appConfigMode.value.themeMode;
-
+  const appStore = useAppStoreHook();
   const color = useColorMode();
   const toggleDarkMode = () => {
-    isDark.value = isDark.value === 'day' ? 'dark' : 'day';
     color.value = color.value === 'dark' ? 'light' : 'dark';
+    appStore.appConfigMode.themeMode = color.value;
+    appStore.setAppConfigMode(appStore.appConfigMode);
   };
 </script>
 

@@ -7,5 +7,5 @@ export const getAppCollapseMenu = () => {
   // const store = useStore()
   const appStore = useAppStoreHook();
   const appConfigMode = computed<appConfig>(() => appStore.getAppConfigMode);
-  return { appConfigMode };
+  return { appConfigMode, appStore };
 };

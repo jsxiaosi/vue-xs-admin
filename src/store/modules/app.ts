@@ -21,6 +21,7 @@ const useAppStore = defineStore({
   },
   actions: {
     setAppConfigMode(appConfigMode: appConfig): void {
+      console.log(appConfigMode);
       localStorage.setItem('appConfigMode', JSON.stringify(appConfigMode));
       this.appConfigMode = appConfigMode;
     },

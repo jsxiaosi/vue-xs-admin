@@ -150,7 +150,15 @@
         <div></div>
       </div>
     </div>
-    <script></script>
+    <script>
+      window.onload = function () {
+        const stora = localStorage.getItem('appConfigMode');
+        if (stora) {
+          const appConfigMode = JSON.parse(stora);
+          document.body.style.background = appConfigMode.themeMode === 'dark' ? '#000' : '';
+        }
+      };
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
