@@ -1,7 +1,7 @@
 import { Slots } from 'vue';
 import { isFunction } from './is';
 
-export function getSlot(slots: Slots, slot = 'default', data?: any) {
+export function getSlot(slots: Slots, slot = 'default', data?: Recordable) {
   if (!slots || !Reflect.has(slots, slot)) {
     return null;
   }

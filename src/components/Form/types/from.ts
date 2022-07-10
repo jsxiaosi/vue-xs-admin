@@ -1,7 +1,7 @@
 import { VNode } from 'vue';
 
 export interface FormProps {
-  labelPosition: string;
+  labelPosition: 'top' | 'right' | 'left';
   formItem: Array<FormItemProps>;
 }
 

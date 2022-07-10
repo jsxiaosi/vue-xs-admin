@@ -54,7 +54,7 @@
 <script setup lang="ts">
   import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
   import WeDetails from './components/WeDetails.vue';
-  import VisitAnalysis from './components/Analysis.vue';
+  import VisitAnalysis from './components/AnalysisChart.vue';
   import { ref, Ref, onMounted, reactive } from 'vue';
 
   import { useECharts } from '@/hooks/web/useECharts';

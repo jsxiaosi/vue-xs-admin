@@ -3,7 +3,7 @@
     <el-table v-bind="$attrs" style="width: 100%">
       <TableChild v-for="(item, index) in option" :key="index" :item="item">
         <template v-for="soitem in Object.keys($slots)" #[soitem]="data">
-          <slot :name="soitem" v-bind="data || {}"></slot>
+          <slot :name="soitem" v-bind="((data || {}) as Recordable)"></slot>
         </template>
       </TableChild>
     </el-table>
