@@ -142,6 +142,19 @@
             opacity: 0;
           }
         }
+        @media (prefers-color-scheme: dark) {
+          html,
+          body {
+            background-color: #000;
+          }
+        }
+
+        @media (prefers-color-scheme: light) {
+          html,
+          body {
+            background-color: #fff;
+          }
+        }
       </style>
       <div class="loading">
         <div></div>
@@ -150,15 +163,6 @@
         <div></div>
       </div>
     </div>
-    <script>
-      window.onload = function () {
-        const stora = localStorage.getItem('appConfigMode');
-        if (stora) {
-          const appConfigMode = JSON.parse(stora);
-          document.body.style.background = appConfigMode.themeMode === 'dark' ? '#000' : '';
-        }
-      };
-    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
