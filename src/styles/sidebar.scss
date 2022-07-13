@@ -15,7 +15,9 @@
     // justify-content: center;
     .logo {
       width: 54px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .name {
       font-size: 22px;

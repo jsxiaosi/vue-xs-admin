@@ -8,6 +8,7 @@ export type AppState = {
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
 
 export interface appConfig {
+  title: string;
   collapseMenu: boolean;
   sidebarMode: SidebarMode;
   themeMode: string;

@@ -22,6 +22,8 @@ if (locStoAPP) {
   appConfigMode = JSON.parse(locStoAPP);
 }
 
+// console.log(getConfig());
+
 const i18n = createI18n({
   legacy: false,
   locale: appConfigMode.locale || 'zh-ch',
@@ -29,7 +31,8 @@ const i18n = createI18n({
   messages,
 });
 
-export const configMainI18n = (app: App<Element>) => {
+export const configMainI18n = (app: App<Element>, locale: string) => {
+  i18n.global.locale.value = locale;
   app.use(i18n);
 };
 

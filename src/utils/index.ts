@@ -1,6 +1,6 @@
 import { App } from 'vue';
 import 'virtual:svg-icons-register';
-import { setWindowAppConfig } from '@/store/modules/app';
+// import { setWindowAppConfig } from '@/store/modules/app';
 
 // 定义全局钩子
 export const configMainGlobalProperties = (app: App<Element>): void => {
@@ -14,18 +14,18 @@ export const configMainGlobalProperties = (app: App<Element>): void => {
    */
 };
 
-// 延迟进入vue，显示loding页
-export const getServerConfig = (): Promise<string> => {
-  const appConfigMode = localStorage.getItem('appConfigMode');
-  if (appConfigMode) {
-    setWindowAppConfig(JSON.parse(appConfigMode));
-  }
-  return new Promise((resolve) => {
-    resolve('');
+// // 延迟进入vue，显示loding页
+// export const getServerConfig = (): Promise<string> => {
+//   const appConfigMode = localStorage.getItem('appConfigMode');
+//   if (appConfigMode) {
+//     setWindowAppConfig(JSON.parse(appConfigMode));
+//   }
+//   return new Promise((resolve) => {
+//     resolve('');
 
-    setTimeout(() => {}, 0);
-  });
-};
+//     setTimeout(() => {}, 0);
+//   });
+// };
 
 export const withInstall = <T>(component: T, alias?: string) => {
   const comp = component as any;

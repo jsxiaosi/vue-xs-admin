@@ -4,7 +4,7 @@
       <Breadcrumb v-if="appConfigMode.sidebarMode !== 'horizontal'" />
       <div v-else class="app-logo">
         <SvgIcon name="Vue"></SvgIcon>
-        <span class="name">xiaosiAdmin</span>
+        <span class="name">{{ config.title }}</span>
       </div>
     </div>
     <div class="navbar-center">
@@ -40,10 +40,12 @@
   import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { ref } from 'vue';
+  import { getCurrentInstance, ref } from 'vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
 
   const drawer = ref(false);
+
+  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
 
   const { appConfigMode } = getAppCollapseMenu();
 </script>

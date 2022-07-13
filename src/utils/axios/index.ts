@@ -21,16 +21,26 @@ const interceptor: AxiosInterceptor = {
      */
     const { data } = res;
     const { errorMessageMode } = options;
-
-    if (data.code === -1) {
-      if (errorMessageMode === 'modal') {
-        createErrorModal(data.message);
-      } else if (errorMessageMode === 'message') {
-        createErrorMsg(data.message);
+    if (data) {
+      if (data.code === -1) {
+        if (errorMessageMode === 'modal') {
+          createErrorModal(data.message);
+        } else if (errorMessageMode === 'message') {
+          createErrorMsg(data.message);
+        }
+        return errorData(res);
+      } else {
+        const { code, data: dataInfo, message } = data;
+        if (!code && !dataInfo && !message) {
+          const toData = {
+            code: 1,
+            data: data,
+            message: 'ok',
+          };
+          return toData;
+        }
       }
-      return errorData(res);
     }
-
     return data;
   },
 

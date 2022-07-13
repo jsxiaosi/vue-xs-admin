@@ -4,6 +4,9 @@ import { configRouteList } from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import NProgress from '@/utils/plugin/progress';
+import { getConfig } from '@/config';
+import { translateI18n } from '@/hooks/web/useI18n';
+import { isUrl } from '@/utils/is';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
 
@@ -30,6 +33,12 @@ router.beforeEach((to, from, next) => {
     if (from.name === undefined || from.name === 'Redirect') {
       handleAliveRoute(newMatched);
     }
+  }
+
+  if (!isUrl(to.path) && to.meta.title) {
+    const Title = getConfig().title;
+    if (Title) document.title = `${translateI18n(to.meta.title)} | ${Title}`;
+    else document.title = translateI18n(to.meta.title);
   }
 
   const userInfo = localStorage.getItem('userInfo');

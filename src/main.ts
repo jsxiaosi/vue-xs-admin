@@ -7,7 +7,8 @@ import App from './App.vue';
 // import 'virtual:windi-utilities.css'
 // Register icon sprite
 // import 'virtual:svg-icons-register'
-import { configMainGlobalProperties, getServerConfig } from './utils';
+import { getServerConfig } from './config';
+import { configMainGlobalProperties } from './utils';
 import { configMainStore } from './store';
 import { configMainI18n } from './locales';
 import { configMainRouter } from './router';
@@ -17,7 +18,7 @@ import '@/styles/index.scss';
 
 const app = createApp(App);
 
-getServerConfig().then(async (_config) => {
+getServerConfig(app).then(async (config) => {
   // 路由
   await configMainRouter(app);
 
@@ -28,7 +29,7 @@ getServerConfig().then(async (_config) => {
   configMainStore(app);
 
   // 国际化
-  configMainI18n(app);
+  configMainI18n(app, config.locale);
 
   // ElementPlus
   useElementPlus(app);

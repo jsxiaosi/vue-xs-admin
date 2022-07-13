@@ -50,10 +50,8 @@ export function checkStatus(
       break;
     default:
   }
-  console.log('errMessage', errMessage);
   if (errMessage) {
     if (errorMessageMode === 'modal') {
-      console.log('进来这里了吗？');
       createErrorModal(msg);
     } else if (errorMessageMode === 'message') {
       createErrorMsg(errMessage);

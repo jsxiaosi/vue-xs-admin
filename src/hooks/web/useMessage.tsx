@@ -4,7 +4,6 @@ import { useI18n } from '@/hooks/web/useI18n';
 const { t } = useI18n();
 
 function createElMessageBox(message: string, title: string, options: ElMessageBoxOptions) {
-  console.log(title);
   ElMessageBox.confirm(message, title, options)
     .then(() => {})
     .catch(() => {});

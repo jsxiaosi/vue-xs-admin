@@ -210,7 +210,7 @@
 
   .icon {
     color: #d9d9d9;
-    font-size: 22px;
+    font-size: 22px !important;
     transition: 0.5s;
     display: flex;
     justify-content: center;

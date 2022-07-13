@@ -8,7 +8,7 @@
       <div class="logo">
         <SvgIcon name="Vue"></SvgIcon>
       </div>
-      <span class="name">xiaosiAdmin</span>
+      <span class="name">{{ config.title }}</span>
     </div>
     <Sidebar mode="vertical" />
   </div>
@@ -18,8 +18,11 @@
   import Sidebar from '../Sidebar/index.vue';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { getAppCollapseMenu } from '@/hooks/userAppWindow';
+  import { getCurrentInstance } from 'vue';
 
   const { appConfigMode } = getAppCollapseMenu();
+  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
+  console.log(config);
 </script>
 
 <style lang="scss" scoped>

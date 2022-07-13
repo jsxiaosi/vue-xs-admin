@@ -5,7 +5,6 @@
       :unique-opened="true"
       :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
       :mode="mode"
-      router
       @select="(indexPath) => selectMenu(indexPath)"
     >
       <sidebar-item
