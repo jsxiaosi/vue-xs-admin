@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://github.com/SuperCuteXiaoSi/xiaosiAdmin"><h1>Vue3</h1></a>
+<div align="center"> <a href="https://github.com/jsxiaosi/xiaosiAdmin"><h1>Vue3</h1></a>
 </div>
 
 ## 简介
@@ -31,9 +31,9 @@
 - 获取项目代码（https or ssh）
 
 ```bash
-git clone https://github.com/SuperCuteXiaoSi/xiaosiAdmin.git
+git clone https://github.com/jsxiaosi/xiaosiAdmin.git
 
-git clone git@github.com:SuperCuteXiaoSi/xiaosiAdmin.git
+git clone git@github.com:jsxiaosi/xiaosiAdmin.git
 ```
 
 - 安装依赖
@@ -63,7 +63,7 @@ npm run build
 
 ## 项目地址
 
-- [vite-vue3-template](https://github.com/SuperCuteXiaoSi/xiaosiAdmin)
+- [vite-vue3-template](https://github.com/jsxiaosi/xiaosiAdmin)
 
 ## 如何贡献
 
@@ -154,8 +154,8 @@ npm run build
 
 ## 维护者
 
-[@SuperCuteXiaoSi](https://github.com/SuperCuteXiaoSi)
+[@SuperCuteXiaoSi](https://github.com/jsxiaosi)
 
 ## License
 
-[MIT © 2021](./LICENSE)
+[MIT © 2022](./LICENSE)
