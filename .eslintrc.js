@@ -50,7 +50,7 @@ module.exports = {
     ],
     // 是否要求组件名称始终为多字
     'vue/multi-word-component-names': [
-      'error',
+      'off',
       {
         ignores: ['index', '404'],
       },

@@ -123,7 +123,6 @@ function setUpRoutePath(routeList: AppRouteRecordRaw[], pathName = '', pathList:
   for (const [key, node] of routeList.entries()) {
     node.meta = { ...(node.meta as Menu), pathList: [...pathList, key] };
     if (pathName && !isExternal(node.path)) {
-      // nodePath 被静态提升？？？？？？
       node.path = pathResolve(pathName, node.path || '');
     }
     if (node.children && node.children.length) {

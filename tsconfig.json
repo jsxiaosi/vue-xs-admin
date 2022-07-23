@@ -43,5 +43,5 @@
     "build/**/*.ts",
     "vite.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.js", "discard"]
+  "exclude": ["node_modules", "dist", "**/*.js", "discard/"]
 }
