@@ -6,7 +6,7 @@ interface localesType {
   locale: string;
 }
 
-const config = import.meta.globEager('./**/index.ts');
+const config: Recordable = import.meta.globEager('./**/index.ts');
 
 const messages: any = {};
 const localesList: localesType[] = [];
@@ -21,8 +21,6 @@ let appConfigMode: appConfig = {} as appConfig;
 if (locStoAPP) {
   appConfigMode = JSON.parse(locStoAPP);
 }
-
-// console.log(getConfig());
 
 const i18n = createI18n({
   legacy: false,

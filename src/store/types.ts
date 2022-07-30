@@ -1,3 +1,4 @@
+import { StorageConfig } from '#/global';
 import { AppRouteRecordRaw } from '#/route';
 import { RouteRecordName, _RouteLocationBase } from 'vue-router';
 
@@ -13,6 +14,7 @@ export interface appConfig {
   sidebarMode: SidebarMode;
   themeMode: string;
   locale: string;
+  StorageConfig: StorageConfig;
 }
 
 export type MultiTabsType = Omit<

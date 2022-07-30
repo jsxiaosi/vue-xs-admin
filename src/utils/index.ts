@@ -14,19 +14,6 @@ export const configMainGlobalProperties = (app: App<Element>): void => {
    */
 };
 
-// // 延迟进入vue，显示loding页
-// export const getServerConfig = (): Promise<string> => {
-//   const appConfigMode = localStorage.getItem('appConfigMode');
-//   if (appConfigMode) {
-//     setWindowAppConfig(JSON.parse(appConfigMode));
-//   }
-//   return new Promise((resolve) => {
-//     resolve('');
-
-//     setTimeout(() => {}, 0);
-//   });
-// };
-
 export const withInstall = <T>(component: T, alias?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {

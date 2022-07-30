@@ -1,5 +1,6 @@
 import { getConfigInfo } from '@/server/config';
 import { appConfig } from '@/store/types';
+import { setStorageConfig } from '@/utils/storage';
 import { App } from 'vue';
 
 let config: appConfig = {} as appConfig;
@@ -22,6 +23,7 @@ export async function getServerConfig(app: App): Promise<appConfig> {
       throw `\npublic文件夹下无法查找到serverConfig配置文件\nUnable to find serverconfig configuration file under public folder`;
     }
   }
+  setStorageConfig(config.StorageConfig);
   app.config.globalProperties.$config = getConfig();
   return config;
 }

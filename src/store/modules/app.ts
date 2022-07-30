@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
+import { getConfig } from '@/config';
 import { store } from '@/store';
 import type { AppState, appConfig } from '../types';
-import { getConfig } from '@/config';
 
-const localAppConfig: appConfig = getConfig();
+export const localAppConfig: appConfig = getConfig();
 
 const useAppStore = defineStore({
   id: 'app',

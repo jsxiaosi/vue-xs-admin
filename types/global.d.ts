@@ -4,4 +4,9 @@ declare module '*.vue' {
   export default Component;
 }
 
-declare type Recordable<T = any> = Record<string, T>;
+export interface StorageConfig {
+  type: 'localStorage' | 'sessionStorage';
+  prefix: string;
+  expire: number;
+  isEncrypt: boolean;
+}

@@ -3,5 +3,11 @@
   "collapseMenu": false,
   "sidebarMode": "vertical",
   "themeMode": "day",
-  "locale": "zh-ch"
+  "locale": "zh-ch",
+  "StorageConfig":{
+    "type": "localStorage",
+    "prefix": "xiaosiAdmin", 
+    "expire": 0, 
+    "isEncrypt": false
+  }
 }

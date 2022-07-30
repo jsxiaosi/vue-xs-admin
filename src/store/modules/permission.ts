@@ -4,8 +4,9 @@ import { RouteRecordName } from 'vue-router';
 import type { MultiTabsType, PermissionState } from '../types';
 import { AppRouteRecordRaw } from '#/route';
 import { isEqual } from 'lodash';
-import { getlocalStorage, setlocalStorage } from '@/utils/storage';
+import { getStorage, removeStorage, setStorage } from '@/utils/storage';
 
+// console.log(getStorage('multiTabsList'));
 const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({
@@ -14,7 +15,7 @@ const usePermissionStore = defineStore({
     // 缓存页面keepAlive
     cachePageList: [],
     // 标签页（路由记录）
-    multiTabs: getlocalStorage('multiTabsList') || [],
+    multiTabs: getStorage<MultiTabsType[]>('multiTabsList') || [],
   }),
   actions: {
     setWholeMenus(routeList: AppRouteRecordRaw[]) {
@@ -53,10 +54,10 @@ const usePermissionStore = defineStore({
         default:
           break;
       }
-      setlocalStorage('multiTabsList', this.multiTabs);
+      setStorage('multiTabsList', this.multiTabs);
     },
     handleRemoveMultiTabs() {
-      setlocalStorage('multiTabsList');
+      removeStorage('multiTabsList');
       this.multiTabs = [];
       this.clearAllCachePage();
     },
