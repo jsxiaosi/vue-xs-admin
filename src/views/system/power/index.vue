@@ -9,11 +9,13 @@
   import { ref, unref } from 'vue';
   import { initAsyncRoute } from '@/router/utils';
   import { useRoute, useRouter } from 'vue-router';
-  const userInfo = JSON.parse(localStorage.getItem('userInfo') || '');
+  import { UseInfoType } from '@/server/useInfo';
+  import { getStorage } from '@/utils/storage';
+  const userInfo = getStorage<UseInfoType>('userInfo');
   const route = useRoute();
   const router = useRouter();
 
-  const power = ref<string>(userInfo.power);
+  const power = ref<string>(userInfo ? userInfo.power : '');
   const powerChange = async () => {
     power.value = power.value === 'admin' ? 'test' : 'admin';
     initAsyncRoute(power.value);

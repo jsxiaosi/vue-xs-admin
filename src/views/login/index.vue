@@ -58,11 +58,12 @@
   import { AppLocale, AppTheme } from '@/components/Application';
   import { ref } from 'vue';
   import { addClass, removeClass } from '@/utils/operate';
-  import { deffHttp } from '@/utils/axios';
 
   import { useI18n } from '@/hooks/web/useI18n';
   import { initAsyncRoute } from '@/router/utils';
   import { useRouter } from 'vue-router';
+  import { getUserInfo, UseInfoType } from '@/server/useInfo';
+  import { setStorage } from '@/utils/storage';
 
   const { t } = useI18n();
 
@@ -72,16 +73,10 @@
   const router = useRouter();
 
   const onLogin = async (): Promise<void> => {
-    const res = await deffHttp.post<any>(
-      {
-        url: '/mock_api/login',
-        data: { username: user.value, password: pwd.value },
-      },
-      { errorMessageMode: 'modal', withToken: false },
-    );
+    const res = await getUserInfo(user.value, pwd.value);
 
     if (res.code === 1) {
-      localStorage.setItem('userInfo', JSON.stringify(res.data));
+      setStorage<UseInfoType>('userInfo', res.data);
       await initAsyncRoute(res.data.power);
       router.push('/');
     }

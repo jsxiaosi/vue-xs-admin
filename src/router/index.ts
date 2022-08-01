@@ -7,6 +7,8 @@ import NProgress from '@/utils/plugin/progress';
 import { getConfig } from '@/config';
 import { translateI18n } from '@/hooks/web/useI18n';
 import { isUrl } from '@/utils/is';
+import { getStorage } from '@/utils/storage';
+import { UseInfoType } from '@/server/useInfo';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
 
@@ -41,7 +43,7 @@ router.beforeEach((to, from, next) => {
     else document.title = translateI18n(to.meta.title);
   }
 
-  const userInfo = localStorage.getItem('userInfo');
+  const userInfo = getStorage<UseInfoType>('userInfo');
   if (userInfo) {
     if (from.name) {
       // 已登陆状态不允许去登录页
@@ -55,7 +57,7 @@ router.beforeEach((to, from, next) => {
       }
     } else {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
-        initAsyncRoute(JSON.parse(userInfo).power || '').then((res) => {
+        initAsyncRoute(userInfo.power || '').then((res) => {
           if (res.length) {
             router.push({
               path: to.path,

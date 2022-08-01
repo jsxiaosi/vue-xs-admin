@@ -19,6 +19,8 @@ import ElementPlus from 'unplugin-element-plus/vite';
 // setip使用Options API
 import DefineOptions from 'unplugin-vue-define-options/vite';
 
+import viteBuildOuteInfo from './buildOuteInfo';
+
 // eslint
 // import { configEsLinterPlugin } from './eslinter'
 
@@ -49,6 +51,8 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
       useSource: true,
     }),
   );
+
+  vitePlugins.push(viteBuildOuteInfo());
 
   // 使用此插件会导致vite启动变慢 100ms左右
   // vitePlugins.push(configEsLinterPlugin(configEnv))
