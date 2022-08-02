@@ -18,8 +18,10 @@ import { configPwaPlugin } from './pwa';
 import ElementPlus from 'unplugin-element-plus/vite';
 // setip使用Options API
 import DefineOptions from 'unplugin-vue-define-options/vite';
-
+// 自定义插件 问候语，打包检测用时、大小
 import viteBuildOuteInfo from './buildOuteInfo';
+// 检查插件状态
+import Inspect from 'vite-plugin-inspect';
 
 // eslint
 // import { configEsLinterPlugin } from './eslinter'
@@ -45,14 +47,16 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(DefineOptions());
 
+  vitePlugins.push(viteBuildOuteInfo());
+
+  vitePlugins.push(Inspect());
+
   /* 会重复引入与组件数量相等的主题变量 */
   vitePlugins.push(
     ElementPlus({
       useSource: true,
     }),
   );
-
-  vitePlugins.push(viteBuildOuteInfo());
 
   // 使用此插件会导致vite启动变慢 100ms左右
   // vitePlugins.push(configEsLinterPlugin(configEnv))
