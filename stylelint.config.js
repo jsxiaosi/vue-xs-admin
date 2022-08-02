@@ -24,5 +24,26 @@ module.exports = {
     'scss/comment-no-loud': true, // 禁止使用/*注释
     'scss/comment-no-empty': true, // 禁止空注释
   },
+  overrides: [
+    {
+      files: ['*.vue', '**/*.vue', '*.html', '**/*.html'],
+      extends: ['stylelint-config-recommended'],
+      rules: {
+        'keyframes-name-pattern': null,
+        'selector-pseudo-class-no-unknown': [
+          true,
+          {
+            ignorePseudoClasses: ['deep', 'global'],
+          },
+        ],
+        'selector-pseudo-element-no-unknown': [
+          true,
+          {
+            ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted'],
+          },
+        ],
+      },
+    },
+  ],
   ignoreFiles: ['**/*.js', '**/*.ts'],
 };

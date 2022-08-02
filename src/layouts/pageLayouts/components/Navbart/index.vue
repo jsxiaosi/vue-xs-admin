@@ -63,8 +63,8 @@
     border-bottom: 1px solid var(--border-color-light);
     box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 
-    .navbar-left {
-    }
+    // .navbar-left {
+    // }
 
     .navbar-center {
       height: 100%;

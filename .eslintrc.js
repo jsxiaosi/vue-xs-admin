@@ -26,7 +26,7 @@ module.exports = {
       jsx: true,
     },
   },
-  // plugins: ['vue'],
+  plugins: ['vue'],
   rules: {
     'prettier/prettier': 'error',
     // 是否禁止使用any类型
