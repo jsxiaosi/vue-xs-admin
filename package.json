@@ -144,5 +144,8 @@
     "*.md": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": "14.x || 16.x"
   }
 }
