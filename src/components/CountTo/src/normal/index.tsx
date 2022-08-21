@@ -48,34 +48,33 @@ export default defineComponent({
       state.rAF = requestAnimationFrame(count);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-    function pauseResume() {
-      if (state.paused) {
-        resume();
-        state.paused = false;
-      } else {
-        pause();
-        state.paused = true;
-      }
-    }
+    // function pauseResume() {
+    //   if (state.paused) {
+    //     resume();
+    //     state.paused = false;
+    //   } else {
+    //     pause();
+    //     state.paused = true;
+    //   }
+    // }
 
-    function pause() {
-      cancelAnimationFrame(state.rAF);
-    }
+    // function pause() {
+    //   cancelAnimationFrame(state.rAF);
+    // }
 
-    function resume() {
-      state.startTime = null;
-      state.localDuration = +(state.remaining as number);
-      state.localStartVal = +(state.printVal as number);
-      requestAnimationFrame(count);
-    }
+    // function resume() {
+    //   state.startTime = null;
+    //   state.localDuration = +(state.remaining as number);
+    //   state.localStartVal = +(state.printVal as number);
+    //   requestAnimationFrame(count);
+    // }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-    function reset() {
-      state.startTime = null;
-      cancelAnimationFrame(state.rAF);
-      state.displayValue = formatNumber(props.startVal);
-    }
+    // // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
+    // function reset() {
+    //   state.startTime = null;
+    //   cancelAnimationFrame(state.rAF);
+    //   state.displayValue = formatNumber(props.startVal);
+    // }
 
     function count(timestamp: number) {
       const { useEasing, easingFn, endVal } = props;

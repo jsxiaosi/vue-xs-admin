@@ -1,6 +1,6 @@
 // https://vitejs.dev/config/
 
-import { UserConfig, ConfigEnv, loadEnv } from 'vite';
+import { UserConfig, ConfigEnv } from 'vite';
 
 import { createVitePlugins } from './build/vite/plugin';
 import { createViteResolve } from './build/vite/resolve';
@@ -11,9 +11,9 @@ import { createViteCSS } from './build/vite/css';
 
 export default (configEnv: ConfigEnv): UserConfig => {
   const { mode, command } = configEnv;
-  const root = process.cwd();
+  // const root = process.cwd();
 
-  const _env = loadEnv(mode, root);
+  // const _env = loadEnv(mode, root);
 
   const isBuild = command === 'build';
 

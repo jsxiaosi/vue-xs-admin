@@ -1,28 +1,29 @@
+const iWindow: Recordable = window;
 /**
  * @desc AnimationFrame简单兼容hack
  */
 export const animationFrame = () => {
-  window.cancelAnimationFrame = (() => {
+  iWindow.cancelAnimationFrame = (() => {
     return (
-      window.cancelAnimationFrame ||
-      window.webkitCancelAnimationFrame ||
-      window.mozCancelAnimationFrame ||
-      window.oCancelAnimationFrame ||
-      window.msCancelAnimationFrame ||
-      function (id) {
-        return window.clearTimeout(id);
+      iWindow.cancelAnimationFrame ||
+      iWindow.webkitCancelAnimationFrame ||
+      iWindow.mozCancelAnimationFrame ||
+      iWindow.oCancelAnimationFrame ||
+      iWindow.msCancelAnimationFrame ||
+      function (id: number) {
+        return iWindow.clearTimeout(id);
       }
     );
   })();
-  window.requestAnimationFrame = (function () {
+  iWindow.requestAnimationFrame = (function () {
     return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function (callback) {
-        return window.setTimeout(callback, 1000 / 60);
+      iWindow.requestAnimationFrame ||
+      iWindow.webkitRequestAnimationFrame ||
+      iWindow.mozRequestAnimationFrame ||
+      iWindow.oRequestAnimationFrame ||
+      iWindow.msRequestAnimationFrame ||
+      function (callback: void) {
+        return iWindow.setTimeout(callback, 1000 / 60);
       }
     );
   })();

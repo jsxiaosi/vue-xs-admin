@@ -60,7 +60,12 @@
     name: 'WeDetails',
   });
 
-  const lists = ref([
+  const lists = ref<
+    {
+      type: '' | 'success' | 'warning' | 'info' | 'danger';
+      label: string;
+    }[]
+  >([
     { type: '', label: '吃饭' },
     { type: 'success', label: '睡觉' },
     { type: 'info', label: '打游戏' },

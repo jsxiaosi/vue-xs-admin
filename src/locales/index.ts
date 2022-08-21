@@ -6,12 +6,13 @@ interface localesType {
   locale: string;
 }
 
-const config: Recordable = import.meta.globEager('./**/index.ts');
+const config: Recordable = import.meta.glob('./**/index.ts', { eager: true });
 
-const messages: any = {};
+const messages: Recordable = {};
 const localesList: localesType[] = [];
 Object.keys(config).forEach((key) => {
-  const name: any = key.match(/^\.\/([\s\S]+)\/index.ts$/);
+  const name: RegExpMatchArray = key.match(/^\.\/([\s\S]+)\/index.ts$/) || [];
+  if (!name[1]) return;
   messages[name[1]] = config[key].default;
   localesList.push({ name: config[key].name, locale: name[1] });
 });

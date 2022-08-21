@@ -9,7 +9,7 @@ export function configRouteList() {
   const whiteRouteModulesList: AppRouteRecordRaw[] = []; // 不参与菜单处理的路由
 
   // 自动查找路由配置文件
-  const modules = import.meta.globEager('./**/*.ts');
+  const modules: Recordable = import.meta.glob('./**/*.ts', { eager: true });
   Object.keys(modules).forEach((key) => {
     const mod = modules[key].default;
     if (!mod) return;

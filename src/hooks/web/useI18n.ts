@@ -31,6 +31,7 @@ export function translateI18n(message: any = '') {
   }
   const key = message.split('.')[0];
   if (key && Object.keys(i18n.global.messages.value[locale]).includes(key)) {
+    // @ts-ignore
     return i18n.global.t(message);
   }
   return message;

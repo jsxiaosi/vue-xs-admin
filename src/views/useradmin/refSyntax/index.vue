@@ -5,8 +5,9 @@
 <script setup lang="ts">
   // import { useMouse } from '@vueuse/core';
   // import { ref } from 'vue';
+  import { $ref } from 'vue/macros';
 
-  const stem = $ref('admin');
+  let stem = $ref('admin');
 
   // 公共方法里面使用$ref导出ref
   function useMouse() {
@@ -20,7 +21,7 @@
   }
 
   // 通过
-  const { x, y } = $(useMouse());
+  let { x, y } = $(useMouse());
   console.log(x);
   // // $ref解构方法返回的ref
   // const { x, y } = $(useMouse());

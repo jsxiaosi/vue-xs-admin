@@ -16,7 +16,7 @@ async function initAsyncRoute(power: string) {
     // 更具接口返回的路由列表生成新的理由
     routeList = handleRouteList(sortRouteList(sidebarRouteList), res.data);
     privilegeRouting(
-      router.options.routes,
+      router.options.routes as RouteRecordRaw[],
       formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
     );
     usePermissionStoreHook().setWholeMenus(routeList);

@@ -12,7 +12,7 @@
 
   const value = ref<Date>();
 
-  const DateItem = (v) => {
+  const DateItem = (v: Recordable) => {
     const { day } = v.data;
     const date = new Date(day);
     var year = date?.getFullYear();
