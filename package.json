@@ -14,7 +14,7 @@
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "log": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,js,tsx,jsx}\" --fix",
