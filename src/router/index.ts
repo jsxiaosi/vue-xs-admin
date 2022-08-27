@@ -7,7 +7,7 @@ import NProgress from '@/utils/plugin/progress';
 import { getConfig } from '@/config';
 import { translateI18n } from '@/hooks/web/useI18n';
 import { isUrl } from '@/utils/is';
-import { getStorage } from '@/utils/storage';
+import { getStorage, removeStorage } from '@/utils/storage';
 import { UseInfoType } from '@/server/useInfo';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
@@ -44,17 +44,18 @@ router.beforeEach((to, from, next) => {
   }
 
   const userInfo = getStorage<UseInfoType>('userInfo');
+  console.log(userInfo, from.name);
   if (userInfo) {
+    // 已登陆状态不允许去登录页
+    if (to.path === '/login') {
+      next({
+        path: from.path,
+        query: from.query,
+      });
+    }
+
     if (from.name) {
-      // 已登陆状态不允许去登录页
-      if (to.path === '/login') {
-        next({
-          path: from.path,
-          query: from.query,
-        });
-      } else {
-        next();
-      }
+      next();
     } else {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
         initAsyncRoute(userInfo.power || '').then((res) => {
@@ -64,7 +65,7 @@ router.beforeEach((to, from, next) => {
               query: to.query,
             });
           } else {
-            localStorage.removeItem('userInfo');
+            removeStorage('userInfo');
             router.push('login');
           }
         });
