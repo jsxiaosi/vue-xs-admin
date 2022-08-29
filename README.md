@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://github.com/jsxiaosi/xiaosiAdmin"><h1>Vue3</h1></a>
+<div align="center"> <a href="https://github.com/jsxiaosi/vue-xs-admin"><h1>Vue3</h1></a>
 </div>
 
 ## 简介
@@ -31,9 +31,9 @@
 - 获取项目代码（https or ssh）
 
 ```bash
-git clone https://github.com/jsxiaosi/xiaosiAdmin.git
+git clone https://github.com/jsxiaosi/vue-xs-admin.git
 
-git clone git@github.com:jsxiaosi/xiaosiAdmin.git
+git clone git@github.com:jsxiaosi/vue-xs-admin.git
 ```
 
 - 安装依赖
@@ -63,7 +63,7 @@ npm run build
 
 ## 项目地址
 
-- [vite-vue3-template](https://github.com/jsxiaosi/xiaosiAdmin)
+- [vite-vue3-template](https://github.com/jsxiaosi/vue-xs-admin)
 
 ## 如何贡献
 
