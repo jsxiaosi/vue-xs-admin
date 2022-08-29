@@ -1,7 +1,9 @@
 ## 1.3.0 (2022-08-29)
 
-## <small>1.3.1 (2022-08-27)</small>
+## 1.4.0 (2022-08-29)
 
+- docs: - ([834d6d2](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/834d6d2))
+- docs: title ([00b8c85](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/00b8c85))
 - fixbug: - ([62e3543](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/62e3543))
 - fixbug: html 添加 Theme ([3462251](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/3462251))
 - fixbug: pnpm 依赖项 ([f28d628](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/f28d628))
@@ -32,7 +34,6 @@
 - feature: 添加路由进度条 ([683fd08](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/683fd08))
 - feature: 统一主题色 ([b6fc34d](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/b6fc34d))
 - chore: - ([dd1d9f7](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/dd1d9f7))
-- docs: title ([00b8c85](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/00b8c85))
 - Update README.md ([e85d69c](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/e85d69c))
 - refactor: 重构路由 ([9301305](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/9301305))
 - refactor: 重构路由目录 ([b621fc1](https://github.com/SuperCuteXiaoSi/xiaosiAdmin/commit/b621fc1))
