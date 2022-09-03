@@ -1,4 +1,4 @@
-import { appConfig } from '@/store/types';
+import { AppConfig } from '@/store/types';
 import { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 interface localesType {
@@ -18,7 +18,7 @@ Object.keys(config).forEach((key) => {
 });
 
 const locStoAPP = localStorage.getItem('appConfigMode');
-let appConfigMode: appConfig = {} as appConfig;
+let appConfigMode: AppConfig = {} as AppConfig;
 if (locStoAPP) {
   appConfigMode = JSON.parse(locStoAPP);
 }

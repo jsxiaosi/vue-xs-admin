@@ -3,7 +3,7 @@ import { store } from '@/store';
 import { RouteRecordName } from 'vue-router';
 import type { MultiTabsType, PermissionState } from '../types';
 import { AppRouteRecordRaw } from '#/route';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { getStorage, removeStorage, setStorage } from '@/utils/storage';
 
 // console.log(getStorage('multiTabsList'));

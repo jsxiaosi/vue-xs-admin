@@ -1,7 +1,7 @@
 import { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 import { iAxios } from './iAxios';
 import { checkStatus } from './axiosStatus';
-import { isString } from 'lodash';
+import { isString } from 'lodash-es';
 import { useMessage } from '@/hooks/web/useMessage';
 import { errorData } from './errorConfig';
 
