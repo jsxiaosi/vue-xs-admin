@@ -14,12 +14,12 @@
         <div class="login-form">
           <h2 class="enter-x p-4">{{ appConfigMode.title }}</h2>
           <div class="enter-x"
-            >{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</div
+            >{{ $t('sys.login.userName') }}：admin {{ $t('sys.login.password') }}：admin123</div
           >
           <div class="input-group user enter-x">
             <SvgIcon class-name="icon" name="iEL-avatar"></SvgIcon>
             <div>
-              <h5>{{ t('sys.login.userName') }}</h5>
+              <h5>{{ $t('sys.login.userName') }}</h5>
               <input
                 v-model="user"
                 type="text"
@@ -33,7 +33,7 @@
             <SvgIcon class-name="icon" name="password"></SvgIcon>
 
             <div>
-              <h5>{{ t('sys.login.password') }}</h5>
+              <h5>{{ $t('sys.login.password') }}</h5>
               <input
                 v-model="pwd"
                 type="password"
@@ -59,12 +59,12 @@
   import { ref } from 'vue';
   import { addClass, removeClass } from '@/utils/operate';
 
-  import { useI18n } from '@/hooks/web/useI18n';
   import { initAsyncRoute } from '@/router/utils';
   import { useRouter } from 'vue-router';
   import { getUserInfo, UseInfoType } from '@/server/useInfo';
   import { setStorage } from '@/utils/storage';
   import { useAppStoreHook } from '@/store/modules/app';
+  import { useI18n } from '@/hooks/web/useI18n';
 
   const { appConfigMode } = useAppStoreHook();
 
