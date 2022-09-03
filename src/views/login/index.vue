@@ -12,7 +12,7 @@
       </div>
       <div class="login-box">
         <div class="login-form">
-          <h2 class="enter-x p-4">SuperCuteXiaoSi</h2>
+          <h2 class="enter-x p-4">{{ appConfigMode.title }}</h2>
           <div class="enter-x"
             >{{ t('sys.login.userName') }}：admin {{ t('sys.login.password') }}：admin123</div
           >
@@ -64,6 +64,9 @@
   import { useRouter } from 'vue-router';
   import { getUserInfo, UseInfoType } from '@/server/useInfo';
   import { setStorage } from '@/utils/storage';
+  import { useAppStoreHook } from '@/store/modules/app';
+
+  const { appConfigMode } = useAppStoreHook();
 
   const { t } = useI18n();
 
@@ -103,199 +106,207 @@
   .page-container {
     width: 100vw;
     height: 100vh;
-  }
-  .wave {
-    position: fixed;
-    width: 100vw;
-    height: 100%;
-    left: 0;
-    bottom: 0;
-    z-index: 0;
-  }
 
-  .application {
-    position: fixed;
-    right: 0;
-    top: 0;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .icon-size {
-      font-size: 20px;
+    .container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
+      padding: 0 2rem;
+
+      .wave {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: 0;
+      }
+
+      .img {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        img {
+          width: 500px;
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .wave,
+        .img {
+          display: none !important;
+        }
+      }
+
+      .application {
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon-size {
+          font-size: 20px;
+        }
+
+        .item {
+          margin-left: 20px;
+        }
+      }
+
+      .login-box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        .login-form {
+          width: 360px;
+          .avatar {
+            width: 350px;
+            height: 80px;
+          }
+
+          h2 {
+            margin: 15px 0;
+            color: #999;
+            font: bold 200% Consolas, Monaco, monospace;
+          }
+
+          .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            padding: 5px 0;
+            border-bottom: 2px solid #d9d9d9;
+          }
+
+          .input-group:nth-child(1) {
+            margin-bottom: 4px;
+          }
+
+          .input-group::before,
+          .input-group::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: #c5d3f7;
+            transition: 0.5s;
+          }
+
+          .input-group::after {
+            right: 50%;
+          }
+
+          .input-group::before {
+            left: 50%;
+          }
+
+          .icon {
+            color: #d9d9d9;
+            font-size: 22px !important;
+            transition: 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .input-group > div {
+            position: relative;
+            height: 45px;
+            flex: 1;
+          }
+
+          .input-group > div > h5 {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d9d9d9;
+            font-size: 16px;
+            transition: 0.3s;
+            margin: 0;
+            padding: 0;
+          }
+
+          .input-group.focus .icon {
+            color: #5392f0;
+          }
+
+          .input-group.focus div h5 {
+            top: -5px;
+            font-size: 14px;
+          }
+
+          .input-group.focus::after,
+          .input-group.focus::before {
+            width: 50%;
+          }
+
+          .input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            outline: none;
+            background: none;
+            padding: 0.5rem 0.7rem;
+            font-size: 1.2rem;
+            color: #555;
+            font-family: 'Roboto', sans-serif;
+          }
+
+          a {
+            display: block;
+            text-align: right;
+            text-decoration: none;
+            color: #999;
+            font-size: 0.9rem;
+            transition: 0.3s;
+          }
+
+          a:hover {
+            color: #5392f0;
+          }
+
+          .btn {
+            display: block;
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            outline: none;
+            border: none;
+            background-image: linear-gradient(
+              to right,
+              var(--mian-color),
+              var(--sub-color),
+              var(--mian-color)
+            );
+            cursor: pointer;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            background-size: 200%;
+            transition: 0.5s;
+          }
+
+          .btn:hover {
+            background-position: right;
+          }
+        }
+      }
     }
-    .item {
-      margin-left: 20px;
-    }
-  }
-
-  .container {
-    width: 1600px;
-    height: 100vh;
-    display: flex;
-    margin: auto;
-    justify-content: space-between;
-    padding: 0 2rem;
-  }
-
-  .img {
-    width: 600px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .img img {
-    width: 500px;
-  }
-
-  .login-box {
-    width: 600px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-
-  .login-form {
-    width: 360px;
-  }
-
-  .avatar {
-    width: 350px;
-    height: 80px;
-  }
-
-  .login-form h2 {
-    margin: 15px 0;
-    color: #999;
-    font: bold 200% Consolas, Monaco, monospace;
-  }
-
-  .input-group {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin: 25px 0;
-    padding: 5px 0;
-    border-bottom: 2px solid #d9d9d9;
-  }
-
-  .input-group:nth-child(1) {
-    margin-bottom: 4px;
-  }
-
-  .input-group::before,
-  .input-group::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: #c5d3f7;
-    transition: 0.5s;
-  }
-
-  .input-group::after {
-    right: 50%;
-  }
-
-  .input-group::before {
-    left: 50%;
-  }
-
-  .icon {
-    color: #d9d9d9;
-    font-size: 22px !important;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .input-group > div {
-    position: relative;
-    height: 45px;
-    flex: 1;
-  }
-
-  .input-group > div > h5 {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #d9d9d9;
-    font-size: 18px;
-    transition: 0.3s;
-    margin: 0;
-    padding: 0;
-  }
-
-  .input-group.focus .icon {
-    color: #5392f0;
-  }
-
-  .input-group.focus div h5 {
-    top: -5px;
-    font-size: 15px;
-  }
-
-  .input-group.focus::after,
-  .input-group.focus::before {
-    width: 50%;
-  }
-
-  .input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border: none;
-    outline: none;
-    background: none;
-    padding: 0.5rem 0.7rem;
-    font-size: 1.2rem;
-    color: #555;
-    font-family: 'Roboto', sans-serif;
-  }
-
-  a {
-    display: block;
-    text-align: right;
-    text-decoration: none;
-    color: #999;
-    font-size: 0.9rem;
-    transition: 0.3s;
-  }
-
-  a:hover {
-    color: #5392f0;
-  }
-
-  .btn {
-    display: block;
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    margin: 1rem 0;
-    font-size: 1.2rem;
-    outline: none;
-    border: none;
-    background-image: linear-gradient(
-      to right,
-      var(--mian-color),
-      var(--sub-color),
-      var(--mian-color)
-    );
-    cursor: pointer;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    background-size: 200%;
-    transition: 0.5s;
-  }
-
-  .btn:hover {
-    background-position: right;
   }
 </style>

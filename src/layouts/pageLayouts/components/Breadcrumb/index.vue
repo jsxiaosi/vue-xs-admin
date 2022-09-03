@@ -2,7 +2,7 @@
   <div class="breadcrumb">
     <SvgIcon
       class="breadcrumb-fold"
-      :class="{ 'breadcrumb-unfold': isAppConfigMode.collapseMenu }"
+      :class="{ 'breadcrumb-unfold': appConfigMode.collapseMenu }"
       name="fold"
       color="#e3e3e3"
       @click="handerShowElmenu"
@@ -30,15 +30,14 @@
 
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { ref, watch } from 'vue';
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
+  import { ref, toRef, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { translateI18n } from '@/hooks/web/useI18n';
   import { useAppStoreHook } from '@/store/modules/app';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
-  import { isEqual } from 'lodash';
+  import { isEqual } from 'lodash-es';
 
   const { multiTabs } = usePermissionStoreHook();
 
@@ -97,13 +96,13 @@
   watch(route, getBreadcrumb);
 
   // 当前是否折叠导航栏
-  const { appConfigMode } = getAppCollapseMenu();
-  const isAppConfigMode = ref(appConfigMode.value);
   const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
   // 折叠菜单事件
   const handerShowElmenu = () => {
-    isAppConfigMode.value.collapseMenu = !isAppConfigMode.value.collapseMenu;
-    appStore.setAppConfigMode(isAppConfigMode.value);
+    appStore.setAppConfigMode({
+      collapseMenu: !appStore.appConfigMode.collapseMenu,
+    });
   };
 </script>
 

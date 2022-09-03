@@ -19,19 +19,20 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, PropType, ref, watch } from 'vue';
+  import { computed, PropType, ref, toRef, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import SidebarItem from './SidebarItem.vue';
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { useNavSideBar } from '../../hooks/useNavSideBar';
+  import { useAppStoreHook } from '@/store/modules/app';
 
   const { selectMenu } = useNavSideBar();
 
   const route = useRoute();
-  const { appConfigMode } = getAppCollapseMenu();
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
   defineProps({
     mode: {
       type: String as PropType<'vertical' | 'horizontal'>,
@@ -42,7 +43,7 @@
   let subMenuData = ref<AppRouteRecordRaw[]>(usePermissionStoreHook().wholeMenus);
 
   const menuData = computed<AppRouteRecordRaw[]>(() => {
-    return appConfigMode.value.sidebarMode === 'blend'
+    return appConfigMode.value.sidebarMode === 'blend' && !appConfigMode.value.drawerSidebar
       ? subMenuData.value
       : usePermissionStoreHook().wholeMenus;
   });

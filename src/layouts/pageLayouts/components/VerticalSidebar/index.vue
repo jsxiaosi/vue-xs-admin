@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="appConfigMode.sidebarMode !== 'horizontal'"
+    v-if="appConfigMode.sidebarMode !== 'horizontal' || appConfigMode.drawerSidebar"
     class="sidebar-container"
     :class="{ hideSidebar: appConfigMode.collapseMenu }"
   >
@@ -17,10 +17,11 @@
 <script setup lang="ts">
   import Sidebar from '../Sidebar/index.vue';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
-  import { getCurrentInstance } from 'vue';
+  import { getCurrentInstance, toRef } from 'vue';
+  import { useAppStoreHook } from '@/store/modules/app';
 
-  const { appConfigMode } = getAppCollapseMenu();
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
   const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
   console.log(config);
 </script>

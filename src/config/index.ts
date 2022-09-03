@@ -1,16 +1,16 @@
 import { getConfigInfo } from '@/server/config';
-import { appConfig } from '@/store/types';
+import { AppConfig } from '@/store/types';
 import { setStorageConfig } from '@/utils/storage';
 import { App } from 'vue';
 
-let config: appConfig = {} as appConfig;
+let config: AppConfig = {} as AppConfig;
 
-export function getConfig(): appConfig {
+export function getConfig(): AppConfig {
   return config;
 }
 
 // 延迟进入vue，显示loding页
-export async function getServerConfig(app: App): Promise<appConfig> {
+export async function getServerConfig(app: App): Promise<AppConfig> {
   const appConfigMode = localStorage.getItem('appConfigMode');
   if (appConfigMode) {
     config = JSON.parse(appConfigMode);

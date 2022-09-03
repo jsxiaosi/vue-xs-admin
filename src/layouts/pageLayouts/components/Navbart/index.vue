@@ -1,23 +1,27 @@
 <template>
   <div class="navbar">
     <div class="navbar-left">
-      <Breadcrumb v-if="appConfigMode.sidebarMode !== 'horizontal'" />
+      <Breadcrumb
+        v-if="appConfigMode.sidebarMode !== 'horizontal' || appConfigMode.drawerSidebar"
+      />
       <div v-else class="app-logo">
         <SvgIcon name="Vue"></SvgIcon>
         <span class="name">{{ config.title }}</span>
       </div>
     </div>
     <div class="navbar-center">
-      <Sidebar
-        v-if="appConfigMode.sidebarMode === 'horizontal'"
-        class="sidebar-horizontal"
-        mode="horizontal"
-      />
-      <MinSidebar
-        v-if="appConfigMode.sidebarMode === 'blend'"
-        class="sidebar-horizontal"
-        mode="horizontal"
-      />
+      <template v-if="!appConfigMode.drawerSidebar">
+        <Sidebar
+          v-if="appConfigMode.sidebarMode === 'horizontal'"
+          class="sidebar-horizontal"
+          mode="horizontal"
+        />
+        <MinSidebar
+          v-if="appConfigMode.sidebarMode === 'blend'"
+          class="sidebar-horizontal"
+          mode="horizontal"
+        />
+      </template>
     </div>
     <div class="navbar-right">
       <AppTheme></AppTheme>
@@ -40,14 +44,15 @@
   import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getCurrentInstance, ref } from 'vue';
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
+  import { getCurrentInstance, ref, toRef } from 'vue';
+  import { useAppStoreHook } from '@/store/modules/app';
 
   const drawer = ref(false);
 
   const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
 
-  const { appConfigMode } = getAppCollapseMenu();
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 import { getConfig } from '@/config';
 import { store } from '@/store';
-import type { AppState, appConfig } from '../types';
+import type { AppState, AppConfig } from '../types';
 
-export const localAppConfig: appConfig = getConfig();
+export const localAppConfig: AppConfig = getConfig();
 
 const useAppStore = defineStore({
   id: 'app',
@@ -11,14 +11,15 @@ const useAppStore = defineStore({
     appConfigMode: localAppConfig,
   }),
   getters: {
-    getAppConfigMode(): appConfig {
+    getAppConfigMode(): AppConfig {
       return this.appConfigMode;
     },
   },
   actions: {
-    setAppConfigMode(appConfigMode: appConfig): void {
-      localStorage.setItem('appConfigMode', JSON.stringify(appConfigMode));
-      this.appConfigMode = appConfigMode;
+    setAppConfigMode(data: Partial<AppConfig>): void {
+      const newData = { ...this.appConfigMode, ...data };
+      localStorage.setItem('appConfigMode', JSON.stringify(newData));
+      this.appConfigMode = newData;
     },
   },
 });

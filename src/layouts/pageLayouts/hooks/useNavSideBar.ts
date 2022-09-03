@@ -1,5 +1,6 @@
 import { AppRouteRecordRaw } from '#/route';
 import { findRouteByPath } from '@/router/utils';
+import { useAppStoreHook } from '@/store/modules/app';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import { isUrl } from '@/utils/is';
 import { emitter } from '@/utils/mitt';
@@ -9,6 +10,8 @@ export const useNavSideBar = () => {
   const router = (useRouter().options.routes.find((i) => i.path === '/') ||
     []) as AppRouteRecordRaw;
 
+  const appStore = useAppStoreHook();
+
   const selectMenu = (path: string) => {
     const findRoute = findRouteByPath(path, router.children || []);
     if (findRoute) {
@@ -16,6 +19,11 @@ export const useNavSideBar = () => {
         selectMenu(findRoute.children[0].path);
         return;
       }
+
+      if (appStore.appConfigMode.drawerSidebar) {
+        appStore.setAppConfigMode({ collapseMenu: true });
+      }
+
       if (isUrl(findRoute.path)) return;
       emitter.emit('siteBarChange', {
         routeRaw: findRoute,

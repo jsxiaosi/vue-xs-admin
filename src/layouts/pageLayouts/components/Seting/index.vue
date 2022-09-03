@@ -25,8 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import { getAppCollapseMenu } from '@/hooks/userAppWindow';
-  import { watch, ref } from 'vue';
+  import { watch, ref, toRef } from 'vue';
   import { useAppStoreHook } from '@/store/modules/app';
   import { SidebarMode } from '@/store/types';
 
@@ -48,8 +47,9 @@
     },
   );
 
-  const { appConfigMode } = getAppCollapseMenu();
-  const isAppConfigMode = ref(appConfigMode.value);
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
+
   const sidebarSeting: { label: string; value: SidebarMode }[] = [
     {
       label: '左侧菜单模式',
@@ -65,11 +65,9 @@
     },
   ];
 
-  const appStore = useAppStoreHook();
   // 折叠菜单事件
   const handerShowElmenu = (vale: SidebarMode) => {
-    isAppConfigMode.value.sidebarMode = vale;
-    appStore.setAppConfigMode(isAppConfigMode.value);
+    appStore.setAppConfigMode({ sidebarMode: vale });
   };
 </script>
 

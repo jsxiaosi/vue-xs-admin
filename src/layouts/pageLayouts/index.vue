@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper">
     <!-- 侧边导航栏 -->
-    <VerticalSidebar />
+    <SideNavigationBar />
     <!-- 内容区 -->
     <div class="main-container">
       <!-- 顶部导航栏 -->
@@ -18,7 +18,7 @@
   import AppMain from './components/AppMain/index.vue';
   import AppTabs from './components/AppTabs/index.vue';
   import NavBart from './components/Navbart/index.vue';
-  import VerticalSidebar from './components/VerticalSidebar/index.vue';
+  import SideNavigationBar from './components/SideNavigationBar/index.vue';
 </script>
 
 <style lang="scss" scoped></style>

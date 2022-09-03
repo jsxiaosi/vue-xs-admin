@@ -3,18 +3,19 @@ import { AppRouteRecordRaw } from '#/route';
 import { RouteRecordName, _RouteLocationBase } from 'vue-router';
 
 export type AppState = {
-  appConfigMode: appConfig;
+  appConfigMode: AppConfig;
 };
 
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
 
-export interface appConfig {
+export interface AppConfig {
   title: string;
   collapseMenu: boolean;
   sidebarMode: SidebarMode;
   themeMode: string;
   locale: string;
   StorageConfig: StorageConfig;
+  drawerSidebar?: boolean;
 }
 
 export type MultiTabsType = Omit<

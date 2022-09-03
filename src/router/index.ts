@@ -44,7 +44,6 @@ router.beforeEach((to, from, next) => {
   }
 
   const userInfo = getStorage<UseInfoType>('userInfo');
-  console.log(userInfo, from.name);
   if (userInfo) {
     // 已登陆状态不允许去登录页
     if (to.path === '/login') {
