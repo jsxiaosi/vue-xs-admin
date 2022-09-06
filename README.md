@@ -10,7 +10,11 @@
 
 ## electron 版
 
-[electron-xs-admin](https://github.com/jsxiaosi/electron-xs-admin)
+- [electron-xs-admin](https://github.com/jsxiaosi/electron-xs-admin)
+
+## tauri 版
+
+- [tauri-xs-admin](https://github.com/jsxiaosi/tauri-xs-admin)
 
 ## 特性
 
@@ -32,7 +36,7 @@
 
 ## 安装使用
 
-- 获取项目代码（https or ssh）
+### 1. 获取项目代码（https or ssh）
 
 ```bash
 git clone https://github.com/jsxiaosi/vue-xs-admin.git
@@ -40,7 +44,7 @@ git clone https://github.com/jsxiaosi/vue-xs-admin.git
 git clone git@github.com:jsxiaosi/vue-xs-admin.git
 ```
 
-- 安装依赖
+### 2.安装依赖
 
 ```bash
 cd vite-vue3-Template
@@ -63,13 +67,13 @@ npm install --registry=https://registry.npm.taobao.org
 
 ```
 
-- 运行
+### 3.运行
 
 ```bash
 npm run dev
 ```
 
-- 打包
+### 4.打包
 
 ```bash
 npm run build
