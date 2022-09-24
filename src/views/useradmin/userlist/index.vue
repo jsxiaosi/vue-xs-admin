@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import TsComponents from '@/components/tscomponents';
+  import TsComponents from '@/components/TsxComponents';
   import { DirectiveBinding, getCurrentInstance, nextTick, ref, VNode } from 'vue';
   const env = import.meta.env;
   nextTick(() => {

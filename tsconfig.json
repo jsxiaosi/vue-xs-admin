@@ -39,6 +39,7 @@
     "src/**/*.vue",
     "types/*.d.ts",
     "types/*.ts",
+    "tests/*.ts",
     "mock/**/*.ts",
     "build/**/*.ts",
     "vite.config.ts"
