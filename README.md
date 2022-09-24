@@ -3,8 +3,7 @@
 
 ## 简介
 
-基于`vue3`,`vite2`,`element-push`等主流技术开发的后台框架模板  
-预览地址：https://www.supercutexiaosi.top/  
+基于`vue3`,`vite2`,`Element-Plus`等主流技术开发的开箱即用后台模板，内置 I18n 翻译、路由权限控制等方案能够满足多数企业管理系统需求！预览地址：https://www.supercutexiaosi.top/  
 账号：admin  
 密码：admin123
 
