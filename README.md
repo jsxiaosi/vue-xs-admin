@@ -18,25 +18,24 @@
 
 ## 特性
 
-- **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发
+- **最新技术栈**：使用 Vue3/Vite3 等前端前沿技术开发
 - **主题**：可配置的主题
 - **国际化**：内置完善的国际化方案
 - **常用组件**：内置完善的常用组件封装
-- **Pwa**：内置 pwa
+- **PWA**：内置 PWA
 
 ## 准备
 
-- [node](http://nodejs.org/) 和 [git](https://git-scm.com/) -项目开发环境
-- [Vite](https://cn.vitejs.dev/) - 熟悉 vite 特性
+- [Node](http://nodejs.org/) 和 [Git](https://git-scm.com/) -项目开发环境
+- [Vite](https://cn.vitejs.dev/) - 熟悉 Vite 特性
 - [Vue3](https://v3.cn.vuejs.org/) - 熟悉 Vue 基础语法
-- [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
-- [Vue-Router-Next](https://next.router.vuejs.org/zh/) - 熟悉 vue-router 基本使用
-- [VueX v4.x](https://next.vuex.vuejs.org/zh/) - 熟悉 vue-router 基本使用
-- [element-push](https://element-plus.gitee.io/#/zh-CN/) - ui 基本使用
+- [Es6+](http://es6.ruanyifeng.com/) - 熟悉 Es6 基本语法
+- [Vue-Router-Next](https://next.router.vuejs.org/zh/) - 熟悉 Vue-Router 基本使用
+- [Element-Plus](https://element-plus.gitee.io/#/zh-CN/) - Ui 基本使用
 
 ## 安装使用
 
-### 1. 获取项目代码（https or ssh）
+### 1. 获取项目代码（Https or SSH）
 
 ```bash
 git clone https://github.com/jsxiaosi/vue-xs-admin.git
@@ -47,7 +46,7 @@ git clone git@github.com:jsxiaosi/vue-xs-admin.git
 ### 2.安装依赖
 
 ```bash
-cd vite-vue3-Template
+cd vue-xs-admin
 ```
 
 推荐使用`pnpm`
@@ -128,9 +127,9 @@ npm run build
 
 ### 规范相关
 
-- [esLint](https://eslint.org/) - js 语法检测
-- [styleLint](https://stylelint.io/) - 样式语法检测
-- [commitLint](https://commitlint.js.org/#/) - git commit 提交规范检测
+- [EsLint](https://eslint.org/) - js 语法检测
+- [StyleLint](https://stylelint.io/) - 样式语法检测
+- [CommitLint](https://commitlint.js.org/#/) - git commit 提交规范检测
 
 ## 项目目录结构
 
