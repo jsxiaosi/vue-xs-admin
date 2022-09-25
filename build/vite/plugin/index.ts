@@ -14,6 +14,8 @@ import { configCompressPlugin } from './compress';
 import { configMockPlugin } from './mock';
 // pwd
 import { configPwaPlugin } from './pwa';
+// 性能分析工具
+import { configVisualizerPlugin } from './visualizer';
 // 按需element样式
 import ElementPlus from 'unplugin-element-plus/vite';
 // setip使用Options API
@@ -44,6 +46,8 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configMockPlugin(isBuild));
 
   vitePlugins.push(configPwaPlugin());
+
+  vitePlugins.push(configVisualizerPlugin());
 
   vitePlugins.push(DefineOptions());
 

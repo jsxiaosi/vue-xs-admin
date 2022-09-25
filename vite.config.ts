@@ -5,6 +5,7 @@ import { UserConfig, ConfigEnv } from 'vite';
 import { createVitePlugins } from './build/vite/plugin';
 import { createViteResolve } from './build/vite/resolve';
 import { createViteBuild } from './build/vite/build';
+import { createViteEsbuild } from './build/vite/esbuild';
 import { createViteServer } from './build/vite/server';
 import { createViteOptimizeDeps } from './build/vite/optimizeDeps';
 import { createViteCSS } from './build/vite/css';
@@ -15,7 +16,7 @@ export default (configEnv: ConfigEnv): UserConfig => {
   const { mode, command } = configEnv;
   // const root = process.cwd();
 
-  // const _env = loadEnv(mode, root);
+  // const env = loadEnv(mode, root);
 
   const isBuild = command === 'build';
 
@@ -23,6 +24,8 @@ export default (configEnv: ConfigEnv): UserConfig => {
     // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下请通过 --clearScreen false 设置。
     clearScreen: true,
     logLevel: 'info',
+    // esbuild
+    esbuild: createViteEsbuild(isBuild),
     // vitest配置
     test: createVitestTest(),
     // 解析配置
