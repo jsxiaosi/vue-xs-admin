@@ -1,4 +1,4 @@
-import { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
+import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 import { iAxios } from './iAxios';
 import { checkStatus } from './axiosStatus';
 import { isString } from 'lodash-es';

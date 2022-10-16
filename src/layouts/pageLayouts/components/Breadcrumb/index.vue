@@ -1,40 +1,10 @@
-<template>
-  <div class="breadcrumb">
-    <SvgIcon
-      class="breadcrumb-fold"
-      :class="{ 'breadcrumb-unfold': appConfigMode.collapseMenu }"
-      name="fold"
-      color="#e3e3e3"
-      @click="handerShowElmenu"
-    ></SvgIcon>
-    <el-breadcrumb
-      v-show="appConfigMode.sidebarMode === 'vertical'"
-      class="app-breadcrumb"
-      separator="/"
-    >
-      <transition-group name="breadcrumb">
-        <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-          <span
-            v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
-            class="no-redirect"
-            >{{ translateI18n(item.meta?.title) }}</span
-          >
-          <a v-else class="redirect" @click.prevent="handleLink(item)">
-            {{ translateI18n(item.meta?.title) }}
-          </a>
-        </el-breadcrumb-item>
-      </transition-group>
-    </el-breadcrumb>
-  </div>
-</template>
-
 <script setup lang="ts">
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { ref, toRef, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { translateI18n } from '@/hooks/web/useI18n';
   import { useAppStoreHook } from '@/store/modules/app';
-  import { AppRouteRecordRaw } from '#/route';
+  import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { isEqual } from 'lodash-es';
@@ -105,6 +75,36 @@
     });
   };
 </script>
+
+<template>
+  <div class="breadcrumb">
+    <SvgIcon
+      class="breadcrumb-fold"
+      :class="{ 'breadcrumb-unfold': appConfigMode.collapseMenu }"
+      name="fold"
+      color="#e3e3e3"
+      @click="handerShowElmenu"
+    ></SvgIcon>
+    <el-breadcrumb
+      v-show="appConfigMode.sidebarMode === 'vertical'"
+      class="app-breadcrumb"
+      separator="/"
+    >
+      <transition-group name="breadcrumb">
+        <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
+          <span
+            v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+            class="no-redirect"
+            >{{ translateI18n(item.meta?.title) }}</span
+          >
+          <a v-else class="redirect" @click.prevent="handleLink(item)">
+            {{ translateI18n(item.meta?.title) }}
+          </a>
+        </el-breadcrumb-item>
+      </transition-group>
+    </el-breadcrumb>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .breadcrumb {

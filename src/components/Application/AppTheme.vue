@@ -1,11 +1,3 @@
-<template>
-  <div class="theme" :class="{ 'theme-dark': color === 'dark' }" @click="toggleDarkMode">
-    <div class="theme-inner"></div>
-    <SvgIcon name="sun"></SvgIcon>
-    <SvgIcon name="moon"></SvgIcon>
-  </div>
-</template>
-
 <script setup lang="ts">
   import SvgIcon from '../SvgIcon/index.vue';
   import { useColorMode } from '@vueuse/core';
@@ -19,6 +11,14 @@
     appStore.setAppConfigMode(appStore.appConfigMode);
   };
 </script>
+
+<template>
+  <div class="theme" :class="{ 'theme-dark': color === 'dark' }" @click="toggleDarkMode">
+    <div class="theme-inner"></div>
+    <SvgIcon name="sun"></SvgIcon>
+    <SvgIcon name="moon"></SvgIcon>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .theme {

@@ -1,3 +1,53 @@
+<script setup lang="ts">
+  import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { AppLocale, AppTheme } from '@/components/Application';
+  import { ref } from 'vue';
+  import { addClass, removeClass } from '@/utils/operate';
+
+  import { initAsyncRoute } from '@/router/utils';
+  import { useRouter } from 'vue-router';
+  import type { UseInfoType } from '@/server/useInfo';
+  import { getUserInfo } from '@/server/useInfo';
+  import { setStorage } from '@/utils/storage';
+  import { useAppStoreHook } from '@/store/modules/app';
+  import { useI18n } from '@/hooks/web/useI18n';
+
+  const { appConfigMode } = useAppStoreHook();
+
+  const { t } = useI18n();
+
+  let user = ref('');
+  let pwd = ref('');
+
+  const router = useRouter();
+
+  const onLogin = async (): Promise<void> => {
+    const res = await getUserInfo(user.value, pwd.value);
+
+    if (res.code === 1) {
+      setStorage<UseInfoType>('userInfo', res.data);
+      await initAsyncRoute(res.data.power);
+      router.push('/');
+    }
+  };
+
+  function onUserFocus() {
+    addClass(document.querySelector('.user'), 'focus');
+  }
+
+  function onUserBlur() {
+    if (user.value.length === 0) removeClass(document.querySelector('.user'), 'focus');
+  }
+
+  function onPwdFocus() {
+    addClass(document.querySelector('.pwd'), 'focus');
+  }
+
+  function onPwdBlur() {
+    if (pwd.value.length === 0) removeClass(document.querySelector('.pwd'), 'focus');
+  }
+</script>
+
 <template>
   <div class="page-container">
     <div class="container mx-auto">
@@ -52,55 +102,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { AppLocale, AppTheme } from '@/components/Application';
-  import { ref } from 'vue';
-  import { addClass, removeClass } from '@/utils/operate';
-
-  import { initAsyncRoute } from '@/router/utils';
-  import { useRouter } from 'vue-router';
-  import { getUserInfo, UseInfoType } from '@/server/useInfo';
-  import { setStorage } from '@/utils/storage';
-  import { useAppStoreHook } from '@/store/modules/app';
-  import { useI18n } from '@/hooks/web/useI18n';
-
-  const { appConfigMode } = useAppStoreHook();
-
-  const { t } = useI18n();
-
-  let user = ref('');
-  let pwd = ref('');
-
-  const router = useRouter();
-
-  const onLogin = async (): Promise<void> => {
-    const res = await getUserInfo(user.value, pwd.value);
-
-    if (res.code === 1) {
-      setStorage<UseInfoType>('userInfo', res.data);
-      await initAsyncRoute(res.data.power);
-      router.push('/');
-    }
-  };
-
-  function onUserFocus() {
-    addClass(document.querySelector('.user'), 'focus');
-  }
-
-  function onUserBlur() {
-    if (user.value.length === 0) removeClass(document.querySelector('.user'), 'focus');
-  }
-
-  function onPwdFocus() {
-    addClass(document.querySelector('.pwd'), 'focus');
-  }
-
-  function onPwdBlur() {
-    if (pwd.value.length === 0) removeClass(document.querySelector('.pwd'), 'focus');
-  }
-</script>
 
 <style lang="scss" scoped>
   .page-container {

@@ -1,3 +1,15 @@
+<script setup lang="ts">
+  import Sidebar from '../Sidebar/index.vue';
+  import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { getCurrentInstance, toRef } from 'vue';
+  import { useAppStoreHook } from '@/store/modules/app';
+
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
+  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
+  console.log(config);
+</script>
+
 <template>
   <div
     v-if="appConfigMode.sidebarMode !== 'horizontal' || appConfigMode.drawerSidebar"
@@ -13,18 +25,6 @@
     <Sidebar mode="vertical" />
   </div>
 </template>
-
-<script setup lang="ts">
-  import Sidebar from '../Sidebar/index.vue';
-  import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getCurrentInstance, toRef } from 'vue';
-  import { useAppStoreHook } from '@/store/modules/app';
-
-  const appStore = useAppStoreHook();
-  const appConfigMode = toRef(appStore, 'appConfigMode');
-  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
-  console.log(config);
-</script>
 
 <style lang="scss" scoped>
   .app-logo {

@@ -1,4 +1,4 @@
-import { AppRouteRecordRaw } from '#/route';
+import type { AppRouteRecordRaw } from '#/route';
 import { pathNamekeyCheck, setUpRoutePath } from '../utils';
 
 export function configRouteList() {

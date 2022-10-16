@@ -1,7 +1,7 @@
 import { getConfigInfo } from '@/server/config';
-import { AppConfig } from '@/store/types';
+import type { AppConfig } from '@/store/types';
 import { setStorageConfig } from '@/utils/storage';
-import { App } from 'vue';
+import type { App } from 'vue';
 
 let config: AppConfig = {} as AppConfig;
 

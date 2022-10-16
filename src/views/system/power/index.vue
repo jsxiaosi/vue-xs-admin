@@ -1,15 +1,8 @@
-<template>
-  <div class="page-container">
-    <span>切换权限：</span>
-    <el-button @click="powerChange"> {{ power }} </el-button>
-  </div>
-</template>
-
 <script setup lang="ts">
   import { ref, unref } from 'vue';
   import { initAsyncRoute } from '@/router/utils';
   import { useRoute, useRouter } from 'vue-router';
-  import { UseInfoType } from '@/server/useInfo';
+  import type { UseInfoType } from '@/server/useInfo';
   import { getStorage } from '@/utils/storage';
   const userInfo = getStorage<UseInfoType>('userInfo');
   const route = useRoute();
@@ -27,5 +20,12 @@
     });
   };
 </script>
+
+<template>
+  <div class="page-container">
+    <span>切换权限：</span>
+    <el-button @click="powerChange"> {{ power }} </el-button>
+  </div>
+</template>
 
 <style scoped lang="scss"></style>

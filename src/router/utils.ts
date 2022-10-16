@@ -1,9 +1,10 @@
 import { usePermissionStoreHook } from '@/store/modules/permission';
-import { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
+import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import { useTimeoutFn } from '@vueuse/core';
-import { getRouteApi, RouteDataItemType } from '@/server/route';
+import type { RouteDataItemType } from '@/server/route';
+import { getRouteApi } from '@/server/route';
 import { router } from './index';
-import { AppRouteRecordRaw, Menu } from '#/route';
+import type { AppRouteRecordRaw, Menu } from '#/route';
 import { sidebarRouteList } from './index';
 import { isExternal } from '@/utils/validate';
 

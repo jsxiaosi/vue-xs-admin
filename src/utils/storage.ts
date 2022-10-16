@@ -1,4 +1,4 @@
-import { StorageConfig } from '#/global';
+import type { StorageConfig } from '#/global';
 
 import CryptoJS from 'crypto-js';
 

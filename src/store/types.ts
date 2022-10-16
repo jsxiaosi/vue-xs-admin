@@ -1,10 +1,10 @@
-import { StorageConfig } from '#/global';
-import { AppRouteRecordRaw } from '#/route';
-import { RouteRecordName, _RouteLocationBase } from 'vue-router';
+import type { StorageConfig } from '#/global';
+import type { AppRouteRecordRaw } from '#/route';
+import type { RouteRecordName, _RouteLocationBase } from 'vue-router';
 
-export type AppState = {
+export interface AppState {
   appConfigMode: AppConfig;
-};
+}
 
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
 
@@ -22,8 +22,8 @@ export type MultiTabsType = Omit<
   _RouteLocationBase,
   'fullPath' | 'hash' | 'params' | 'redirectedFrom'
 >;
-export type PermissionState = {
+export interface PermissionState {
   wholeMenus: AppRouteRecordRaw[];
   cachePageList: RouteRecordName[];
   multiTabs: MultiTabsType[];
-};
+}

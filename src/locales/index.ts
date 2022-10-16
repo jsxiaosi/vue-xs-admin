@@ -1,5 +1,5 @@
-import { AppConfig } from '@/store/types';
-import { App } from 'vue';
+import type { AppConfig } from '@/store/types';
+import type { App } from 'vue';
 import { createI18n } from 'vue-i18n';
 interface localesType {
   name: string;

@@ -1,10 +1,3 @@
-<template>
-  <div>
-    <span>page --- {{ query.id }}</span>
-    <el-input v-model="value"></el-input>
-  </div>
-</template>
-
 <script setup lang="ts">
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
@@ -18,4 +11,12 @@
 
   const value = ref('');
 </script>
+
+<template>
+  <div>
+    <span>page --- {{ query.id }}</span>
+    <el-input v-model="value"></el-input>
+  </div>
+</template>
+
 <style lang="scss"></style>

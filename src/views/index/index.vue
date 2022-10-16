@@ -1,61 +1,9 @@
-<template>
-  <div>
-    <el-row :gutter="30" class="enter-y">
-      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-        <el-card class="box-card">
-          <template #header>
-            <div class="card-header">
-              <span>描述列表</span>
-            </div>
-          </template>
-          <WeDetails></WeDetails>
-        </el-card>
-      </el-col>
-
-      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-        <el-card class="box-card">
-          <template #header>
-            <div class="card-header">
-              <span>滚动信息</span>
-            </div>
-          </template>
-          <div class="infinite">
-            <ul class="top">
-              <li>更新日期</li>
-              <li>项目名称</li>
-              <li>下载数量</li>
-            </ul>
-            <SeamlessScroll ref="scroll" :data="listData" :class-option="classOption" class="warp">
-              <ul class="item">
-                <li v-for="(item, index) in listData" :key="index">
-                  <span v-text="item.date"></span>
-                  <span v-text="item.name"></span>
-                  <span v-text="item.star"></span>
-                </li>
-              </ul>
-            </SeamlessScroll>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-
-    <el-row :gutter="30" class="enter-y">
-      <el-col>
-        <el-card class="box-card">
-          <VisitAnalysis />
-        </el-card>
-      </el-col>
-    </el-row>
-
-    <!-- <div ref="chartRef" class="line"> </div> -->
-  </div>
-</template>
-
 <script setup lang="ts">
   import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
   import WeDetails from './components/WeDetails.vue';
   import VisitAnalysis from './components/AnalysisChart.vue';
-  import { ref, Ref, onMounted, reactive } from 'vue';
+  import type { Ref } from 'vue';
+  import { ref, onMounted, reactive } from 'vue';
 
   import { useECharts } from '@/hooks/web/useECharts';
 
@@ -144,6 +92,59 @@
   });
   // console.log(chartRef);
 </script>
+
+<template>
+  <div>
+    <el-row :gutter="30" class="enter-y">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <el-card class="box-card">
+          <template #header>
+            <div class="card-header">
+              <span>描述列表</span>
+            </div>
+          </template>
+          <WeDetails></WeDetails>
+        </el-card>
+      </el-col>
+
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <el-card class="box-card">
+          <template #header>
+            <div class="card-header">
+              <span>滚动信息</span>
+            </div>
+          </template>
+          <div class="infinite">
+            <ul class="top">
+              <li>更新日期</li>
+              <li>项目名称</li>
+              <li>下载数量</li>
+            </ul>
+            <SeamlessScroll ref="scroll" :data="listData" :class-option="classOption" class="warp">
+              <ul class="item">
+                <li v-for="(item, index) in listData" :key="index">
+                  <span v-text="item.date"></span>
+                  <span v-text="item.name"></span>
+                  <span v-text="item.star"></span>
+                </li>
+              </ul>
+            </SeamlessScroll>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="30" class="enter-y">
+      <el-col>
+        <el-card class="box-card">
+          <VisitAnalysis />
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <!-- <div ref="chartRef" class="line"> </div> -->
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .el-col {

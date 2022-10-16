@@ -1,12 +1,13 @@
-import { MultiTabsType } from '@/store/types';
-import { computed, CSSProperties, reactive, Ref, ref, watch } from 'vue';
+import type { MultiTabsType } from '@/store/types';
+import type { CSSProperties, Ref } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import { useTabsChange } from './useTabsChange';
 
-type RightClickTags = {
+interface RightClickTags {
   text: string;
   disabled: boolean;
   code: string;
-};
+}
 
 export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
   const { onFresh, removeTab, closeTabsRoute } = useTabsChange(multiTabs);

@@ -1,33 +1,7 @@
-<template>
-  <el-drawer v-model="drawer" title="设置" @close="emit('update:modelValue', false)">
-    <div class="drawer-content">
-      <div class="layout_seting">
-        <div class="sidebar_seting">
-          <el-tooltip
-            v-for="item in sidebarSeting"
-            :key="item.value"
-            :content="item.label"
-            placement="bottom"
-          >
-            <div
-              class="sidebar_mode"
-              :class="{ 'sidebar_mode-select': appConfigMode.sidebarMode === item.value }"
-              @click="handerShowElmenu(item.value)"
-            >
-              <div></div>
-              <div></div>
-            </div>
-          </el-tooltip>
-        </div>
-      </div>
-    </div>
-  </el-drawer>
-</template>
-
 <script setup lang="ts">
   import { watch, ref, toRef } from 'vue';
   import { useAppStoreHook } from '@/store/modules/app';
-  import { SidebarMode } from '@/store/types';
+  import type { SidebarMode } from '@/store/types';
 
   const props = defineProps({
     modelValue: {
@@ -70,6 +44,32 @@
     appStore.setAppConfigMode({ sidebarMode: vale });
   };
 </script>
+
+<template>
+  <el-drawer v-model="drawer" title="设置" @close="emit('update:modelValue', false)">
+    <div class="drawer-content">
+      <div class="layout_seting">
+        <div class="sidebar_seting">
+          <el-tooltip
+            v-for="item in sidebarSeting"
+            :key="item.value"
+            :content="item.label"
+            placement="bottom"
+          >
+            <div
+              class="sidebar_mode"
+              :class="{ 'sidebar_mode-select': appConfigMode.sidebarMode === item.value }"
+              @click="handerShowElmenu(item.value)"
+            >
+              <div></div>
+              <div></div>
+            </div>
+          </el-tooltip>
+        </div>
+      </div>
+    </div>
+  </el-drawer>
+</template>
 
 <style lang="scss" scoped>
   .drawer-content {

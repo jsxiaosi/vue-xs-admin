@@ -1,4 +1,4 @@
-import { AppRouteRecordRaw } from '#/route';
+import type { AppRouteRecordRaw } from '#/route';
 import { findRouteByPath } from '@/router/utils';
 import { useAppStoreHook } from '@/store/modules/app';
 import { usePermissionStoreHook } from '@/store/modules/permission';

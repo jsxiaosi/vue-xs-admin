@@ -1,7 +1,8 @@
 import { usePermissionStoreHook } from '@/store/modules/permission';
-import { MultiTabsType } from '@/store/types';
+import type { MultiTabsType } from '@/store/types';
 import { removeClass, toggleClass } from '@/utils/operate';
-import { Ref, unref } from 'vue';
+import type { Ref } from 'vue';
+import { unref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import qs from 'qs';
 

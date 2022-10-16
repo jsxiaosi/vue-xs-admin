@@ -1,3 +1,12 @@
+<script setup lang="ts">
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+  const toHome = () => {
+    router.push('/');
+  };
+</script>
+
 <template>
   <div class="wscn-http404-container">
     <div class="wscn-http404">
@@ -23,15 +32,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  import { useRouter } from 'vue-router';
-
-  const router = useRouter();
-  const toHome = () => {
-    router.push('/');
-  };
-</script>
 
 <style lang="scss" scoped>
   .wscn-http404-container {

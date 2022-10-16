@@ -1,66 +1,3 @@
-<template>
-  <div class="main-container-tabs">
-    <el-tabs
-      v-model="editableTabsValue"
-      type="card"
-      class="tabs-view"
-      :closable="multiTabs.length > 1"
-      @tab-remove="tabRemoveChange"
-    >
-      <el-tab-pane v-for="item in multiTabs" :key="setTabPaneKey(item)" :name="setTabPaneKey(item)">
-        <template #label>
-          <div
-            class="tabs-view-item"
-            @click="changeTab(item)"
-            @contextmenu.prevent="contextmenu(item.path, $event)"
-          ></div>
-          <span>{{ translateI18n(item.meta.title) }}</span>
-        </template>
-      </el-tab-pane>
-    </el-tabs>
-    <transition name="el-zoom-in-top">
-      <ul v-show="visible" class="right-view" :style="rightViewStyle">
-        <div
-          v-for="(item, key) in rightClickTags"
-          :key="key"
-          class="right-view-item cursor"
-          :class="{ disabled: item.disabled }"
-          @click="rightViewChange(item)"
-        >
-          <li>
-            <span>{{ item.text }}</span>
-          </li>
-        </div>
-      </ul>
-    </transition>
-    <div class="right-button">
-      <ul>
-        <li class="cursor" @click="onFresh()">
-          <svg-icon class="rotate" name="iEL-refresh"></svg-icon>
-        </li>
-        <li>
-          <el-dropdown trigger="click" placement="bottom-end">
-            <svg-icon class="action-item" name="iEL-arrow-down"></svg-icon>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item
-                  v-for="(item, key) in rightClickTags"
-                  :key="key"
-                  :command="{ key, item }"
-                  :disabled="item.disabled"
-                  @click="rightViewChange(item)"
-                >
-                  {{ item.text }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
   import { translateI18n } from '@/hooks/web/useI18n';
   import { usePermissionStoreHook } from '@/store/modules/permission';
@@ -119,6 +56,69 @@
     contextmenu(e.path);
   };
 </script>
+
+<template>
+  <div class="main-container-tabs">
+    <el-tabs
+      v-model="editableTabsValue"
+      type="card"
+      class="tabs-view"
+      :closable="multiTabs.length > 1"
+      @tab-remove="tabRemoveChange"
+    >
+      <el-tab-pane v-for="item in multiTabs" :key="setTabPaneKey(item)" :name="setTabPaneKey(item)">
+        <template #label>
+          <div
+            class="tabs-view-item"
+            @click="changeTab(item)"
+            @contextmenu.prevent="contextmenu(item.path, $event)"
+          ></div>
+          <span>{{ translateI18n(item.meta.title) }}</span>
+        </template>
+      </el-tab-pane>
+    </el-tabs>
+    <transition name="el-zoom-in-top">
+      <ul v-show="visible" class="right-view" :style="rightViewStyle">
+        <div
+          v-for="(item, key) in rightClickTags"
+          :key="key"
+          class="right-view-item cursor"
+          :class="{ disabled: item.disabled }"
+          @click="rightViewChange(item)"
+        >
+          <li>
+            <span>{{ item.text }}</span>
+          </li>
+        </div>
+      </ul>
+    </transition>
+    <div class="right-button">
+      <ul>
+        <li class="cursor" @click="onFresh()">
+          <SvgIcon class="rotate" name="iEL-refresh"></SvgIcon>
+        </li>
+        <li>
+          <el-dropdown trigger="click" placement="bottom-end">
+            <SvgIcon class="action-item" name="iEL-arrow-down"></SvgIcon>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item
+                  v-for="(item, key) in rightClickTags"
+                  :key="key"
+                  :command="{ key, item }"
+                  :disabled="item.disabled"
+                  @click="rightViewChange(item)"
+                >
+                  {{ item.text }}
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .main-container-tabs {

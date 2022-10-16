@@ -1,9 +1,8 @@
-<template>
-  <div ref="chartRef" class="chartRef"></div>
-</template>
 <script lang="ts"></script>
+
 <script lang="ts" setup>
-  import { onMounted, ref, Ref } from 'vue';
+  import type { Ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { useECharts } from '@/hooks/web/useECharts';
 
   const chartRef = ref<HTMLDivElement | null>(null);
@@ -108,6 +107,10 @@
     });
   });
 </script>
+
+<template>
+  <div ref="chartRef" class="chartRef"></div>
+</template>
 
 <style scoped lang="scss">
   .chartRef {

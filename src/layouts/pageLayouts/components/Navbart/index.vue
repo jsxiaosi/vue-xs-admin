@@ -1,3 +1,24 @@
+<script setup lang="ts">
+  // import { ref } from 'vue'
+  import Sidebar from '../../components/Sidebar/index.vue';
+  import MinSidebar from '../../components/Sidebar/MinSidebar.vue';
+  import Setting from '../../components/Seting/index.vue';
+  import Breadcrumb from '../../components/Breadcrumb/index.vue';
+
+  import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
+
+  import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { getCurrentInstance, ref, toRef } from 'vue';
+  import { useAppStoreHook } from '@/store/modules/app';
+
+  const drawer = ref(false);
+
+  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
+
+  const appStore = useAppStoreHook();
+  const appConfigMode = toRef(appStore, 'appConfigMode');
+</script>
+
 <template>
   <div class="navbar">
     <div class="navbar-left">
@@ -33,27 +54,6 @@
     <Setting v-model:modelValue="drawer"></Setting>
   </div>
 </template>
-
-<script setup lang="ts">
-  // import { ref } from 'vue'
-  import Sidebar from '../../components/Sidebar/index.vue';
-  import MinSidebar from '../../components/Sidebar/MinSidebar.vue';
-  import Setting from '../../components/Seting/index.vue';
-  import Breadcrumb from '../../components/Breadcrumb/index.vue';
-
-  import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
-
-  import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getCurrentInstance, ref, toRef } from 'vue';
-  import { useAppStoreHook } from '@/store/modules/app';
-
-  const drawer = ref(false);
-
-  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
-
-  const appStore = useAppStoreHook();
-  const appConfigMode = toRef(appStore, 'appConfigMode');
-</script>
 
 <style lang="scss" scoped>
   .navbar {

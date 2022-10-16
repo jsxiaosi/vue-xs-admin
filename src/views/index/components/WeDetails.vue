@@ -1,3 +1,22 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  defineOptions({
+    name: 'WeDetails',
+  });
+
+  const lists = ref<
+    {
+      type: '' | 'success' | 'warning' | 'info' | 'danger';
+      label: string;
+    }[]
+  >([
+    { type: '', label: '吃饭' },
+    { type: 'success', label: '睡觉' },
+    { type: 'info', label: '打游戏' },
+  ]);
+</script>
+
 <template>
   <div class="wedetails">
     <el-descriptions class="margin-top" direction="vertical" :column="3" size="default" border>
@@ -52,25 +71,6 @@
     </el-descriptions>
   </div>
 </template>
-
-<script setup lang="ts">
-  import { ref } from 'vue';
-
-  defineOptions({
-    name: 'WeDetails',
-  });
-
-  const lists = ref<
-    {
-      type: '' | 'success' | 'warning' | 'info' | 'danger';
-      label: string;
-    }[]
-  >([
-    { type: '', label: '吃饭' },
-    { type: 'success', label: '睡觉' },
-    { type: 'info', label: '打游戏' },
-  ]);
-</script>
 
 <style lang="scss" scoped>
   .wedetails {

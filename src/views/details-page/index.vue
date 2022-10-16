@@ -1,8 +1,3 @@
-<template>
-  <div class="page-container">
-    <el-button v-for="item in 6" :key="item" @click="toPath(item)">详情页{{ item }}</el-button>
-  </div>
-</template>
 <script setup lang="ts">
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { useRouter } from 'vue-router';
@@ -22,4 +17,11 @@
     router.push({ name: 'RtDetailsInfo', query });
   };
 </script>
+
+<template>
+  <div class="page-container">
+    <el-button v-for="item in 6" :key="item" @click="toPath(item)">详情页{{ item }}</el-button>
+  </div>
+</template>
+
 <style lang="scss"></style>

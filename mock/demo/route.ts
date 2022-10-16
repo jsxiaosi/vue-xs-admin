@@ -1,4 +1,4 @@
-import { MockMethod, Recordable } from 'vite-plugin-mock';
+import type { MockMethod, Recordable } from 'vite-plugin-mock';
 
 const power = [
   {

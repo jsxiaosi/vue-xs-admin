@@ -1,23 +1,9 @@
-<template>
-  <el-drawer
-    v-if="isPhoneScreen"
-    v-model="drawer"
-    :with-header="false"
-    custom-class="drawer-sidebar"
-    direction="ltr"
-    :before-close="handleClose"
-  >
-    <VerticalSidebar />
-  </el-drawer>
-
-  <VerticalSidebar v-else></VerticalSidebar>
-</template>
 <script setup lang="ts">
   import { useAppStoreHook } from '@/store/modules/app';
   import { computed, ref, watch } from 'vue';
   import VerticalSidebar from '../VerticalSidebar/index.vue';
   import { useDebounceFn, useEventListener, useMediaQuery } from '@vueuse/core';
-  import { AppConfig } from '@/store/types';
+  import type { AppConfig } from '@/store/types';
 
   const appStore = useAppStoreHook();
 
@@ -54,6 +40,22 @@
 
   mediaQuery();
 </script>
+
+<template>
+  <el-drawer
+    v-if="isPhoneScreen"
+    v-model="drawer"
+    :with-header="false"
+    custom-class="drawer-sidebar"
+    direction="ltr"
+    :before-close="handleClose"
+  >
+    <VerticalSidebar />
+  </el-drawer>
+
+  <VerticalSidebar v-else></VerticalSidebar>
+</template>
+
 <style lang="scss">
   .drawer-sidebar {
     width: #{$sideBarWidth} !important;
