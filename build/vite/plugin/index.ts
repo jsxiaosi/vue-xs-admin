@@ -19,7 +19,7 @@ import { configVisualizerPlugin } from './visualizer';
 // 按需element样式
 import ElementPlus from 'unplugin-element-plus/vite';
 // setip使用Options API
-import DefineOptions from 'unplugin-vue-define-options/vite';
+import VueMacros from 'unplugin-vue-macros/vite';
 // 自定义插件 问候语，打包检测用时、大小
 import viteBuildOuteInfo from './buildOuteInfo';
 // 检查插件状态
@@ -30,12 +30,21 @@ import Inspect from 'vite-plugin-inspect';
 
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   const vitePlugins: (Plugin | Plugin[])[] = [
-    vue({
-      reactivityTransform: true,
-    }),
+    // vue({
+    //   reactivityTransform: true,
+    // }),
   ];
 
-  vitePlugins.push(vueJsx());
+  vitePlugins.push(
+    VueMacros({
+      plugins: {
+        vue: vue({
+          reactivityTransform: true,
+        }),
+        vueJsx: vueJsx(), // if needed
+      },
+    }),
+  );
 
   vitePlugins.push(configStylePlugin());
 
@@ -48,8 +57,6 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configPwaPlugin());
 
   vitePlugins.push(configVisualizerPlugin());
-
-  vitePlugins.push(DefineOptions());
 
   vitePlugins.push(viteBuildOuteInfo());
 
