@@ -1,6 +1,6 @@
+import type { RouteRecordName, _RouteLocationBase } from 'vue-router';
 import type { StorageConfig } from '#/global';
 import type { AppRouteRecordRaw } from '#/route';
-import type { RouteRecordName, _RouteLocationBase } from 'vue-router';
 
 export interface AppState {
   appConfigMode: AppConfig;

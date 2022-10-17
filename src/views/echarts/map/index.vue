@@ -3,11 +3,11 @@
 <script lang="ts" setup>
   import type { Ref } from 'vue';
   import { onMounted, ref } from 'vue';
-  import type { createEChartsOption } from '@/hooks/web/useECharts';
-  import { useECharts } from '@/hooks/web/useECharts';
-  import { mapData } from './data';
   import { registerMap } from 'echarts';
   import { useIntervalFn } from '@vueuse/core';
+  import { mapData } from './data';
+  import type { createEChartsOption } from '@/hooks/web/useECharts';
+  import { useECharts } from '@/hooks/web/useECharts';
 
   const chartRef = ref<HTMLDivElement | null>(null);
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);

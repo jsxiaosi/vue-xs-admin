@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import SvgIcon from '../SvgIcon/index.vue';
   import { useColorMode } from '@vueuse/core';
+  import SvgIcon from '../SvgIcon/index.vue';
   import { useAppStoreHook } from '@/store/modules/app';
 
   const appStore = useAppStoreHook();

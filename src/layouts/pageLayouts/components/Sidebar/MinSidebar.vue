@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import Item from './Item.vue';
-  import AppLink from './Link.vue';
-  import { usePermissionStoreHook } from '@/store/modules/permission';
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
   import { useNavSideBar } from '../../hooks/useNavSideBar';
+  import Item from './Item.vue';
+  import AppLink from './Link.vue';
+  import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
 

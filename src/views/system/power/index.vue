@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, unref } from 'vue';
-  import { initAsyncRoute } from '@/router/utils';
   import { useRoute, useRouter } from 'vue-router';
+  import { initAsyncRoute } from '@/router/utils';
   import type { UseInfoType } from '@/server/useInfo';
   import { getStorage } from '@/utils/storage';
   const userInfo = getStorage<UseInfoType>('userInfo');

@@ -2,10 +2,10 @@
   import path from 'path';
   import type { PropType } from 'vue';
   import { ref } from 'vue';
-  import { isExternal } from '@/utils/validate';
-  import type { AppRouteRecordRaw } from '#/route';
   import Item from './Item.vue';
   import AppLink from './Link.vue';
+  import { isExternal } from '@/utils/validate';
+  import type { AppRouteRecordRaw } from '#/route';
 
   const props = defineProps({
     // route object

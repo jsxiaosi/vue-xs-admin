@@ -1,14 +1,14 @@
 <script setup lang="ts">
+  import { ref, computed, watch, onBeforeMount } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
+  import { useNavSideBar } from '../../hooks/useNavSideBar';
+  import { useTabsView } from './hooks/useTabsView';
+  import { useTabsChange } from './hooks/useTabsChange';
   import { translateI18n } from '@/hooks/web/useI18n';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { MultiTabsType } from '@/store/types';
-  import { ref, computed, watch, onBeforeMount } from 'vue';
-  import { useRoute, useRouter } from 'vue-router';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { useTabsView } from './hooks/useTabsView';
-  import { useTabsChange } from './hooks/useTabsChange';
   import { emitter } from '@/utils/mitt';
-  import { useNavSideBar } from '../../hooks/useNavSideBar';
 
   const route = useRoute();
   const router = useRouter();

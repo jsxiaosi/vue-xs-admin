@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { useAppStoreHook } from '@/store/modules/app';
   import { computed, ref, watch } from 'vue';
-  import VerticalSidebar from '../VerticalSidebar/index.vue';
   import { useDebounceFn, useEventListener, useMediaQuery } from '@vueuse/core';
+  import VerticalSidebar from '../VerticalSidebar/index.vue';
+  import { useAppStoreHook } from '@/store/modules/app';
   import type { AppConfig } from '@/store/types';
 
   const appStore = useAppStoreHook();

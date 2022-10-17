@@ -2,11 +2,11 @@
   import type { PropType } from 'vue';
   import { computed, ref, toRef, watch } from 'vue';
   import { useRoute } from 'vue-router';
+  import { useNavSideBar } from '../../hooks/useNavSideBar';
   import SidebarItem from './SidebarItem.vue';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
-  import { useNavSideBar } from '../../hooks/useNavSideBar';
   import { useAppStoreHook } from '@/store/modules/app';
 
   defineProps({

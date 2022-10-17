@@ -1,7 +1,6 @@
 <script lang="tsx" setup>
-  import Table from '@/components/Table/index.vue';
-
   import { h } from 'vue';
+  import Table from '@/components/Table/index.vue';
 
   const option = [
     {

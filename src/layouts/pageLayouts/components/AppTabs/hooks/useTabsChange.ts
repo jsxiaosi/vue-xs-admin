@@ -1,10 +1,10 @@
-import { usePermissionStoreHook } from '@/store/modules/permission';
-import type { MultiTabsType } from '@/store/types';
-import { removeClass, toggleClass } from '@/utils/operate';
 import type { Ref } from 'vue';
 import { unref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import qs from 'qs';
+import { removeClass, toggleClass } from '@/utils/operate';
+import type { MultiTabsType } from '@/store/types';
+import { usePermissionStoreHook } from '@/store/modules/permission';
 
 export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
   const route = useRoute();

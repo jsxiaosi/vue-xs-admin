@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
-  import WeDetails from './components/WeDetails.vue';
-  import VisitAnalysis from './components/AnalysisChart.vue';
   import type { Ref } from 'vue';
   import { ref, onMounted, reactive } from 'vue';
+  import WeDetails from './components/WeDetails.vue';
+  import VisitAnalysis from './components/AnalysisChart.vue';
+  import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
 
   import { useECharts } from '@/hooks/web/useECharts';
 

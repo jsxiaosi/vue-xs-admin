@@ -1,10 +1,10 @@
+import { useRouter } from 'vue-router';
 import type { AppRouteRecordRaw } from '#/route';
 import { findRouteByPath } from '@/router/utils';
 import { useAppStoreHook } from '@/store/modules/app';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import { isUrl } from '@/utils/is';
 import { emitter } from '@/utils/mitt';
-import { useRouter } from 'vue-router';
 
 export const useNavSideBar = () => {
   const router = (useRouter().options.routes.find((i) => i.path === '/') ||

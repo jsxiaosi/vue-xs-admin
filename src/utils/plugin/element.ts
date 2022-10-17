@@ -41,6 +41,21 @@ import {
   ElInfiniteScroll,
 } from 'element-plus';
 
+// https://element-plus.org/zh-CN/component/icon.html
+import {
+  HomeFilled,
+  Avatar,
+  Operation,
+  Grid,
+  Setting,
+  RemoveFilled,
+  Refresh,
+  CaretLeft,
+  CaretRight,
+  ArrowDown,
+  Management,
+} from '@element-plus/icons-vue';
+
 // Directives
 const plugins = [ElLoading, ElInfiniteScroll];
 
@@ -82,21 +97,6 @@ const components = [
   ElTabs,
   ElTabPane,
 ];
-
-// https://element-plus.org/zh-CN/component/icon.html
-import {
-  HomeFilled,
-  Avatar,
-  Operation,
-  Grid,
-  Setting,
-  RemoveFilled,
-  Refresh,
-  CaretLeft,
-  CaretRight,
-  ArrowDown,
-  Management,
-} from '@element-plus/icons-vue';
 
 // Icon
 export const iconComponents = [

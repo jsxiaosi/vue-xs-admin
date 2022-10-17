@@ -3,9 +3,9 @@
 <script lang="ts" setup>
   import type { Ref } from 'vue';
   import { onMounted, ref } from 'vue';
+  import { useIntervalFn } from '@vueuse/core';
   import type { createEChartsOption } from '@/hooks/web/useECharts';
   import { useECharts } from '@/hooks/web/useECharts';
-  import { useIntervalFn } from '@vueuse/core';
 
   const chartRef = ref<HTMLDivElement | null>(null);
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);

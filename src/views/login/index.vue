@@ -1,11 +1,11 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { AppLocale, AppTheme } from '@/components/Application';
-  import { ref } from 'vue';
   import { addClass, removeClass } from '@/utils/operate';
 
   import { initAsyncRoute } from '@/router/utils';
-  import { useRouter } from 'vue-router';
   import type { UseInfoType } from '@/server/useInfo';
   import { getUserInfo } from '@/server/useInfo';
   import { setStorage } from '@/utils/storage';

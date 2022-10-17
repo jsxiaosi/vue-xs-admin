@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import SvgIcon from '@/components/SvgIcon/index.vue';
   import { ref, toRef, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import { isEqual } from 'lodash-es';
+  import SvgIcon from '@/components/SvgIcon/index.vue';
   import { translateI18n } from '@/hooks/web/useI18n';
   import { useAppStoreHook } from '@/store/modules/app';
   import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
-  import { isEqual } from 'lodash-es';
 
   const { multiTabs } = usePermissionStoreHook();
 

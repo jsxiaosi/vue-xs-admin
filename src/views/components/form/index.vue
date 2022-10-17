@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+  import { h, reactive, ref } from 'vue';
   import Form from '@/components/Form/index.vue';
   import type { FormProps } from '@/components/Form/types/from';
-  import { h, reactive, ref } from 'vue';
 
   defineOptions({
     name: 'RtForm',

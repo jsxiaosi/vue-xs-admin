@@ -1,6 +1,5 @@
-import type { StorageConfig } from '#/global';
-
 import CryptoJS from 'crypto-js';
+import type { StorageConfig } from '#/global';
 
 type StorageValue<T> = T | null | undefined;
 

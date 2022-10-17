@@ -1,11 +1,10 @@
-import { usePermissionStoreHook } from '@/store/modules/permission';
 import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import { useTimeoutFn } from '@vueuse/core';
+import { router, sidebarRouteList } from './index';
+import { usePermissionStoreHook } from '@/store/modules/permission';
 import type { RouteDataItemType } from '@/server/route';
 import { getRouteApi } from '@/server/route';
-import { router } from './index';
 import type { AppRouteRecordRaw, Menu } from '#/route';
-import { sidebarRouteList } from './index';
 import { isExternal } from '@/utils/validate';
 
 // 初始化权限路由

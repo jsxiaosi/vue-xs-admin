@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { store } from '@/store';
 import type { RouteRecordName } from 'vue-router';
-import type { MultiTabsType, PermissionState } from '../types';
-import type { AppRouteRecordRaw } from '#/route';
 import { isEqual } from 'lodash-es';
+import type { MultiTabsType, PermissionState } from '../types';
+import { store } from '@/store';
+import type { AppRouteRecordRaw } from '#/route';
 import { getStorage, removeStorage, setStorage } from '@/utils/storage';
 
 // console.log(getStorage('multiTabsList'));

@@ -1,7 +1,7 @@
-import type { MultiTabsType } from '@/store/types';
 import type { CSSProperties, Ref } from 'vue';
 import { computed, reactive, ref, watch } from 'vue';
 import { useTabsChange } from './useTabsChange';
+import type { MultiTabsType } from '@/store/types';
 
 interface RightClickTags {
   text: string;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import TsComponents from '@/components/TsxComponents';
   import type { DirectiveBinding, VNode } from 'vue';
   import { getCurrentInstance, nextTick, ref } from 'vue';
+  import TsComponents from '@/components/TsxComponents';
   const env = import.meta.env;
   nextTick(() => {
     console.log('渲染完了？');

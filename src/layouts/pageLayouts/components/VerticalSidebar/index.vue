@@ -1,7 +1,7 @@
 <script setup lang="ts">
+  import { getCurrentInstance, toRef } from 'vue';
   import Sidebar from '../Sidebar/index.vue';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getCurrentInstance, toRef } from 'vue';
   import { useAppStoreHook } from '@/store/modules/app';
 
   const appStore = useAppStoreHook();

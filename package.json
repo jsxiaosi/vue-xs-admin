@@ -65,7 +65,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@ehutch79/vite-eslint": "^0.0.1",
-    "@jsxiaosi/eslint-config-vue": "^0.0.4",
+    "@jsxiaosi/eslint-config-vue": "^0.0.6",
     "@types/core-js": "^2.5.5",
     "@types/crypto-js": "^4.1.1",
     "@types/intro.js": "^5.1.0",

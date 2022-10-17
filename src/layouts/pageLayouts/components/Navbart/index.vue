@@ -1,5 +1,6 @@
 <script setup lang="ts">
   // import { ref } from 'vue'
+  import { getCurrentInstance, ref, toRef } from 'vue';
   import Sidebar from '../../components/Sidebar/index.vue';
   import MinSidebar from '../../components/Sidebar/MinSidebar.vue';
   import Setting from '../../components/Seting/index.vue';
@@ -8,7 +9,6 @@
   import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
 
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { getCurrentInstance, ref, toRef } from 'vue';
   import { useAppStoreHook } from '@/store/modules/app';
 
   const drawer = ref(false);

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
+import type { AppState, AppConfig } from '../types';
 import { getConfig } from '@/config';
 import { store } from '@/store';
-import type { AppState, AppConfig } from '../types';
 
 export const localAppConfig: AppConfig = getConfig();
 
