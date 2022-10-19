@@ -8,6 +8,11 @@ module.exports = {
   },
   extends: ['@jsxiaosi/eslint-config-vue', 'plugin:prettier/recommended'],
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        usePrettierrc: true,
+      },
+    ],
   },
 };
