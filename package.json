@@ -52,6 +52,7 @@
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "pinia": "^2.0.23",
+    "prettier": "^2.7.1",
     "qs": "^6.11.0",
     "sortablejs": "^1.15.0",
     "vue": "^3.2.41",
@@ -64,8 +65,8 @@
   "devDependencies": {
     "@ehutch79/vite-eslint": "^0.0.1",
     "@jsxiaosi/commitlint-config": "^0.0.8",
-    "@jsxiaosi/eslint-config-prettier": "^0.0.7",
-    "@jsxiaosi/eslint-config-vue": "^0.0.7",
+    "@jsxiaosi/eslint-config-prettier": "^0.0.8",
+    "@jsxiaosi/eslint-config-vue": "^0.0.8",
     "@types/core-js": "^2.5.5",
     "@types/crypto-js": "^4.1.1",
     "@types/intro.js": "^5.1.0",

@@ -4,8 +4,8 @@ specifiers:
   '@ehutch79/vite-eslint': ^0.0.1
   '@element-plus/icons-vue': ^2.0.10
   '@jsxiaosi/commitlint-config': ^0.0.8
-  '@jsxiaosi/eslint-config-prettier': ^0.0.7
-  '@jsxiaosi/eslint-config-vue': ^0.0.7
+  '@jsxiaosi/eslint-config-prettier': ^0.0.8
+  '@jsxiaosi/eslint-config-vue': ^0.0.8
   '@logicflow/core': ^1.1.29
   '@logicflow/extension': ^1.1.29
   '@types/core-js': ^2.5.5
@@ -53,6 +53,7 @@ specifiers:
   postcss-html: ^1.5.0
   postcss-import: ^15.0.0
   postcss-scss: ^4.0.5
+  prettier: ^2.7.1
   pretty-quick: ^3.1.3
   qs: ^6.11.0
   rollup-plugin-visualizer: ^5.8.3
@@ -107,6 +108,7 @@ dependencies:
   nprogress: 0.2.0
   path: 0.12.7
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
+  prettier: 2.7.1
   qs: 6.11.0
   sortablejs: 1.15.0
   vue: 3.2.41
@@ -119,8 +121,8 @@ dependencies:
 devDependencies:
   '@ehutch79/vite-eslint': 0.0.1
   '@jsxiaosi/commitlint-config': 0.0.8_czg@1.3.11+husky@8.0.1
-  '@jsxiaosi/eslint-config-prettier': 0.0.7_eslint@8.25.0
-  '@jsxiaosi/eslint-config-vue': 0.0.7_z4bbprzjrhnsfa24uvmcbu7f5q
+  '@jsxiaosi/eslint-config-prettier': 0.0.8_eslint@8.25.0
+  '@jsxiaosi/eslint-config-vue': 0.0.8_z4bbprzjrhnsfa24uvmcbu7f5q
   '@types/core-js': 2.5.5
   '@types/crypto-js': 4.1.1
   '@types/intro.js': 5.1.0
@@ -149,7 +151,7 @@ devDependencies:
   postcss-html: 1.5.0
   postcss-import: 15.0.0_postcss@8.4.18
   postcss-scss: 4.0.5_postcss@8.4.18
-  pretty-quick: 3.1.3
+  pretty-quick: 3.1.3_prettier@2.7.1
   rollup-plugin-visualizer: 5.8.3
   sass: 1.55.0
   stylelint: 14.14.0
@@ -2339,10 +2341,10 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@jsxiaosi/eslint-config-base/0.0.7_zb5prbqp7qzcgafjm73dfpyyvm:
+  /@jsxiaosi/eslint-config-base/0.0.8_zb5prbqp7qzcgafjm73dfpyyvm:
     resolution:
       {
-        integrity: sha512-JaLahLuLt47bYqdPmON02FHjyzZ3Wu5RS2JHFjfKkzZ1aRTuim7FdLVsP+mT9FinlDXqTuDDZXkbGPTRpsa4Hw==,
+        integrity: sha512-2MJ+aXagX9dUQfvajTMbXyFk76zU4kmzo6AMyh7V1hp5ZIG+nh60SItgPOZBrU/Qi+8/tmE+voaEmopdmUA/JA==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
@@ -2360,10 +2362,10 @@ packages:
       - supports-color
     dev: true
 
-  /@jsxiaosi/eslint-config-prettier/0.0.7_eslint@8.25.0:
+  /@jsxiaosi/eslint-config-prettier/0.0.8_eslint@8.25.0:
     resolution:
       {
-        integrity: sha512-EwQdR6jPB4ujgk+GVmEDZUqBNpILX0cL2M1ziZXBJQ+2iIgakhMc8tWo7oXxMDz7rHK64SYccQ2mH+T12FsNtg==,
+        integrity: sha512-e33QfW4wh+WqWtQRh3zNW6HVHHeTbZ7B3wLOmiYbnRd6tmP0UqgLBUmEIlqGr20BLWEwObjMTxMC+jjVKDEWFQ==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
@@ -2374,16 +2376,16 @@ packages:
       prettier: 2.7.1
     dev: true
 
-  /@jsxiaosi/eslint-config-ts/0.0.7_z4bbprzjrhnsfa24uvmcbu7f5q:
+  /@jsxiaosi/eslint-config-ts/0.0.8_z4bbprzjrhnsfa24uvmcbu7f5q:
     resolution:
       {
-        integrity: sha512-qX0tDYHAtDpdcCb87Q03savuSPuRYqKfg347BQ+Kg4mXcFoVh+1DnCcYDRuLVt6ZZs/hnad8YLGqCny/k7Ex9A==,
+        integrity: sha512-M5+9ofQTxUABfxaAorNdSj77gcqa+lNCh2T8XjVG35ICRTGUW/zA811lsrbHQF59NdW1OYxB7fg73BVono9u+w==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@jsxiaosi/eslint-config-base': 0.0.7_zb5prbqp7qzcgafjm73dfpyyvm
+      '@jsxiaosi/eslint-config-base': 0.0.8_zb5prbqp7qzcgafjm73dfpyyvm
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
       eslint: 8.25.0
@@ -2394,15 +2396,15 @@ packages:
       - supports-color
     dev: true
 
-  /@jsxiaosi/eslint-config-vue/0.0.7_z4bbprzjrhnsfa24uvmcbu7f5q:
+  /@jsxiaosi/eslint-config-vue/0.0.8_z4bbprzjrhnsfa24uvmcbu7f5q:
     resolution:
       {
-        integrity: sha512-r64bB2R1ij5z7o6waG/uFSwJhhWeACim9Yb5vBuAF7S/TgLbDI0exKRLTOVMGgfGp9h3qAT1Pmu9YonDShx8Cw==,
+        integrity: sha512-Ne+aGZqi8LqvlYrqPA2wzIqUmYi140Ek2uqGFZZMmh8iKWy5xi4nj6575qe2j4pVp2mdQ/wMZfIX9756dZGnAw==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@jsxiaosi/eslint-config-ts': 0.0.7_z4bbprzjrhnsfa24uvmcbu7f5q
+      '@jsxiaosi/eslint-config-ts': 0.0.8_z4bbprzjrhnsfa24uvmcbu7f5q
       eslint: 8.25.0
       eslint-plugin-vue: 9.6.0_eslint@8.25.0
     transitivePeerDependencies:
@@ -10338,7 +10340,6 @@ packages:
       }
     engines: { node: '>=10.13.0' }
     hasBin: true
-    dev: true
 
   /pretty-bytes/5.6.0:
     resolution:
@@ -10356,7 +10357,7 @@ packages:
     engines: { node: ^14.13.1 || >=16.0.0 }
     dev: true
 
-  /pretty-quick/3.1.3:
+  /pretty-quick/3.1.3_prettier@2.7.1:
     resolution:
       {
         integrity: sha512-kOCi2FJabvuh1as9enxYmrnBC6tVMoVOenMaBqRfsvBHB0cbpYHjdQEpSglpASDFEXVwplpcGR4CLEaisYAFcA==,
@@ -10372,6 +10373,7 @@ packages:
       ignore: 5.2.0
       mri: 1.2.0
       multimatch: 4.0.0
+      prettier: 2.7.1
     dev: true
 
   /process-nextick-args/2.0.1:
