@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@ehutch79/vite-eslint": "^0.0.1",
+    "@esbuild-kit/cjs-loader": "^2.4.0",
     "@jsxiaosi/commitlint-config": "^0.0.8",
     "@jsxiaosi/eslint-config-prettier": "^0.0.8",
     "@jsxiaosi/eslint-config-vue": "^0.0.8",
