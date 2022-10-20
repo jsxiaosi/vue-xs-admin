@@ -1,4 +1,4 @@
-import { BuildOptions } from 'vite';
+import type { BuildOptions } from 'vite';
 
 export function createViteBuild(): BuildOptions {
   const viteBuild = {
