@@ -26,7 +26,7 @@
     "lint:stylelint": "stylelint --fix scss \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
-    "commit": "git-cz",
+    "cz": "czg",
     "prepare": "husky install",
     "push": "scp -r dist/* root@服务器公网IP:/服务器资源存放地址",
     "build:push": "npm run build && npm run push"
@@ -62,9 +62,8 @@
     "wangeditor": "^4.7.15"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
     "@ehutch79/vite-eslint": "^0.0.1",
+    "@jsxiaosi/commitlint-config": "^0.0.8",
     "@jsxiaosi/eslint-config-prettier": "^0.0.7",
     "@jsxiaosi/eslint-config-vue": "^0.0.7",
     "@types/core-js": "^2.5.5",
@@ -81,12 +80,10 @@
     "@vue/compiler-sfc": "^3.2.41",
     "@vue/test-utils": "^2.1.0",
     "autoprefixer": "^10.4.12",
-    "commitizen": "^4.2.5",
     "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "crypto-js": "^4.1.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^7.0.0",
+    "czg": "^1.3.11",
     "eslint": "^8.25.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.1",
@@ -136,10 +133,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": ".cz-config.js"
+      "path": "node_modules/cz-git"
     }
   },
   "lint-staged": {
