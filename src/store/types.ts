@@ -16,6 +16,7 @@ export interface AppConfig {
   locale: string;
   StorageConfig: StorageConfig;
   drawerSidebar?: boolean;
+  primaryColor: string;
 }
 
 export type MultiTabsType = Omit<

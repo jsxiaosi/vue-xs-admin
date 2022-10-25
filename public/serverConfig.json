@@ -4,6 +4,7 @@
   "sidebarMode": "vertical",
   "themeMode": "day",
   "locale": "zh-ch",
+  "primaryColor": "#409eff",
   "StorageConfig":{
     "type": "localStorage",
     "prefix": "xiaosiAdmin", 

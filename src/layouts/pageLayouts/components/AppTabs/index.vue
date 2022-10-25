@@ -196,7 +196,7 @@
           margin-right: 5px;
         }
         &:hover {
-          background-color: var(--sub-color-2);
+          background-color: var(--sub-color-8);
         }
       }
     }

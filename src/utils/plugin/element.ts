@@ -36,6 +36,7 @@ import {
   ElCalendar,
   ElTabs,
   ElTabPane,
+  ElDivider,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -54,6 +55,7 @@ import {
   CaretRight,
   ArrowDown,
   Management,
+  Select,
 } from '@element-plus/icons-vue';
 
 // Directives
@@ -96,6 +98,7 @@ const components = [
   ElCalendar,
   ElTabs,
   ElTabPane,
+  ElDivider,
 ];
 
 // Icon
@@ -111,6 +114,7 @@ export const iconComponents = [
   CaretRight,
   ArrowDown,
   Management,
+  Select,
 ];
 
 export function useElementPlus(app: App) {

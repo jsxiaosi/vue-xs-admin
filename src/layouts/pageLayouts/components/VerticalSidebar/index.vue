@@ -7,7 +7,6 @@
   const appStore = useAppStoreHook();
   const appConfigMode = toRef(appStore, 'appConfigMode');
   const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
-  console.log(config);
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue';
+  import { ref, watch } from 'vue';
+  import { storeToRefs } from 'pinia';
   import { useDebounceFn, useEventListener, useMediaQuery } from '@vueuse/core';
   import VerticalSidebar from '../VerticalSidebar/index.vue';
   import { useAppStoreHook } from '@/store/modules/app';
@@ -7,14 +8,14 @@
 
   const appStore = useAppStoreHook();
 
-  const drawer = computed(() => !appStore.appConfigMode.collapseMenu);
+  const drawer = ref<boolean>(!appStore.appConfigMode.collapseMenu);
 
   const setAppStore = (appData: Partial<AppConfig>) => {
     appStore.setAppConfigMode(appData);
   };
 
   const handleClose = () => {
-    setAppStore({ collapseMenu: true });
+    setAppStore({ collapseMenu: drawer.value });
   };
 
   const isPhoneScreen = ref<boolean>(false);
@@ -34,6 +35,12 @@
 
   watch(isSmallScreen, () => {
     setAppStore({ collapseMenu: isSmallScreen.value });
+  });
+
+  const { appConfigMode } = storeToRefs(appStore);
+
+  watch(appConfigMode, () => {
+    drawer.value = !appConfigMode.value.collapseMenu;
   });
 
   useEventListener(window, 'resize', () => mediaQuery());

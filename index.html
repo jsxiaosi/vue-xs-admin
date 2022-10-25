@@ -156,13 +156,21 @@
           }
         }
       </style>
-      <div class="loading">
+      <div id="html_loding" class="loading">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
+    <script>
+      const appConfigMode = localStorage.getItem('appConfigMode');
+      if (appConfigMode) {
+        const { primaryColor } = JSON.parse(appConfigMode);
+        const loading = document.getElementById('html_loding');
+        loading.style.color = primaryColor;
+      }
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

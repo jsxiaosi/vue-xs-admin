@@ -4,7 +4,8 @@
   --color-white: #ffffff;
   --mian-color: var(--el-color-primary); //主色
   --sub-color: var(--el-color-primary-light-5); //浅蓝1
-  --sub-color-2: var(--el-color-primary-light-8); //浅蓝2
+  --sub-color-8: var(--el-color-primary-light-8); //浅蓝2
+  --sub-color-9: var(--el-color-primary-light-9); //浅蓝2
 
   // 主题背景颜色
   --main-bg-color: #ffffff; // 首选背景颜色
@@ -15,7 +16,6 @@
   --text-color-regular: var(--el-text-color-regular); // 次选文字颜色
   --text-color-placeholder: var(--el-text-color-placeholder); //分割线/备注
   --text-color-disabled: var(--el-text-color-disabled);
-
   --border-color-light: var(--el-border-color-light);
 }
 

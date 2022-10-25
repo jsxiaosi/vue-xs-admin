@@ -38,7 +38,6 @@
       if (matched.find((i) => i.path === item.path)) return false;
       return route.name === item.name && isEqual(route.query, itemQuery);
     });
-    console.log(matched);
     if (item) matched.push(item as unknown as AppRouteRecordRaw);
     levelList.value = matched.filter(
       (item) => item && item.meta && item.meta.title && !item.meta.breadcrumb,
@@ -79,7 +78,7 @@
 <template>
   <div class="breadcrumb">
     <SvgIcon
-      class="breadcrumb-fold"
+      class="breadcrumb-fold cursor"
       :class="{ 'breadcrumb-unfold': appConfigMode.collapseMenu }"
       name="fold"
       color="#e3e3e3"
