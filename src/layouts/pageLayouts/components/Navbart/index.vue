@@ -48,7 +48,7 @@
       <AppTheme></AppTheme>
       <AppLocale class="icon"></AppLocale>
       <AppAccount></AppAccount>
-      <SvgIcon class="icon" name="iEL-setting" @click="drawer = true"></SvgIcon>
+      <SvgIcon class="icon cursor" name="iEL-setting" @click="drawer = true"></SvgIcon>
     </div>
 
     <Setting v-model:modelValue="drawer"></Setting>

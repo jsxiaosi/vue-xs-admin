@@ -1,22 +1,40 @@
 <script setup lang="ts">
   import { useColorMode } from '@vueuse/core';
+  import { watch } from 'vue';
   import SvgIcon from '../SvgIcon/index.vue';
   import { useAppStoreHook } from '@/store/modules/app';
-  import { updateColor } from '@/utils/transformTheme';
+  import { useTransformTheme } from '@/hooks/useTransformTheme';
 
   const appStore = useAppStoreHook();
   const color = useColorMode();
 
+  const { updateColor } = useTransformTheme();
+
   const toggleDarkMode = () => {
-    color.value = color.value === 'dark' ? 'light' : 'dark';
     appStore.appConfigMode.themeMode = color.value;
     appStore.setAppConfigMode(appStore.appConfigMode);
-    updateColor();
   };
+
+  watch(
+    color,
+    () => {
+      toggleDarkMode();
+      updateColor();
+    },
+    { immediate: true },
+  );
 </script>
 
 <template>
-  <div class="theme" :class="{ 'theme-dark': color === 'dark' }" @click="toggleDarkMode">
+  <div
+    class="theme cursor"
+    :class="{ 'theme-dark': color === 'dark' }"
+    @click="
+      () => {
+        color = color === 'dark' ? 'light' : 'dark';
+      }
+    "
+  >
     <div class="theme-inner"></div>
     <SvgIcon name="sun"></SvgIcon>
     <SvgIcon name="moon"></SvgIcon>

@@ -66,7 +66,7 @@
               placement="bottom"
             >
               <div
-                class="sidebar_mode"
+                class="sidebar_mode cursor"
                 :class="{ 'sidebar_mode-select': appConfigMode.sidebarMode === item.value }"
                 @click="handerShowElmenu(item.value)"
               >
@@ -76,7 +76,7 @@
             </el-tooltip>
           </div>
         </div>
-        <el-divider content-position="center">{{ $t('layout.ThemeSettings') }}</el-divider>
+        <el-divider content-position="center">{{ $t('layout.themeSettings') }}</el-divider>
         <div>
           <ThemeSettings></ThemeSettings>
         </div>
@@ -163,6 +163,10 @@
           }
         }
       }
+    }
+
+    :deep(.el-divider__text) {
+      text-align: center;
     }
   }
 </style>

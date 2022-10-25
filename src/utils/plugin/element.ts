@@ -37,6 +37,7 @@ import {
   ElTabs,
   ElTabPane,
   ElDivider,
+  ElSwitch,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -99,6 +100,7 @@ const components = [
   ElTabs,
   ElTabPane,
   ElDivider,
+  ElSwitch,
 ];
 
 // Icon

@@ -3,23 +3,38 @@
   import { ColorPicker } from 'vue3-colorpicker';
   import 'vue3-colorpicker/style.css';
   import { useAppStoreHook } from '@/store/modules/app';
-  import { updateColor } from '@/utils/transformTheme';
+  import { useTransformTheme } from '@/hooks/useTransformTheme';
   import SvgIcon from '@/components/SvgIcon/index.vue';
+  import type { AppConfig } from '@/store/types';
+
+  const { updateColor, themeHtmlClassName } = useTransformTheme();
 
   const appStore = useAppStoreHook();
 
-  const pureColor = ref(appStore.appConfigMode.primaryColor);
+  const { primaryColor, greyMode, colorWeaknessMode } = appStore.appConfigMode;
+
+  const pureColor = ref(primaryColor);
 
   const showPicker = ref<boolean>(false);
 
   const colorList = ['#722ed1', '#eb2f96', '#52c41a', '#13c2c2', '#fadb14', '#fa541c', '#f5222d'];
 
   watch([pureColor], () => {
-    console.log(pureColor.value);
     appStore.appConfigMode.primaryColor = pureColor.value;
     appStore.setAppConfigMode(appStore.appConfigMode);
     updateColor();
   });
+
+  const htmlGrey = ref<boolean>(greyMode || false);
+  const htmlWeakness = ref<boolean>(colorWeaknessMode || false);
+
+  const themeChange = (e: boolean, key: string) => {
+    themeHtmlClassName(key, e);
+    const appData = {} as AppConfig;
+    if (key === 'html-grey') appData['greyMode'] = e;
+    else appData['colorWeaknessMode'] = e;
+    appStore.setAppConfigMode(appData);
+  };
 </script>
 
 <template>
@@ -36,7 +51,7 @@
       </div>
     </div>
     <div class="options">
-      <span>自定义主题：</span>
+      <span>{{ $t('layout.customTheme') }}：</span>
       <div class="color-picker">
         <span
           class="cursor"
@@ -54,14 +69,14 @@
         </div>
       </div>
     </div>
-    <!-- <div class="options">
-      <span>自定义主题：</span>
-      <ColorPicker v-model:pureColor="pureColor" format="hex" />
+    <div class="options">
+      <span>灰色模式：</span>
+      <el-switch v-model="htmlGrey" @change="(e:boolean) => themeChange(e,'html-grey')" />
     </div>
     <div class="options">
-      <span>自定义主题：</span>
-      <ColorPicker v-model:pureColor="pureColor" format="hex" />
-    </div> -->
+      <span>色弱模式：</span>
+      <el-switch v-model="htmlWeakness" @change="(e:boolean) => themeChange(e,'html-weakness')" />
+    </div>
   </div>
 </template>
 
@@ -70,6 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 24px;
     .color-list-item {
       width: 20px;
       height: 20px;
@@ -85,7 +101,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 0;
+    margin-bottom: 24px;
     .color-picker {
       position: relative;
       width: 50px;

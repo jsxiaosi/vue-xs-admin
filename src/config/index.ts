@@ -2,7 +2,6 @@ import type { App } from 'vue';
 import { getConfigInfo } from '@/server/config';
 import type { AppConfig } from '@/store/types';
 import { setStorageConfig } from '@/utils/storage';
-import { updateColor } from '@/utils/transformTheme';
 
 let config: AppConfig = {} as AppConfig;
 
@@ -25,7 +24,6 @@ export async function getServerConfig(app: App): Promise<AppConfig> {
     }
   }
   setStorageConfig(config.StorageConfig);
-  updateColor();
   app.config.globalProperties.$config = getConfig();
   return config;
 }

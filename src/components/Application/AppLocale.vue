@@ -26,7 +26,7 @@
 <template>
   <el-dropdown trigger="click" @command="tolochos">
     <span>
-      <SvgIcon class="icon" name="locales"></SvgIcon>
+      <SvgIcon class="icon cursor" name="locales"></SvgIcon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>

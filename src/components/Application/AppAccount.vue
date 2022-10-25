@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <div class="account">
+  <div class="account cursor">
     <el-dropdown trigger="click" @command="command">
       <img src="@/assets/login/logo.png" class="wave" />
       <template #dropdown>

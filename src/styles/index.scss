@@ -102,6 +102,15 @@ ul {
   }
 }
 
+// 灰色
+.html-grey {
+  filter: grayscale(100%);
+}
+// 色弱
+.html-weakness {
+  filter: invert(80%);
+}
+
 @for $i from 1 to 6 {
   * > .enter-x:nth-child(#{$i}) {
     transform: translateX(50px);
