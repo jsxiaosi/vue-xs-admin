@@ -169,6 +169,8 @@
         const { primaryColor } = JSON.parse(appConfigMode);
         const loading = document.getElementById('html_loding');
         loading.style.color = primaryColor;
+        const body = document.documentElement;
+        body.style.setProperty('--el-color-primary', primaryColor);
       }
     </script>
     <script type="module" src="/src/main.ts"></script>
