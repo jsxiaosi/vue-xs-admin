@@ -4,6 +4,7 @@
   import pageSettings from './pageSettings/index.vue';
   import { useAppStoreHook } from '@/store/modules/app';
   import type { SidebarMode } from '@/store/types';
+  import { clearStorage } from '@/utils/storage';
 
   const props = defineProps({
     modelValue: {
@@ -45,6 +46,11 @@
   const handerShowElmenu = (vale: SidebarMode) => {
     appStore.setAppConfigMode({ sidebarMode: vale });
   };
+
+  const handerClearStorage = () => {
+    clearStorage();
+    window.location.reload();
+  };
 </script>
 
 <template>
@@ -85,6 +91,9 @@
         <div>
           <pageSettings></pageSettings>
         </div>
+        <el-button class="clear_storage" type="danger" @click="handerClearStorage">{{
+          $t('layout.clearStorage')
+        }}</el-button>
       </div>
     </el-drawer>
   </div>
@@ -97,6 +106,9 @@
 
   .drawer-content {
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
     .layout_seting {
       .sidebar_seting {
         display: flex;
@@ -172,6 +184,11 @@
 
     :deep(.el-divider__text) {
       text-align: center;
+    }
+
+    .clear_storage {
+      margin-top: 24px;
+      width: 100%;
     }
   }
 </style>

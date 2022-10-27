@@ -8,6 +8,7 @@ const layout = {
   pageSettings: 'Page Settings',
   hideTabs: 'Hide Tabs',
   labelPersistent: 'Label Persistent',
+  clearStorage: 'Clear cache and return to login page',
 };
 
 export default layout;

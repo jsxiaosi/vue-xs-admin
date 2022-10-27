@@ -8,6 +8,7 @@ const layout = {
   pageSettings: '页面设置',
   hideTabs: '隐藏标签页',
   labelPersistent: '标签持久化',
+  clearStorage: '清空缓存回到登录页',
 };
 
 export default layout;
