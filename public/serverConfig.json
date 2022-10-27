@@ -10,8 +10,6 @@
   "hideTabs": false,
   "labelPersistent": true,
   "StorageConfig":{
-    "type": "localStorage",
-    "prefix": "xiaosiAdmin", 
     "expire": 0, 
     "isEncrypt": false
   }
