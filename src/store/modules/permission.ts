@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import type { RouteRecordName } from 'vue-router';
 import { isEqual } from 'lodash-es';
 import type { MultiTabsType, PermissionState } from '../types';
+import { useAppStoreHook } from './app';
 import { store } from '@/store';
 import type { AppRouteRecordRaw } from '#/route';
 import { getStorage, removeStorage, setStorage } from '@/utils/storage';
@@ -38,6 +39,10 @@ const usePermissionStore = defineStore({
     clearAllCachePage() {
       this.cachePageList = [];
     },
+    // 持久化
+    persistent() {
+      setStorage('multiTabsList', this.multiTabs);
+    },
     handleMultiTabs<T>(type: 'add' | 'delete', value: T | MultiTabsType) {
       const route = value as MultiTabsType;
       const index = this.multiTabs.findIndex(
@@ -55,7 +60,8 @@ const usePermissionStore = defineStore({
         default:
           break;
       }
-      setStorage('multiTabsList', this.multiTabs);
+      const appConfig = useAppStoreHook();
+      if (appConfig.appConfigMode.labelPersistent) this.persistent();
     },
     handleRemoveMultiTabs() {
       removeStorage('multiTabsList');

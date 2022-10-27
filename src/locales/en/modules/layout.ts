@@ -5,6 +5,9 @@ const layout = {
   customTheme: 'Custom Theme',
   greyMode: 'Grey Mode',
   colorWeaknessMode: 'Color Weakness Mode',
+  pageSettings: 'Page Settings',
+  hideTabs: 'Hide Tabs',
+  labelPersistent: 'Label Persistent',
 };
 
 export default layout;

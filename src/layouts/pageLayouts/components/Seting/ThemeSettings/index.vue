@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="options">
-      <span>{{ $t('layout.customTheme') }}：</span>
+      <span>{{ $t('layout.customTheme') }}</span>
       <div class="color-picker">
         <span
           class="cursor"
@@ -70,11 +70,11 @@
       </div>
     </div>
     <div class="options">
-      <span>灰色模式：</span>
+      <span>灰色模式</span>
       <el-switch v-model="htmlGrey" @change="(e:boolean) => themeChange(e,'html-grey')" />
     </div>
     <div class="options">
-      <span>色弱模式：</span>
+      <span>色弱模式</span>
       <el-switch v-model="htmlWeakness" @change="(e:boolean) => themeChange(e,'html-weakness')" />
     </div>
   </div>

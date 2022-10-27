@@ -19,6 +19,8 @@ export interface AppConfig {
   primaryColor: string;
   greyMode: boolean;
   colorWeaknessMode: boolean;
+  hideTabs: boolean;
+  labelPersistent: boolean;
 }
 
 export type MultiTabsType = Omit<

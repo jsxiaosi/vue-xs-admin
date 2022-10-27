@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, computed, watch, onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import { storeToRefs } from 'pinia';
   import { useNavSideBar } from '../../hooks/useNavSideBar';
   import { useTabsView } from './hooks/useTabsView';
   import { useTabsChange } from './hooks/useTabsChange';
@@ -9,6 +10,9 @@
   import type { MultiTabsType } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { emitter } from '@/utils/mitt';
+  import { useAppStoreHook } from '@/store/modules/app';
+
+  const { appConfigMode } = storeToRefs(useAppStoreHook());
 
   const route = useRoute();
   const router = useRouter();
@@ -58,7 +62,7 @@
 </script>
 
 <template>
-  <div class="main-container-tabs">
+  <div v-if="!appConfigMode.hideTabs" class="main-container-tabs">
     <el-tabs
       v-model="editableTabsValue"
       type="card"

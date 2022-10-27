@@ -33,6 +33,8 @@
     width: calc(100vw - #{$sideBarWidth});
     min-height: 100%;
     transition: margin-left 0.28s;
+    display: flex;
+    flex-direction: column;
 
     .main-container-tabs {
       width: 100%;

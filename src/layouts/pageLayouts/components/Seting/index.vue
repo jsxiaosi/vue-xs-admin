@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { watch, ref, toRef } from 'vue';
   import ThemeSettings from './ThemeSettings/index.vue';
+  import pageSettings from './pageSettings/index.vue';
   import { useAppStoreHook } from '@/store/modules/app';
   import type { SidebarMode } from '@/store/types';
 
@@ -79,6 +80,10 @@
         <el-divider content-position="center">{{ $t('layout.themeSettings') }}</el-divider>
         <div>
           <ThemeSettings></ThemeSettings>
+        </div>
+        <el-divider content-position="center">{{ $t('layout.pageSettings') }}</el-divider>
+        <div>
+          <pageSettings></pageSettings>
         </div>
       </div>
     </el-drawer>

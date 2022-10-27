@@ -5,6 +5,9 @@ const layout = {
   customTheme: '自定义主题',
   greyMode: '灰色模式',
   colorWeaknessMode: '色弱模式',
+  pageSettings: '页面设置',
+  hideTabs: '隐藏标签页',
+  labelPersistent: '标签持久化',
 };
 
 export default layout;

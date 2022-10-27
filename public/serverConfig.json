@@ -7,6 +7,8 @@
   "primaryColor": "#409eff",
   "greyMode": false,
   "colorWeaknessMode":false,
+  "hideTabs": false,
+  "labelPersistent": true,
   "StorageConfig":{
     "type": "localStorage",
     "prefix": "xiaosiAdmin", 
