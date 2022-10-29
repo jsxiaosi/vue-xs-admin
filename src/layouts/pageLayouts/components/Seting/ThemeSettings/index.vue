@@ -13,7 +13,7 @@
 
   const { primaryColor, greyMode, colorWeaknessMode } = appStore.appConfigMode;
 
-  const pureColor = ref(primaryColor);
+  const pureColor = ref(primaryColor || '#409eff');
 
   const showPicker = ref<boolean>(false);
 

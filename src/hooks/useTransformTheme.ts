@@ -5,8 +5,6 @@ export const useTransformTheme = () => {
 
   const body = document.documentElement as HTMLElement;
 
-  console.log(body.className);
-
   // hex转rgb
   function hexToRgb(str: string) {
     const hxs: string[] = str.replace('#', '').match(/../g) || [];
@@ -38,11 +36,21 @@ export const useTransformTheme = () => {
   function updateColor() {
     const { primaryColor, themeMode } = appStore.appConfigMode;
     if (!primaryColor) return;
-    const mixWhite = themeMode === 'dark' ? '#141414' : '#ffffff';
-    body.style.setProperty('--el-color-primary', primaryColor);
+
+    const style = document.getElementById('admin-style-root-color');
+
+    const mixColor = themeMode === 'dark' ? '#141414' : '#ffffff';
+    let innerHTML = `html${
+      themeMode === 'dark' ? '.dark' : ''
+    }:root{ --el-color-primary: ${primaryColor};\n`;
+
+    // body.style.setProperty('--el-color-primary', primaryColor);
     for (let i = 1; i <= 9; i++) {
-      body.style.setProperty(`--el-color-primary-light-${i}`, mix(primaryColor, mixWhite, i * 0.1));
+      // body.style.setProperty(`--el-color-primary-light-${i}`, mix(primaryColor, mixWhite, i * 0.1));
+      innerHTML += `--el-color-primary-light-${i}: ${mix(primaryColor, mixColor, i * 0.1)};\n`;
     }
+
+    if (style) style.innerHTML = innerHTML + '}';
   }
 
   function themeHtmlClassName(className: string, isShow: boolean) {
