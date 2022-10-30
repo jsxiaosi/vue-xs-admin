@@ -3,7 +3,7 @@ import type { AppRouteRecordRaw } from '#/route';
 
 export function configRouteList() {
   // 白名单目录/文件
-  const whiteCatalogue = ['root', 'whiteList', 'error'];
+  const whiteCatalogue = ['root', 'whiteList'];
 
   let routeModulesList: AppRouteRecordRaw[] = []; //菜单路由
   const whiteRouteModulesList: AppRouteRecordRaw[] = []; // 不参与菜单处理的路由

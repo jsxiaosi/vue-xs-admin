@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onBeforeMount, ref } from 'vue';
+  import { onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { usePermissionStoreHook } from '@/store/modules/permission';
 
@@ -8,33 +8,30 @@
   });
 
   const route = useRoute();
-  const { query } = route;
+  const { path, params } = route;
 
   const router = useRouter();
 
-  const value = ref('');
-
   const toPath = (item: string) => {
-    const query = { id: `${item}` };
+    const params = { id: `${item}` };
     usePermissionStoreHook().handleMultiTabs('add', {
-      path: `/details_page/details_info`,
-      name: `RtDetailsInfo`,
-      query,
+      path,
+      name: `RtDetailsParams`,
+      params,
       meta: {
-        title: { 'zh-ch': `详情页-${item}`, en: `pageDatails-${item}` },
+        title: { 'zh-ch': `详情页-params-${item}`, en: `pageDatails-${item}` },
       },
     });
-    router.push({ name: 'RtDetailsInfo', query });
+    router.push({ name: 'RtDetailsParams', params });
   };
   onBeforeMount(() => {
-    toPath(query.id as string);
+    toPath(params.id as string);
   });
 </script>
 
 <template>
   <div>
-    <span>page --- {{ query.id }}</span>
-    <el-input v-model="value"></el-input>
+    <span>page-params --- {{ params.id }}</span>
   </div>
 </template>
 

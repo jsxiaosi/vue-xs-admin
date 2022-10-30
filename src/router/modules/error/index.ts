@@ -9,9 +9,11 @@ const error: AppRouteRecordRaw[] = [
     redirect: '/error/404',
     name: 'error',
     component: Layout,
+    alwaysShow: true,
     meta: {
       title: 'route.pathName.error',
       icon: 'iEL-remove-filled',
+      position: 8,
     },
     children: [
       {

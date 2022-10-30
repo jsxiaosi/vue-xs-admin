@@ -43,14 +43,16 @@ const usePermissionStore = defineStore({
     persistent() {
       setStorage('multiTabsList', this.multiTabs);
     },
-    handleMultiTabs<T>(type: 'add' | 'delete', value: T | MultiTabsType) {
+    handleMultiTabs(type: 'add' | 'delete', value: MultiTabsType) {
       const route = value as MultiTabsType;
       const index = this.multiTabs.findIndex(
-        (i) => i.path === route.path && isEqual(i.query, route.query),
+        (i) =>
+          i.path === route.path && isEqual(i.query, route.query) && isEqual(i.params, route.params),
       );
+
       switch (type) {
         case 'add':
-          if (index !== -1) return;
+          if (index !== -1 || !value.meta.title) return;
           this.multiTabs.push(route);
           break;
         case 'delete':

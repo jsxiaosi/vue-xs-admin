@@ -1,23 +1,18 @@
 <script setup lang="ts">
-  import { ref, unref } from 'vue';
-  import { useRoute, useRouter } from 'vue-router';
+  import { ref } from 'vue';
   import { initAsyncRoute } from '@/router/utils';
   import type { UseInfoType } from '@/server/useInfo';
   import { getStorage } from '@/utils/storage';
   const userInfo = getStorage<UseInfoType>('userInfo');
-  const route = useRoute();
-  const router = useRouter();
+
+  defineOptions({
+    name: 'RtPower',
+  });
 
   const power = ref<string>(userInfo ? userInfo.power : '');
   const powerChange = async () => {
     power.value = power.value === 'admin' ? 'test' : 'admin';
     initAsyncRoute(power.value);
-
-    const { fullPath, query } = unref(route);
-    router.replace({
-      path: '/redirect' + fullPath,
-      query: query,
-    });
   };
 </script>
 

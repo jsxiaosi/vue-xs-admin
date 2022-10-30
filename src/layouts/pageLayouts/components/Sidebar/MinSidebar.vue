@@ -1,14 +1,11 @@
 <script setup lang="ts">
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
-  import { useNavSideBar } from '../../hooks/useNavSideBar';
   import Item from './Item.vue';
   import AppLink from './Link.vue';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
-
-  const { selectMenu } = useNavSideBar();
 
   const route = useRoute();
 
@@ -39,7 +36,6 @@
     :default-active="activeMenyu"
     class="horizontal-header-menu"
     mode="horizontal"
-    @select="(indexPath) => selectMenu(indexPath)"
   >
     <AppLink
       v-for="menusRoute in usePermissionStoreHook().wholeMenus"

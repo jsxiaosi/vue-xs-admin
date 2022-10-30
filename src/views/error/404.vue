@@ -20,7 +20,9 @@
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__info"
           >All rights reserved
-          <a style="color: #20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
+          <a style="color: var(--mian-color)" href="https://wallstreetcn.com" target="_blank"
+            >wallstreetcn</a
+          >
         </div>
         <div class="bullshit__headline">The webmaster said that you can not enter this page...</div>
         <div class="bullshit__info"
@@ -35,14 +37,18 @@
 
 <style lang="scss" scoped>
   .wscn-http404-container {
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 40%;
-    left: 50%;
+    // transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 40%;
+    // left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
   .wscn-http404 {
     position: relative;
-    width: 1200px;
     padding: 0 50px;
     overflow: hidden;
     .pic-404 {
@@ -166,7 +172,7 @@
         font-size: 32px;
         font-weight: bold;
         line-height: 40px;
-        color: #1482f0;
+        color: var(--mian-color);
         opacity: 0;
         margin-bottom: 20px;
         animation-name: slideUp;
@@ -201,7 +207,7 @@
         float: left;
         width: 120px;
         height: 36px;
-        background: #1482f0;
+        background: var(--mian-color);
         border-radius: 100px;
         text-align: center;
         color: #ffffff;

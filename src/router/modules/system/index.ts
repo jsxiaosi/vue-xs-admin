@@ -12,7 +12,7 @@ const system: AppRouteRecordRaw[] = [
         path: 'power',
         name: 'RtPower',
         component: () => import('@/views/system/power/index.vue'),
-        meta: { title: t('route.pathName.power') },
+        meta: { title: t('route.pathName.power'), keepAlive: true },
       },
       {
         path: 'guide',

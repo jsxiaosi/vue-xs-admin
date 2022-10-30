@@ -26,7 +26,8 @@
         v-if="appConfigMode.sidebarMode !== 'horizontal' || appConfigMode.drawerSidebar"
       />
       <div v-else class="app-logo">
-        <SvgIcon name="Vue"></SvgIcon>
+        <!-- <SvgIcon name="Vue"></SvgIcon> -->
+        <img class="logo_img" src="@/assets/logo.png" mode="scaleToFill" />
         <span class="name">{{ config.title }}</span>
       </div>
     </div>
@@ -70,6 +71,11 @@
 
     // .navbar-left {
     // }
+
+    .logo_img {
+      width: 38px;
+      height: 38px;
+    }
 
     .navbar-center {
       height: 100%;

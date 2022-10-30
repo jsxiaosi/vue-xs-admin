@@ -1,4 +1,4 @@
-import type { RouteRecordName, _RouteLocationBase } from 'vue-router';
+import type { LocationQuery, RouteParams, RouteRecordName, _RouteLocationBase } from 'vue-router';
 import type { AppRouteRecordRaw } from '#/route';
 import type { StorageConfig } from '@/utils/storage/types';
 
@@ -25,8 +25,11 @@ export interface AppConfig {
 
 export type MultiTabsType = Omit<
   _RouteLocationBase,
-  'fullPath' | 'hash' | 'params' | 'redirectedFrom'
->;
+  'fullPath' | 'hash' | 'params' | 'query' | 'redirectedFrom'
+> & {
+  query?: LocationQuery;
+  params?: RouteParams;
+};
 export interface PermissionState {
   wholeMenus: AppRouteRecordRaw[];
   cachePageList: RouteRecordName[];

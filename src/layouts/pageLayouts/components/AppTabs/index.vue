@@ -2,14 +2,12 @@
   import { ref, computed, watch, onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { storeToRefs } from 'pinia';
-  import { useNavSideBar } from '../../hooks/useNavSideBar';
   import { useTabsView } from './hooks/useTabsView';
   import { useTabsChange } from './hooks/useTabsChange';
   import { translateI18n } from '@/hooks/web/useI18n';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { MultiTabsType } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { emitter } from '@/utils/mitt';
   import { useAppStoreHook } from '@/store/modules/app';
 
   const { appConfigMode } = storeToRefs(useAppStoreHook());
@@ -19,37 +17,30 @@
 
   const multiTabs = computed<MultiTabsType[]>(() => usePermissionStoreHook().multiTabs);
 
-  const { setTabPaneKey, addRouteTabs, onFresh, removeTab } = useTabsChange(multiTabs);
-
-  const { selectMenu } = useNavSideBar();
-
   const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
     useTabsView(multiTabs);
+
+  const { setTabPaneKey, selectMenu, onFresh, removeTab } = useTabsChange(multiTabs);
 
   const editableTabsValue = ref(setTabPaneKey(route));
 
   watch(
-    () => route.path,
-    () => {
-      editableTabsValue.value = setTabPaneKey(route);
+    () => [route.path, route.query],
+    async () => {
+      await selectMenu(route.path);
+      contextmenu(route);
+      setTimeout(() => (editableTabsValue.value = setTabPaneKey(route)));
     },
   );
 
   onBeforeMount(() => {
-    emitter.on('siteBarChange', ({ routeRaw }) => {
-      addRouteTabs(routeRaw as unknown as MultiTabsType);
-      contextmenu(routeRaw.path);
-    });
-
     selectMenu(route.path);
-    contextmenu(route.path);
+    contextmenu(route);
   });
 
   const tabRemoveChange = (e: string) => {
-    removeTab(e);
-    setTimeout(() => {
-      contextmenu(route.path);
-    });
+    const item = multiTabs.value.find((i) => setTabPaneKey(i) === e);
+    if (item) removeTab(item);
   };
 
   const changeTab = (e: MultiTabsType) => {
@@ -57,7 +48,6 @@
       path: e.path,
       query: e.query,
     });
-    contextmenu(e.path);
   };
 </script>
 
@@ -75,7 +65,7 @@
           <div
             class="tabs-view-item"
             @click="changeTab(item)"
-            @contextmenu.prevent="contextmenu(item.path, $event)"
+            @contextmenu.prevent="contextmenu(item, $event)"
           ></div>
           <span>{{ translateI18n(item.meta.title) }}</span>
         </template>

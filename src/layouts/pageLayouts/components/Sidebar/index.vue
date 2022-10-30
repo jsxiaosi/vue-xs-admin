@@ -2,7 +2,6 @@
   import type { PropType } from 'vue';
   import { computed, ref, toRef, watch } from 'vue';
   import { useRoute } from 'vue-router';
-  import { useNavSideBar } from '../../hooks/useNavSideBar';
   import SidebarItem from './SidebarItem.vue';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import type { AppRouteRecordRaw } from '#/route';
@@ -15,8 +14,6 @@
       default: 'vertical',
     },
   });
-
-  const { selectMenu } = useNavSideBar();
 
   const route = useRoute();
   const appStore = useAppStoreHook();
@@ -58,8 +55,6 @@
     }
     return path;
   });
-
-  // const isCollapse = ref(false)
 </script>
 
 <template>
@@ -69,7 +64,6 @@
       :unique-opened="true"
       :collapse="appConfigMode.sidebarMode === 'horizontal' ? false : appConfigMode.collapseMenu"
       :mode="mode"
-      @select="(indexPath) => selectMenu(indexPath)"
     >
       <SidebarItem
         v-for="menuRoute in menuData"
