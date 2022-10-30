@@ -193,7 +193,7 @@ npm run build
 
 ## 维护者
 
-[@SuperCuteXiaoSi](https://github.com/jsxiaosi)
+[@jsxiaosi](https://github.com/jsxiaosi)
 
 ## License
 
