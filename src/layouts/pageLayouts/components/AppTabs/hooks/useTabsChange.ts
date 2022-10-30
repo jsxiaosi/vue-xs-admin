@@ -64,8 +64,7 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
       }
       toRoute = {
         path: value.path,
-        query: value.query || {},
-        params: value.params || {},
+        query: value.query,
       };
       router.push(toRoute);
     }
