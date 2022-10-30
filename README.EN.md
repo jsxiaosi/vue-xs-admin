@@ -194,12 +194,6 @@ Supports modern browsers, not Internet Explorer
 - [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
 - [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin)
 
-## Donation
-
-If you feel the content is good, you can order a cup of honey green to the author, show support!
-
-<img width="150px" height="160px" src="https://www.jsxiaosi.com/image/kaoshang.png"></img>
-
 ## maintainers
 
 [@SuperCuteXiaoSi](https://github.com/jsxiaosi)
