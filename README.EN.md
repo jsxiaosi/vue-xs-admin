@@ -189,6 +189,11 @@ Supports modern browsers, not Internet Explorer
 └── vite.config.js                #vite configuration files
 ```
 
+## Thanks to the following author projects for help
+
+- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
+- [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin)
+
 ## Donation
 
 If you feel the content is good, you can order a cup of honey green to the author, show support!

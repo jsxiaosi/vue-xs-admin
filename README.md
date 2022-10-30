@@ -4,6 +4,8 @@
 </a>
 </div>
 
+- [vue-xs-admin](https://github.com/jsxiaosi/vue-xs-admin) - Based on Vue3, Vite3 ElementPlus, TypeScript, Pinia, VueRouter development mainstream technologies such as out-of-the-box background template
+
 **中文** | [English](./README.EN.md)
 
 ## 简介
@@ -185,6 +187,11 @@ npm run build
 ├── package.json
 └── vite.config.js                #vite配置文件
 ```
+
+## 感谢以下作者项目提供帮助
+
+- [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
+- [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin)
 
 ## 捐赠
 
