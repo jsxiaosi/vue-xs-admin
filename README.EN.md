@@ -189,6 +189,12 @@ Supports modern browsers, not Internet Explorer
 └── vite.config.js                #vite configuration files
 ```
 
+## Donation
+
+If you feel the content is good, you can order a cup of honey green to the author, show support!
+
+<img width="150px" height="160px" src="https://www.jsxiaosi.com/image/kaoshang.png"></img>
+
 ## maintainers
 
 [@SuperCuteXiaoSi](https://github.com/jsxiaosi)
