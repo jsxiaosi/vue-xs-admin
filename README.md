@@ -4,8 +4,6 @@
 </a>
 </div>
 
-- [vue-xs-admin](https://github.com/jsxiaosi/vue-xs-admin) - Based on Vue3, Vite3 ElementPlus, TypeScript, Pinia, VueRouter development mainstream technologies such as out-of-the-box background template
-
 **中文** | [English](./README.EN.md)
 
 ## 简介
