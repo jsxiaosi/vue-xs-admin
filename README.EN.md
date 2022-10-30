@@ -196,7 +196,7 @@ Supports modern browsers, not Internet Explorer
 
 ## maintainers
 
-[@SuperCuteXiaoSi](https://github.com/jsxiaosi)
+[@jsxiaosi](https://github.com/jsxiaosi)
 
 ## License
 
