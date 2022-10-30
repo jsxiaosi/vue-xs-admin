@@ -191,12 +191,6 @@ npm run build
 - [vue-vben-admin](https://github.com/anncwb/vue-vben-admin)
 - [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin)
 
-## 捐赠
-
-如果您感觉内容还不错，可以点杯蜂蜜绿给作者，表示支持！
-
-<img width="150px" height="160px" src="https://www.jsxiaosi.com/image/kaoshang.png"></img>
-
 ## 维护者
 
 [@SuperCuteXiaoSi](https://github.com/jsxiaosi)
