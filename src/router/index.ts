@@ -16,6 +16,7 @@ const { whiteRouteModulesList, routeModulesList } = configRouteList();
 // 在导航栏上的路由
 export const sidebarRouteList = routeModulesList;
 
+console.log(JSON.parse(JSON.stringify(whiteRouteModulesList)));
 export const router = createRouter({
   history: createWebHistory(''),
   routes: whiteRouteModulesList as unknown as RouteRecordRaw[],
