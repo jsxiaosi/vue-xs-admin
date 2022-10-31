@@ -38,6 +38,7 @@ import {
   ElTabPane,
   ElDivider,
   ElSwitch,
+  ElProgress,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -57,6 +58,7 @@ import {
   ArrowDown,
   Management,
   Select,
+  ArrowRight,
 } from '@element-plus/icons-vue';
 
 // Directives
@@ -101,6 +103,7 @@ const components = [
   ElTabPane,
   ElDivider,
   ElSwitch,
+  ElProgress,
 ];
 
 // Icon
@@ -117,6 +120,7 @@ export const iconComponents = [
   ArrowDown,
   Management,
   Select,
+  ArrowRight,
 ];
 
 export function useElementPlus(app: App) {

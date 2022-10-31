@@ -21,7 +21,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>) {
     if (!el || !unref(el)) {
       return;
     }
-    chartInstance = echarts.init(el, 'default');
+    chartInstance = echarts.init(el, 'light');
 
     // 监听window宽度变化重新渲染echarts
     const { removeEvent } = useEventListener({
