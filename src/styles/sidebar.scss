@@ -74,7 +74,7 @@
 
       .menu-item-svg {
         margin-right: 16px;
-        font-size: 18px;
+        font-size: var(--font-size-large);
         line-height: 0;
         color: $menuItemText;
       }
@@ -146,7 +146,7 @@
 
       .sub-menu-svg {
         margin-right: 16px;
-        font-size: 18px;
+        font-size: var(--font-size-large);
         line-height: 0;
         color: $menuText;
       }
@@ -279,7 +279,7 @@
 
       .sub-menu-svg {
         margin-right: 10px;
-        font-size: 18px;
+        font-size: var(--font-size-large);
         line-height: 0;
         // color: $menuText;
       }
@@ -309,7 +309,7 @@
 
       .menu-item-svg {
         margin-right: 16px;
-        font-size: 18px;
+        font-size: var(--font-size-large);
         line-height: 0;
         color: $menuItemText;
       }

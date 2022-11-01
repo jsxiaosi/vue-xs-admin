@@ -37,10 +37,10 @@
         display: flex;
         flex-direction: column;
         .title {
-          font-size: 16px;
+          font-size: var(--font-size-medium);
         }
         .time {
-          font-size: 12px;
+          font-size: var(--font-size-extra-small);
           margin: 5px 0;
         }
         .text {

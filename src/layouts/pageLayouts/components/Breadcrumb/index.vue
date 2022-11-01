@@ -112,7 +112,7 @@
 
     .breadcrumb-icon {
       margin-right: 20px;
-      font-size: 20px;
+      font-size: var(--font-size-extra-large);
     }
 
     .breadcrumb-fold {

@@ -20,7 +20,7 @@
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__info"
           >All rights reserved
-          <a style="color: var(--mian-color)" href="https://wallstreetcn.com" target="_blank"
+          <a style="color: var(--main-color)" href="https://wallstreetcn.com" target="_blank"
             >wallstreetcn</a
           >
         </div>
@@ -169,10 +169,10 @@
       padding: 30px 0;
       overflow: hidden;
       &__oops {
-        font-size: 32px;
+        font-size: 38px;
         font-weight: bold;
         line-height: 40px;
-        color: var(--mian-color);
+        color: var(--main-color);
         opacity: 0;
         margin-bottom: 20px;
         animation-name: slideUp;
@@ -180,7 +180,7 @@
         animation-fill-mode: forwards;
       }
       &__headline {
-        font-size: 20px;
+        font-size: var(--font-size-extra-large);
         line-height: 24px;
         color: grey;
         font-weight: bold;
@@ -192,7 +192,7 @@
         animation-fill-mode: forwards;
       }
       &__info {
-        font-size: 13px;
+        font-size: var(--font-size-small);
         line-height: 21px;
         color: grey;
         opacity: 0;
@@ -207,12 +207,12 @@
         float: left;
         width: 120px;
         height: 36px;
-        background: var(--mian-color);
+        background: var(--main-color);
         border-radius: 100px;
         text-align: center;
         color: #ffffff;
         opacity: 0;
-        font-size: 14px;
+        font-size: var(--font-size-base);
         // line-height: 36px;
         cursor: pointer;
         animation-name: slideUp;

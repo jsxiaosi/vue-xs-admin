@@ -140,7 +140,7 @@
 
         .number {
           color: var(--text-color-primary);
-          font-size: 20px;
+          font-size: var(--font-size-extra-large);
           font-weight: 600;
         }
       }

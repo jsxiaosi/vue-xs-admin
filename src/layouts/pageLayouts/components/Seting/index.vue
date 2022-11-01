@@ -116,7 +116,7 @@
         justify-content: space-around;
 
         .sidebar_mode-select {
-          border: 2px solid var(--mian-color);
+          border: 2px solid var(--main-color);
         }
 
         .sidebar_mode {
@@ -133,7 +133,7 @@
               &:nth-child(1) {
                 width: 30%;
                 height: 100%;
-                background: var(--mian-color);
+                background: var(--main-color);
               }
 
               &:nth-child(2) {
@@ -153,7 +153,7 @@
               &:nth-child(1) {
                 width: 100%;
                 height: 30%;
-                background: var(--mian-color);
+                background: var(--main-color);
                 box-shadow: 0 0 1px #888;
               }
             }
@@ -173,7 +173,7 @@
                 right: 0;
                 width: 100%;
                 height: 30%;
-                background: var(--mian-color);
+                background: var(--main-color);
                 box-shadow: 0 0 1px #888;
               }
             }

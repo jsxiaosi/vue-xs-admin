@@ -109,7 +109,7 @@
       line-height: 40px;
       display: flex;
       margin: 0 auto;
-      font-size: 14px;
+      font-size: var(--font-size-base);
       // color: #909399;
       font-weight: 400;
       background: var(--sub-main-bg-content);
@@ -136,7 +136,7 @@
           height: 30px;
           line-height: 30px;
           display: flex;
-          font-size: 15px;
+          font-size: var(--font-size-medium);
         }
       }
 

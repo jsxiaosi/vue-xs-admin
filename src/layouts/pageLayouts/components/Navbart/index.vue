@@ -90,7 +90,7 @@
 
       .icon {
         margin-left: 12px;
-        font-size: 20px;
+        font-size: var(--font-size-extra-large);
       }
     }
   }

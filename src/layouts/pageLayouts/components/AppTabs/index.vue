@@ -182,7 +182,7 @@
       box-shadow: 0px 0px 12px rgb(28 29 30 / 8%);
       .right-view-item {
         padding: 5px 10px;
-        font-size: 14px;
+        font-size: var(--font-size-base);
         display: flex;
         align-items: center;
         border-radius: 5px;
@@ -203,7 +203,7 @@
           height: 100%;
           text-align: center;
           line-height: $tabsPageHeight;
-          font-size: 16px;
+          font-size: var(--font-size-medium);
           border: 1px solid var(--border-color-light);
           .action-item {
             height: $tabsPageHeight;
