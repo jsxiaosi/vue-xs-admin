@@ -17,6 +17,15 @@
 
   const appStore = useAppStoreHook();
   const appConfigMode = toRef(appStore, 'appConfigMode');
+
+  const fullScreenChange = () => {
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/exitFullscreen
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  };
 </script>
 
 <template>
@@ -46,10 +55,11 @@
       </template>
     </div>
     <div class="navbar-right">
-      <AppTheme></AppTheme>
+      <SvgIcon class="cursor" name="iEL-full-screen" @click="fullScreenChange"></SvgIcon>
       <AppLocale class="icon"></AppLocale>
+      <AppTheme></AppTheme>
       <AppAccount></AppAccount>
-      <SvgIcon class="icon cursor" name="iEL-setting" @click="drawer = true"></SvgIcon>
+      <SvgIcon class="cursor" name="iEL-setting" @click="drawer = true"></SvgIcon>
     </div>
 
     <Setting v-model:modelValue="drawer"></Setting>
@@ -84,14 +94,11 @@
     }
 
     .navbar-right {
-      display: flex;
-      // flex: 1;
+      display: grid;
+      grid-auto-flow: column;
       align-items: center;
-
-      .icon {
-        margin-left: 12px;
-        font-size: var(--font-size-extra-large);
-      }
+      grid-gap: 12px;
+      font-size: var(--font-size-extra-large);
     }
   }
 </style>

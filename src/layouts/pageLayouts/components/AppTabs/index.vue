@@ -88,6 +88,9 @@
     </transition>
     <div class="right-button">
       <ul>
+        <!-- <li class="cursor" @click="fullScreenChange">
+          <SvgIcon name="iEL-full-screen"></SvgIcon>
+        </li> -->
         <li class="cursor" @click="onFresh()">
           <SvgIcon class="rotate" name="iEL-refresh"></SvgIcon>
         </li>
@@ -200,11 +203,13 @@
         display: flex;
         li {
           width: $tabsPageHeight;
-          height: 100%;
           text-align: center;
-          line-height: $tabsPageHeight;
+          height: $tabsPageHeight;
           font-size: var(--font-size-medium);
-          border: 1px solid var(--border-color-light);
+          border-left: 1px solid var(--border-color-light);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           .action-item {
             height: $tabsPageHeight;
           }

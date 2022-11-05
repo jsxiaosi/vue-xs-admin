@@ -44,7 +44,7 @@
 <style lang="scss" scoped>
   .theme {
     position: relative;
-    width: 50px;
+    width: 52px;
     height: 26px;
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@
     background-color: 151515;
     border: 1px solid var(--text-color-primary);
     padding: 0 6px;
-    font-size: 1em;
+    font-size: 0.8em;
     border-radius: 30px;
     .theme-inner {
       position: absolute;

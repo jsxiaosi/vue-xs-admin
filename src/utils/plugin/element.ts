@@ -59,6 +59,7 @@ import {
   Management,
   Select,
   ArrowRight,
+  FullScreen,
 } from '@element-plus/icons-vue';
 
 // Directives
@@ -121,6 +122,7 @@ export const iconComponents = [
   Management,
   Select,
   ArrowRight,
+  FullScreen,
 ];
 
 export function useElementPlus(app: App) {
