@@ -9,17 +9,33 @@ export interface AppState {
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
 
 export interface AppConfig {
+  // 标题
   title: string;
+  // 折叠菜单
   collapseMenu: boolean;
+  // 菜单显示模式： 'vertical'：左侧模式 | 'horizontal'：顶部模式 | 'blend'：混合模式
   sidebarMode: SidebarMode;
+  // 主题模式：夜间主题、白天主题
   themeMode: string;
+  // 国际化
   locale: string;
+  // storage配置
   StorageConfig: StorageConfig;
+  // 移动端菜单
   drawerSidebar?: boolean;
+  // 主题颜色
   primaryColor: string;
+  // 灰色模式
   greyMode: boolean;
+  // 色弱模式
   colorWeaknessMode: boolean;
+  // 隐藏侧边菜单栏
+  hideSidebar: boolean;
+  // 隐藏顶部
+  hideNavbart: boolean;
+  // 隐藏标签页
   hideTabs: boolean;
+  // 标签持久化
   labelPersistent: boolean;
 }
 

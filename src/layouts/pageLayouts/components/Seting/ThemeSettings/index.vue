@@ -2,16 +2,16 @@
   import { ref, watch } from 'vue';
   import { ColorPicker } from 'vue3-colorpicker';
   import 'vue3-colorpicker/style.css';
-  import { useAppStoreHook } from '@/store/modules/app';
   import { useTransformTheme } from '@/hooks/useTransformTheme';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import type { AppConfig } from '@/store/types';
+  import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
   const { updateColor, themeHtmlClassName } = useTransformTheme();
 
-  const appStore = useAppStoreHook();
+  const { appConfig, setAppConfigMode } = useRootSetting();
 
-  const { primaryColor, greyMode, colorWeaknessMode } = appStore.appConfigMode;
+  const { primaryColor, greyMode, colorWeaknessMode } = appConfig.value;
 
   const pureColor = ref(primaryColor || '#409eff');
 
@@ -20,8 +20,7 @@
   const colorList = ['#722ed1', '#eb2f96', '#52c41a', '#13c2c2', '#fadb14', '#fa541c', '#f5222d'];
 
   watch([pureColor], () => {
-    appStore.appConfigMode.primaryColor = pureColor.value;
-    appStore.setAppConfigMode(appStore.appConfigMode);
+    setAppConfigMode({ primaryColor: pureColor.value });
     updateColor();
   });
 
@@ -33,7 +32,7 @@
     const appData = {} as AppConfig;
     if (key === 'html-grey') appData['greyMode'] = e;
     else appData['colorWeaknessMode'] = e;
-    appStore.setAppConfigMode(appData);
+    setAppConfigMode(appData);
   };
 </script>
 

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import { ref, toRef, watch } from 'vue';
+  import { ref, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import { isEqual } from 'lodash-es';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { translateI18n } from '@/hooks/web/useI18n';
-  import { useAppStoreHook } from '@/store/modules/app';
   import type { AppRouteRecordRaw } from '#/route';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
+  import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
   const { multiTabs } = usePermissionStoreHook();
 
@@ -65,13 +65,10 @@
   watch(route, getBreadcrumb);
 
   // 当前是否折叠导航栏
-  const appStore = useAppStoreHook();
-  const appConfigMode = toRef(appStore, 'appConfigMode');
+  const { appConfig, setAppConfigMode } = useRootSetting();
   // 折叠菜单事件
   const handerShowElmenu = () => {
-    appStore.setAppConfigMode({
-      collapseMenu: !appStore.appConfigMode.collapseMenu,
-    });
+    setAppConfigMode({ collapseMenu: !appConfig.value.collapseMenu });
   };
 </script>
 
@@ -79,13 +76,13 @@
   <div class="breadcrumb">
     <SvgIcon
       class="breadcrumb-fold cursor"
-      :class="{ 'breadcrumb-unfold': appConfigMode.collapseMenu }"
+      :class="{ 'breadcrumb-unfold': appConfig.collapseMenu }"
       name="fold"
       color="#e3e3e3"
       @click="handerShowElmenu"
     ></SvgIcon>
     <el-breadcrumb
-      v-show="appConfigMode.sidebarMode === 'vertical'"
+      v-show="appConfig.sidebarMode === 'vertical'"
       class="app-breadcrumb"
       separator="/"
     >

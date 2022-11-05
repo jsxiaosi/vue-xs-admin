@@ -1,20 +1,20 @@
 <script setup lang="ts">
-  import { getCurrentInstance, toRef } from 'vue';
+  import { getCurrentInstance } from 'vue';
   import Sidebar from '../Sidebar/index.vue';
-  import { useAppStoreHook } from '@/store/modules/app';
-
-  const appStore = useAppStoreHook();
-  const appConfigMode = toRef(appStore, 'appConfigMode');
+  import { useRootSetting } from '@/hooks/setting/useRootSetting';
+  const { appConfig } = useRootSetting();
   const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
 </script>
 
 <template>
   <div
-    v-if="appConfigMode.sidebarMode !== 'horizontal' || appConfigMode.drawerSidebar"
+    v-show="
+      !appConfig.hideSidebar && (appConfig.sidebarMode !== 'horizontal' || appConfig.drawerSidebar)
+    "
     class="sidebar-container"
-    :class="{ hideSidebar: appConfigMode.collapseMenu }"
+    :class="{ hideSidebar: appConfig.collapseMenu }"
   >
-    <div class="app-logo" :class="{ 'app-logo-hide': appConfigMode.collapseMenu }">
+    <div class="app-logo" :class="{ 'app-logo-hide': appConfig.collapseMenu }">
       <div class="logo">
         <img class="logo_img" src="@/assets/logo.png" mode="scaleToFill" />
       </div>

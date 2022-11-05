@@ -1,14 +1,13 @@
 <script setup lang="ts">
   import { useI18n, localesList } from '@/hooks/web/useI18n';
   import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { useAppStoreHook } from '@/store/modules/app';
+  import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
   const i18n = useI18n();
-  const appStore = useAppStoreHook();
-  // const availableLocales = i18n.availableLocales;
+  const { setAppConfigMode } = useRootSetting();
   const tolochos = (key: string) => {
     i18n.locale.value = key;
-    appStore.setAppConfigMode({ ...appStore.appConfigMode, locale: key });
+    setAppConfigMode({ locale: key });
   };
 </script>
 
