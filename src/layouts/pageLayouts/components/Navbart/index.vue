@@ -1,10 +1,11 @@
 <script setup lang="ts">
   // import { ref } from 'vue'
-  import { getCurrentInstance, ref } from 'vue';
+  import { ref } from 'vue';
   import Sidebar from '../../components/Sidebar/index.vue';
   import MinSidebar from '../../components/Sidebar/MinSidebar.vue';
   import Setting from '../../components/Seting/index.vue';
   import Breadcrumb from '../../components/Breadcrumb/index.vue';
+  import AppLogo from '../AppLogo/index.vue';
 
   import { AppLocale, AppTheme, AppAccount } from '@/components/Application';
 
@@ -12,8 +13,6 @@
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
   const drawer = ref(false);
-
-  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
 
   const { appConfig } = useRootSetting();
 
@@ -35,12 +34,8 @@
   <div class="navbar">
     <div v-show="!appConfig.hideNavbart" class="navbar-content">
       <div class="navbar-left">
-        <Breadcrumb v-if="appConfig.sidebarMode !== 'horizontal' || appConfig.drawerSidebar" />
-        <div v-else class="app-logo">
-          <!-- <SvgIcon name="Vue"></SvgIcon> -->
-          <img class="logo_img" src="@/assets/logo.png" mode="scaleToFill" />
-          <span class="name">{{ config.title }}</span>
-        </div>
+        <Breadcrumb v-if="appConfig.sidebarMode === 'vertical' || appConfig.drawerSidebar" />
+        <AppLogo v-if="appConfig.sidebarMode === 'horizontal' && !appConfig.drawerSidebar" />
       </div>
       <div class="navbar-center">
         <template v-if="!appConfig.drawerSidebar">
@@ -77,7 +72,6 @@
   .navbar {
     width: 100%;
     // margin-left: #{$sideBarWidth};
-
     background-color: $navBarColor;
     border-bottom: 1px solid var(--border-color-light);
     box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
@@ -85,11 +79,13 @@
       width: 100%;
       height: #{$navBarHeight};
       display: flex;
-      padding: 0 20px;
       align-items: center;
       justify-content: space-between;
+      font-size: var(--font-size-extra-large);
 
       // .navbar-left {
+      //   display: flex;
+      //   align-items: center;
       // }
 
       .logo_img {
@@ -107,8 +103,8 @@
         display: grid;
         grid-auto-flow: column;
         align-items: center;
-        grid-gap: 12px;
-        font-size: var(--font-size-extra-large);
+        grid-gap: 10px;
+        margin-right: 10px;
       }
     }
 

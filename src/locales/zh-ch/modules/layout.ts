@@ -8,8 +8,11 @@ const layout = {
   pageSettings: '页面设置',
   hideSidebar: '隐藏侧边栏',
   hideNavBart: '隐藏顶部导航栏',
-  hideTabs: '隐藏标签页',
+  hideTabs: '隐藏标签栏',
+  hideTabsConfig: '隐藏标签栏操作按钮',
   labelPersistent: '标签持久化',
+  sidebarFold: '侧边栏折叠按钮',
+  sidebarFoldList: { top: '顶部', bottom: '底部', none: '不显示' },
   clearStorage: '清空缓存回到登录页',
   navbar: {
     fullScreen: '全屏',

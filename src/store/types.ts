@@ -33,10 +33,14 @@ export interface AppConfig {
   hideSidebar: boolean;
   // 隐藏顶部
   hideNavbart: boolean;
-  // 隐藏标签页
+  // 隐藏标签栏
   hideTabs: boolean;
+  // 隐藏标签栏操作按钮
+  hideTabsConfig: boolean;
   // 标签持久化
   labelPersistent: boolean;
+  // 侧边栏按钮
+  sidebarFold: 'none' | 'top' | 'bottom';
 }
 
 export type MultiTabsType = Omit<

@@ -94,7 +94,7 @@
         </div>
       </ul>
     </transition>
-    <div class="right-button">
+    <div v-if="!appConfig.hideTabsConfig" class="right-button">
       <ul>
         <li class="cursor" @click="onFresh()">
           <SvgIcon class="rotate" name="iEL-refresh"></SvgIcon>
@@ -219,6 +219,8 @@
           align-items: center;
           justify-content: center;
           .action-item {
+            font-size: var(--font-size-medium);
+
             height: $tabsPageHeight;
           }
         }

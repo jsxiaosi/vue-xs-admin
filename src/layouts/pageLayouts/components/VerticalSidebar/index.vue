@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import { getCurrentInstance } from 'vue';
   import Sidebar from '../Sidebar/index.vue';
+  import AppLogo from '../AppLogo/index.vue';
+  import AppFold from '../AppFold/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
   const { appConfig } = useRootSetting();
-  const config = getCurrentInstance()?.appContext.config.globalProperties.$config;
 </script>
 
 <template>
@@ -14,32 +14,22 @@
     class="sidebar-container"
     :class="{ hideSidebar: appConfig.collapseMenu }"
   >
-    <div class="app-logo" :class="{ 'app-logo-hide': appConfig.collapseMenu }">
-      <div class="logo">
-        <img class="logo_img" src="@/assets/logo.png" mode="scaleToFill" />
-      </div>
-
-      <span class="name">{{ config.title }}</span>
-    </div>
+    <AppLogo />
     <Sidebar mode="vertical" />
+    <div v-if="appConfig.sidebarFold === 'bottom'" class="sidebar-fold">
+      <AppFold />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .app-logo {
-    .logo_img {
-      width: 38px;
-      height: 38px;
-    }
-    .name {
-      transition: all 0.5s;
-    }
-  }
-  .app-logo-hide {
-    width: $sideHideBarWidth;
-    .name {
-      opacity: 0;
-      transform: translateX(-20px);
+  .sidebar-container {
+    .sidebar-fold {
+      border-top: 1px solid var(--border-color-light);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      font-size: var(--font-size-extra-large);
     }
   }
 </style>

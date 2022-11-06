@@ -39,6 +39,7 @@ import {
   ElDivider,
   ElSwitch,
   ElProgress,
+  ElColorPicker,
   // 指令
   ElLoading,
   ElInfiniteScroll,
@@ -105,6 +106,7 @@ const components = [
   ElDivider,
   ElSwitch,
   ElProgress,
+  ElColorPicker,
 ];
 
 // Icon

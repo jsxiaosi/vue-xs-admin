@@ -1,7 +1,5 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue';
-  import { ColorPicker } from 'vue3-colorpicker';
-  import 'vue3-colorpicker/style.css';
   import { useTransformTheme } from '@/hooks/useTransformTheme';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import type { AppConfig } from '@/store/types';
@@ -14,8 +12,6 @@
   const { primaryColor, greyMode, colorWeaknessMode } = appConfig.value;
 
   const pureColor = ref(primaryColor || '#409eff');
-
-  const showPicker = ref<boolean>(false);
 
   const colorList = ['#722ed1', '#eb2f96', '#52c41a', '#13c2c2', '#fadb14', '#fa541c', '#f5222d'];
 
@@ -51,22 +47,7 @@
     </div>
     <div class="options">
       <span>{{ $t('layout.customTheme') }}</span>
-      <div class="color-picker">
-        <span
-          class="cursor"
-          :style="{ backgroundColor: pureColor }"
-          @click="() => (showPicker = !showPicker)"
-        ></span>
-        <div v-show="showPicker" class="picker">
-          <div class="mask" @click="() => (showPicker = !showPicker)"></div>
-          <ColorPicker
-            v-model:pureColor="pureColor"
-            format="hex"
-            :disable-alpha="true"
-            :is-widget="true"
-          />
-        </div>
-      </div>
+      <el-color-picker v-model="pureColor" />
     </div>
     <div class="options">
       <span>灰色模式</span>
@@ -100,7 +81,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
     .color-picker {
       position: relative;
       width: 50px;

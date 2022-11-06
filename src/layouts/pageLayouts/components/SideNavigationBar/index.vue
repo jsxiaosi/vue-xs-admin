@@ -36,9 +36,12 @@
     setAppStore({ collapseMenu: isSmallScreen.value });
   });
 
-  watch(appConfig, () => {
-    drawer.value = !appConfig.value.collapseMenu;
-  });
+  watch(
+    () => appConfig.value.collapseMenu,
+    () => {
+      drawer.value = !appConfig.value.collapseMenu;
+    },
+  );
 
   useEventListener(window, 'resize', () => mediaQuery());
 

@@ -35,8 +35,29 @@
       <el-switch v-model="appConfig.hideTabs" @change="hidePublicChange" />
     </div>
     <div class="options">
+      <span>{{ $t('layout.hideTabsConfig') }}</span>
+      <el-switch v-model="appConfig.hideTabsConfig" @change="hidePublicChange" />
+    </div>
+    <div class="options">
       <span>{{ $t('layout.labelPersistent') }}</span>
       <el-switch v-model="labelPersistentRef" @change="labelPersistentChange" />
+    </div>
+    <div class="options">
+      <span>{{ $t('layout.sidebarFold') }}</span>
+      <el-select
+        v-model="appConfig.sidebarFold"
+        class="select"
+        :placeholder="$t('layout.sidebarFold')"
+        size="small"
+        @change="hidePublicChange"
+      >
+        <el-option
+          v-for="item in ['none', 'top', 'bottom']"
+          :key="item"
+          :label="$t(`layout.sidebarFoldList.${item}`)"
+          :value="item"
+        />
+      </el-select>
     </div>
   </div>
 </template>
@@ -46,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
     .color-picker {
       position: relative;
       width: 50px;
@@ -56,6 +77,9 @@
         width: 100%;
         height: 100%;
       }
+    }
+    .select {
+      width: 100px;
     }
   }
 </style>

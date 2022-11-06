@@ -10,6 +10,7 @@
   "hideNavbart": false,
   "hideTabs": false,
   "labelPersistent": true,
+  "sidebarFold": "top",
   "StorageConfig":{
     "expire": 0, 
     "isEncrypt": false
