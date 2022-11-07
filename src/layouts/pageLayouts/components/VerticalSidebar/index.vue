@@ -16,7 +16,13 @@
   >
     <AppLogo />
     <Sidebar mode="vertical" />
-    <div v-if="appConfig.sidebarFold === 'bottom'" class="sidebar-fold">
+    <div
+      v-if="
+        (appConfig.sidebarFold === 'bottom' || appConfig.sidebarMode === 'blend') &&
+        appConfig.sidebarFold !== 'none'
+      "
+      class="sidebar-fold"
+    >
       <AppFold />
     </div>
   </div>
