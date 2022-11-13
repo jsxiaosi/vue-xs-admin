@@ -8,6 +8,7 @@
   import type { MultiTabsType } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
+  import { emitter } from '@/utils/mitt';
 
   const { appConfig, setAppConfigMode } = useRootSetting();
 
@@ -19,21 +20,23 @@
   const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
     useTabsView(multiTabs);
 
-  const { setTabPaneKey, selectMenu, onFresh, removeTab } = useTabsChange(multiTabs);
+  const { setTabPaneKey, addRouteTabs, onFresh, removeTab } = useTabsChange(multiTabs);
 
   const editableTabsValue = ref(setTabPaneKey(route));
 
   watch(
-    () => [route.path, route.query],
+    () => [route.path],
     async () => {
-      await selectMenu(route.path);
       contextmenu(route);
-      setTimeout(() => (editableTabsValue.value = setTabPaneKey(route)));
+      editableTabsValue.value = setTabPaneKey(route);
     },
   );
 
   onBeforeMount(() => {
-    selectMenu(route.path);
+    emitter.on('siteBarChange', ({ routeRaw }) => {
+      addRouteTabs(routeRaw as unknown as MultiTabsType);
+    });
+    addRouteTabs(route);
     contextmenu(route);
   });
 
