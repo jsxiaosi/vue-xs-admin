@@ -90,17 +90,15 @@
     </el-tabs>
     <transition name="el-zoom-in-top">
       <ul v-show="visible" class="right-view" :style="rightViewStyle">
-        <div
+        <li
           v-for="(item, key) in rightClickTags"
           :key="key"
           class="right-view-item cursor"
           :class="{ disabled: item.disabled }"
           @click="rightViewChange(item)"
         >
-          <li>
-            <span>{{ item.text }}</span>
-          </li>
-        </div>
+          <span>{{ item.text }}</span>
+        </li>
       </ul>
     </transition>
     <div v-if="!appConfig.hideTabsConfig" class="right-button">
@@ -113,7 +111,7 @@
             ref="elDropdownRef"
             trigger="click"
             placement="bottom-end"
-            @visible-change="contextmenu(route)"
+            @visible-change="(e:boolean)=>e && contextmenu(route)"
           >
             <SvgIcon class="action-item cursor" name="iEL-arrow-down"></SvgIcon>
             <template #dropdown>

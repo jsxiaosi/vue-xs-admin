@@ -23,11 +23,11 @@ export function configCompressPlugin(
       algorithm: 'brotliCompress',
     };
   }
+
   const plugin: Plugin[] = [
     viteCompression({
       verbose: true,
       disable: true,
-      threshold: 1500,
       deleteOriginFile,
       ...options,
     }),
