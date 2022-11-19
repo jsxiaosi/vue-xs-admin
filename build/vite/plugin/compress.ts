@@ -8,7 +8,7 @@ import type { Plugin } from 'vite';
 
 export function configCompressPlugin(
   compress: 'gzip' | 'brotli' | 'none',
-  deleteOriginFile = false,
+  disable = false,
 ): Plugin | Plugin[] {
   let options = {};
   if (compress === 'gzip') {
@@ -27,8 +27,7 @@ export function configCompressPlugin(
   const plugin: Plugin[] = [
     viteCompression({
       verbose: true,
-      disable: true,
-      deleteOriginFile,
+      disable,
       ...options,
     }),
   ];

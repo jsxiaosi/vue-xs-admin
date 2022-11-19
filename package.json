@@ -111,6 +111,7 @@
     "unplugin-vue-macros": "^0.16.3",
     "vite": "^3.2.3",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-inspect": "^0.7.8",
     "vite-plugin-linter": "^1.2.0",
     "vite-plugin-mock": "^2.9.6",
