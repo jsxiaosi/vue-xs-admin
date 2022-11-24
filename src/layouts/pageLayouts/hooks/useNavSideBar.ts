@@ -1,4 +1,5 @@
 import { useRouter } from 'vue-router';
+import { useThrottleFn } from '@vueuse/core';
 import type { AppRouteRecordRaw } from '#/route';
 import { findRouteByPath } from '@/router/utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
@@ -9,7 +10,7 @@ export const useNavSideBar = () => {
   const router = (useRouter().options.routes.find((i) => i.path === '/') ||
     []) as AppRouteRecordRaw;
 
-  const selectMenu = (path: string) => {
+  const selectMenu = useThrottleFn((path: string) => {
     const findRoute = findRouteByPath(path, router.children || []);
     if (findRoute) {
       if (findRoute.redirect && findRoute.children && findRoute.children.length) {
@@ -22,7 +23,7 @@ export const useNavSideBar = () => {
         routeRaw: findRoute,
       });
     }
-  };
+  }, 100);
 
   const logout = () => {
     usePermissionStoreHook().handleRemoveMultiTabs();

@@ -36,7 +36,6 @@
     emitter.on('siteBarChange', ({ routeRaw }) => {
       addRouteTabs(routeRaw as unknown as MultiTabsType);
     });
-    addRouteTabs(route);
   });
 
   const tabRemoveChange = (e: string) => {
