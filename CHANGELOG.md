@@ -1,5 +1,6 @@
 ## 1.6.0 (2022-12-13)
 
+- build: 📦️ vite4 ([c378308](https://github.com/jsxiaosi/vue-xs-admin/commit/c378308))
 - fix: 🐛 修复 login 自动填充背景颜色 ([65a7725](https://github.com/jsxiaosi/vue-xs-admin/commit/65a7725))
 - fix(layouts): 🐛 [layouts] 修复标签页右击选项不正确 ([b833a07](https://github.com/jsxiaosi/vue-xs-admin/commit/b833a07))
 - fix(layouts): 🐛 [layouts] 修复面包屑问题 ([f252f50](https://github.com/jsxiaosi/vue-xs-admin/commit/f252f50))
