@@ -1,5 +1,18 @@
+## 1.6.0 (2022-12-13)
+
+- fix: 🐛 修复 login 自动填充背景颜色 ([65a7725](https://github.com/jsxiaosi/vue-xs-admin/commit/65a7725))
+- fix(layouts): 🐛 [layouts] 修复标签页右击选项不正确 ([b833a07](https://github.com/jsxiaosi/vue-xs-admin/commit/b833a07))
+- fix(layouts): 🐛 [layouts] 修复面包屑问题 ([f252f50](https://github.com/jsxiaosi/vue-xs-admin/commit/f252f50))
+- fix(layouts): 🐛 [layouts] 浏览器回退标签页显示问题 ([23b3d2c](https://github.com/jsxiaosi/vue-xs-admin/commit/23b3d2c))
+- fix(layouts): 🐛 修复标签页右击不关闭右侧展开按钮 ([a24c1cc](https://github.com/jsxiaosi/vue-xs-admin/commit/a24c1cc))
+- docs: 📝 docs add min-xs-admin ([d95e88b](https://github.com/jsxiaosi/vue-xs-admin/commit/d95e88b))
+- feat: ✨ add image 压缩 ([56a0836](https://github.com/jsxiaosi/vue-xs-admin/commit/56a0836))
+- feat(layouts): ✨ [layouts] 修复侧边栏隐藏问题 ([1a6fcfa](https://github.com/jsxiaosi/vue-xs-admin/commit/1a6fcfa))
+- feat(views): ✨ 词云 ([daccd8d](https://github.com/jsxiaosi/vue-xs-admin/commit/daccd8d))
+
 ## 1.5.0 (2022-11-07)
 
+- feat: ✨ 1.5.0 ([b2ec5a5](https://github.com/jsxiaosi/vue-xs-admin/commit/b2ec5a5))
 - feat: ✨ add @jsxiaosi/commitlint-config ([b73f163](https://github.com/jsxiaosi/vue-xs-admin/commit/b73f163))
 - feat(layouts): ✨ [App] 主题切换功能 ([4160a11](https://github.com/jsxiaosi/vue-xs-admin/commit/4160a11))
 - feat(layouts): ✨ [App] 设置添加色弱模式、灰色模式 ([44b0f15](https://github.com/jsxiaosi/vue-xs-admin/commit/44b0f15))
