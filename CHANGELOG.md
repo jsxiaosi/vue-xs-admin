@@ -1,5 +1,15 @@
+## <small>1.6.1 (2022-12-24)</small>
+
+- fix: 🐛 npm install Error pngquant failed to build, make sure that libpng is ([5716a32](https://github.com/jsxiaosi/vue-xs-admin/commit/5716a32))
+- fix(locales): 🐛 修复刷新 灰色模式 色弱模式不生效 ([168d3e6](https://github.com/jsxiaosi/vue-xs-admin/commit/168d3e6))
+- build: 📦️ update eslint ([11d2c7c](https://github.com/jsxiaosi/vue-xs-admin/commit/11d2c7c))
+
 ## 1.6.0 (2022-12-13)
 
+- feat: ✨ 1.6.0 ([959d43e](https://github.com/jsxiaosi/vue-xs-admin/commit/959d43e))
+- feat: ✨ add image 压缩 ([56a0836](https://github.com/jsxiaosi/vue-xs-admin/commit/56a0836))
+- feat(layouts): ✨ [layouts] 修复侧边栏隐藏问题 ([1a6fcfa](https://github.com/jsxiaosi/vue-xs-admin/commit/1a6fcfa))
+- feat(views): ✨ 词云 ([daccd8d](https://github.com/jsxiaosi/vue-xs-admin/commit/daccd8d))
 - build: 📦️ vite4 ([c378308](https://github.com/jsxiaosi/vue-xs-admin/commit/c378308))
 - fix: 🐛 修复 login 自动填充背景颜色 ([65a7725](https://github.com/jsxiaosi/vue-xs-admin/commit/65a7725))
 - fix(layouts): 🐛 [layouts] 修复标签页右击选项不正确 ([b833a07](https://github.com/jsxiaosi/vue-xs-admin/commit/b833a07))
@@ -7,9 +17,6 @@
 - fix(layouts): 🐛 [layouts] 浏览器回退标签页显示问题 ([23b3d2c](https://github.com/jsxiaosi/vue-xs-admin/commit/23b3d2c))
 - fix(layouts): 🐛 修复标签页右击不关闭右侧展开按钮 ([a24c1cc](https://github.com/jsxiaosi/vue-xs-admin/commit/a24c1cc))
 - docs: 📝 docs add min-xs-admin ([d95e88b](https://github.com/jsxiaosi/vue-xs-admin/commit/d95e88b))
-- feat: ✨ add image 压缩 ([56a0836](https://github.com/jsxiaosi/vue-xs-admin/commit/56a0836))
-- feat(layouts): ✨ [layouts] 修复侧边栏隐藏问题 ([1a6fcfa](https://github.com/jsxiaosi/vue-xs-admin/commit/1a6fcfa))
-- feat(views): ✨ 词云 ([daccd8d](https://github.com/jsxiaosi/vue-xs-admin/commit/daccd8d))
 
 ## 1.5.0 (2022-11-07)
 
