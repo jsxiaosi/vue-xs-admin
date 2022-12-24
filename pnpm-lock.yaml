@@ -7,9 +7,9 @@ specifiers:
   '@ehutch79/vite-eslint': ^0.0.1
   '@element-plus/icons-vue': ^2.0.10
   '@esbuild-kit/cjs-loader': ^2.4.1
-  '@jsxiaosi/commitlint-config': ^0.0.13
-  '@jsxiaosi/eslint-config-prettier': ^0.0.13
-  '@jsxiaosi/eslint-config-vue': ^0.0.13
+  '@jsxiaosi/commitlint-config': ^0.0.14
+  '@jsxiaosi/eslint-config-prettier': ^0.0.14
+  '@jsxiaosi/eslint-config-vue': ^0.0.14
   '@logicflow/core': ^1.1.31
   '@logicflow/extension': ^1.1.31
   '@types/core-js': ^2.5.5
@@ -38,6 +38,7 @@ specifiers:
   element-plus: ^2.2.27
   es6-promise: ^4.2.8
   eslint: ^8.30.0
+  eslint-plugin-jsonc: ^2.5.0
   http-server: ^14.1.1
   husky: ^8.0.2
   i18next: ^22.4.6
@@ -127,9 +128,9 @@ dependencies:
 devDependencies:
   '@ehutch79/vite-eslint': 0.0.1
   '@esbuild-kit/cjs-loader': 2.4.1
-  '@jsxiaosi/commitlint-config': 0.0.13_czg@1.4.1+husky@8.0.2
-  '@jsxiaosi/eslint-config-prettier': 0.0.13_l5rdqc4k22455lce6ocqroldia
-  '@jsxiaosi/eslint-config-vue': 0.0.13_lzzuuodtsqwxnvqeq4g4likcqa
+  '@jsxiaosi/commitlint-config': 0.0.14_czg@1.4.1+husky@8.0.2
+  '@jsxiaosi/eslint-config-prettier': 0.0.14_l5rdqc4k22455lce6ocqroldia
+  '@jsxiaosi/eslint-config-vue': 0.0.14_lzzuuodtsqwxnvqeq4g4likcqa
   '@types/core-js': 2.5.5
   '@types/crypto-js': 4.1.1
   '@types/intro.js': 5.1.0
@@ -150,6 +151,7 @@ devDependencies:
   czg: 1.4.1
   echarts-wordcloud: 2.1.0_echarts@5.4.1
   eslint: 8.30.0
+  eslint-plugin-jsonc: 2.5.0_eslint@8.30.0
   http-server: 14.1.1
   husky: 8.0.2
   jsdom: 20.0.3
@@ -2636,10 +2638,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@jsxiaosi/commitlint-config/0.0.13_czg@1.4.1+husky@8.0.2:
+  /@jsxiaosi/commitlint-config/0.0.14_czg@1.4.1+husky@8.0.2:
     resolution:
       {
-        integrity: sha512-4G0b1EajW72/DEpy5tl4QM1LE+NwHByG9fJv2ewP19mNbeiLyieR0uPHDY1dX71qfUutw8AqMetfHKBxhfRoUA==,
+        integrity: sha512-bEdlb9T8QjzkyXZWs+oBAnXsolL6lIpby/QGNx6KITCZooYdKH3tV/41Sv9CLDH6xuP7Hi/2uGPDuoRBQ07uxw==,
       }
     peerDependencies:
       czg: '>=1.3.11'
@@ -2655,10 +2657,10 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@jsxiaosi/eslint-config-base/0.0.13_tqyj5ytb5g6r5ett7xxedhk6eq:
+  /@jsxiaosi/eslint-config-base/0.0.14_tqyj5ytb5g6r5ett7xxedhk6eq:
     resolution:
       {
-        integrity: sha512-Eqc4xxURP7xO23fduTtuDcbLZN+6uEruk3QuLUGMoPDias7X9nU7xsMhrqzfM8uAoRp3McMUv0vXBsJ1bS3Sdg==,
+        integrity: sha512-1MG2ajhvMaf7FaY1YMnrbmcdQVzTlqwiBR+egOcrsWXem+ji66Jh/4XdzyL49XTccjTsrm8Fq9jeDVtHG0iF3w==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
@@ -2676,10 +2678,10 @@ packages:
       - supports-color
     dev: true
 
-  /@jsxiaosi/eslint-config-prettier/0.0.13_l5rdqc4k22455lce6ocqroldia:
+  /@jsxiaosi/eslint-config-prettier/0.0.14_l5rdqc4k22455lce6ocqroldia:
     resolution:
       {
-        integrity: sha512-lkydZd3lmcacS0n7ytCzx2vVmZdPJMpUMfpbVOJ3Q26WIwuNkzEH9JmOFqzKzwqL1mxNQlBfuFy1+6fg/Z4L1Q==,
+        integrity: sha512-ydLhNTHiM4N/7R97AkJhuVl9b7HZwkaJxqchyBc6l+S9t/AOiD2Egx932rOmhI9DeolHjhTZBfoXcR2Mboma9g==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
@@ -2691,16 +2693,16 @@ packages:
       prettier: 2.8.1
     dev: true
 
-  /@jsxiaosi/eslint-config-ts/0.0.13_lzzuuodtsqwxnvqeq4g4likcqa:
+  /@jsxiaosi/eslint-config-ts/0.0.14_lzzuuodtsqwxnvqeq4g4likcqa:
     resolution:
       {
-        integrity: sha512-qcq3KBqTUAqWZodkQRes5yfFMd8ZGICzTm1Z86zT07O13VEJqxSg3iyrDvLhf1sxMYp4kTl/ypKDPR68YO8UaQ==,
+        integrity: sha512-9nD10CDcMFxDNt1WGr1MxSg7xEzUzZWR3cCrlnDI7vk9ZG+3FFDbaMEJZwidG7hd9HfsHWpnniyBzVyBYa25yA==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@jsxiaosi/eslint-config-base': 0.0.13_tqyj5ytb5g6r5ett7xxedhk6eq
+      '@jsxiaosi/eslint-config-base': 0.0.14_tqyj5ytb5g6r5ett7xxedhk6eq
       '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
       '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
       eslint: 8.30.0
@@ -2711,15 +2713,15 @@ packages:
       - supports-color
     dev: true
 
-  /@jsxiaosi/eslint-config-vue/0.0.13_lzzuuodtsqwxnvqeq4g4likcqa:
+  /@jsxiaosi/eslint-config-vue/0.0.14_lzzuuodtsqwxnvqeq4g4likcqa:
     resolution:
       {
-        integrity: sha512-TG9OPb54jbNjaHQ350UeAErCmLiwdH9oxOPssqaXv3xcqePbHXYfPTrG9CJCtUNEuBO+S1Vk1e9WPD+yzzQEgw==,
+        integrity: sha512-x9ORrP6KqaIA1C9S7+nj6jMLMFM5V8kbgRTPx+JI2o9ygeDS//tSEIC7gt5pn2Po98g7IoPMoaN7fAeIrCt4UQ==,
       }
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@jsxiaosi/eslint-config-ts': 0.0.13_lzzuuodtsqwxnvqeq4g4likcqa
+      '@jsxiaosi/eslint-config-ts': 0.0.14_lzzuuodtsqwxnvqeq4g4likcqa
       eslint: 8.30.0
       eslint-plugin-vue: 9.8.0_eslint@8.30.0
     transitivePeerDependencies:
