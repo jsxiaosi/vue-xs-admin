@@ -1,6 +1,9 @@
 const route = {
   pathName: {
     index: 'Home',
+    functions: 'Functions',
+    waterMark: 'Water Mark',
+    pdf: 'PDF',
     components: 'Components',
     dragCpts: 'DragComponents',
     countTo: 'DigitalAnimation',
