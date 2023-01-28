@@ -17,12 +17,12 @@ const functions: AppRouteRecordRaw[] = [
       whiteList: true,
     },
     children: [
-      {
-        path: 'water_mark',
-        name: 'RtWaterMark',
-        component: () => import('@/views/functions/waterMark/index.vue'),
-        meta: { title: t('route.pathName.waterMark') },
-      },
+      // {
+      //   path: 'water_mark',
+      //   name: 'RtWaterMark',
+      //   component: () => import('@/views/functions/waterMark/index.vue'),
+      //   meta: { title: t('route.pathName.waterMark') },
+      // },
       {
         path: 'preview-pdf',
         name: 'RtPreviewPdf',

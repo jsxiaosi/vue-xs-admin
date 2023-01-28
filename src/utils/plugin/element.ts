@@ -62,6 +62,7 @@ import {
   ArrowRight,
   FullScreen,
   Briefcase,
+  Printer,
 } from '@element-plus/icons-vue';
 
 // Directives
@@ -127,6 +128,7 @@ export const iconComponents = [
   ArrowRight,
   FullScreen,
   Briefcase,
+  Printer,
 ];
 
 export function useElementPlus(app: App) {
