@@ -4,6 +4,7 @@ const route = {
     functions: '功能',
     waterMark: '水印',
     pdf: 'PDF',
+    docx: 'Docx',
     components: '组件',
     dragCpts: '拖拽组件',
     countTo: '数字动画',

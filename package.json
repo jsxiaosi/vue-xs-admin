@@ -42,6 +42,7 @@
     "@vueuse/core": "^9.10.0",
     "axios": "^1.2.2",
     "dayjs": "^1.11.7",
+    "docx-preview": "^0.1.14",
     "echarts": "^5.4.1",
     "element-plus": "^2.2.28",
     "es6-promise": "^4.2.8",

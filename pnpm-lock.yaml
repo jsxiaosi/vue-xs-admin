@@ -33,6 +33,7 @@ specifiers:
   crypto-js: ^4.1.1
   czg: ^1.4.1
   dayjs: ^1.11.7
+  docx-preview: ^0.1.14
   echarts: ^5.4.1
   echarts-wordcloud: ^2.1.0
   element-plus: ^2.2.28
@@ -102,6 +103,7 @@ dependencies:
   '@vueuse/core': 9.10.0_vue@3.2.45
   axios: 1.2.2
   dayjs: 1.11.7
+  docx-preview: 0.1.14
   echarts: 5.4.1
   element-plus: 2.2.28_vue@3.2.45
   es6-promise: 4.2.8
@@ -5746,7 +5748,6 @@ packages:
       {
         integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==,
       }
-    dev: true
 
   /cors/2.8.5:
     resolution:
@@ -6366,6 +6367,15 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /docx-preview/0.1.14:
+    resolution:
+      {
+        integrity: sha512-AoMAAEPG7JvI8g68Yti7v8QyzvfLBoQ9bcd/Hn0IkBqtj61kHWN983be5NGrw7m3LYNzW/NZbxv5KbVmyV018g==,
+      }
+    dependencies:
+      jszip: 3.10.1
+    dev: false
 
   /dom-serializer/0.2.2:
     resolution:
@@ -9626,6 +9636,13 @@ packages:
       replace-ext: 1.0.1
     dev: true
 
+  /immediate/3.0.6:
+    resolution:
+      {
+        integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==,
+      }
+    dev: false
+
   /immutable/4.1.0:
     resolution:
       {
@@ -9700,7 +9717,6 @@ packages:
       {
         integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==,
       }
-    dev: true
 
   /ini/1.3.8:
     resolution:
@@ -10311,7 +10327,6 @@ packages:
       {
         integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==,
       }
-    dev: true
 
   /isexe/2.0.0:
     resolution:
@@ -10634,6 +10649,18 @@ packages:
     engines: { node: '>=0.10.0' }
     dev: true
 
+  /jszip/3.10.1:
+    resolution:
+      {
+        integrity: sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==,
+      }
+    dependencies:
+      lie: 3.3.0
+      pako: 1.0.11
+      readable-stream: 2.3.7
+      setimmediate: 1.0.5
+    dev: false
+
   /junk/3.1.0:
     resolution:
       {
@@ -10730,6 +10757,15 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lie/3.3.0:
+    resolution:
+      {
+        integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==,
+      }
+    dependencies:
+      immediate: 3.0.6
+    dev: false
 
   /lilconfig/2.0.6:
     resolution:
@@ -12271,6 +12307,13 @@ packages:
     engines: { node: '>=6' }
     dev: true
 
+  /pako/1.0.11:
+    resolution:
+      {
+        integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==,
+      }
+    dev: false
+
   /param-case/3.0.4:
     resolution:
       {
@@ -12964,7 +13007,6 @@ packages:
       {
         integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==,
       }
-    dev: true
 
   /process/0.11.10:
     resolution:
@@ -13192,7 +13234,6 @@ packages:
       safe-buffer: 5.1.2
       string_decoder: 1.1.1
       util-deprecate: 1.0.2
-    dev: true
 
   /readable-stream/3.6.0:
     resolution:
@@ -13608,7 +13649,6 @@ packages:
       {
         integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==,
       }
-    dev: true
 
   /safe-buffer/5.2.1:
     resolution:
@@ -13755,6 +13795,13 @@ packages:
       is-plain-object: 2.0.4
       split-string: 3.1.0
     dev: true
+
+  /setimmediate/1.0.5:
+    resolution:
+      {
+        integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==,
+      }
+    dev: false
 
   /shebang-command/1.2.0:
     resolution:
@@ -14247,7 +14294,6 @@ packages:
       }
     dependencies:
       safe-buffer: 5.1.2
-    dev: true
 
   /string_decoder/1.3.0:
     resolution:
@@ -15576,7 +15622,6 @@ packages:
       {
         integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==,
       }
-    dev: true
 
   /util/0.10.4:
     resolution:

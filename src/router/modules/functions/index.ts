@@ -29,6 +29,12 @@ const functions: AppRouteRecordRaw[] = [
         component: () => import('@/views/functions/pdf/index.vue'),
         meta: { title: t('route.pathName.pdf') },
       },
+      {
+        path: 'preview-docx',
+        name: 'RtPreviewDocx',
+        component: () => import('@/views/functions/docx/index.vue'),
+        meta: { title: t('route.pathName.docx') },
+      },
     ],
   },
 ];

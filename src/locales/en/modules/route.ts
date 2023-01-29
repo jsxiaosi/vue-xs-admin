@@ -4,6 +4,7 @@ const route = {
     functions: 'Functions',
     waterMark: 'Water Mark',
     pdf: 'PDF',
+    docx: 'Docx',
     components: 'Components',
     dragCpts: 'DragComponents',
     countTo: 'DigitalAnimation',

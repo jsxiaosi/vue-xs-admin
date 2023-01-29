@@ -11,17 +11,29 @@ export function fileToBase64(file: File) {
   });
 }
 // 文件流转化为二进制字符串
-export function fileToBinaryString(file: File) {
+export function fileToBinaryString(file: File): Promise<string> {
   return new Promise(function (resolve) {
     const reader = new FileReader();
     reader.readAsBinaryString(file);
     reader.onload = function () {
-      resolve(this.result);
+      resolve(this.result as string);
     };
   });
 }
+
+// 文件流转化为二进制数组
+export function fileToArrayBuffer(file: File): Promise<ArrayBuffer> {
+  return new Promise(function (resolve) {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = function () {
+      resolve(this.result as ArrayBuffer);
+    };
+  });
+}
+
 // base64转化为blob流
-export function base64ToBlob(base64Data: string) {
+export function base64ToBlob(base64Data: string): Blob {
   let byteString;
   if (base64Data.split(',')[0].indexOf('base64') >= 0) byteString = atob(base64Data.split(',')[1]);
   //base64 解码
