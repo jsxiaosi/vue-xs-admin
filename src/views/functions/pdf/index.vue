@@ -4,9 +4,7 @@
   import { useEventListener, useDebounceFn } from '@vueuse/core';
   import SvgIcon from '@/components/SvgIcon/index.vue';
 
-  const pdfSource = ref<string>(
-    'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf',
-  );
+  const pdfSource = ref<string>('https://supercutexiaosi.top/resource/develop_pdf.pdf');
   const pdfRef = ref<InstanceType<typeof VuePdfEmbed>>();
   const isLoading = ref<boolean>(true);
 
