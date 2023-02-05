@@ -6,7 +6,7 @@ const Layout = () => import('@/layouts/pageLayouts/index.vue');
 const functions: AppRouteRecordRaw[] = [
   {
     path: '/functions',
-    redirect: '/functions/404',
+    redirect: '/functions/preview-pdf',
     name: 'Functions',
     component: Layout,
     alwaysShow: true,

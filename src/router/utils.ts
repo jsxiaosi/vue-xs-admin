@@ -40,6 +40,7 @@ function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataI
           i.children = children;
           if (children) newRouteList.push(i);
         } else {
+          delete i.children;
           newRouteList.push(i);
         }
       }
