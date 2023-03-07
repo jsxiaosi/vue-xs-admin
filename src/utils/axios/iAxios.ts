@@ -1,8 +1,8 @@
 import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
+import { isFunction } from 'xs-vue-utils';
 import type { CreateAxiosOptions } from './axiosConfig';
-import { isFunction } from '@/utils/is';
 import type { RequestOptions, Result } from '#/axios';
 
 /**

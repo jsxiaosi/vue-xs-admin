@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { defineProps, onMounted, ref, watch } from 'vue';
   import { renderAsync } from 'docx-preview';
-  import { isUrl } from '@/utils/is';
+  import { isUrl } from 'xs-vue-utils';
 
   const props = defineProps<{
     src: String | ArrayBuffer | Blob;

@@ -1,14 +1,13 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { App } from 'vue';
-import { storage } from 'xs-vue-utils';
+import { storage, isUrl } from 'xs-vue-utils';
 import { configRouteList } from './modules';
 import { handleAliveRoute, initAsyncRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import NProgress from '@/utils/plugin/progress';
 import { getConfig } from '@/config';
 import { translateI18n } from '@/hooks/web/useI18n';
-import { isUrl } from '@/utils/is';
 import type { UseInfoType } from '@/server/useInfo';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
