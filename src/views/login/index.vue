@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
+  import { storage } from 'xs-vue-utils';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { AppLocale, AppTheme } from '@/components/Application';
   import { addClass, removeClass } from '@/utils/operate';
@@ -8,7 +9,6 @@
   import { initAsyncRoute } from '@/router/utils';
   import type { UseInfoType } from '@/server/useInfo';
   import { getUserInfo } from '@/server/useInfo';
-  import { setStorage } from '@/utils/storage';
   import { useI18n } from '@/hooks/web/useI18n';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
@@ -25,7 +25,7 @@
     const res = await getUserInfo(user.value, pwd.value);
 
     if (res.code === 1) {
-      setStorage<UseInfoType>('userInfo', res.data);
+      storage.setStorage<UseInfoType>('userInfo', res.data);
       await initAsyncRoute(res.data.power);
       router.push('/');
     }

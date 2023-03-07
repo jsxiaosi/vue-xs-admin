@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import { storage } from 'xs-vue-utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
-  import { removeStorage } from '@/utils/storage';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
   const { appConfig, setAppConfigMode } = useRootSetting();
@@ -10,7 +10,7 @@
 
   const labelPersistentRef = ref<boolean>(appConfig.value.labelPersistent);
   const labelPersistentChange = (e: boolean) => {
-    if (!e) removeStorage('multiTabsList');
+    if (!e) storage.removeStorage('multiTabsList');
     else persistent();
     setAppConfigMode({ labelPersistent: e });
   };
