@@ -1,6 +1,6 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
   import { ref } from 'vue';
-  import { vWaterMark, useWaterMark } from 'xs-utils';
+  import { vWaterMark, useWaterMark } from 'xs-vue-utils';
 
   const { setWaterMark, close } = useWaterMark();
   const overallName = ref<string>('vue-xs-admin');
@@ -79,8 +79,4 @@
     margin-top: 12px;
     overflow-y: auto;
   }
-</style> -->
-
-<template>
-  <div></div>
-</template>
+</style>
