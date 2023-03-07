@@ -2,8 +2,8 @@
   import type { UploadRawFile } from 'element-plus';
   import { ElUpload } from 'element-plus';
   import { ref } from 'vue';
+  import { fileToArrayBuffer } from 'xs-vue-utils';
   import PreviewDocx from '@/components/PreviewDocx/index.vue';
-  import { fileToArrayBuffer } from '@/utils/file';
 
   const fileSrc = ref<string | ArrayBuffer>(
     `https://supercutexiaosi.top/resource/develop_docx.docx`,
