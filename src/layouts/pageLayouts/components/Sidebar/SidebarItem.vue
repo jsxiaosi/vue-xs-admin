@@ -84,7 +84,7 @@
       </AppLink>
     </template>
 
-    <el-sub-menu v-else :index="resolvePath(item.path)" popper-append-to-body>
+    <el-sub-menu v-else :index="resolvePath(item.path)" teleported>
       <template #title>
         <Item
           v-if="item.meta"
