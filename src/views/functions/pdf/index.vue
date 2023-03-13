@@ -65,6 +65,7 @@
 <style lang="scss" scoped>
   .pdf {
     min-height: 100%;
+
     .app-header {
       display: flex;
       align-items: center;
@@ -73,15 +74,18 @@
       border-bottom: 1px solid var(--border-color-light);
       background-color: var(--main-bg-color);
       color: var(--text-color-primary);
+
       .config {
         display: flex;
         align-items: center;
+
         .icon {
           font-size: var(--font-size-large);
           margin-right: 12px;
         }
       }
     }
+
     .textLayer {
       background-color: var(--main-bg-color);
       color: var(--text-color-primary);

@@ -128,6 +128,7 @@
         left: 0;
         bottom: 0;
         z-index: 0;
+
         .bg {
           position: absolute;
           top: -50%;
@@ -137,11 +138,13 @@
           border-radius: 50%;
           background-color: var(--main-bg-color);
         }
+
         .prospect {
           width: 30%;
           height: 100%;
           background-color: var(--main-color);
         }
+
         .prospect-bg {
           position: absolute;
           bottom: -50%;
@@ -194,8 +197,10 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+
         .login-form {
           width: 360px;
+
           .avatar {
             width: 350px;
             height: 80px;
@@ -292,7 +297,7 @@
             padding: 0.5rem 0.7rem;
             font-size: 1.2rem;
             color: var(--text-color-primary);
-            font-family: 'Roboto', sans-serif;
+            font-family: Roboto, sans-serif;
           }
 
           .input:-webkit-autofill {
@@ -332,7 +337,7 @@
             cursor: pointer;
             color: #fff;
             text-transform: uppercase;
-            font-family: 'Roboto', sans-serif;
+            font-family: Roboto, sans-serif;
             background-size: 200%;
             transition: 0.5s;
           }

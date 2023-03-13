@@ -68,16 +68,19 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
+
     .color-picker {
       position: relative;
       width: 50px;
       height: 24px;
+
       span {
         display: block;
         width: 100%;
         height: 100%;
       }
     }
+
     .select {
       width: 100px;
     }

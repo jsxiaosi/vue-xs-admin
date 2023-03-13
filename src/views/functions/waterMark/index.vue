@@ -72,6 +72,7 @@
     align-items: center;
     margin-top: 12px;
   }
+
   .region {
     width: 100%;
     height: 500px;

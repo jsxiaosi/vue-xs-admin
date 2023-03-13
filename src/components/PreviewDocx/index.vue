@@ -50,11 +50,11 @@
 </script>
 
 <template>
-  <div ref="officeDocx" class="office-Docx"></div>
+  <div ref="officeDocx" class="office-docx"></div>
 </template>
 
 <style lang="scss" scoped>
-  .office-Docx {
+  .office-docx {
     width: 100%;
     height: 100%;
   }

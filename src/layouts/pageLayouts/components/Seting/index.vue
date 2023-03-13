@@ -107,6 +107,7 @@
     height: 100%;
     overflow-y: auto;
     position: relative;
+
     .layout_seting {
       .sidebar_seting {
         display: flex;
