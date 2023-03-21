@@ -15,17 +15,17 @@ export function configPwaPlugin() {
       theme_color: '#ffffff',
       icons: [
         {
-          src: '/pwa/android-chrome-192x192.png',
+          src: '/vue-xs-admin/pwa/android-chrome-192x192.png',
           sizes: '192x192',
           type: 'image/png',
         },
         {
-          src: '/pwa/android-chrome-512x512.png',
+          src: '/vue-xs-admin/pwa/android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png',
         },
         {
-          src: '/pwa/android-chrome-512x512.png',
+          src: '/vue-xs-admin/pwa/android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png',
           purpose: 'any maskable',

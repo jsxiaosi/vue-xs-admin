@@ -21,6 +21,7 @@ export default (configEnv: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
 
   return {
+    base: '/vue-xs-admin/',
     // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下请通过 --clearScreen false 设置。
     clearScreen: true,
     logLevel: 'info',
