@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import type { App } from 'vue';
 import { storage, isUrl } from '@jsxiaosi/utils';
 import { configRouteList } from './modules';
@@ -16,7 +16,7 @@ const { whiteRouteModulesList, routeModulesList } = configRouteList();
 export const sidebarRouteList = routeModulesList;
 
 export const router = createRouter({
-  history: createWebHistory(''),
+  history: createWebHashHistory(''),
   routes: whiteRouteModulesList as unknown as RouteRecordRaw[],
 });
 
