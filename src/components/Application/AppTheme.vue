@@ -6,7 +6,7 @@
   import type { AppConfig } from '@/store/types';
   import { updateColor } from '@/utils/theme/transformTheme';
 
-  const color = useColorMode();
+  const color = useColorMode({ disableTransition: false });
 
   const { appConfig, setAppConfigMode } = useRootSetting();
 
