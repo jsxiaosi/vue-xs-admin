@@ -75,7 +75,7 @@ export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
   // 重新加载
   function onFresh(item?: MultiTabsType) {
     const refreshButton = 'refresh-button';
-    addClass(document.querySelector('.rotate'), refreshButton);
+    addClass(document.querySelector('.rotate') as HTMLElement, refreshButton);
     const { path, query } = unref(item || route);
     router.replace({
       path: '/redirect' + path,
