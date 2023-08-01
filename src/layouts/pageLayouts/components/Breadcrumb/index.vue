@@ -4,7 +4,7 @@
   import { isEqual } from 'lodash-es';
   import AppFold from '../AppFold/index.vue';
   import { translateI18n } from '@/hooks/web/useI18n';
-  import type { AppRouteRecordRaw } from '#/route';
+  import type { AppRouteRecordRaw } from '@/router/type';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { usePermissionStoreHook } from '@/store/modules/permission';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';

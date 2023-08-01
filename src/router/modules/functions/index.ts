@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from '#/route';
+import type { AppRouteRecordRaw } from '@/router/type';
 import { t } from '@/hooks/web/useI18n';
 
 const Layout = () => import('@/layouts/pageLayouts/index.vue');
@@ -34,6 +34,12 @@ const functions: AppRouteRecordRaw[] = [
         name: 'RtPreviewDocx',
         component: () => import('@/views/functions/docx/index.vue'),
         meta: { title: t('route.pathName.docx') },
+      },
+      {
+        path: 'guide',
+        name: 'RtGuide',
+        component: () => import('@/views/functions/guide/index.vue'),
+        meta: { title: t('route.pathName.guide') },
       },
     ],
   },

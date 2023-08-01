@@ -3,15 +3,17 @@
   import { _storage } from '@jsxiaosi/utils';
   import { initAsyncRoute } from '@/router/utils';
   import type { UseInfoType } from '@/server/useInfo';
+  import { RoleEnum } from '@/enum/role';
+
   const userInfo = _storage.getStorage<UseInfoType>('userInfo');
 
   defineOptions({
     name: 'RtPower',
   });
 
-  const power = ref<string>(userInfo ? userInfo.power : '');
+  const power = ref<RoleEnum>(userInfo?.power || RoleEnum.ADMIN);
   const powerChange = async () => {
-    power.value = power.value === 'admin' ? 'test' : 'admin';
+    power.value = power.value === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN;
     initAsyncRoute(power.value);
   };
 </script>

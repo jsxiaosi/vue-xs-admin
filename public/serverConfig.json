@@ -11,6 +11,7 @@
   "hideTabs": false,
   "labelPersistent": true,
   "sidebarFold": "top",
+  "permissionMode": "ROLE",
   "StorageConfig":{
     "expire": 0, 
     "isEncrypt": false

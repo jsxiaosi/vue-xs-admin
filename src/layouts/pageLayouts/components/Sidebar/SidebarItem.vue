@@ -5,7 +5,7 @@
   import { isUrl } from '@jsxiaosi/utils';
   import Item from './Item.vue';
   import AppLink from './Link.vue';
-  import type { AppRouteRecordRaw } from '#/route';
+  import type { AppRouteRecordRaw } from '@/router/type';
 
   const props = defineProps({
     // route object

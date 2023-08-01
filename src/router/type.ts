@@ -1,5 +1,6 @@
 import type { RouteRecordRaw, RouteMeta } from 'vue-router';
 import type { defineComponent } from 'vue';
+import type { RoleEnum } from '@/enum/role';
 
 export type Component<T = any> =
   | ReturnType<typeof defineComponent>
@@ -14,9 +15,10 @@ export interface Menu extends RouteMeta {
   whiteList?: boolean;
   pathList?: number[];
   position?: number; //排序位置
+  roles?: RoleEnum[];
 }
 
-export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {
   path: string;
   name?: string; // 命名路由
   component?: Component;

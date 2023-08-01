@@ -1,7 +1,7 @@
 import { useRouter } from 'vue-router';
 import { useThrottleFn } from '@vueuse/core';
 import { isUrl } from '@jsxiaosi/utils';
-import type { AppRouteRecordRaw } from '#/route';
+import type { AppRouteRecordRaw } from '@/router/type';
 import { findRouteByPath } from '@/router/utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import { emitter } from '@/utils/mitt';

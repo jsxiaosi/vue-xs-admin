@@ -60,20 +60,20 @@ const power = [
       },
     ],
   },
-  {
-    path: '/system',
-    name: 'RtSystem',
-    children: [
-      {
-        path: 'power',
-        name: 'RtPower',
-      },
-      {
-        path: 'guide',
-        name: 'RtGuide',
-      },
-    ],
-  },
+  // {
+  //   path: '/system',
+  //   name: 'RtSystem',
+  //   children: [
+  //     {
+  //       path: 'power',
+  //       name: 'RtPower',
+  //     },
+  //     {
+  //       path: 'guide',
+  //       name: 'RtGuide',
+  //     },
+  //   ],
+  // },
   {
     path: '/editor',
     name: 'RtEditor',
@@ -198,13 +198,46 @@ export default [
       const { name } = body;
       if (name == 'admin') {
         return {
-          data: [...power, ...adminRoute],
+          data: [
+            ...power,
+            ...adminRoute,
+            {
+              path: '/system',
+              name: 'RtSystem',
+              children: [
+                {
+                  path: 'power',
+                  name: 'RtPower',
+                },
+                {
+                  path: 'guide',
+                  name: 'RtGuide',
+                },
+              ],
+            },
+          ],
           code: 1,
           message: 'ok',
         };
       } else if (name == 'test') {
         return {
-          data: [...power],
+          data: [
+            ...power,
+            {
+              path: '/system',
+              name: 'RtSystem',
+              children: [
+                {
+                  path: 'power',
+                  name: 'RtPower',
+                },
+                // {
+                //   path: 'guide',
+                //   name: 'RtGuide',
+                // },
+              ],
+            },
+          ],
           code: 1,
           message: 'ok',
         };

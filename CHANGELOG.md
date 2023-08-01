@@ -1,5 +1,12 @@
+## 1.8.0 (2023-07-29)
+
+- fix(styles,views): 🐛 transition，国际化 ([57a3d57](https://github.com/jsxiaosi/vue-xs-admin/commit/57a3d57))
+- fix: 🐛 mock ([7a0aa7e](https://github.com/jsxiaosi/vue-xs-admin/commit/7a0aa7e))
+- refactor(views): ♻️ login ([c827f17](https://github.com/jsxiaosi/vue-xs-admin/commit/c827f17))
+
 ## <small>1.7.1 (2023-05-29)</small>
 
+- feat: ✨ v1.7.1 ([3143f45](https://github.com/jsxiaosi/vue-xs-admin/commit/3143f45))
 - fix(views): 🐛 删除 $ 语法糖 ([cb9fefe](https://github.com/jsxiaosi/vue-xs-admin/commit/cb9fefe))
 
 ## 1.7.0 (2023-05-29)

@@ -5,7 +5,7 @@
   import Item from './Item.vue';
   import AppLink from './Link.vue';
   import { usePermissionStoreHook } from '@/store/modules/permission';
-  import type { AppRouteRecordRaw } from '#/route';
+  import type { AppRouteRecordRaw } from '@/router/type';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
 
   const route = useRoute();
