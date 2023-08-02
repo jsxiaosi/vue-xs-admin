@@ -33,16 +33,20 @@ async function getRouteList(permission: RoleEnum) {
 }
 
 // 初始化权限路由
-async function initRoute(permission: RoleEnum) {
+async function initRoute(permission: RoleEnum | null) {
   resetRouter();
   clearAllCachePage();
-  const routeList: AppRouteRecordRaw[] = await getRouteList(permission);
-  // 更新路由列表前通过formatFlatteningRoutes打平树结构
-  privilegeRouting(
-    router.options.routes as RouteRecordRaw[],
-    formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
-  );
-  setWholeMenus(routeList);
+  let routeList: AppRouteRecordRaw[] = [];
+  if (permission) {
+    routeList = await getRouteList(permission);
+    // 更新路由列表前通过formatFlatteningRoutes打平树结构
+    privilegeRouting(
+      router.options.routes as RouteRecordRaw[],
+      formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
+    );
+    setWholeMenus(routeList);
+  }
+
   return routeList;
 }
 

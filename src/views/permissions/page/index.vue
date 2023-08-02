@@ -1,27 +1,25 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
   import { _storage } from '@jsxiaosi/utils';
   import { initRoute } from '@/router/utils';
-  import type { UseInfoType } from '@/server/useInfo';
   import { RoleEnum } from '@/enum/role';
+  import { useUserInfoStoreHook } from '@/store/modules/user';
 
-  const userInfo = _storage.getStorage<UseInfoType>('userInfo');
+  const userInfoStore = useUserInfoStoreHook();
 
   defineOptions({
-    name: 'RtPower',
+    name: 'RtPermissions',
   });
 
-  const power = ref<RoleEnum>(userInfo?.power || RoleEnum.ADMIN);
-  const powerChange = async () => {
-    power.value = power.value === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN;
-    initRoute(power.value);
+  const roleChange = async () => {
+    userInfoStore.setRoles(userInfoStore.roles === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN);
+    initRoute(userInfoStore.roles);
   };
 </script>
 
 <template>
   <div class="page-container">
     <span>切换权限：</span>
-    <el-button @click="powerChange"> {{ power }} </el-button>
+    <el-button @click="roleChange"> {{ userInfoStore.roles }} </el-button>
   </div>
 </template>
 

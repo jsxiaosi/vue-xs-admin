@@ -2,12 +2,11 @@
   import { reactive, ref } from 'vue';
   import type { FormInstance, FormRules } from 'element-plus';
   import { Avatar, Lock } from '@element-plus/icons-vue';
-  import { _storage } from '@jsxiaosi/utils';
   import { useRouter } from 'vue-router';
-  import type { UseInfoType } from '@/server/useInfo';
   import { getUserInfo } from '@/server/useInfo';
   import { initRoute } from '@/router/utils';
   import { useI18n } from '@/hooks/web/useI18n';
+  import { useUserInfoStoreHook } from '@/store/modules/user';
 
   const ruleFormRef = ref<FormInstance>();
 
@@ -40,8 +39,8 @@
   const onLogin = async (): Promise<void> => {
     const res = await getUserInfo(ruleForm.username, ruleForm.password);
     if (res.code === 1) {
-      _storage.setStorage<UseInfoType>('userInfo', res.data);
-      await initRoute(res.data.power);
+      useUserInfoStoreHook().setUserInfo(res.data);
+      await initRoute(res.data.role);
       router.push('/');
     }
   };

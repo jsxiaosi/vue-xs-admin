@@ -40,13 +40,11 @@
         subMenuData.value = parenetRoute.children;
       else subMenuData.value = [parenetRoute];
     }
-
-    console.log('subMenuData.value', subMenuData.value);
   }
 
   getSubMenuData(route.path);
   watch(
-    () => [route.path, appConfig.value.sidebarMode, permission.wholeMenus],
+    () => [route.path, appConfig.value.sidebarMode, () => permission.wholeMenus],
     ([newPath], [oldPath]) => {
       if (appConfig.value.sidebarMode === 'blend') {
         getSubMenuData(route.path);

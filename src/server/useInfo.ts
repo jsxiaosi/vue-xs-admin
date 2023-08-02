@@ -9,7 +9,7 @@ export interface UseInfoType {
   introduction: string;
   title: string;
   token: string;
-  power: RoleEnum;
+  role: RoleEnum;
 }
 
 export interface UserParams {
