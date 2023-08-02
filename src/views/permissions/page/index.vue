@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { _storage } from '@jsxiaosi/utils';
-  import { initAsyncRoute } from '@/router/utils';
+  import { initRoute } from '@/router/utils';
   import type { UseInfoType } from '@/server/useInfo';
   import { RoleEnum } from '@/enum/role';
 
@@ -14,7 +14,7 @@
   const power = ref<RoleEnum>(userInfo?.power || RoleEnum.ADMIN);
   const powerChange = async () => {
     power.value = power.value === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN;
-    initAsyncRoute(power.value);
+    initRoute(power.value);
   };
 </script>
 

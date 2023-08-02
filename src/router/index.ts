@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { App } from 'vue';
 import { _storage, isUrl } from '@jsxiaosi/utils';
 import { configRouteList } from './modules';
-import { handleAliveRoute, initAsyncRoute } from './utils';
+import { handleAliveRoute, initRoute } from './utils';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import NProgress from '@/utils/plugin/progress';
 import { getConfig } from '@/config';
@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
-        initAsyncRoute(userInfo.power || '').then((res) => {
+        initRoute(userInfo.power || '').then((res) => {
           if (res.length) {
             router.push({
               path: to.path,

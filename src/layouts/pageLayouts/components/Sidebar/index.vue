@@ -25,7 +25,6 @@
   let subMenuData = ref<AppRouteRecordRaw[]>(permission.wholeMenus);
 
   const menuData = computed<AppRouteRecordRaw[]>(() => {
-    console.log('permission.wholeMenus', subMenuData.value);
     return appConfig.value.sidebarMode === 'blend' && !appConfig.value.drawerSidebar
       ? subMenuData.value
       : permission.wholeMenus;

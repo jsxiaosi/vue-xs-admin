@@ -1,6 +1,7 @@
 import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import { useTimeoutFn } from '@vueuse/core';
 import { isUrl } from '@jsxiaosi/utils';
+import { cloneDeep } from 'lodash-es';
 import type { AppRouteRecordRaw, Menu } from './type';
 import { router, sidebarRouteList } from './index';
 import { usePermissionStoreHook } from '@/store/modules/permission';
@@ -12,40 +13,42 @@ import type { RoleEnum } from '@/enum/role';
 
 const { clearAllCachePage, setWholeMenus } = usePermissionStoreHook();
 
-// 初始化权限路由
-async function initAsyncRoute(power: RoleEnum) {
-  resetRouter();
-  clearAllCachePage();
+// 获取路由列表
+async function getRouteList(permission: RoleEnum) {
   const appStore = useAppStoreHook();
-  let routeList: AppRouteRecordRaw[] = [];
-
   if (appStore.appConfigMode.permissionMode === PermissionMode.REAREND) {
     // 后端路由控制
-    const res = await getRouteApi({ name: power });
+    const res = await getRouteApi({ name: permission });
     if (res.data.length) {
       // 根据接口返回的路由列表生成新的路由（此时的路由是带有层级关系）
-      routeList = handleRouteList(sortRouteList(sidebarRouteList), res.data);
+      return handleRouteList(sortRouteList(sidebarRouteList), res.data);
     } else {
       console.error('No requested route');
+      return [];
     }
   } else {
     // 角色路由控制
-    routeList = await getStaticRoute(power);
+    return await getStaticRoute(permission);
   }
+}
 
+// 初始化权限路由
+async function initRoute(permission: RoleEnum) {
+  resetRouter();
+  clearAllCachePage();
+  const routeList: AppRouteRecordRaw[] = await getRouteList(permission);
   // 更新路由列表前通过formatFlatteningRoutes打平树结构
   privilegeRouting(
     router.options.routes as RouteRecordRaw[],
     formatFlatteningRoutes(routeList) as AppRouteRecordRaw[],
   );
-
   setWholeMenus(routeList);
   return routeList;
 }
 
 // 异步获取静态路由，防止切换权限时因列表缓存导致菜单无法正常刷新
-async function getStaticRoute(power: RoleEnum) {
-  return filterNoPermissionRouteList(sortRouteList(sidebarRouteList), power);
+async function getStaticRoute(permission: RoleEnum) {
+  return filterNoPermissionRouteList(sortRouteList(cloneDeep(sidebarRouteList)), permission);
 }
 
 // 通过角色过滤无权限路由
@@ -53,7 +56,8 @@ function filterNoPermissionRouteList(
   routerList: AppRouteRecordRaw[],
   roleName: RoleEnum,
 ): AppRouteRecordRaw[] {
-  let newRoute = routerList.filter((i) => !i.meta?.roles || i.meta?.roles?.includes(roleName));
+  const newRouteList = [...routerList];
+  let newRoute = newRouteList.filter((i) => !i.meta?.roles || i.meta?.roles?.includes(roleName));
   newRoute = newRoute.map((i) => {
     if (i.children && i.children.length) {
       i.children = filterNoPermissionRouteList(i.children, roleName);
@@ -64,7 +68,7 @@ function filterNoPermissionRouteList(
   return newRoute || [];
 }
 
-// 根据返回的权限路由，处理路由列表（权限判断逻辑，可以根据自己的业务修改，返回一个带层级关系的路由列表）
+// 通过后端返回路由列表过滤无权限路由
 function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataItemType[]) {
   const newRouteList: AppRouteRecordRaw[] = [];
   routerList.forEach((i) => {
@@ -73,8 +77,7 @@ function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataI
       if (rItem) {
         if (i.children && i.children.length) {
           const children = handleRouteList(i.children, rItem.children);
-          i.children = children;
-          if (children) newRouteList.push(i);
+          if (children) newRouteList.push({ ...i, children: children });
         } else {
           newRouteList.push(i);
         }
@@ -129,7 +132,7 @@ function formatFlatteningRoutes(routesList: AppRouteRecordRaw[]) {
   return hierarchyList;
 }
 
-// 拼接路径 伪path resolve
+// 拼接路径 path
 function pathResolve(...paths: string[]) {
   let resolvePath = '';
   let isAbsolutePath = false;
@@ -264,7 +267,7 @@ function sortRouteList(arr: any[]) {
 }
 
 export {
-  initAsyncRoute,
+  initRoute,
   pathNamekeyCheck,
   formatFlatteningRoutes,
   setUpRoutePath,

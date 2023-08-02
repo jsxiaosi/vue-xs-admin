@@ -6,7 +6,7 @@
   import { useRouter } from 'vue-router';
   import type { UseInfoType } from '@/server/useInfo';
   import { getUserInfo } from '@/server/useInfo';
-  import { initAsyncRoute } from '@/router/utils';
+  import { initRoute } from '@/router/utils';
   import { useI18n } from '@/hooks/web/useI18n';
 
   const ruleFormRef = ref<FormInstance>();
@@ -41,7 +41,7 @@
     const res = await getUserInfo(ruleForm.username, ruleForm.password);
     if (res.code === 1) {
       _storage.setStorage<UseInfoType>('userInfo', res.data);
-      await initAsyncRoute(res.data.power);
+      await initRoute(res.data.power);
       router.push('/');
     }
   };
