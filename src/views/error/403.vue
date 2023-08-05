@@ -12,12 +12,12 @@
 <template>
   <div class="error-container">
     <div class="error-icon">
-      <SvgIcon name="error-404" class-name="icon"></SvgIcon>
+      <SvgIcon name="error-403" class-name="icon"></SvgIcon>
     </div>
     <div class="text">
-      <span>{{ $t('errorPage.error404.title') }}</span>
+      <span>{{ $t('errorPage.error403.title') }}</span>
     </div>
-    <div class="description">{{ $t('errorPage.error404.description') }}</div>
+    <div class="description">{{ $t('errorPage.error403.description') }}</div>
 
     <ElButton type="primary" @click="toHome">{{ $t('errorPage.back') }}</ElButton>
   </div>
