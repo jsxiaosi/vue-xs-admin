@@ -5,7 +5,7 @@
   import { useNavSideBar } from '../../hooks/useNavSideBar';
   import SidebarItem from './SidebarItem.vue';
   import { usePermissionStoreHook } from '@/store/modules/permission';
-  import type { AppRouteRecordRaw } from '#/route';
+  import type { AppRouteRecordRaw } from '@/router/type';
   import { getParentPaths, findRouteByPath } from '@/router/utils';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
 
@@ -18,21 +18,23 @@
 
   const { selectMenu } = useNavSideBar();
 
+  const permission = usePermissionStoreHook();
+
   const route = useRoute();
   const { appConfig } = useRootSetting();
-  let subMenuData = ref<AppRouteRecordRaw[]>(usePermissionStoreHook().wholeMenus);
+  let subMenuData = ref<AppRouteRecordRaw[]>(permission.wholeMenus);
 
   const menuData = computed<AppRouteRecordRaw[]>(() => {
     return appConfig.value.sidebarMode === 'blend' && !appConfig.value.drawerSidebar
       ? subMenuData.value
-      : usePermissionStoreHook().wholeMenus;
+      : permission.wholeMenus;
   });
 
   function getSubMenuData(path: string) {
     // path的父级路由组成的数组
-    const parentPathArr = getParentPaths(path, usePermissionStoreHook().wholeMenus);
+    const parentPathArr = getParentPaths(path, permission.wholeMenus);
     // 当前路由的信息
-    const parenetRoute = findRouteByPath(parentPathArr[0], usePermissionStoreHook().wholeMenus);
+    const parenetRoute = findRouteByPath(parentPathArr[0], permission.wholeMenus);
     if (parenetRoute) {
       if (parenetRoute.children && !parenetRoute.children[0].hidden)
         subMenuData.value = parenetRoute.children;
@@ -42,7 +44,7 @@
 
   getSubMenuData(route.path);
   watch(
-    () => [route.path, appConfig.value.sidebarMode],
+    () => [route.path, appConfig.value.sidebarMode, () => permission.wholeMenus],
     ([newPath], [oldPath]) => {
       if (appConfig.value.sidebarMode === 'blend') {
         getSubMenuData(route.path);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { _storage } from '@jsxiaosi/utils';
-  import Login from './compoontne/login.vue';
+  import Form from './compoontne/form.vue';
   import { AppLocale, AppTheme } from '@/components/Application';
 
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
@@ -22,8 +22,9 @@
         </div>
       </div>
       <div class="login-box">
+        <h2 class="enter-y p-4"> {{ $t('sys.login.loginButton') }} </h2>
         <div class="login-form">
-          <Login></Login>
+          <Form></Form>
         </div>
       </div>
     </div>
@@ -94,9 +95,6 @@
       }
 
       .login-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         align-self: start;
         margin: auto;
         border-radius: 10px;
@@ -106,130 +104,6 @@
 
         .login-form {
           width: 360px;
-
-          .avatar {
-            width: 350px;
-            height: 80px;
-          }
-
-          .input-group {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
-            padding: 5px 0;
-            border-bottom: 2px solid var(--border-color-light);
-          }
-
-          .input-group:nth-child(1) {
-            margin-bottom: 4px;
-          }
-
-          .input-group::before,
-          .input-group::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background-color: #c5d3f7;
-            transition: 0.5s;
-          }
-
-          .input-group::after {
-            right: 50%;
-          }
-
-          .input-group::before {
-            left: 50%;
-          }
-
-          .icon {
-            color: #d9d9d9;
-            font-size: var(--font-size-base);
-            transition: 0.5s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .input-group > div {
-            position: relative;
-            height: 45px;
-            flex: 1;
-          }
-
-          .input-group > div > h5 {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #d9d9d9;
-            font-size: var(--font-size-base);
-            transition: 0.3s;
-            margin: 0;
-            padding: 0;
-          }
-
-          .input-group.focus .icon {
-            color: var(--main-color);
-          }
-
-          .input-group.focus div h5 {
-            top: -5px;
-            font-size: var(--font-size-base);
-          }
-
-          .input-group.focus::after,
-          .input-group.focus::before {
-            width: 50%;
-          }
-
-          .input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: none;
-            outline: none;
-            background: none;
-            padding: 8px;
-            font-size: var(--font-size-base);
-            color: var(--text-color-primary);
-            font-family: Roboto, sans-serif;
-          }
-
-          .input:-webkit-autofill {
-            background: none;
-            transition: background-color 50000s ease-in-out 0s;
-            -webkit-text-fill-color: var(--text-color-primary);
-          }
-
-          a {
-            display: block;
-            text-align: right;
-            text-decoration: none;
-            color: #999;
-            font-size: 0.9rem;
-            transition: 0.3s;
-          }
-
-          a:hover {
-            color: var(--main-color);
-          }
-
-          .btn {
-            padding: 10px 20px;
-            width: 100%;
-            margin-top: 30px;
-            color: var(--main-color);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s linear;
-          }
         }
       }
     }

@@ -61,20 +61,6 @@ const power = [
     ],
   },
   {
-    path: '/system',
-    name: 'RtSystem',
-    children: [
-      {
-        path: 'power',
-        name: 'RtPower',
-      },
-      {
-        path: 'guide',
-        name: 'RtGuide',
-      },
-    ],
-  },
-  {
     path: '/editor',
     name: 'RtEditor',
     children: [
@@ -92,24 +78,23 @@ const power = [
       },
     ],
   },
+];
+
+const adminPermissionRouter = [
   {
-    path: '/details_page',
-    name: 'RtDetailsPage',
-  },
-  {
-    path: '/error',
-    redirect: '/error/404',
-    name: 'error',
+    path: '/permissions',
+    name: 'RtPermissions',
     children: [
       {
-        path: '404',
-        name: '404',
+        path: 'page',
+        name: 'RtPermissionsPage',
+      },
+      {
+        path: 'test-page-admin',
+        name: 'RtPermissionsTestPageAdmin',
       },
     ],
   },
-];
-
-const adminRoute = [
   {
     path: '/useradmin',
     name: 'RtUseradmin',
@@ -178,7 +163,6 @@ const adminRoute = [
   },
   {
     path: '/about',
-    redirect: '/about',
     name: 'RtAdminInfo',
     children: [
       {
@@ -187,7 +171,30 @@ const adminRoute = [
       },
     ],
   },
+  {
+    path: '/details_page',
+    name: 'RtDetailsPage',
+  },
 ];
+
+const testPermissionRouter = [
+  {
+    path: '/permissions',
+    name: 'RtPermissions',
+    children: [
+      {
+        path: 'page',
+        name: 'RtPermissionsPage',
+      },
+      {
+        path: 'test-page-test',
+        name: 'RtPermissionsTestPageTest',
+      },
+    ],
+  },
+];
+
+// permissionRouter
 
 export default [
   {
@@ -198,13 +205,13 @@ export default [
       const { name } = body;
       if (name == 'admin') {
         return {
-          data: [...power, ...adminRoute],
+          data: [...power, ...adminPermissionRouter],
           code: 1,
           message: 'ok',
         };
       } else if (name == 'test') {
         return {
-          data: [...power],
+          data: [...power, ...testPermissionRouter],
           code: 1,
           message: 'ok',
         };

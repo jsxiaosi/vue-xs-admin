@@ -1,5 +1,5 @@
-import zh_Cn from 'element-plus/dist/locale/zh-cn.mjs';
-import en from 'element-plus/dist/locale/en.mjs';
+import zh_Cn from 'element-plus/es/locale/lang/zh-cn';
+import en from 'element-plus/es/locale/lang/en';
 import { computed } from 'vue';
 import i18n, { availableLocales } from '@/locales/index';
 

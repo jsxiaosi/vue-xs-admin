@@ -1,26 +1,28 @@
 import type { RouteRecordRaw, RouteMeta } from 'vue-router';
-import type { defineComponent } from 'vue';
-
-export type Component<T = any> =
-  | ReturnType<typeof defineComponent>
-  | (() => Promise<typeof import('*.vue')>)
-  | (() => Promise<T>);
+import type { RoleEnum } from '@/enum/role';
 
 export interface Menu extends RouteMeta {
+  // 菜单标题
   title: string;
+  // 设置菜单图标
   icon?: string;
+  // 是否显示面包屑
   breadcrumb?: boolean;
+  // 是否开启缓存
   keepAlive?: boolean;
+  // 权限路由白名单（只有后端路由模式才生效）
   whiteList?: boolean;
+  // 路由层级（扁平化路由时自动添加）
   pathList?: number[];
-  position?: number; //排序位置
+  //排序位置 （子路由无效）
+  position?: number;
+  // 角色权限
+  roles?: RoleEnum[];
 }
 
-export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {
   path: string;
   name?: string; // 命名路由
-  component?: Component;
-  components?: { [name: string]: Component }; // 命名视图组件
   alias?: string | Array<string>;
   alwaysShow?: boolean; //单个路由的时候是否开启折叠
   hidden?: boolean;

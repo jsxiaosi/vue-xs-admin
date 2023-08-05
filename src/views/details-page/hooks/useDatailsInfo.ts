@@ -14,7 +14,11 @@ export function useDatailsInfo() {
           title: { 'zh-ch': `详情页-${params}`, en: `pageDatails-${params}` },
         },
       });
-      router.push({ name: 'RtDetailsInfo', query: { id: `${params}` } });
+      try {
+        router.push({ name: 'RtDetailsInfo', query: { id: `${params}` } });
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       usePermissionStoreHook().handleMultiTabs('add', {
         path: `/details_page/details_params/${params}`,
@@ -24,7 +28,11 @@ export function useDatailsInfo() {
           title: { 'zh-ch': `详情页-params-${params}`, en: `pageDatails-${params}` },
         },
       });
-      router.push({ name: 'RtDetailsParams', params: { id: `${params}` } });
+      try {
+        router.push({ name: 'RtDetailsParams', params: { id: `${params}` } });
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 

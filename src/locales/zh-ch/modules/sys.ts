@@ -9,9 +9,15 @@ const sys = {
   delText: '删除',
 
   login: {
-    userName: '账号',
+    userName: '用户名',
     password: '密码',
     loginButton: '登录',
+    rememberPassword: '记住密码',
+    forgotPassword: '忘记密码？',
+    rules: {
+      userName: '请输入您的用户名',
+      password: '请输入您的密码',
+    },
   },
 };
 

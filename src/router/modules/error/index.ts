@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from '#/route';
+import type { AppRouteRecordRaw } from '@/router/type';
 import { t } from '@/hooks/web/useI18n';
 
 const Layout = () => import('@/layouts/pageLayouts/index.vue');
@@ -14,13 +14,26 @@ const error: AppRouteRecordRaw[] = [
       title: 'route.pathName.error',
       icon: 'iEL-remove-filled',
       position: 8,
+      whiteList: true,
     },
     children: [
+      {
+        path: '403',
+        name: '403',
+        component: () => import('@/views/error/403.vue'),
+        meta: { title: t('route.pathName.error403') },
+      },
       {
         path: '404',
         name: '404',
         component: () => import('@/views/error/404.vue'),
         meta: { title: t('route.pathName.error404') },
+      },
+      {
+        path: '500',
+        name: '500',
+        component: () => import('@/views/error/500.vue'),
+        meta: { title: t('route.pathName.error500') },
       },
     ],
   },
