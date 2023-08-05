@@ -1,0 +1,75 @@
+.submit-btn[data-v-64ef35e3] {
+  width: 100%;
+}
+.form-item-container[data-v-64ef35e3] {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.back[data-v-06c23126] {
+  background-color: red;
+}
+.page-container[data-v-06c23126] {
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.3s linear;
+  border-radius: 0;
+}
+.page-container .container[data-v-06c23126] {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.page-container .container .head[data-v-06c23126] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+}
+.page-container .container .head .application[data-v-06c23126] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-container .container .head .application .icon-size[data-v-06c23126] {
+  font-size: var(--font-size-extra-large);
+}
+.page-container .container .head .application .item[data-v-06c23126] {
+  margin-left: 20px;
+}
+.page-container .container .head .logo[data-v-06c23126] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-container .container .head .logo .logo_img[data-v-06c23126] {
+  width: 32px;
+  height: 32px;
+}
+.page-container .container .head .logo .logo_name[data-v-06c23126] {
+  color: #999;
+  font: 700 200% Consolas, Monaco, monospace;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-left: 8px;
+}
+.page-container .container .login-box[data-v-06c23126] {
+  align-self: start;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px #0009;
+  padding: 40px;
+  text-align: center;
+}
+.page-container .container .login-box .login-form[data-v-06c23126] {
+  width: 360px;
+}
