@@ -8,7 +8,7 @@ const root: Array<AppRouteRecordRaw> = [
     path: '/',
     component: Layout,
     name: 'RtRoot',
-    meta: { title: t('route.pathName.index'), icon: 'iEL-home-filled', whiteList: true },
+    meta: { title: t('route.pathName.index'), icon: 'iEL-home-filled', whiteRoute: true },
   },
   {
     path: '/login',

@@ -14,7 +14,7 @@ const functions: AppRouteRecordRaw[] = [
       title: 'route.pathName.functions',
       icon: 'iEL-briefcase',
       position: 2,
-      whiteList: true,
+      whiteRoute: true,
     },
     children: [
       {

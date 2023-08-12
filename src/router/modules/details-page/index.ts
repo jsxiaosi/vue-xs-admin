@@ -15,7 +15,7 @@ const detailsPage: AppRouteRecordRaw[] = [
         meta: {
           title: '',
           icon: 'iEL-management',
-          whiteList: true,
+          whiteRoute: true,
           keepAlive: true,
         },
         component: () => import('@/views/details-page/datails-info/index.vue'),
@@ -27,7 +27,7 @@ const detailsPage: AppRouteRecordRaw[] = [
         meta: {
           title: '',
           icon: 'iEL-management',
-          whiteList: true,
+          whiteRoute: true,
           keepAlive: true,
         },
         component: () => import('@/views/details-page/datails-params/index.vue'),

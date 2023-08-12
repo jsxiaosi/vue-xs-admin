@@ -2,7 +2,7 @@ import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue
 import { useTimeoutFn } from '@vueuse/core';
 import { isUrl } from '@jsxiaosi/utils';
 import { cloneDeep } from 'lodash-es';
-import type { AppRouteRecordRaw, Menu } from './type';
+import type { AppRouteRecordRaw, Meta } from './type';
 import { router, sidebarRouteList } from './index';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 import type { RouteDataItemType } from '@/server/route';
@@ -18,14 +18,7 @@ async function getRouteList(permission: RoleEnum) {
   const appStore = useAppStoreHook();
   if (appStore.appConfigMode.permissionMode === PermissionMode.REAREND) {
     // 后端路由控制
-    const res = await getRouteApi({ name: permission });
-    if (res.data.length) {
-      // 根据接口返回的路由列表生成新的路由（此时的路由是带有层级关系）
-      return handleRouteList(sortRouteList(sidebarRouteList), res.data);
-    } else {
-      console.error('No requested route');
-      return [];
-    }
+    return await getAsyncRoute(permission);
   } else {
     // 角色路由控制
     return await getStaticRoute(permission);
@@ -48,6 +41,18 @@ async function initRoute(permission: RoleEnum | null) {
   }
 
   return routeList;
+}
+
+// 获取后端路由
+async function getAsyncRoute(permission: RoleEnum) {
+  const res = await getRouteApi({ name: permission });
+  if (res.data.length) {
+    // 根据接口返回的路由列表生成新的路由（此时的路由是带有层级关系）
+    return handleRouteList(sortRouteList(sidebarRouteList), res.data);
+  } else {
+    console.error('No requested route');
+    return [];
+  }
 }
 
 // 异步获取静态路由，防止切换权限时因列表缓存导致菜单无法正常刷新
@@ -76,7 +81,7 @@ function filterNoPermissionRouteList(
 function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataItemType[]) {
   const newRouteList: AppRouteRecordRaw[] = [];
   routerList.forEach((i) => {
-    if (!i.meta?.whiteList) {
+    if (!i.meta?.whiteRoute) {
       const rItem = dataRouter.find((r) => r.name === i.name);
       if (rItem) {
         if (i.children && i.children.length) {
@@ -165,7 +170,7 @@ function pathResolve(...paths: string[]) {
 // 设置路由path,并创建路由层级
 function setUpRoutePath(routeList: AppRouteRecordRaw[], pathName = '', pathList: number[] = []) {
   for (const [key, node] of routeList.entries()) {
-    node.meta = { ...(node.meta as Menu), pathList: [...pathList, key] };
+    node.meta = { ...(node.meta as Meta), pathList: [...pathList, key] };
     if (pathName && !isUrl(node.path)) {
       node.path = pathResolve(pathName, node.path || '');
     }
