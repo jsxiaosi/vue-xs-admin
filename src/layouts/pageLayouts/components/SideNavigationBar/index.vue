@@ -60,7 +60,7 @@
     <VerticalSidebar />
   </el-drawer>
   <template v-else>
-    <VerticalSidebar></VerticalSidebar>
+    <VerticalSidebar />
   </template>
 </template>
 
