@@ -9,7 +9,7 @@ const externalLink: AppRouteRecordRaw[] = [
     meta: { title: t('route.pathName.thirdParty'), icon: 'link', position: 10 },
     children: [
       {
-        path: 'https://github.com/SuperCuteXiaoSi/xiaosiAdmin',
+        path: 'https://github.com/jsxiaosi/vue-xs-admin',
         name: 'RtGitLink',
         meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
       },
