@@ -5,7 +5,7 @@ const detailsPage: AppRouteRecordRaw[] = [
   {
     path: '/details_page',
     name: 'RtDetailsPage',
-    meta: { title: t('route.pathName.detailsPage'), icon: 'iEL-management', position: 9 },
+    meta: { title: t('route.pathName.detailsPage'), icon: 'iEL-management', position: 10 },
     component: () => import('@/views/details-page/index.vue'),
     children: [
       {

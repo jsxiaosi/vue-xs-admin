@@ -18,6 +18,8 @@ export interface Meta extends RouteMeta {
   pathList?: number[];
   // 角色权限
   roles?: RoleEnum[];
+  // 外部页面地址
+  externalUrl?: string;
 }
 
 export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {

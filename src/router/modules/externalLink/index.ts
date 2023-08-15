@@ -5,13 +5,23 @@ const externalLink: AppRouteRecordRaw[] = [
   {
     path: '/external-link',
     // component: Layout,
+    alwaysShow: true,
     name: 'RtExternal',
-    meta: { title: t('route.pathName.thirdParty'), icon: 'link', position: 10 },
+    meta: { title: t('route.pathName.externalLink'), icon: 'link', position: 9 },
     children: [
       {
-        path: 'https://github.com/jsxiaosi/vue-xs-admin',
+        path: 'https://jsxiaosi.github.io/vue-xs-admin-docs/',
         name: 'RtGitLink',
-        meta: { title: t('route.pathName.thirdParty'), icon: 'link' },
+        meta: { title: t('route.pathName.externalDocument') },
+      },
+      {
+        path: 'embedded-page',
+        component: () => import('@/views/external-link/embedded-page/index.vue'),
+        name: 'RtGitLink',
+        meta: {
+          title: t('route.pathName.embeddedDocument'),
+          externalUrl: 'https://jsxiaosi.github.io/vue-xs-admin-docs/',
+        },
       },
     ],
   },
