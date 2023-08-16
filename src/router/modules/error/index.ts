@@ -1,14 +1,11 @@
 import type { AppRouteRecordRaw } from '@/router/type';
 import { t } from '@/hooks/web/useI18n';
 
-const Layout = () => import('@/layouts/pageLayouts/index.vue');
-
 const error: AppRouteRecordRaw[] = [
   {
     path: '/error',
     redirect: '/error/404',
     name: 'error',
-    component: Layout,
     alwaysShow: true,
     meta: {
       title: 'route.pathName.error',

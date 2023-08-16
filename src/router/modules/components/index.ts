@@ -18,7 +18,7 @@ const component: AppRouteRecordRaw[] = [
       {
         path: 'table',
         name: 'RtTable',
-        component: () => import('@/views/components/TablePage/index.vue'),
+        component: () => import('@/views/components/table-page/index.vue'),
         meta: { title: t('route.pathName.table') },
       },
       {

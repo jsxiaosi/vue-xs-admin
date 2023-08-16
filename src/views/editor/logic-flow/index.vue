@@ -11,8 +11,8 @@
   } from '@logicflow/extension';
   import '@logicflow/core/dist/style/index.css';
   import '@logicflow/extension/lib/style/index.css';
-  import { toLogicFlowData } from './adpterForTurbo';
-  import demoData from './dataTurbo.json';
+  import { toLogicFlowData } from './adpter-for-turbo';
+  import demoData from './data-turbo.json';
   import { configDefaultDndPanel, configAddItemControl } from './config';
 
   const lf = ref<LogicFlow>({} as LogicFlow);

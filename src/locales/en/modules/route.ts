@@ -22,8 +22,6 @@ const route = {
     editor_logicFlow: 'LogicFlow',
     editor_richText: 'RichText Editor',
     editor_markdown: 'Markdown',
-    userInfo: 'UserInfo',
-    userList: 'UserList',
     asyncComponent: 'AsyncComponent',
     refSyntax: 'RefSyntax',
     userDateil: 'UserDateil',

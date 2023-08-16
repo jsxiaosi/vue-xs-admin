@@ -22,8 +22,6 @@ const route = {
     editor_logicFlow: '流程图编辑器',
     editor_richText: '富文本编辑器',
     editor_markdown: 'Markdown',
-    userInfo: '用户管理',
-    userList: '用户列表',
     asyncComponent: '异步组件',
     refSyntax: 'ref语法糖',
     userDateil: '用户详情',
