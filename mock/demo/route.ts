@@ -96,24 +96,6 @@ const adminPermissionRouter = [
     ],
   },
   {
-    path: '/useradmin',
-    name: 'RtUseradmin',
-    children: [
-      {
-        path: 'refSyntax',
-        name: 'RtRefSyntax',
-      },
-      {
-        path: 'userlist',
-        name: 'RtUserlist',
-      },
-      {
-        path: 'asyncComponent',
-        name: 'RtAsyncComponent',
-      },
-    ],
-  },
-  {
     path: '/nested',
     name: 'RtNested',
     children: [
