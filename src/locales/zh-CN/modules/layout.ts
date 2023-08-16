@@ -1,4 +1,4 @@
-const layout = {
+export default {
   setup: '设置',
   layoutSettings: '布局设置',
   themeSettings: '主题设置',
@@ -18,5 +18,3 @@ const layout = {
     fullScreen: '全屏',
   },
 };
-
-export default layout;

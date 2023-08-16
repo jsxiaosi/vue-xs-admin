@@ -1,4 +1,4 @@
-const sys = {
+export default {
   errorTip: 'Error Tip',
 
   okText: 'OK',
@@ -20,5 +20,3 @@ const sys = {
     },
   },
 };
-
-export default sys;

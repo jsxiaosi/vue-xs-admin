@@ -1,4 +1,4 @@
-const route = {
+export default {
   pathName: {
     index: 'Home',
     functions: 'Functions',
@@ -51,5 +51,3 @@ const route = {
     importError: 'The file has no default export',
   },
 };
-
-export default route;

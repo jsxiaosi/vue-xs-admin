@@ -1,4 +1,4 @@
-const route = {
+export default {
   pathName: {
     index: '首页',
     functions: '功能',
@@ -51,5 +51,3 @@ const route = {
     importError: '文件没有默认导出',
   },
 };
-
-export default route;

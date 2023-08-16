@@ -1,4 +1,4 @@
-const api = {
+export default {
   errMsg401: '用户没有权限!',
   errMsg403: '用户得到授权，但是访问是被禁止的。!',
   errMsg404: '网络请求错误,未找到该资源!',
@@ -11,5 +11,3 @@ const api = {
   errMsg504: '网络超时!',
   errMsg505: 'http版本不支持该请求!',
 };
-
-export default api;
