@@ -18,7 +18,6 @@ const getPermissionState = (): PermissionState => {
   };
 };
 
-// console.log(getStorage('multiTabsList'));
 export const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => getPermissionState(),

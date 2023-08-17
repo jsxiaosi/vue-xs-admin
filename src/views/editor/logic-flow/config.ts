@@ -42,13 +42,11 @@ export function configDefaultDndPanel(lf: LogicFlow) {
 }
 
 export function configAddItemControl(lf: LogicFlow) {
-  console.log(lf, 'asdasdasdasd');
   lf.extension.control.addItem({
     iconClass: 'lf-control-redo',
     title: '下载',
     text: '下载',
-    onClick: (lf: LogicFlow, ev: PointerEvent) => {
-      console.log('点击', lf, ev);
+    onClick: (lf: LogicFlow, _ev: PointerEvent) => {
       lf.getSnapshot();
     },
   });
