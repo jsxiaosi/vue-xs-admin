@@ -1,8 +1,8 @@
 if (!self.define) {
   let s,
     i = {};
-  const l = (l, e) => (
-    (l = new URL(l + '.js', e).href),
+  const l = (l, n) => (
+    (l = new URL(l + '.js', n).href),
     i[l] ||
       new Promise((i) => {
         if ('document' in self) {
@@ -15,13 +15,13 @@ if (!self.define) {
         return s;
       })
   );
-  self.define = (e, n) => {
+  self.define = (n, e) => {
     const c = s || ('document' in self ? document.currentScript.src : '') || location.href;
     if (i[c]) return;
     let t = {};
     const r = (s) => l(s, c),
       u = { module: { uri: c }, exports: t, require: r };
-    i[c] = Promise.all(e.map((s) => u[s] || r(s))).then((s) => (n(...s), t));
+    i[c] = Promise.all(n.map((s) => u[s] || r(s))).then((s) => (e(...s), t));
   };
 }
 define(['./workbox-4de3aa5f'], function (s) {
@@ -31,7 +31,7 @@ define(['./workbox-4de3aa5f'], function (s) {
   }),
     s.precacheAndRoute(
       [
-        { url: 'index.html', revision: '7435711a8aea7035ab800c7f4a75277e' },
+        { url: 'index.html', revision: 'ed81b369134d44189e5a9f9c55a81504' },
         { url: 'registerSW.js', revision: '1e593af15a59751133e55eaa6702ba45' },
         { url: 'static/css/403-e86aaf9e.css', revision: null },
         { url: 'static/css/404-06c923f1.css', revision: null },
@@ -60,53 +60,53 @@ define(['./workbox-4de3aa5f'], function (s) {
         { url: 'static/css/index-f185689c.css', revision: null },
         { url: 'static/css/index-f5f7b6e5.css', revision: null },
         { url: 'static/css/index-f7aa930a.css', revision: null },
-        { url: 'static/js/403-e0ddb230.js', revision: null },
-        { url: 'static/js/404-eb1d48dc.js', revision: null },
-        { url: 'static/js/500-cebbcc08.js', revision: null },
+        { url: 'static/js/403-eee59c97.js', revision: null },
+        { url: 'static/js/404-425e1474.js', revision: null },
+        { url: 'static/js/500-ef15ca55.js', revision: null },
         { url: 'static/js/china-77152183.js', revision: null },
-        { url: 'static/js/index-06f54118.js', revision: null },
-        { url: 'static/js/index-0912f3b8.js', revision: null },
-        { url: 'static/js/index-0b37b7cf.js', revision: null },
-        { url: 'static/js/index-0ea6aec8.js', revision: null },
-        { url: 'static/js/index-1ddcdfe5.js', revision: null },
-        { url: 'static/js/index-20b02887.js', revision: null },
-        { url: 'static/js/index-318dfe09.js', revision: null },
-        { url: 'static/js/index-31bde1fa.js', revision: null },
-        { url: 'static/js/index-3b4b4b25.js', revision: null },
-        { url: 'static/js/index-3cab5cd7.js', revision: null },
-        { url: 'static/js/index-3cbe2528.js', revision: null },
-        { url: 'static/js/index-4ca79cd9.js', revision: null },
-        { url: 'static/js/index-5185a955.js', revision: null },
+        { url: 'static/js/index-024a249e.js', revision: null },
+        { url: 'static/js/index-029c4325.js', revision: null },
+        { url: 'static/js/index-02f8f415.js', revision: null },
+        { url: 'static/js/index-03766c93.js', revision: null },
+        { url: 'static/js/index-0da7c5dd.js', revision: null },
+        { url: 'static/js/index-2247824f.js', revision: null },
+        { url: 'static/js/index-33badab6.js', revision: null },
+        { url: 'static/js/index-34dd2753.js', revision: null },
+        { url: 'static/js/index-351eb6fa.js', revision: null },
+        { url: 'static/js/index-3523961a.js', revision: null },
+        { url: 'static/js/index-3fadc7d7.js', revision: null },
+        { url: 'static/js/index-4515b3fa.js', revision: null },
+        { url: 'static/js/index-4aa1d2a4.js', revision: null },
+        { url: 'static/js/index-4b91be38.js', revision: null },
         { url: 'static/js/index-51d795a6.js', revision: null },
-        { url: 'static/js/index-58341aca.js', revision: null },
-        { url: 'static/js/index-590ef71d.js', revision: null },
-        { url: 'static/js/index-5d2d306e.js', revision: null },
-        { url: 'static/js/index-739ca14e.js', revision: null },
-        { url: 'static/js/index-7d9038fd.js', revision: null },
-        { url: 'static/js/index-7e6db5be.js', revision: null },
-        { url: 'static/js/index-82073123.js', revision: null },
-        { url: 'static/js/index-879b5d12.js', revision: null },
-        { url: 'static/js/index-8d69ef95.js', revision: null },
-        { url: 'static/js/index-a790ccdb.js', revision: null },
-        { url: 'static/js/index-b345f304.js', revision: null },
-        { url: 'static/js/index-bfacde44.js', revision: null },
-        { url: 'static/js/index-cad14c46.js', revision: null },
-        { url: 'static/js/index-cf4ca3c2.js', revision: null },
-        { url: 'static/js/index-d1375837.js', revision: null },
-        { url: 'static/js/index-db9d571b.js', revision: null },
-        { url: 'static/js/index-de615e01.js', revision: null },
-        { url: 'static/js/index-df870045.js', revision: null },
-        { url: 'static/js/index-e57a377a.js', revision: null },
-        { url: 'static/js/index-e5c4a92f.js', revision: null },
-        { url: 'static/js/index-e88a4720.js', revision: null },
-        { url: 'static/js/index-fbdc8db2.js', revision: null },
-        { url: 'static/js/index-fcfffa0b.js', revision: null },
-        { url: 'static/js/index-fe9b9e03.js', revision: null },
+        { url: 'static/js/index-52f54183.js', revision: null },
+        { url: 'static/js/index-5497d948.js', revision: null },
+        { url: 'static/js/index-575483a1.js', revision: null },
+        { url: 'static/js/index-5b140f59.js', revision: null },
+        { url: 'static/js/index-5d044caf.js', revision: null },
+        { url: 'static/js/index-710cc9b5.js', revision: null },
+        { url: 'static/js/index-733367f0.js', revision: null },
+        { url: 'static/js/index-7fc8cae2.js', revision: null },
+        { url: 'static/js/index-8acefc00.js', revision: null },
+        { url: 'static/js/index-8ec7ade1.js', revision: null },
+        { url: 'static/js/index-a68f0110.js', revision: null },
+        { url: 'static/js/index-b0a2dff7.js', revision: null },
+        { url: 'static/js/index-b57dc51e.js', revision: null },
+        { url: 'static/js/index-c4c58c94.js', revision: null },
+        { url: 'static/js/index-cc580c19.js', revision: null },
+        { url: 'static/js/index-d008318c.js', revision: null },
+        { url: 'static/js/index-d495423a.js', revision: null },
+        { url: 'static/js/index-d51bcef7.js', revision: null },
+        { url: 'static/js/index-e133c98b.js', revision: null },
+        { url: 'static/js/index-e66cba67.js', revision: null },
+        { url: 'static/js/index-ed05d953.js', revision: null },
+        { url: 'static/js/index-f6e93681.js', revision: null },
+        { url: 'static/js/index-f9ed3a99.js', revision: null },
         { url: 'static/js/logo-46af6dfb.js', revision: null },
         { url: 'static/js/plugin-vueexport-helper-c27b6911.js', revision: null },
-        { url: 'static/js/slotsHelper-49a1375c.js', revision: null },
-        { url: 'static/js/useDatailsInfo-9488b40b.js', revision: null },
-        { url: 'static/js/useECharts-c1c5469c.js', revision: null },
+        { url: 'static/js/slotsHelper-6567bb42.js', revision: null },
+        { url: 'static/js/useDatailsInfo-14c0b055.js', revision: null },
+        { url: 'static/js/useECharts-fa076e62.js', revision: null },
         { url: 'manifest.webmanifest', revision: '97281e4d0104dc2e4969c0deb8bf30fd' },
       ],
       {},
