@@ -1,0 +1,32 @@
+.error-container[data-v-eae3717b] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 88px;
+  width: 100%;
+  height: 100%;
+}
+.error-container .error-icon[data-v-eae3717b] {
+  color: var(--main-color);
+}
+.error-container .error-icon .icon[data-v-eae3717b] {
+  width: 260px;
+  height: 95px;
+}
+.error-container .error-icon .icon[data-v-eae3717b] svg {
+  width: 100%;
+  height: 100%;
+}
+.error-container .text[data-v-eae3717b] {
+  margin-top: 24px;
+  color: var(--text-color-regular);
+  font-size: var(--font-size-extra-large);
+  font-weight: 700;
+  text-align: center;
+}
+.error-container .description[data-v-eae3717b] {
+  color: var(--text-color-regular);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  margin: 24px 0;
+}
