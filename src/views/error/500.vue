@@ -15,11 +15,11 @@
       <SvgIcon name="error-500" class-name="icon"></SvgIcon>
     </div>
     <div class="text">
-      <span>{{ $t('errorPage.error500.title') }}</span>
+      <span>{{ $t('error-page.500.title') }}</span>
     </div>
-    <div class="description">{{ $t('errorPage.error500.description') }}</div>
+    <div class="description">{{ $t('error-page.500.description') }}</div>
 
-    <ElButton type="primary" @click="toHome">{{ $t('errorPage.back') }}</ElButton>
+    <ElButton type="primary" @click="toHome">{{ $t('error-page.back') }}</ElButton>
   </div>
 </template>
 

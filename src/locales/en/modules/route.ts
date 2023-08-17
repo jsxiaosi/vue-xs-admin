@@ -1,4 +1,4 @@
-const route = {
+export default {
   pathName: {
     index: 'Home',
     functions: 'Functions',
@@ -22,8 +22,6 @@ const route = {
     editor_logicFlow: 'LogicFlow',
     editor_richText: 'RichText Editor',
     editor_markdown: 'Markdown',
-    userInfo: 'UserInfo',
-    userList: 'UserList',
     asyncComponent: 'AsyncComponent',
     refSyntax: 'RefSyntax',
     userDateil: 'UserDateil',
@@ -36,7 +34,9 @@ const route = {
     error403: '403',
     error404: '404',
     error500: '500',
-    thirdParty: 'Third party',
+    externalLink: 'External Link',
+    externalDocument: 'External Document',
+    embeddedDocument: 'Embeddded Document',
     nested: 'Nested Route',
     nested1: 'Route1',
     nested1_1: 'Route1-1',
@@ -51,5 +51,3 @@ const route = {
     importError: 'The file has no default export',
   },
 };
-
-export default route;
