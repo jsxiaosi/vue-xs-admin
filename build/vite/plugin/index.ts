@@ -23,6 +23,8 @@ import { configPwaPlugin } from './pwa';
 import { configVisualizerPlugin } from './visualizer';
 // 图片压缩
 import { configImageminPlugin } from './imagemin';
+// vue-i18n
+import { configVueI18nPlugin } from './i18n';
 
 // 自定义插件 问候语，打包检测用时、大小
 import viteBuildOuteInfo from './buildOuteInfo';
@@ -57,6 +59,8 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configImageminPlugin());
 
   vitePlugins.push(viteBuildOuteInfo());
+
+  vitePlugins.push(configVueI18nPlugin());
 
   vitePlugins.push(Inspect());
 

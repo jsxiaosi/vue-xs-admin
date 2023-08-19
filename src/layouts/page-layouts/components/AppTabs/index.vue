@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, computed, watch, onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import type { TabPaneName } from 'element-plus';
   import { ElDropdown } from 'element-plus';
   import { useTabsView } from './hooks/useTabsView';
   import { useTabsChange } from './hooks/useTabsChange';
@@ -38,7 +39,7 @@
     });
   });
 
-  const tabRemoveChange = (e: string) => {
+  const tabRemoveChange = (e: TabPaneName) => {
     const item = multiTabs.value.find((i) => setTabPaneKey(i) === e);
     if (item) removeTab(item);
   };

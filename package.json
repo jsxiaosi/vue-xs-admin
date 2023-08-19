@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@intlify/unplugin-vue-i18n": "^0.12.3",
     "@jsxiaosi/utils": "^0.0.16",
     "@logicflow/core": "^1.2.10",
     "@logicflow/extension": "^1.2.10",
@@ -117,7 +118,7 @@
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-inspect": "^0.7.35",
     "vite-plugin-linter": "^2.0.2",
-    "vite-plugin-mock": "3.0.0",
+    "vite-plugin-mock": "2.9.1",
     "vite-plugin-pwa": "^0.16.4",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-svg-icons": "^2.0.1",
