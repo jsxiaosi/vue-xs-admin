@@ -9,10 +9,10 @@
   const { persistent } = usePermissionStoreHook();
 
   const labelPersistentRef = ref<boolean>(appConfig.value.labelPersistent);
-  const labelPersistentChange = (e: boolean) => {
+  const labelPersistentChange = (e: string | number | boolean) => {
     if (!e) _storage.removeStorage('multiTabsList');
     else persistent();
-    setAppConfigMode({ labelPersistent: e });
+    setAppConfigMode({ labelPersistent: Boolean(e) });
   };
 
   const hidePublicChange = () => {
