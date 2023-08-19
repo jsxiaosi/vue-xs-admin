@@ -11,7 +11,7 @@ const error: AppRouteRecordRaw[] = [
     alwaysShow: true,
     component: Layout,
     meta: {
-      title: 'route.pathName.error',
+      title: t('route.pathName.error'),
       icon: 'iEL-remove-filled',
       position: 8,
       whiteRoute: true,
