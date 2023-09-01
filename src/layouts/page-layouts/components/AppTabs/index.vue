@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, watch, onBeforeMount } from 'vue';
+  import { ref, computed, watch } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import type { TabPaneName } from 'element-plus';
   import { ElDropdown } from 'element-plus';
@@ -10,7 +10,6 @@
   import type { MultiTabsType } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
-  import { emitter } from '@/utils/mitt';
 
   const { appConfig, setAppConfigMode } = useRootSetting();
 
@@ -29,15 +28,13 @@
   watch(
     () => [route.path],
     async () => {
+      addRouteTabs(route.matched[route.matched.length - 1] as unknown as MultiTabsType);
       editableTabsValue.value = setTabPaneKey(route);
     },
+    {
+      immediate: true,
+    },
   );
-
-  onBeforeMount(() => {
-    emitter.on('siteBarChange', ({ routeRaw }) => {
-      addRouteTabs(routeRaw as unknown as MultiTabsType);
-    });
-  });
 
   const tabRemoveChange = (e: TabPaneName) => {
     const item = multiTabs.value.find((i) => setTabPaneKey(i) === e);
@@ -84,7 +81,7 @@
             @click="changeTab(item)"
             @contextmenu.prevent="tabPaneMenu(item, $event)"
           ></div>
-          <span>{{ translateI18n(item.meta.title) }}</span>
+          <span>{{ translateI18n(item.meta?.title) }}</span>
         </template>
       </el-tab-pane>
     </el-tabs>

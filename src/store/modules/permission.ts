@@ -70,8 +70,12 @@ export const usePermissionStore = defineStore({
 
       switch (type) {
         case 'add':
-          if (index !== -1 || !value.meta.title) return;
-          this.multiTabs.push(route);
+          if (!value.meta?.title) return;
+          if (index !== -1) {
+            this.multiTabs[index] = route;
+          } else {
+            this.multiTabs.push(route);
+          }
           break;
         case 'delete':
           if (index === -1) return;
