@@ -1,0 +1,31 @@
+.card-content[data-v-8be80031] {
+  height: 300px;
+  overflow: auto;
+}
+.list[data-v-8be80031] {
+  width: 100%;
+}
+.list .list-item[data-v-8be80031] {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid var(--border-color-light);
+}
+.list .list-item .handle[data-v-8be80031] {
+  margin-right: 20px;
+  cursor: move;
+}
+.list .sortable-chosen[data-v-8be80031] {
+  border: 1px solid red;
+}
+.listgrid[data-v-8be80031] {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 100px 100px 100px;
+}
+.listgrid .list-item[data-v-8be80031] {
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color-light);
+}
