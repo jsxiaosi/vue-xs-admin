@@ -67,11 +67,7 @@
     contextmenu(item, event);
   };
 
-  const tabsEl = ref<HTMLElement | null>(null);
-  onMounted(() => {
-    tabsEl.value = document.querySelector('.tabs-container .el-tabs__nav');
-  });
-  useSortable(tabsEl, {
+  const { initSortable, destroy } = useSortable({
     handle: '.tabs-view-item',
     onEnd({ newIndex, oldIndex }) {
       const oldMultiTabs = multiTabs.value;
@@ -80,6 +76,23 @@
       MultiTabsDropReordering(oldMultiTabs);
     },
   });
+
+  const initTableDrag = () => {
+    if (!appConfig.value.closeTabDrag)
+      initSortable(document.querySelector<HTMLElement>('.tabs-container .el-tabs__nav'));
+  };
+
+  onMounted(() => {
+    initTableDrag();
+  });
+
+  watch(
+    () => appConfig.value.closeTabDrag,
+    (closeTabDrag) => {
+      if (closeTabDrag) destroy();
+      else initTableDrag();
+    },
+  );
 </script>
 
 <template>

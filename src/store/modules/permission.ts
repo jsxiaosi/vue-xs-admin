@@ -60,7 +60,7 @@ export const usePermissionStore = defineStore({
     // 持久化
     persistent() {
       const appConfig = useAppStoreHook();
-      if (appConfig.appConfigMode.labelPersistent)
+      if (appConfig.appConfigMode.tabPersistent)
         _storage.setStorage('multiTabsList', this.multiTabs);
     },
     handleMultiTabs(type: 'add' | 'delete', value: MultiTabsType) {

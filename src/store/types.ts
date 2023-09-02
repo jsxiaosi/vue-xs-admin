@@ -37,10 +37,12 @@ export interface AppConfig {
   hideNavbart: boolean;
   // 隐藏标签栏
   hideTabs: boolean;
+  // 关闭标签页拖拽
+  closeTabDrag: boolean;
   // 隐藏标签栏操作按钮
   hideTabsConfig: boolean;
   // 标签持久化
-  labelPersistent: boolean;
+  tabPersistent: boolean;
   // 侧边栏按钮
   sidebarFold: 'none' | 'top' | 'bottom';
   // 路由模式 REAREND后端路由、ROLE角色权限控制路由
