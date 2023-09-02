@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue';
+  import { ref, computed, watch, onMounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import type { TabPaneName } from 'element-plus';
   import { ElDropdown } from 'element-plus';
@@ -10,13 +10,16 @@
   import type { MultiTabsType } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
+  import useSortable from '@/hooks/web/useSortable';
 
   const { appConfig, setAppConfigMode } = useRootSetting();
 
   const route = useRoute();
   const router = useRouter();
 
-  const multiTabs = computed<MultiTabsType[]>(() => usePermissionStoreHook().multiTabs);
+  const { multiTabs: storeMultiTabs, MultiTabsDropReordering } = usePermissionStoreHook();
+
+  const multiTabs = computed<MultiTabsType[]>(() => storeMultiTabs);
 
   const { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange } =
     useTabsView(multiTabs);
@@ -63,28 +66,49 @@
     elDropdownRef.value?.handleClose();
     contextmenu(item, event);
   };
+
+  const tabsEl = ref<HTMLElement | null>(null);
+  onMounted(() => {
+    tabsEl.value = document.querySelector('.tabs-container .el-tabs__nav');
+  });
+  useSortable(tabsEl, {
+    handle: '.tabs-view-item',
+    onEnd({ newIndex, oldIndex }) {
+      const oldMultiTabs = multiTabs.value;
+      const currTab = oldMultiTabs.splice(oldIndex as number, 1)[0];
+      oldMultiTabs.splice(newIndex as number, 0, currTab);
+      MultiTabsDropReordering(oldMultiTabs);
+    },
+  });
 </script>
 
 <template>
   <div v-if="!appConfig.hideTabs" class="main-container-tabs">
-    <el-tabs
-      v-model="editableTabsValue"
-      type="card"
-      class="tabs-view"
-      :closable="multiTabs.length > 1"
-      @tab-remove="tabRemoveChange"
-    >
-      <el-tab-pane v-for="item in multiTabs" :key="setTabPaneKey(item)" :name="setTabPaneKey(item)">
-        <template #label>
-          <div
-            class="tabs-view-item"
-            @click="changeTab(item)"
-            @contextmenu.prevent="tabPaneMenu(item, $event)"
-          ></div>
-          <span>{{ translateI18n(item.meta?.title) }}</span>
-        </template>
-      </el-tab-pane>
-    </el-tabs>
+    <div class="tabs-container">
+      <el-tabs
+        v-model="editableTabsValue"
+        type="card"
+        class="tabs-view"
+        :closable="multiTabs.length > 1"
+        @tab-remove="tabRemoveChange"
+      >
+        <el-tab-pane
+          v-for="item in multiTabs"
+          :key="setTabPaneKey(item)"
+          :name="setTabPaneKey(item)"
+        >
+          <template #label>
+            <div
+              class="tabs-view-item"
+              @click="changeTab(item)"
+              @contextmenu.prevent="tabPaneMenu(item, $event)"
+            ></div>
+            <span>{{ translateI18n(item.meta?.title) }}</span>
+          </template>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+
     <transition name="el-zoom-in-top">
       <ul v-show="visible" class="right-view" :style="rightViewStyle">
         <li
@@ -142,19 +166,23 @@
     // .el-tabs :deep(.el-tabs__header) {
     //   margin: 0;
     // }
-    .tabs-view {
-      .tabs-view-item {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
+
+    .tabs-container {
+      width: 0;
+      flex: 1;
+
+      .tabs-view {
+        .tabs-view-item {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+        }
       }
     }
 
     .el-tabs {
-      width: 0;
       height: $tabsPageHeight;
-      flex: 1;
       margin: 0 10px;
 
       :deep(.el-tabs__header) {
