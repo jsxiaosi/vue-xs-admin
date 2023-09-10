@@ -2,7 +2,7 @@
 
 import intro from 'intro.js';
 import 'intro.js/minified/introjs.min.css';
-import { Options } from 'intro.js/src/option';
+import type { Options } from 'intro.js/src/option';
 
 async function useIntro(options: Partial<Options> = {}) {
   intro()
