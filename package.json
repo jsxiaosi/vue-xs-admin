@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8.1.0"
   },
   "scripts": {
@@ -130,12 +130,19 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
-        "rollup",
-        "source-map-*",
-        "stable",
-        "uuid",
-        "urix"
+        "rollup"
       ]
+    },
+    "allowedDeprecatedVersions": {
+      "sourcemap-codec": "*",
+      "w3c-hr-time": "*",
+      "stable": "*",
+      "source-map-resolve": "*",
+      "source-map-url": "*",
+      "resolve-url": "*",
+      "rollup-plugin-terser": "*",
+      "urix": "*",
+      "uuid": "*"
     }
   },
   "resolutions": {
