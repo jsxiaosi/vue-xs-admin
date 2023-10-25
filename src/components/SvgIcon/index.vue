@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <el-icon v-if="isELIcon" :class="className">
+  <el-icon v-if="isELIcon" :class="`svg-icon ${className}`">
     <component :is="name" />
   </el-icon>
   <i v-else class="svg-icon" :class="className">
@@ -37,24 +37,21 @@
 </template>
 
 <style lang="scss" scoped>
-  .el-icon {
+  .svg-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     width: 1em;
     height: 1em;
-    margin: 0;
-    // 取父级的宽高
     font-size: 1em;
     color: currentcolor;
-  }
-
-  .svg-icon {
-    display: block;
-    height: 1em;
-    line-height: 1em;
-    font-size: 1em;
+    margin: 0;
 
     .svg {
       width: 1em;
       height: 1em;
+      color: currentcolor;
 
       use {
         fill: currentcolor;
