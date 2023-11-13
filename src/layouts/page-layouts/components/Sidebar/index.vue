@@ -56,6 +56,10 @@
     }
     return path;
   });
+
+  const collapse = computed(() =>
+    appConfig.value.sidebarMode === 'horizontal' ? false : appConfig.value.collapseMenu,
+  );
 </script>
 
 <template>
@@ -63,8 +67,9 @@
     <el-menu
       :default-active="activeMenyu"
       :unique-opened="true"
-      :collapse="appConfig.sidebarMode === 'horizontal' ? false : appConfig.collapseMenu"
+      :collapse="collapse"
       :mode="mode"
+      :collapse-transition="true"
     >
       <SidebarItem
         v-for="menuRoute in menuData"
@@ -72,6 +77,8 @@
         :item="menuRoute"
         :is-nest="false"
         :base-path="menuRoute.path"
+        :collapse="collapse"
+        :mode="mode"
       />
     </el-menu>
   </el-scrollbar>
