@@ -9,7 +9,6 @@ import { useElementPlus } from './utils/plugin/element';
 
 // tailwind css
 import '@/styles/tailwind.css';
-
 // element-plus dark style
 import 'element-plus/theme-chalk/src/dark/css-vars.scss';
 // 公共样式

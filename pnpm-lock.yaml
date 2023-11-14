@@ -217,6 +217,9 @@ devDependencies:
   stylelint:
     specifier: ^15.10.3
     version: 15.10.3
+  stylelint-config-property-sort-order-smacss:
+    specifier: ^9.1.0
+    version: 9.1.0(stylelint@15.10.3)
   stylelint-config-recommended:
     specifier: ^13.0.0
     version: 13.0.0(stylelint@15.10.3)
@@ -6858,6 +6861,13 @@ packages:
     dependencies:
       utrie: 1.0.2
     dev: false
+
+  /css-property-sort-order-smacss@2.2.0:
+    resolution:
+      {
+        integrity: sha512-nXutswsivIEBOrPo/OZw2KQjFPLvtg68aovJf6Kqrm3L6FmTvvFPaeDrk83hh0+pRJGuP3PeKJwMS0E6DFipdQ==,
+      }
+    dev: true
 
   /css-select@4.3.0:
     resolution:
@@ -16410,6 +16420,19 @@ packages:
     dependencies:
       postcss-html: 1.5.0
       stylelint: 15.10.3
+    dev: true
+
+  /stylelint-config-property-sort-order-smacss@9.1.0(stylelint@15.10.3):
+    resolution:
+      {
+        integrity: sha512-TijYeDoDgHAFjpn9NnziQrmUCGrm2AM4e1HzsdI2mCWBRkQRuewc343YqDwdFgQ5eHoMZ3JRL02i72W3vktuDA==,
+      }
+    peerDependencies:
+      stylelint: ^14.0.0 || ^15.0.0
+    dependencies:
+      css-property-sort-order-smacss: 2.2.0
+      stylelint: 15.10.3
+      stylelint-order: 6.0.3(stylelint@15.10.3)
     dev: true
 
   /stylelint-config-recommended-scss@13.1.0(postcss@8.4.29)(stylelint@15.10.3):

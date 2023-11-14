@@ -24,5 +24,3 @@
     <PreviewDocx :src="fileSrc" />
   </div>
 </template>
-
-<style lang="scss" scoped></style>

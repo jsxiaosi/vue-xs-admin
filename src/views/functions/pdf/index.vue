@@ -80,15 +80,10 @@
         align-items: center;
 
         .icon {
-          font-size: var(--font-size-large);
           margin-right: 12px;
+          font-size: var(--font-size-large);
         }
       }
-    }
-
-    .textLayer {
-      background-color: var(--main-bg-color);
-      color: var(--text-color-primary);
     }
   }
 </style>
