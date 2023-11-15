@@ -6,7 +6,11 @@ module.exports = {
     preflight: false, // 关闭默认样式
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: 'var(--main-color)',
+      },
+    },
   },
   plugins: [],
 };

@@ -1,14 +1,10 @@
 .custom-intro-tooltip * {
-  color: var(--text-color-primary);
+  color: black;
 
   a {
     border: 1px solid var(--text-color-primary);
     background-color: #{--main-bg-color};
     text-shadow: none;
-
-    &:hover {
-      color: var(--main-color);
-    }
   }
 }
 
