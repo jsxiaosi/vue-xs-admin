@@ -271,10 +271,10 @@ define(['exports'], function (t) {
         (this.event = e.event),
         (this.l = t),
         (this.p = new q()),
-        (this.g = []),
-        (this.R = [...t.plugins]),
-        (this.m = new Map());
-      for (const t of this.R) this.m.set(t, {});
+        (this.R = []),
+        (this.m = [...t.plugins]),
+        (this.v = new Map());
+      for (const t of this.m) this.v.set(t, {});
       this.event.waitUntil(this.p.promise);
     }
     async fetch(t) {
@@ -347,7 +347,7 @@ define(['exports'], function (t) {
             new URL(String(o), location.href).href.replace(new RegExp(`^${location.origin}`), '')),
         });
       var o;
-      const c = await this.v(e);
+      const c = await this.q(e);
       if (!c) return !1;
       const { cacheName: a, matchOptions: h } = this.l,
         u = await self.caches.open(a),
@@ -403,7 +403,7 @@ define(['exports'], function (t) {
     *iterateCallbacks(t) {
       for (const e of this.l.plugins)
         if ('function' == typeof e[t]) {
-          const s = this.m.get(e),
+          const s = this.v.get(e),
             n = (n) => {
               const i = Object.assign(Object.assign({}, n), { state: s });
               return e[t](i);
@@ -412,16 +412,16 @@ define(['exports'], function (t) {
         }
     }
     waitUntil(t) {
-      return this.g.push(t), t;
+      return this.R.push(t), t;
     }
     async doneWaiting() {
       let t;
-      for (; (t = this.g.shift()); ) await t;
+      for (; (t = this.R.shift()); ) await t;
     }
     destroy() {
       this.p.resolve(null);
     }
-    async v(t) {
+    async q(t) {
       let e = t,
         s = !1;
       for (const t of this.iterateCallbacks('cacheWillUpdate'))
@@ -451,14 +451,14 @@ define(['exports'], function (t) {
         s = 'string' == typeof t.request ? new Request(t.request) : t.request,
         n = 'params' in t ? t.params : void 0,
         i = new b(this, { event: e, request: s, params: n }),
-        r = this.q(i, s, e);
-      return [r, this.U(r, i, s, e)];
+        r = this.U(i, s, e);
+      return [r, this.L(r, i, s, e)];
     }
-    async q(t, e, n) {
+    async U(t, e, n) {
       let i;
       await t.runCallbacks('handlerWillStart', { event: n, request: e });
       try {
-        if (((i = await this.L(e, t)), !i || 'error' === i.type))
+        if (((i = await this._(e, t)), !i || 'error' === i.type))
           throw new s('no-response', { url: e.url });
       } catch (s) {
         if (s instanceof Error)
@@ -470,7 +470,7 @@ define(['exports'], function (t) {
         i = await s({ event: n, request: e, response: i });
       return i;
     }
-    async U(t, e, s, n) {
+    async L(t, e, s, n) {
       let i, r;
       try {
         i = await t;
@@ -498,34 +498,34 @@ define(['exports'], function (t) {
     constructor(t = {}) {
       (t.cacheName = f(t.cacheName)),
         super(t),
-        (this._ = !1 !== t.fallbackToNetwork),
+        (this.C = !1 !== t.fallbackToNetwork),
         this.plugins.push(E.copyRedirectedCacheableResponsesPlugin);
     }
-    async L(t, e) {
+    async _(t, e) {
       const s = await e.cacheMatch(t);
-      return s || (e.event && 'install' === e.event.type ? await this.C(t, e) : await this.O(t, e));
+      return s || (e.event && 'install' === e.event.type ? await this.O(t, e) : await this.N(t, e));
     }
-    async O(t, e) {
+    async N(t, e) {
       let n;
       const i = e.params || {};
-      if (!this._) throw new s('missing-precache-entry', { cacheName: this.cacheName, url: t.url });
+      if (!this.C) throw new s('missing-precache-entry', { cacheName: this.cacheName, url: t.url });
       {
         const s = i.integrity,
           r = t.integrity,
           o = !r || r === s;
         (n = await e.fetch(new Request(t, { integrity: 'no-cors' !== t.mode ? r || s : void 0 }))),
-          s && o && 'no-cors' !== t.mode && (this.N(), await e.cachePut(t, n.clone()));
+          s && o && 'no-cors' !== t.mode && (this.k(), await e.cachePut(t, n.clone()));
       }
       return n;
     }
-    async C(t, e) {
-      this.N();
+    async O(t, e) {
+      this.k();
       const n = await e.fetch(t);
       if (!(await e.cachePut(t, n.clone())))
         throw new s('bad-precaching-response', { url: t.url, status: n.status });
       return n;
     }
-    N() {
+    k() {
       let t = null,
         e = 0;
       for (const [s, n] of this.plugins.entries())
@@ -544,9 +544,9 @@ define(['exports'], function (t) {
     });
   class O {
     constructor({ cacheName: t, plugins: e = [], fallbackToNetwork: s = !0 } = {}) {
-      (this.k = new Map()),
-        (this.K = new Map()),
+      (this.K = new Map()),
         (this.P = new Map()),
+        (this.T = new Map()),
         (this.l = new E({
           cacheName: f(t),
           plugins: [...e, new g({ precacheController: this })],
@@ -560,10 +560,10 @@ define(['exports'], function (t) {
     }
     precache(t) {
       this.addToCacheList(t),
-        this.T ||
+        this.W ||
           (self.addEventListener('install', this.install),
           self.addEventListener('activate', this.activate),
-          (this.T = !0));
+          (this.W = !0));
     }
     addToCacheList(t) {
       const e = [];
@@ -571,17 +571,17 @@ define(['exports'], function (t) {
         'string' == typeof n ? e.push(n) : n && void 0 === n.revision && e.push(n.url);
         const { cacheKey: t, url: i } = p(n),
           r = 'string' != typeof n && n.revision ? 'reload' : 'default';
-        if (this.k.has(i) && this.k.get(i) !== t)
+        if (this.K.has(i) && this.K.get(i) !== t)
           throw new s('add-to-cache-list-conflicting-entries', {
-            firstEntry: this.k.get(i),
+            firstEntry: this.K.get(i),
             secondEntry: t,
           });
         if ('string' != typeof n && n.integrity) {
-          if (this.P.has(t) && this.P.get(t) !== n.integrity)
+          if (this.T.has(t) && this.T.get(t) !== n.integrity)
             throw new s('add-to-cache-list-conflicting-integrities', { url: i });
-          this.P.set(t, n.integrity);
+          this.T.set(t, n.integrity);
         }
-        if ((this.k.set(i, t), this.K.set(i, r), e.length > 0)) {
+        if ((this.K.set(i, t), this.P.set(i, r), e.length > 0)) {
           const t = `Workbox is precaching URLs without revision info: ${e.join(
             ', ',
           )}\nThis is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
@@ -593,9 +593,9 @@ define(['exports'], function (t) {
       return d(t, async () => {
         const e = new y();
         this.strategy.plugins.push(e);
-        for (const [e, s] of this.k) {
-          const n = this.P.get(s),
-            i = this.K.get(e),
+        for (const [e, s] of this.K) {
+          const n = this.T.get(s),
+            i = this.P.get(e),
             r = new Request(e, { integrity: n, cache: i, credentials: 'same-origin' });
           await Promise.all(
             this.strategy.handleAll({ params: { cacheKey: s }, request: r, event: t }),
@@ -609,24 +609,24 @@ define(['exports'], function (t) {
       return d(t, async () => {
         const t = await self.caches.open(this.strategy.cacheName),
           e = await t.keys(),
-          s = new Set(this.k.values()),
+          s = new Set(this.K.values()),
           n = [];
         for (const i of e) s.has(i.url) || (await t.delete(i), n.push(i.url));
         return { deletedURLs: n };
       });
     }
     getURLsToCacheKeys() {
-      return this.k;
+      return this.K;
     }
     getCachedURLs() {
-      return [...this.k.keys()];
+      return [...this.K.keys()];
     }
     getCacheKeyForURL(t) {
       const e = new URL(t, location.href);
-      return this.k.get(e.href);
+      return this.K.get(e.href);
     }
     getIntegrityForCacheKey(t) {
-      return this.P.get(t);
+      return this.T.get(t);
     }
     async matchPrecache(t) {
       const e = t instanceof Request ? t.url : t,
@@ -690,13 +690,13 @@ define(['exports'], function (t) {
   }
   (t.NavigationRoute = class extends i {
     constructor(t, { allowlist: e = [/./], denylist: s = [] } = {}) {
-      super((t) => this.W(t), t), (this.j = e), (this.M = s);
+      super((t) => this.j(t), t), (this.M = e), (this.S = s);
     }
-    W({ url: t, request: e }) {
+    j({ url: t, request: e }) {
       if (e && 'navigate' !== e.mode) return !1;
       const s = t.pathname + t.search;
-      for (const t of this.M) if (t.test(s)) return !1;
-      return !!this.j.some((t) => t.test(s));
+      for (const t of this.S) if (t.test(s)) return !1;
+      return !!this.M.some((t) => t.test(s));
     }
   }),
     (t.cleanupOutdatedCaches = function () {

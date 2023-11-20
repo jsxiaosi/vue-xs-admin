@@ -1,0 +1,12 @@
+.config[data-v-a59d66f2] {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+.region[data-v-a59d66f2] {
+  width: 100%;
+  height: 500px;
+  margin-top: 12px;
+  overflow-y: auto;
+  border: 1px solid #e3e3e3;
+}

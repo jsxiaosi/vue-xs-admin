@@ -1,0 +1,768 @@
+import {
+  d as w,
+  r as Q,
+  A as W,
+  B as I,
+  C as X,
+  k as Z,
+  h as c,
+  F as ee,
+  u as x,
+  j as L,
+  D as te,
+  G as re,
+  H as ne,
+  g as v,
+  I as ae,
+  o as ie,
+  c as le,
+} from './index-nnTfcizh.js';
+import { _ as z } from './plugin-vueexport-helper-x3n3nnut.js';
+/*!
+ * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */ function D(e) {
+  return Object.prototype.toString.call(e) === '[object Object]';
+}
+function oe(e) {
+  var n, t;
+  return D(e) === !1
+    ? !1
+    : ((n = e.constructor),
+      n === void 0
+        ? !0
+        : ((t = n.prototype), !(D(t) === !1 || t.hasOwnProperty('isPrototypeOf') === !1)));
+}
+function V() {
+  return (
+    (V = Object.assign
+      ? Object.assign.bind()
+      : function (e) {
+          for (var n = 1; n < arguments.length; n++) {
+            var t = arguments[n];
+            for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r]);
+          }
+          return e;
+        }),
+    V.apply(this, arguments)
+  );
+}
+function M(e, n) {
+  if (e == null) return {};
+  var t,
+    r,
+    a = {},
+    i = Object.keys(e);
+  for (r = 0; r < i.length; r++) n.indexOf((t = i[r])) >= 0 || (a[t] = e[t]);
+  return a;
+}
+const se = { silent: !1, logLevel: 'warn' },
+  ue = ['validator'],
+  Y = Object.prototype,
+  R = Y.toString,
+  ce = Y.hasOwnProperty,
+  U = /^\s*function (\w+)/;
+function F(e) {
+  var n;
+  const t = (n = e == null ? void 0 : e.type) !== null && n !== void 0 ? n : e;
+  if (t) {
+    const r = t.toString().match(U);
+    return r ? r[1] : '';
+  }
+  return '';
+}
+const g = oe,
+  fe = (e) => e;
+let d = fe;
+const O = (e, n) => ce.call(e, n),
+  de =
+    Number.isInteger ||
+    function (e) {
+      return typeof e == 'number' && isFinite(e) && Math.floor(e) === e;
+    },
+  _ =
+    Array.isArray ||
+    function (e) {
+      return R.call(e) === '[object Array]';
+    },
+  j = (e) => R.call(e) === '[object Function]',
+  $ = (e, n) => g(e) && O(e, '_vueTypes_name') && (!n || e._vueTypes_name === n),
+  G = (e) =>
+    g(e) &&
+    (O(e, 'type') || ['_vueTypes_name', 'validator', 'default', 'required'].some((n) => O(e, n)));
+function P(e, n) {
+  return Object.defineProperty(e.bind(n), '__original', { value: e });
+}
+function h(e, n, t = !1) {
+  let r,
+    a = !0,
+    i = '';
+  r = g(e) ? e : { type: e };
+  const l = $(r) ? r._vueTypes_name + ' - ' : '';
+  if (G(r) && r.type !== null) {
+    if (r.type === void 0 || r.type === !0 || (!r.required && n == null)) return a;
+    _(r.type)
+      ? ((a = r.type.some((o) => h(o, n, !0) === !0)), (i = r.type.map((o) => F(o)).join(' or ')))
+      : ((i = F(r)),
+        (a =
+          i === 'Array'
+            ? _(n)
+            : i === 'Object'
+            ? g(n)
+            : i === 'String' || i === 'Number' || i === 'Boolean' || i === 'Function'
+            ? (function (o) {
+                if (o == null) return '';
+                const s = o.constructor.toString().match(U);
+                return s ? s[1].replace(/^Async/, '') : '';
+              })(n) === i
+            : n instanceof r.type));
+  }
+  if (!a) {
+    const o = `${l}value "${n}" should be of type "${i}"`;
+    return t === !1 ? (d(o), !1) : o;
+  }
+  if (O(r, 'validator') && j(r.validator)) {
+    const o = d,
+      s = [];
+    if (
+      ((d = (u) => {
+        s.push(u);
+      }),
+      (a = r.validator(n)),
+      (d = o),
+      !a)
+    ) {
+      const u =
+        (s.length > 1 ? '* ' : '') +
+        s.join(`
+* `);
+      return (s.length = 0), t === !1 ? (d(u), a) : u;
+    }
+  }
+  return a;
+}
+function y(e, n) {
+  const t = Object.defineProperties(n, {
+      _vueTypes_name: { value: e, writable: !0 },
+      isRequired: {
+        get() {
+          return (this.required = !0), this;
+        },
+      },
+      def: {
+        value(a) {
+          return a === void 0
+            ? this.type === Boolean || (Array.isArray(this.type) && this.type.includes(Boolean))
+              ? void (this.default = void 0)
+              : (O(this, 'default') && delete this.default, this)
+            : j(a) || h(this, a, !0) === !0
+            ? ((this.default = _(a) ? () => [...a] : g(a) ? () => Object.assign({}, a) : a), this)
+            : (d(`${this._vueTypes_name} - invalid default value: "${a}"`), this);
+        },
+      },
+    }),
+    { validator: r } = t;
+  return j(r) && (t.validator = P(r, t)), t;
+}
+function m(e, n) {
+  const t = y(e, n);
+  return Object.defineProperty(t, 'validate', {
+    value(r) {
+      return (
+        j(this.validator) &&
+          d(`${
+            this._vueTypes_name
+          } - calling .validate() will overwrite the current custom validator function. Validator info:
+${JSON.stringify(this)}`),
+        (this.validator = P(r, this)),
+        this
+      );
+    },
+  });
+}
+function k(e, n, t) {
+  const r = (function (s) {
+    const u = {};
+    return (
+      Object.getOwnPropertyNames(s).forEach((f) => {
+        u[f] = Object.getOwnPropertyDescriptor(s, f);
+      }),
+      Object.defineProperties({}, u)
+    );
+  })(n);
+  if (((r._vueTypes_name = e), !g(t))) return r;
+  const { validator: a } = t,
+    i = M(t, ue);
+  if (j(a)) {
+    let { validator: s } = r;
+    s && (s = (o = (l = s).__original) !== null && o !== void 0 ? o : l),
+      (r.validator = P(
+        s
+          ? function (u) {
+              return s.call(this, u) && a.call(this, u);
+            }
+          : a,
+        r,
+      ));
+  }
+  var l, o;
+  return Object.assign(r, i);
+}
+function S(e) {
+  return e.replace(/^(?!\s*$)/gm, '  ');
+}
+const pe = () => m('any', {}),
+  ye = () => m('function', { type: Function }),
+  q = () => m('boolean', { type: Boolean }),
+  ve = () => m('string', { type: String }),
+  me = () => m('number', { type: Number }),
+  be = () => m('array', { type: Array }),
+  ge = () => m('object', { type: Object }),
+  he = () =>
+    y('integer', {
+      type: Number,
+      validator(e) {
+        const n = de(e);
+        return n === !1 && d(`integer - "${e}" is not an integer`), n;
+      },
+    }),
+  Oe = () =>
+    y('symbol', {
+      validator(e) {
+        const n = typeof e == 'symbol';
+        return n === !1 && d(`symbol - invalid value "${e}"`), n;
+      },
+    }),
+  _e = () =>
+    Object.defineProperty(
+      {
+        type: null,
+        validator(e) {
+          const n = e === null;
+          return n === !1 && d('nullable - value should be null'), n;
+        },
+      },
+      '_vueTypes_name',
+      { value: 'nullable' },
+    );
+function je(e, n = 'custom validation failed') {
+  if (typeof e != 'function')
+    throw new TypeError('[VueTypes error]: You must provide a function as argument');
+  return y(e.name || '<<anonymous function>>', {
+    type: null,
+    validator(t) {
+      const r = e(t);
+      return r || d(`${this._vueTypes_name} - ${n}`), r;
+    },
+  });
+}
+function Ve(e) {
+  if (!_(e)) throw new TypeError('[VueTypes error]: You must provide an array as argument.');
+  const n = `oneOf - value should be one of "${e
+      .map((r) => (typeof r == 'symbol' ? r.toString() : r))
+      .join('", "')}".`,
+    t = {
+      validator(r) {
+        const a = e.indexOf(r) !== -1;
+        return a || d(n), a;
+      },
+    };
+  if (e.indexOf(null) === -1) {
+    const r = e.reduce((a, i) => {
+      if (i != null) {
+        const l = i.constructor;
+        a.indexOf(l) === -1 && a.push(l);
+      }
+      return a;
+    }, []);
+    r.length > 0 && (t.type = r);
+  }
+  return y('oneOf', t);
+}
+function Te(e) {
+  if (!_(e)) throw new TypeError('[VueTypes error]: You must provide an array as argument');
+  let n = !1,
+    t = !1,
+    r = [];
+  for (let i = 0; i < e.length; i += 1) {
+    const l = e[i];
+    if (G(l)) {
+      if ((j(l.validator) && (n = !0), $(l, 'oneOf') && l.type)) {
+        r = r.concat(l.type);
+        continue;
+      }
+      if ($(l, 'nullable')) {
+        t = !0;
+        continue;
+      }
+      if (l.type === !0 || !l.type) {
+        d('oneOfType - invalid usage of "true" and "null" as types.');
+        continue;
+      }
+      r = r.concat(l.type);
+    } else r.push(l);
+  }
+  r = r.filter((i, l) => r.indexOf(i) === l);
+  const a = t === !1 && r.length > 0 ? r : null;
+  return y(
+    'oneOfType',
+    n
+      ? {
+          type: a,
+          validator(i) {
+            const l = [],
+              o = e.some((s) => {
+                const u = h(s, i, !0);
+                return typeof u == 'string' && l.push(u), u === !0;
+              });
+            return (
+              o ||
+                d(`oneOfType - provided value does not match any of the ${
+                  l.length
+                } passed-in validators:
+${S(
+  l.join(`
+`),
+)}`),
+              o
+            );
+          },
+        }
+      : { type: a },
+  );
+}
+function xe(e) {
+  return y('arrayOf', {
+    type: Array,
+    validator(n) {
+      let t = '';
+      const r = n.every((a) => ((t = h(e, a, !0)), t === !0));
+      return (
+        r ||
+          d(`arrayOf - value validation error:
+${S(t)}`),
+        r
+      );
+    },
+  });
+}
+function $e(e) {
+  return y('instanceOf', { type: e });
+}
+function we(e) {
+  return y('objectOf', {
+    type: Object,
+    validator(n) {
+      let t = '';
+      const r = Object.keys(n).every((a) => ((t = h(e, n[a], !0)), t === !0));
+      return (
+        r ||
+          d(`objectOf - value validation error:
+${S(t)}`),
+        r
+      );
+    },
+  });
+}
+function Se(e) {
+  const n = Object.keys(e),
+    t = n.filter((a) => {
+      var i;
+      return !((i = e[a]) === null || i === void 0 || !i.required);
+    }),
+    r = y('shape', {
+      type: Object,
+      validator(a) {
+        if (!g(a)) return !1;
+        const i = Object.keys(a);
+        if (t.length > 0 && t.some((l) => i.indexOf(l) === -1)) {
+          const l = t.filter((o) => i.indexOf(o) === -1);
+          return (
+            d(
+              l.length === 1
+                ? `shape - required property "${l[0]}" is not defined.`
+                : `shape - required properties "${l.join('", "')}" are not defined.`,
+            ),
+            !1
+          );
+        }
+        return i.every((l) => {
+          if (n.indexOf(l) === -1)
+            return (
+              this._vueTypes_isLoose === !0 ||
+              (d(
+                `shape - shape definition does not include a "${l}" property. Allowed keys: "${n.join(
+                  '", "',
+                )}".`,
+              ),
+              !1)
+            );
+          const o = h(e[l], a[l], !0);
+          return (
+            typeof o == 'string' &&
+              d(`shape - "${l}" property validation error:
+ ${S(o)}`),
+            o === !0
+          );
+        });
+      },
+    });
+  return (
+    Object.defineProperty(r, '_vueTypes_isLoose', { writable: !0, value: !1 }),
+    Object.defineProperty(r, 'loose', {
+      get() {
+        return (this._vueTypes_isLoose = !0), this;
+      },
+    }),
+    r
+  );
+}
+const Ae = ['name', 'validate', 'getter'],
+  Pe = (() => {
+    var e;
+    return (
+      ((e = class {
+        static get any() {
+          return pe();
+        }
+        static get func() {
+          return ye().def(this.defaults.func);
+        }
+        static get bool() {
+          return this.defaults.bool === void 0 ? q() : q().def(this.defaults.bool);
+        }
+        static get string() {
+          return ve().def(this.defaults.string);
+        }
+        static get number() {
+          return me().def(this.defaults.number);
+        }
+        static get array() {
+          return be().def(this.defaults.array);
+        }
+        static get object() {
+          return ge().def(this.defaults.object);
+        }
+        static get integer() {
+          return he().def(this.defaults.integer);
+        }
+        static get symbol() {
+          return Oe();
+        }
+        static get nullable() {
+          return _e();
+        }
+        static extend(n) {
+          if (
+            (d(
+              'VueTypes.extend is deprecated. Use the ES6+ method instead. See https://dwightjack.github.io/vue-types/advanced/extending-vue-types.html#extending-namespaced-validators-in-es6 for details.',
+            ),
+            _(n))
+          )
+            return n.forEach((s) => this.extend(s)), this;
+          const { name: t, validate: r = !1, getter: a = !1 } = n,
+            i = M(n, Ae);
+          if (O(this, t)) throw new TypeError(`[VueTypes error]: Type "${t}" already defined`);
+          const { type: l } = i;
+          if ($(l))
+            return (
+              delete i.type,
+              Object.defineProperty(
+                this,
+                t,
+                a
+                  ? { get: () => k(t, l, i) }
+                  : {
+                      value(...s) {
+                        const u = k(t, l, i);
+                        return u.validator && (u.validator = u.validator.bind(u, ...s)), u;
+                      },
+                    },
+              )
+            );
+          let o;
+          return (
+            (o = a
+              ? {
+                  get() {
+                    const s = Object.assign({}, i);
+                    return r ? m(t, s) : y(t, s);
+                  },
+                  enumerable: !0,
+                }
+              : {
+                  value(...s) {
+                    const u = Object.assign({}, i);
+                    let f;
+                    return (
+                      (f = r ? m(t, u) : y(t, u)),
+                      u.validator && (f.validator = u.validator.bind(f, ...s)),
+                      f
+                    );
+                  },
+                  enumerable: !0,
+                }),
+            Object.defineProperty(this, t, o)
+          );
+        }
+      }).defaults = {}),
+      (e.sensibleDefaults = void 0),
+      (e.config = se),
+      (e.custom = je),
+      (e.oneOf = Ve),
+      (e.instanceOf = $e),
+      (e.oneOfType = Te),
+      (e.arrayOf = xe),
+      (e.objectOf = we),
+      (e.shape = Se),
+      (e.utils = {
+        validate: (n, t) => h(t, n, !0) === !0,
+        toType: (n, t, r = !1) => (r ? m(n, t) : y(n, t)),
+      }),
+      e
+    );
+  })();
+function J(
+  e = {
+    func: () => {},
+    bool: !0,
+    string: '',
+    number: 0,
+    array: () => [],
+    object: () => ({}),
+    integer: 0,
+  },
+) {
+  var n;
+  return (
+    ((n = class extends Pe {
+      static get sensibleDefaults() {
+        return V({}, this.defaults);
+      }
+      static set sensibleDefaults(t) {
+        this.defaults = t !== !1 ? V({}, t !== !0 ? t : e) : {};
+      }
+    }).defaults = V({}, e)),
+    n
+  );
+}
+class Ie extends J() {}
+const p = J({
+    func: void 0,
+    bool: void 0,
+    string: void 0,
+    number: void 0,
+    object: void 0,
+    integer: void 0,
+  }),
+  Ne = {
+    startVal: p.number.def(0),
+    endVal: p.number.def(2020),
+    duration: p.number.def(1300),
+    autoplay: p.bool.def(!0),
+    decimals: {
+      type: Number,
+      required: !1,
+      default: 0,
+      validator(e) {
+        return e >= 0;
+      },
+    },
+    color: p.string.def(),
+    fontSize: p.string.def(),
+    decimal: p.string.def('.'),
+    separator: p.string.def(','),
+    prefix: p.string.def(''),
+    suffix: p.string.def(''),
+    useEasing: p.bool.def(!0),
+    easingFn: {
+      type: Function,
+      default(e, n, t, r) {
+        return (t * (-Math.pow(2, (-10 * e) / r) + 1) * 1024) / 1023 + n;
+      },
+    },
+  },
+  B = w({
+    name: 'CountToNormal',
+    props: Ne,
+    emits: ['mounted', 'callback'],
+    setup(e, { emit: n }) {
+      const t = Q({
+          localStartVal: e.startVal,
+          displayValue: l(e.startVal),
+          printVal: null,
+          paused: !1,
+          localDuration: e.duration,
+          startTime: null,
+          timestamp: null,
+          remaining: null,
+          rAF: null,
+        }),
+        r = W(() => e.startVal > e.endVal);
+      I([() => e.startVal, () => e.endVal], () => {
+        e.autoplay && a();
+      });
+      function a() {
+        const { startVal: o, duration: s } = e;
+        (t.localStartVal = o),
+          (t.startTime = null),
+          (t.localDuration = s),
+          (t.paused = !1),
+          (t.rAF = requestAnimationFrame(i));
+      }
+      function i(o) {
+        const { useEasing: s, easingFn: u, endVal: f } = e;
+        t.startTime || (t.startTime = o), (t.timestamp = o);
+        const b = o - t.startTime;
+        (t.remaining = t.localDuration - b),
+          s
+            ? x(r)
+              ? (t.printVal = t.localStartVal - u(b, 0, t.localStartVal - f, t.localDuration))
+              : (t.printVal = u(b, t.localStartVal, f - t.localStartVal, t.localDuration))
+            : x(r)
+            ? (t.printVal = t.localStartVal - (t.localStartVal - f) * (b / t.localDuration))
+            : (t.printVal = t.localStartVal + (f - t.localStartVal) * (b / t.localDuration)),
+          x(r)
+            ? (t.printVal = t.printVal < f ? f : t.printVal)
+            : (t.printVal = t.printVal > f ? f : t.printVal),
+          (t.displayValue = l(t.printVal)),
+          b < t.localDuration ? (t.rAF = requestAnimationFrame(i)) : n('callback');
+      }
+      function l(o) {
+        const { decimals: s, decimal: u, separator: f, suffix: b, prefix: H } = e;
+        (o = Number(o).toFixed(s)), (o += '');
+        const A = o.split('.');
+        let T = A[0];
+        const K = A.length > 1 ? u + A[1] : '',
+          N = /(\d+)(\d{3})/;
+        if (f && !X(f)) for (; N.test(T); ) T = T.replace(N, '$1' + f + '$2');
+        return H + T + K + b;
+      }
+      return (
+        Z(() => {
+          e.autoplay && a(), n('mounted');
+        }),
+        () => c(ee, null, [c('span', null, [t.displayValue])])
+      );
+    },
+  }),
+  De = {
+    delay: p.number.def(1),
+    blur: p.number.def(2),
+    i: {
+      type: Number,
+      required: !1,
+      default: 0,
+      validator(e) {
+        return e < 10 && e >= 0 && Number.isInteger(e);
+      },
+    },
+  },
+  Fe = w({
+    name: 'CountToRebound',
+    props: De,
+    setup(e) {
+      const n = L();
+      return (
+        te(() => {
+          const t = navigator.userAgent.toLowerCase(),
+            r = (i) => i.test(t);
+          r(/safari/g) &&
+            !r(/chrome/g) &&
+            (n.value = setTimeout(() => {
+              re().refs.ul.setAttribute(
+                'style',
+                `
+        animation: none;
+        transform: translateY(calc(var(--i) * -9.09%))
+      `,
+              );
+            }, e.delay * 1e3));
+        }),
+        ne(() => {
+          clearTimeout(x(n));
+        }),
+        () =>
+          c('div', { class: 'scroll-num', style: { '--i': e.i, '--delay': e.delay } }, [
+            c('ul', { ref: 'ul', style: { fontSize: '1em' } }, [
+              c('li', null, [v('0')]),
+              c('li', null, [v('1')]),
+              c('li', null, [v('2')]),
+              c('li', null, [v('3')]),
+              c('li', null, [v('4')]),
+              c('li', null, [v('5')]),
+              c('li', null, [v('6')]),
+              c('li', null, [v('7')]),
+              c('li', null, [v('8')]),
+              c('li', null, [v('9')]),
+              c('li', null, [v('0')]),
+            ]),
+            c('svg', { width: '0', height: '0' }, [
+              c('filter', { id: 'blur' }, [
+                c('feGaussianBlur', { in: 'SourceGraphic', stdDeviation: `0 ${e.blur}` }, null),
+              ]),
+            ]),
+          ])
+      );
+    },
+  }),
+  E = z(Fe, [['__scopeId', 'data-v-3f50d931']]),
+  ke = {
+    type: p.string.def('normal'),
+    prefix: p.string.def(''),
+    duration: p.number.def(2e3),
+    startVal: p.number.def(0),
+    numVal: p.number.def(1666),
+  },
+  qe = w({
+    name: 'CountTo',
+    components: { Normal: B, Rebound: E },
+    props: ke,
+    setup(e) {
+      const n = L([]);
+      return (
+        I(
+          [() => e.numVal],
+          () => {
+            e.type === 'rebound' && (n.value = ae(e.numVal));
+          },
+          { immediate: !0 },
+        ),
+        () =>
+          c('div', null, [
+            e.type === 'normal'
+              ? c(
+                  B,
+                  {
+                    prefix: e.prefix,
+                    duration: e.duration,
+                    'start-val': e.startVal,
+                    'end-val': e.numVal,
+                  },
+                  null,
+                )
+              : c('div', { class: 'rebound' }, [
+                  c('span', null, [e.prefix]),
+                  n.value.map((t, r) => c(E, { key: r, i: t, blur: r, delay: r + 1 }, null)),
+                ]),
+          ])
+      );
+    },
+  }),
+  C = z(qe, [['__scopeId', 'data-v-bf1793a0']]),
+  Be = { class: 'page-container' },
+  Le = w({
+    __name: 'index',
+    setup(e) {
+      return (n, t) => (
+        ie(),
+        le('div', Be, [
+          c(C, { style: { 'font-size': '36px' }, 'num-val': 2e3 }),
+          c(C, { style: { 'font-size': '36px' }, type: 'rebound', 'num-val': 1234212 }),
+        ])
+      );
+    },
+  });
+export { Le as default };
