@@ -92,7 +92,7 @@
           <el-menu-item
             :index="resolvePath(onlyOneChild?.path ?? '')"
             :class="{
-              'submenu-title-noDropdown': !isNest,
+              'submenu-title-no-dropdown': !isNest,
               'one-level-menu-item': props.level === 0,
             }"
           >

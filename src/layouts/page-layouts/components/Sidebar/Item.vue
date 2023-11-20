@@ -58,8 +58,8 @@
 
 <style lang="scss" scoped>
   .sidebar-menu-item-text {
-    width: 0;
     flex: 1;
+    width: 0;
   }
 
   .menu-item-text {

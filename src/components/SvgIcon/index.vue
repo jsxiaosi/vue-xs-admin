@@ -39,14 +39,14 @@
 <style lang="scss" scoped>
   .svg-icon {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     width: 1em;
     height: 1em;
-    font-size: 1em;
-    color: currentcolor;
     margin: 0;
+    color: currentcolor;
+    font-size: 1em;
 
     .svg {
       width: 1em;

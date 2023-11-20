@@ -83,5 +83,3 @@
     </el-menu>
   </el-scrollbar>
 </template>
-
-<style lang="scss" scoped></style>
