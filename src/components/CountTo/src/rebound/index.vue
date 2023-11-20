@@ -1,5 +1,4 @@
 <script lang="tsx">
-  import type { Ref } from 'vue';
   import {
     defineComponent,
     ref,
@@ -14,7 +13,7 @@
     name: 'CountToRebound',
     props: reboundProps,
     setup(props) {
-      const timer = ref<NodeJS.Timer | null>(null);
+      const timer = ref<NodeJS.Timeout | string | number | undefined>();
 
       onBeforeMount(() => {
         const ua = navigator.userAgent.toLowerCase();
@@ -36,7 +35,7 @@
       });
 
       onBeforeUnmount(() => {
-        clearTimeout(unref(timer as Ref<NodeJS.Timer>));
+        clearTimeout(unref(timer));
       });
 
       return () => (
