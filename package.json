@@ -1,5 +1,6 @@
 {
   "name": "vue-xs-admin",
+  "type": "module",
   "version": "1.9.1",
   "packageManager": "pnpm@8.1.0",
   "author": {
@@ -9,7 +10,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8.1.0"
   },
   "scripts": {
@@ -29,7 +30,7 @@
     "test:br": "http-server dist --cors --brotli -c-1",
     "lint:eslint": "eslint \"{src,mock,build}/**/*.{vue,ts,js,tsx,jsx}\" package.json --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,css,scss,vue,ts,tsx,jsx,html,md}\"",
-    "lint:stylelint": "stylelint --fix scss \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:stylelint": "stylelint \"**/*.{vue,css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/",
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
     "cz": "czg",
@@ -45,11 +46,13 @@
     "@logicflow/extension": "^1.2.13",
     "@vueuse/core": "^10.4.1",
     "axios": "^1.5.0",
+    "commitlint": "17.7.1",
     "dayjs": "^1.11.9",
     "docx-preview": "^0.1.18",
     "echarts": "^5.4.3",
-    "element-plus": "^2.3.12",
+    "element-plus": "^2.4.1",
     "es6-promise": "^4.2.8",
+    "html2pdf.js": "^0.10.1",
     "i18next": "^23.5.0",
     "intro.js": "^7.2.0",
     "lodash": "^4.17.21",
@@ -72,9 +75,9 @@
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.2",
-    "@jsxiaosi/commitlint-config": "^0.0.17",
-    "@jsxiaosi/eslint-config-prettier": "^0.0.17",
-    "@jsxiaosi/eslint-config-vue": "^0.0.17",
+    "@jsxiaosi/commitlint-config": "^0.0.20",
+    "@jsxiaosi/eslint-config-prettier": "^0.0.20",
+    "@jsxiaosi/eslint-config-vue": "^0.0.20",
     "@types/core-js": "^2.5.6",
     "@types/intro.js": "^5.1.1",
     "@types/lodash-es": "^4.17.9",
@@ -107,10 +110,15 @@
     "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.66.1",
     "stylelint": "^15.10.3",
-    "stylelint-config-recess-order": "^4.3.0",
+    "stylelint-config-property-sort-order-smacss": "^9.1.0",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-recommended-scss": "^13.1.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.1.0",
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.1.0",
+    "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "unplugin-element-plus": "^0.8.0",
     "vite": "^4.4.9",
@@ -130,12 +138,19 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
-        "rollup",
-        "source-map-*",
-        "stable",
-        "uuid",
-        "urix"
+        "rollup"
       ]
+    },
+    "allowedDeprecatedVersions": {
+      "sourcemap-codec": "*",
+      "w3c-hr-time": "*",
+      "stable": "*",
+      "source-map-resolve": "*",
+      "source-map-url": "*",
+      "resolve-url": "*",
+      "rollup-plugin-terser": "*",
+      "urix": "*",
+      "uuid": "*"
     }
   },
   "resolutions": {
