@@ -2,7 +2,7 @@ import vue from '@vitejs/plugin-vue';
 
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-import VueMacros from 'unplugin-vue-macros/vite';
+// import VueMacros from 'unplugin-vue-macros/vite';
 
 import type { ConfigEnv, PluginOption } from 'vite';
 
@@ -41,12 +41,8 @@ export function createVitePlugins(_isBuild = false, _configEnv: ConfigEnv) {
   ];
 
   vitePlugins.push(
-    VueMacros({
-      plugins: {
-        vue: vue(),
-        vueJsx: vueJsx(), // 如果需要
-      },
-    }),
+    vue(),
+    vueJsx(), // 如果需要
   );
 
   vitePlugins.push(configStylePlugin());

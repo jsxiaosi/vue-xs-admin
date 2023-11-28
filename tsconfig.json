@@ -26,8 +26,7 @@
       "vite/client",
       "element-plus/global",
       "element-plus/lib/locale",
-      "@intlify/unplugin-vue-i18n/messages",
-      "unplugin-vue-macros/macros-global"
+      "@intlify/unplugin-vue-i18n/messages"
     ],
     "typeRoots": ["./node_modules"],
     "paths": {
