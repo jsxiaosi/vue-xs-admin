@@ -44,7 +44,6 @@
     justify-content: center;
     width: 1em;
     height: 1em;
-    margin: 0;
     color: currentcolor;
     font-size: 1em;
 
