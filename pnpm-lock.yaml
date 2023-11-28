@@ -101,9 +101,6 @@ dependencies:
   vue-types:
     specifier: ^5.1.1
     version: 5.1.1(vue@3.3.9)
-  vuex:
-    specifier: ^4.1.0
-    version: 4.1.0(vue@3.3.9)
   wangeditor:
     specifier: ^4.7.15
     version: 4.7.15
@@ -175,9 +172,6 @@ devDependencies:
   eslint:
     specifier: ^8.54.0
     version: 8.54.0
-  eslint-plugin-jsonc:
-    specifier: ^2.10.0
-    version: 2.10.0(eslint@8.54.0)
   http-server:
     specifier: ^14.1.1
     version: 14.1.1
@@ -283,9 +277,6 @@ devDependencies:
   vitest:
     specifier: ^0.34.6
     version: 0.34.6(jsdom@22.1.0)(sass@1.69.5)
-  vue-eslint-parser:
-    specifier: ^9.3.2
-    version: 9.3.2(eslint@8.54.0)
   vue-tsc:
     specifier: ^1.8.22
     version: 1.8.22(typescript@5.3.2)
@@ -18633,18 +18624,6 @@ packages:
       '@vue/server-renderer': 3.3.9(vue@3.3.9)
       '@vue/shared': 3.3.9
       typescript: 5.3.2
-
-  /vuex@4.1.0(vue@3.3.9):
-    resolution:
-      {
-        integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==,
-      }
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      '@vue/devtools-api': 6.5.1
-      vue: 3.3.9(typescript@5.3.2)
-    dev: false
 
   /w3c-hr-time@1.0.2:
     resolution:

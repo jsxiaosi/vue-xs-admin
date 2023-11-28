@@ -70,7 +70,6 @@
     "vue-pdf-embed": "^1.2.1",
     "vue-router": "^4.2.5",
     "vue-types": "^5.1.1",
-    "vuex": "^4.1.0",
     "wangeditor": "^4.7.15"
   },
   "devDependencies": {
@@ -96,7 +95,6 @@
     "czg": "^1.7.1",
     "echarts-wordcloud": "^2.1.0",
     "eslint": "^8.54.0",
-    "eslint-plugin-jsonc": "^2.10.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
@@ -132,7 +130,6 @@
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vitest": "^0.34.6",
-    "vue-eslint-parser": "^9.3.2",
     "vue-tsc": "^1.8.22",
     "xlsx": "^0.18.5"
   },
