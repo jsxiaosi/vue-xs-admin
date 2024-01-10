@@ -10,5 +10,4 @@
 # npm run lint:stylelint
 npm run lint:staged
 
-npm run lint:pretty
 # git add .
