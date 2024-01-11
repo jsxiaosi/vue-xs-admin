@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vueexport-helper-x3n3nnut.js";import{a as o,o as s,c,h as n}from"./index-Mu6vz_nv.js";const a={},r={style:{padding:"30px"}};function l(_,p){const e=o("el-alert");return s(),c("div",r,[n(e,{closable:!1,title:"menu 1-3",type:"success"})])}const m=t(a,[["render",l]]);export{m as default};
