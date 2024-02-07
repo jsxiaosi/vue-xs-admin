@@ -52,8 +52,8 @@
         const getContent = isSlots
           ? slotsComponent()
           : render || render_header
-          ? renderComponent()
-          : eLComponent();
+            ? renderComponent()
+            : eLComponent();
         return getContent;
       };
     },
