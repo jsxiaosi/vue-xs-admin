@@ -6,7 +6,6 @@ import { configMainStore } from './store';
 import { configMainI18n } from './locales';
 import { configMainRouter } from './router';
 import { useElementPlus } from './utils/plugin/element';
-import './ref-demo';
 
 // tailwind css
 import '@/styles/tailwind.css';
