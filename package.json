@@ -155,7 +155,7 @@
     "bin-wrapper": "npm:bin-wrapper-china"
   },
   "lint-staged": {
-    "˜{src,mock,build}/**/*.{ts,js,tsx,jsx}": [
+    "{src,mock,build}/**/*.{ts,js,tsx,jsx}": [
       "eslint --fix",
       "prettier --write"
     ],
