@@ -34,7 +34,7 @@
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
     "cz": "czg",
-    "prepare": "husky install",
+    "prepare": "husky",
     "push": "scp -r dist/* root@服务器公网IP:/服务器资源存放地址",
     "build:push": "npm run build && npm run push"
   },
