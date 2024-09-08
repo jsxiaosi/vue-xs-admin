@@ -1,5 +1,5 @@
 <script lang="ts" setup generic="T extends Object">
-  import { onMounted, reactive, ref, shallowRef, useTemplateRef } from 'vue';
+  import { onMounted, reactive, shallowRef, useTemplateRef } from 'vue';
   import type { ElForm, FormItemRule } from 'element-plus';
   import type { Arrayable } from '@vueuse/core';
   import type { FormProps, FormSlotType } from './types/from';

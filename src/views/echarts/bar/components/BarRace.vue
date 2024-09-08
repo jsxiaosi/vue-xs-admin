@@ -2,7 +2,7 @@
 
 <script lang="ts" setup>
   import type { Ref } from 'vue';
-  import { onMounted, ref, useTemplateRef } from 'vue';
+  import { onMounted, useTemplateRef } from 'vue';
   import { useIntervalFn } from '@vueuse/core';
   import type { createEChartsOption } from '@/hooks/web/useECharts';
   import { useECharts } from '@/hooks/web/useECharts';

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted, ref, useTemplateRef, watch } from 'vue';
+  import { onMounted, useTemplateRef, watch } from 'vue';
   import { renderAsync } from 'docx-preview';
   import { isUrl } from '@jsxiaosi/utils';
 

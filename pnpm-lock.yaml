@@ -116,7 +116,7 @@ importers:
         version: 0.1.0(@commitlint/cli@19.4.1(@types/node@20.9.0)(typescript@5.5.4))(commitizen@4.3.0(@types/node@20.9.0)(typescript@5.5.4))(commitlint@19.4.1(@types/node@20.9.0)(typescript@5.5.4))(czg@1.9.4)(husky@9.1.5)
       '@jsxiaosi/eslint-config-prettier':
         specifier: ^0.1.0
-        version: 0.1.0(@types/eslint@8.56.10)(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)
+        version: 0.1.0(@types/eslint@9.6.1)(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)
       '@jsxiaosi/eslint-config-vue':
         specifier: ^0.1.0
         version: 0.1.0(eslint@9.9.1(jiti@1.21.0))(typescript@5.5.4)
@@ -189,6 +189,9 @@ importers:
       lint-staged:
         specifier: ^15.2.10
         version: 15.2.10
+      pdfjs-dist:
+        specifier: ^4.6.82
+        version: 4.6.82
       postcss:
         specifier: ^8.4.45
         version: 8.4.45
@@ -977,10 +980,6 @@ packages:
 
   '@commitlint/lint@19.4.1':
     resolution: {integrity: sha512-Ws4YVAZ0jACTv6VThumITC1I5AG0UyXMGua3qcf55JmXIXm/ejfaVKykrqx7RyZOACKVAs8uDRIsEsi87JZ3+Q==}
-    engines: {node: '>=v18'}
-
-  '@commitlint/load@19.2.0':
-    resolution: {integrity: sha512-XvxxLJTKqZojCxaBQ7u92qQLFMMZc4+p9qrIq/9kJDy8DOrEa7P1yx7Tjdc2u2JxIalqT4KOGraVgCE7eCYJyQ==}
     engines: {node: '>=v18'}
 
   '@commitlint/load@19.4.0':
@@ -1861,6 +1860,9 @@ packages:
 
   '@types/eslint@8.56.10':
     resolution: {integrity: sha512-Shavhk87gCtY2fhXDctcfS3e6FdxWkCx1iUZ9eEUbh7rTqlZT0/IzOkCOVt0fCjcFuZ9FPYfuezTBImfHCDBGQ==}
+
+  '@types/eslint@9.6.1':
+    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/estree@0.0.39':
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
@@ -5749,8 +5751,8 @@ packages:
     resolution: {integrity: sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA==}
     engines: {node: '>= 14.16'}
 
-  pdfjs-dist@4.4.168:
-    resolution: {integrity: sha512-MbkAjpwka/dMHaCfQ75RY1FXX3IewBVu6NGZOcxerRFlaBiIkZmUoR0jotX5VUzYZEXAGzSFtknWs5xRKliXPA==}
+  pdfjs-dist@4.6.82:
+    resolution: {integrity: sha512-BUOryeRFwvbLe0lOU6NhkJNuVQUp06WxlJVVCsxdmJ4y5cU3O3s3/0DunVdK1PMm7v2MUw52qKYaidhDH1Z9+w==}
     engines: {node: '>=18'}
 
   pend@1.2.0:
@@ -6912,6 +6914,9 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
+  tslib@2.7.0:
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
 
@@ -7619,7 +7624,7 @@ snapshots:
 
   '@babel/helper-builder-binary-assignment-operator-visitor@7.22.15':
     dependencies:
-      '@babel/types': 7.24.7
+      '@babel/types': 7.25.6
 
   '@babel/helper-compilation-targets@7.24.7':
     dependencies:
@@ -7656,7 +7661,7 @@ snapshots:
       '@babel/core': 7.24.7
       '@babel/helper-compilation-targets': 7.24.7
       '@babel/helper-plugin-utils': 7.24.7
-      debug: 4.3.5
+      debug: 4.3.7
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -7760,7 +7765,7 @@ snapshots:
     dependencies:
       '@babel/helper-function-name': 7.24.7
       '@babel/template': 7.24.7
-      '@babel/types': 7.24.7
+      '@babel/types': 7.25.6
 
   '@babel/helpers@7.24.7':
     dependencies:
@@ -8335,7 +8340,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.24.7
       '@babel/helper-plugin-utils': 7.24.7
-      '@babel/types': 7.24.7
+      '@babel/types': 7.25.6
       esutils: 2.0.3
 
   '@babel/regjsgen@0.8.0': {}
@@ -8438,23 +8443,6 @@ snapshots:
       '@commitlint/parse': 19.0.3
       '@commitlint/rules': 19.4.1
       '@commitlint/types': 19.0.3
-
-  '@commitlint/load@19.2.0(@types/node@20.9.0)(typescript@5.5.4)':
-    dependencies:
-      '@commitlint/config-validator': 19.0.3
-      '@commitlint/execute-rule': 19.0.0
-      '@commitlint/resolve-extends': 19.1.0
-      '@commitlint/types': 19.0.3
-      chalk: 5.3.0
-      cosmiconfig: 9.0.0(typescript@5.5.4)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.9.0)(cosmiconfig@9.0.0(typescript@5.5.4))(typescript@5.5.4)
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      lodash.uniq: 4.5.0
-    transitivePeerDependencies:
-      - '@types/node'
-      - typescript
-    optional: true
 
   '@commitlint/load@19.4.0(@types/node@20.9.0)(typescript@5.5.4)':
     dependencies:
@@ -8938,11 +8926,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@jsxiaosi/eslint-config-prettier@0.1.0(@types/eslint@8.56.10)(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)':
+  '@jsxiaosi/eslint-config-prettier@0.1.0(@types/eslint@9.6.1)(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)':
     dependencies:
       eslint: 9.9.1(jiti@1.21.0)
       eslint-config-prettier: 9.1.0(eslint@9.9.1(jiti@1.21.0))
-      eslint-plugin-prettier: 5.1.2(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.9.1(jiti@1.21.0)))(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)
+      eslint-plugin-prettier: 5.1.2(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0(eslint@9.9.1(jiti@1.21.0)))(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3)
       prettier: 3.3.3
     transitivePeerDependencies:
       - '@types/eslint'
@@ -9165,8 +9153,8 @@ snapshots:
 
   '@types/babel__core@7.20.4':
     dependencies:
-      '@babel/parser': 7.24.7
-      '@babel/types': 7.24.7
+      '@babel/parser': 7.25.6
+      '@babel/types': 7.25.6
       '@types/babel__generator': 7.6.7
       '@types/babel__template': 7.4.4
       '@types/babel__traverse': 7.20.4
@@ -9174,18 +9162,18 @@ snapshots:
 
   '@types/babel__generator@7.6.7':
     dependencies:
-      '@babel/types': 7.24.7
+      '@babel/types': 7.25.6
     optional: true
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.24.7
-      '@babel/types': 7.24.7
+      '@babel/parser': 7.25.6
+      '@babel/types': 7.25.6
     optional: true
 
   '@types/babel__traverse@7.20.4':
     dependencies:
-      '@babel/types': 7.24.7
+      '@babel/types': 7.25.6
     optional: true
 
   '@types/conventional-commits-parser@5.0.0':
@@ -9198,6 +9186,12 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
+
+  '@types/eslint@9.6.1':
+    dependencies:
+      '@types/estree': 1.0.5
+      '@types/json-schema': 7.0.15
+    optional: true
 
   '@types/estree@0.0.39': {}
 
@@ -9717,7 +9711,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.5
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -10518,7 +10512,7 @@ snapshots:
 
   core-js-compat@3.37.1:
     dependencies:
-      browserslist: 4.23.1
+      browserslist: 4.23.3
 
   core-js-pure@3.33.2: {}
 
@@ -10638,7 +10632,7 @@ snapshots:
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 19.2.0(@types/node@20.9.0)(typescript@5.5.4)
+      '@commitlint/load': 19.4.0(@types/node@20.9.0)(typescript@5.5.4)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -11395,14 +11389,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-prettier@5.1.2(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.9.1(jiti@1.21.0)))(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3):
+  eslint-plugin-prettier@5.1.2(@types/eslint@9.6.1)(eslint-config-prettier@9.1.0(eslint@9.9.1(jiti@1.21.0)))(eslint@9.9.1(jiti@1.21.0))(prettier@3.3.3):
     dependencies:
       eslint: 9.9.1(jiti@1.21.0)
       prettier: 3.3.3
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
-      '@types/eslint': 8.56.10
+      '@types/eslint': 9.6.1
       eslint-config-prettier: 9.1.0(eslint@9.9.1(jiti@1.21.0))
 
   eslint-plugin-vue@9.27.0(eslint@9.9.1(jiti@1.21.0)):
@@ -11801,7 +11795,7 @@ snapshots:
     dependencies:
       detect-file: 1.0.0
       is-glob: 4.0.3
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       resolve-dir: 1.0.1
 
   flat-cache@4.0.0:
@@ -12323,7 +12317,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.5
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -13693,7 +13687,7 @@ snapshots:
 
   pathval@2.0.0: {}
 
-  pdfjs-dist@4.4.168:
+  pdfjs-dist@4.6.82:
     optionalDependencies:
       canvas: 2.11.2
       path2d: 0.2.1
@@ -14174,7 +14168,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   safe-array-concat@1.0.1:
     dependencies:
@@ -14962,6 +14956,8 @@ snapshots:
 
   tslib@2.6.2: {}
 
+  tslib@2.7.0: {}
+
   tunnel-agent@0.6.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -15397,7 +15393,7 @@ snapshots:
 
   vue-pdf-embed@2.1.0(vue@3.5.3(typescript@5.5.4)):
     dependencies:
-      pdfjs-dist: 4.4.168
+      pdfjs-dist: 4.6.82
       vue: 3.5.3(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding

@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import path from 'path';
   import { ref } from 'vue';
-  import { is, isUrl } from '@jsxiaosi/utils';
+  import { isUrl } from '@jsxiaosi/utils';
   import Item from './Item.vue';
   import AppLink from './Link.vue';
   import type { AppRouteRecordRaw } from '@/router/type';
