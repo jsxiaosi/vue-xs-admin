@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, watchEffect } from 'vue';
+  import { ref, useTemplateRef, watchEffect } from 'vue';
   import VuePdfEmbed from 'vue-pdf-embed';
   // import { useEventListener, useDebounceFn } from '@vueuse/core';
   import type { UploadRawFile } from 'element-plus';
@@ -15,7 +15,7 @@
     return false;
   }
 
-  const pdfRef = ref<InstanceType<typeof VuePdfEmbed>>();
+  const pdfRef = useTemplateRef<InstanceType<typeof VuePdfEmbed>>('pdf-ref');
   const isLoading = ref<boolean>(true);
 
   const showAllPages = ref<boolean>(false);
@@ -73,7 +73,7 @@
       </div>
       <div class="w-full overflow-x-auto">
         <VuePdfEmbed
-          ref="pdfRef"
+          ref="pdf-ref"
           :page="page"
           :source="fileSrc"
           @loaded="handleOnLoaded"

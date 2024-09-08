@@ -2,12 +2,12 @@
 
 <script lang="ts" setup>
   import type { Ref } from 'vue';
-  import { onMounted, ref } from 'vue';
+  import { onMounted, ref, useTemplateRef } from 'vue';
   import { useIntervalFn } from '@vueuse/core';
   import type { createEChartsOption } from '@/hooks/web/useECharts';
   import { useECharts } from '@/hooks/web/useECharts';
 
-  const chartRef = ref<HTMLDivElement | null>(null);
+  const chartRef = useTemplateRef<HTMLDivElement | null>('chart-ref');
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
 
   const data: number[] = [];
@@ -84,7 +84,7 @@
 <template>
   <div>
     <h3>动态柱状图</h3>
-    <div ref="chartRef" class="chart-ref"></div>
+    <div ref="chart-ref" class="chart-ref"></div>
   </div>
 </template>
 

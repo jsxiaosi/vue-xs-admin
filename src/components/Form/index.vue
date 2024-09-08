@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="T extends Object">
-  import { onMounted, reactive, ref, shallowRef } from 'vue';
-  import type { FormItemRule } from 'element-plus';
+  import { onMounted, reactive, ref, shallowRef, useTemplateRef } from 'vue';
+  import type { ElForm, FormItemRule } from 'element-plus';
   import type { Arrayable } from '@vueuse/core';
   import type { FormProps, FormSlotType } from './types/from';
   import FormItem from './src/components/FormItem.vue';
@@ -17,7 +17,8 @@
 
   const form = reactive<T>(props.formData || ({} as T));
 
-  const formRef = ref();
+  // const formRef = ref();
+  const fromRef = useTemplateRef<InstanceType<typeof ElForm>>('form-ref');
 
   onMounted(() => {});
 
@@ -26,7 +27,7 @@
   // }
 
   const submitForm = () => {
-    formRef.value.validate((value: any) => {
+    fromRef.value?.validate((value: any) => {
       console.log(value);
     });
     console.log(form);
@@ -45,7 +46,7 @@
 <template>
   <div>
     <el-form
-      ref="formRef"
+      ref="form-ref"
       :rules="rules"
       :model="form"
       :label-position="formOption.labelPosition"

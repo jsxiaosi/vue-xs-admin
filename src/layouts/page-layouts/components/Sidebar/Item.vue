@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, useTemplateRef } from 'vue';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import type { localeTitle } from '@/router/type';
   import { translateI18n } from '@/hooks/web/useI18n';
@@ -22,7 +22,7 @@
   );
 
   const showTextTooltip = ref<Boolean | null>(null);
-  const sidebarItemTextRef = ref<HTMLDivElement>();
+  const sidebarItemTextRef = useTemplateRef<HTMLDivElement>('sidebar-item-text-ref');
 
   const onTextMove = () => {
     if (showTextTooltip.value !== null || props.mode === 'horizontal') return;
@@ -36,7 +36,7 @@
 <template>
   <SvgIcon v-if="props.icon" :class-name="props.className" :name="props.icon" />
   <div
-    ref="sidebarItemTextRef"
+    ref="sidebar-item-text-ref"
     class="menu-item-text"
     :class="[
       !props.icon && 'menu-item-text-only',

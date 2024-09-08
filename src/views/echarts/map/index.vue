@@ -2,14 +2,14 @@
 
 <script lang="ts" setup>
   import type { Ref } from 'vue';
-  import { onMounted, ref } from 'vue';
+  import { onMounted, useTemplateRef } from 'vue';
   import { registerMap } from 'echarts';
   import { useIntervalFn } from '@vueuse/core';
   import { mapData } from './data';
   import type { createEChartsOption } from '@/hooks/web/useECharts';
   import { useECharts } from '@/hooks/web/useECharts';
 
-  const chartRef = ref<HTMLDivElement | null>(null);
+  const chartRef = useTemplateRef<HTMLDivElement | null>('chart-ref');
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
 
   const mapOption: createEChartsOption = {
@@ -21,8 +21,19 @@
         text: ['高', '低'],
         calculable: true,
         inRange: {
-          // prettier-ignore
-          color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026'],
+          color: [
+            '#313695',
+            '#4575b4',
+            '#74add1',
+            '#abd9e9',
+            '#e0f3f8',
+            '#ffffbf',
+            '#fee090',
+            '#fdae61',
+            '#f46d43',
+            '#d73027',
+            '#a50026',
+          ],
         },
       },
     ],
@@ -112,7 +123,7 @@
 
 <template>
   <div class="page-container">
-    <div ref="chartRef" class="chart-ref"></div>
+    <div ref="chart-ref" class="chart-ref"></div>
   </div>
 </template>
 

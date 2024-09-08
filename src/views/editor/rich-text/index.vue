@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-  import { onMounted, ref, unref } from 'vue';
+  import { onMounted, ref, unref, useTemplateRef } from 'vue';
   import wangeDitor from 'wangeditor';
   import i18next from 'i18next';
   import { useI18n } from '@/hooks/web/useI18n';
   import { LocalesEnum } from '@/enum/locales';
 
-  const editorELRef = ref<HTMLElement>({} as HTMLElement);
+  const editorELRef = useTemplateRef<HTMLElement>('editor-ref');
   const editor = ref<wangeDitor>({} as wangeDitor);
   const html = ref<string>('');
   const { locale } = useI18n();
@@ -31,7 +31,7 @@
 
 <template>
   <div class="page-container">
-    <div ref="editorELRef"></div>
+    <div ref="editor-ref"></div>
     <div class="inner-html" :innerHTML="html"></div>
   </div>
 </template>

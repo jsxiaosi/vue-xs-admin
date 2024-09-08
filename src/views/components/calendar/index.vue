@@ -2,8 +2,6 @@
   import { ref } from 'vue';
   import calendar from '@/utils/date/calendar/index.js';
 
-  const value = ref<Date>();
-
   const DateItem = (v: Recordable) => {
     const { day } = v.data;
     const date = new Date(day);
@@ -29,8 +27,8 @@
 
 <template>
   <div class="page-container">
-    <el-calendar v-model="value">
-      <template #dateCell="defDate"> <DateItem v-bind="defDate" /></template>
+    <el-calendar>
+      <template #date-cell="defDate"> <DateItem v-bind="defDate" /></template>
     </el-calendar>
   </div>
 </template>

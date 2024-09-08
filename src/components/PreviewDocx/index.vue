@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted, ref, watch } from 'vue';
+  import { onMounted, ref, useTemplateRef, watch } from 'vue';
   import { renderAsync } from 'docx-preview';
   import { isUrl } from '@jsxiaosi/utils';
 
@@ -8,7 +8,8 @@
     requestOption?: RequestInit;
   }>();
 
-  const officeDocx = ref<HTMLElement>();
+  // const officeDocx = ref<HTMLElement>();
+  const officeDocx = useTemplateRef<HTMLDivElement>('office-docx');
 
   watch(
     () => props.src,
@@ -50,7 +51,7 @@
 </script>
 
 <template>
-  <div ref="officeDocx" class="office-docx"></div>
+  <div ref="office-docx" class="office-docx"></div>
 </template>
 
 <style lang="scss" scoped>

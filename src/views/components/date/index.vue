@@ -18,6 +18,7 @@
   };
 
   const DateItem = (v: DateCell) => {
+    console.log(v);
     const { date } = v;
     var year = date?.getFullYear();
     var month = (date?.getMonth() as number) + 1;

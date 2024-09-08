@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, watch, onMounted } from 'vue';
+  import { ref, computed, watch, onMounted, useTemplateRef } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import type { TabPaneName } from 'element-plus';
   import { ElDropdown } from 'element-plus';
@@ -60,7 +60,7 @@
     }
   };
 
-  const elDropdownRef = ref<InstanceType<typeof ElDropdown>>();
+  const elDropdownRef = useTemplateRef<InstanceType<typeof ElDropdown>>('el-dropdown-ref');
 
   const tabPaneMenu = (item: MultiTabsType, event: MouseEvent) => {
     elDropdownRef.value?.handleClose();
@@ -142,7 +142,7 @@
         </li>
         <li>
           <ElDropdown
-            ref="elDropdownRef"
+            ref="el-dropdown-ref"
             trigger="click"
             placement="bottom-end"
             @visible-change="(e: boolean) => e && contextmenu(route)"

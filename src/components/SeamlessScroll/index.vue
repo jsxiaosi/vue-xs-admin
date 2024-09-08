@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { computed, ref, unref, nextTick } from 'vue';
+  import { computed, ref, unref, nextTick, useTemplateRef } from 'vue';
   import type { CSSProperties, Ref } from 'vue';
-  import { tryOnMounted, tryOnUnmounted, templateRef, useDebounceFn } from '@vueuse/core';
+  import { tryOnMounted, tryOnUnmounted, useDebounceFn } from '@vueuse/core';
   import * as utilsMethods from './utils';
   const props = defineProps({
     data: {
@@ -55,9 +55,9 @@
     classOption['key'] = 0;
   }
 
-  const wrap = templateRef<HTMLElement | null>(`wrap${classOption['key']}`, null);
-  const slotList = templateRef<HTMLElement | null>(`slotList${classOption['key']}`, null);
-  const realBox = templateRef<HTMLElement | null>(`realBox${classOption['key']}`, null);
+  const wrap = useTemplateRef<HTMLElement | null>(`wrap${classOption['key']}`);
+  const slotList = useTemplateRef<HTMLElement | null>(`slotList${classOption['key']}`);
+  const realBox = useTemplateRef<HTMLElement | null>(`realBox${classOption['key']}`);
 
   let leftSwitchState = computed(() => {
     return unref(xPos) < 0;

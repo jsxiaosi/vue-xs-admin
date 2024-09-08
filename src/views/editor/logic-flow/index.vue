@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { nextTick, onMounted, ref, unref } from 'vue';
+  import { nextTick, onMounted, ref, unref, useTemplateRef } from 'vue';
   import LogicFlow from '@logicflow/core';
   import {
     Snapshot,
@@ -9,14 +9,14 @@
     SelectionSelect,
     Control,
   } from '@logicflow/extension';
-  import '@logicflow/core/dist/style/index.css';
+  import '@logicflow/core/dist/index.css';
   import '@logicflow/extension/lib/style/index.css';
   import { toLogicFlowData } from './adpter-for-turbo';
   import demoData from './data-turbo.json';
   import { configDefaultDndPanel, configAddItemControl } from './config';
 
   const lf = ref<LogicFlow>({} as LogicFlow);
-  const logicFlowElRef = ref<HTMLElement>({} as HTMLElement);
+  const logicFlowElRef = useTemplateRef<HTMLElement>('logic-flow-ref');
   let config = ref({
     grid: true,
     background: {
@@ -43,7 +43,7 @@
 
     const domLf = new LogicFlow({
       ...unref(config),
-      container: unref(logicFlowElRef),
+      container: unref(logicFlowElRef)!,
     });
     lf.value = domLf;
     // 设置边类型bpmn:sequenceFlow为默认类型
@@ -67,7 +67,7 @@
 </script>
 
 <template>
-  <div ref="logicFlowElRef" class="page-container"></div>
+  <div ref="logic-flow-ref" class="page-container"></div>
 </template>
 
 <style scoped>

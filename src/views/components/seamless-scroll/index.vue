@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  import { ref, reactive, unref } from 'vue';
-  import { templateRef } from '@vueuse/core';
+  import { ref, reactive, unref, useTemplateRef } from 'vue';
   import SeamlessScroll from '@/components/SeamlessScroll/index.vue';
 
-  const scroll = templateRef<HTMLElement | null>('scroll', null);
+  const scroll = useTemplateRef<InstanceType<typeof SeamlessScroll>>('scroll');
 
   let listData = ref([
     {
@@ -40,8 +39,7 @@
   });
 
   function changeDirection(val: string) {
-    // @ts-expect-error: 对象可能为null
-    unref(scroll).reset();
+    unref(scroll)?.reset();
     unref(classOption).direction = val;
   }
 </script>

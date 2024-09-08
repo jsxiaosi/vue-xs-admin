@@ -4,7 +4,7 @@ import type { WaterMarkOptions } from '@/utils/waterMark';
 import { createBase64, createWaterMarkDom } from '@/utils/waterMark';
 
 export const useWaterMark = (
-  appendEl: Ref<HTMLElement | undefined> = ref(document.body) as Ref<HTMLElement>,
+  appendEl: Ref<HTMLElement | undefined | null> = ref(document.body) as Ref<HTMLElement>,
   options?: WaterMarkOptions,
 ) => {
   const watermarkEl = shallowRef<HTMLElement>();

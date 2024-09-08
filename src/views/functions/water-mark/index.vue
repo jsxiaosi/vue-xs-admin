@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, useTemplateRef } from 'vue';
 
   import { useWaterMark } from './hooks/useWaterMark';
   import waterMark from '@/instruct/waterMark';
@@ -21,7 +21,7 @@
     markName.value = name.value;
   };
 
-  const hooksDeom = ref<HTMLElement | undefined>();
+  const hooksDeom = useTemplateRef<HTMLElement | undefined>('hooks-deom');
   const { setWaterMark: hooksSetWaterMark, close: hooksCloseChange } = useWaterMark(hooksDeom);
   const hooksName = ref<string>('这是一个水印');
   const hooksUpdateName = () => {
@@ -55,7 +55,7 @@
       （hooks）
       <el-button @click="hooksClose">清除</el-button>
     </div>
-    <div ref="hooksDeom" class="region" />
+    <div ref="hooks-deom" class="region" />
 
     <div class="config">
       修改水印名称：

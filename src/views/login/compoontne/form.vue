@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { reactive, ref } from 'vue';
+  import { reactive, ref, useTemplateRef } from 'vue';
   import type { FormInstance, FormRules } from 'element-plus';
   import { Avatar, Lock } from '@element-plus/icons-vue';
   import { useRouter } from 'vue-router';
@@ -8,7 +8,7 @@
   import { useI18n } from '@/hooks/web/useI18n';
   import { useUserInfoStoreHook } from '@/store/modules/user';
 
-  const ruleFormRef = ref<FormInstance>();
+  const ruleFormRef = useTemplateRef<FormInstance>('rule-form-ref');
 
   const ruleForm = reactive({
     username: '',
@@ -23,7 +23,7 @@
     password: [{ required: true, trigger: 'blur', message: t('sys.login.rules.password') }],
   });
 
-  const submitForm = (formEl: FormInstance | undefined) => {
+  const submitForm = (formEl: FormInstance | null) => {
     if (!formEl) return;
     formEl.validate((valid) => {
       if (valid) {
@@ -46,7 +46,7 @@
 </script>
 
 <template>
-  <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" size="large" class="demo-ruleForm">
+  <el-form ref="rule-form-ref" :model="ruleForm" :rules="rules" size="large" class="demo-ruleForm">
     <el-form-item prop="username" class="enter-y">
       <el-input
         v-model="ruleForm.username"
