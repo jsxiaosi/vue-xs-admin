@@ -1,55 +1,47 @@
 <script setup lang="ts">
-import SvgIcon from "@/components/SvgIcon/index.vue";
-import VisitAnalysis from "./components/AnalysisChart.vue";
-import Comment from "./components/Comment.vue";
-import PieChart from "./components/PieChart.vue";
-import WordCloud from "./components/WordCloud.vue";
+  import SvgIcon from '@/components/SvgIcon/index.vue';
+  import VisitAnalysis from './components/AnalysisChart.vue';
+  import Comment from './components/Comment.vue';
+  import PieChart from './components/PieChart.vue';
+  import WordCloud from './components/WordCloud.vue';
 
-defineOptions({
-  name: "RtWelcome",
-});
+  defineOptions({
+    name: 'RtWelcome',
+  });
 
-const speedList = [
-  {
-    title: "待办事项",
-    online: 24,
-    total: 70,
-  },
-  {
-    title: "待办任务",
-    online: 39,
-    total: 100,
-  },
-  {
-    title: "目标计划",
+  const speedList = [
+    {
+      title: '待办事项',
+      online: 24,
+      total: 70,
+    },
+    {
+      title: '待办任务',
+      online: 39,
+      total: 100,
+    },
+    {
+      title: '目标计划',
 
-    online: 5,
-    total: 10,
-  },
-  {
-    title: "评论回复",
-    online: 10,
-    total: 40,
-  },
-];
+      online: 5,
+      total: 10,
+    },
+    {
+      title: '评论回复',
+      online: 10,
+      total: 40,
+    },
+  ];
 
-const value = (online: number, total: number) => {
-  return Math.round((online / total) * 100);
-};
+  const value = (online: number, total: number) => {
+    return Math.round((online / total) * 100);
+  };
 </script>
 
 <template>
   <div>
     <el-row :gutter="20" class="enter-y">
-      <el-col
-        v-for="(item, index) in speedList"
-        :key="index"
-        :xs="24"
-        :sm="24"
-        :md="6"
-        :lg="6"
-        :xl="6"
-      >
+      <el-col v-for="(item, index) in speedList" :key="index" :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
         <el-card class="box-card">
           <template #header>
             <div class="card-header cursor">
@@ -62,11 +54,7 @@ const value = (online: number, total: number) => {
               <span class="number">{{ item.online }}/{{ item.total }}</span>
               <span>Online/Total</span>
             </div>
-            <el-progress
-              :text-inside="true"
-              :stroke-width="26"
-              :percentage="value(item.online, item.total)"
-            />
+            <el-progress :text-inside="true" :stroke-width="26" :percentage="value(item.online, item.total)" />
           </div>
         </el-card>
       </el-col>
@@ -119,38 +107,38 @@ const value = (online: number, total: number) => {
 </template>
 
 <style lang="scss" scoped>
-.box-card {
-  margin-bottom: 20px;
+  .box-card {
+    margin-bottom: 20px;
 
-  :deep(.el-card__header) {
-    padding-bottom: 0;
-    border: none;
-  }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 600;
-  }
-
-  .card-content {
-    :deep(.el-progress-bar__outer) {
-      height: 17px !important;
+    :deep(.el-card__header) {
+      padding-bottom: 0;
+      border: none;
     }
 
-    .numerical-value {
+    .card-header {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-      .number {
-        color: var(--text-color-primary);
-        font-size: var(--font-size-extra-large);
-        font-weight: 600;
+    .card-content {
+      :deep(.el-progress-bar__outer) {
+        height: 17px !important;
+      }
+
+      .numerical-value {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .number {
+          color: var(--text-color-primary);
+          font-size: var(--font-size-extra-large);
+          font-weight: 600;
+        }
       }
     }
   }
-}
 </style>

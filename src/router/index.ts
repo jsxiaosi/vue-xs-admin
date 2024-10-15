@@ -1,14 +1,14 @@
-import { getConfig } from "@/config";
-import { translateI18n } from "@/hooks/web/useI18n";
-import { usePermissionStoreHook } from "@/store/modules/permission";
-import { useUserInfoStoreHook } from "@/store/modules/user";
-import NProgress from "@/utils/plugin/progress";
-import { _storage, isUrl } from "@jsxiaosi/utils";
-import { createRouter, createWebHistory } from "vue-router";
-import type { App } from "vue";
-import type { RouteRecordRaw } from "vue-router";
-import { configRouteList } from "./modules";
-import { handleAliveRoute, initRoute } from "./utils";
+import { getConfig } from '@/config';
+import { translateI18n } from '@/hooks/web/useI18n';
+import { usePermissionStoreHook } from '@/store/modules/permission';
+import { useUserInfoStoreHook } from '@/store/modules/user';
+import NProgress from '@/utils/plugin/progress';
+import { _storage, isUrl } from '@jsxiaosi/utils';
+import { createRouter, createWebHistory } from 'vue-router';
+import type { App } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
+import { configRouteList } from './modules';
+import { handleAliveRoute, initRoute } from './utils';
 
 const { whiteRouteModulesList, routeModulesList } = configRouteList();
 
@@ -16,7 +16,7 @@ const { whiteRouteModulesList, routeModulesList } = configRouteList();
 export const sidebarRouteList = routeModulesList;
 
 export const router = createRouter({
-  history: createWebHistory(""),
+  history: createWebHistory(''),
   routes: whiteRouteModulesList as unknown as RouteRecordRaw[],
 });
 
@@ -30,9 +30,9 @@ router.beforeEach((to, from, next) => {
   NProgress.start();
   if (to.meta?.keepAlive) {
     const newMatched = to.matched;
-    handleAliveRoute(newMatched, "add");
+    handleAliveRoute(newMatched, 'add');
     // 页面整体刷新
-    if (from.name === undefined || from.name === "Redirect") {
+    if (from.name === undefined || from.name === 'Redirect') {
       handleAliveRoute(newMatched);
     }
   }
@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
 
   if (userInfoStore.userInfo) {
     // 已登陆状态不允许去登录页
-    if (to.path === "/login") {
+    if (to.path === '/login') {
       next({
         path: from.path,
         query: from.query,
@@ -59,7 +59,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       if (usePermissionStoreHook().wholeMenus.length === 0) {
-        initRoute(userInfoStore.roles).then((res) => {
+        initRoute(userInfoStore.roles).then(res => {
           if (res.length) {
             router.push({
               path: to.path,
@@ -67,7 +67,7 @@ router.beforeEach((to, from, next) => {
             });
           } else {
             userInfoStore.removeUserInfo();
-            router.push("/login");
+            router.push('/login');
           }
         });
       } else {
@@ -75,8 +75,8 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if (to.path !== "/login") {
-      next({ path: "/login" });
+    if (to.path !== '/login') {
+      next({ path: '/login' });
     } else {
       next();
     }

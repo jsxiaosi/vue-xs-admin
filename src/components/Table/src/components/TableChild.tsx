@@ -1,9 +1,9 @@
-import { getSlot } from "@/utils/slotsHelper";
-import { ElTableColumn } from "element-plus";
-import { defineComponent } from "vue";
-import type { TableColumnCtx } from "element-plus";
-import type { SetupContext, VNode } from "vue";
-import type { TableColumnProps } from "../../types/table";
+import { getSlot } from '@/utils/slotsHelper';
+import { ElTableColumn } from 'element-plus';
+import { defineComponent } from 'vue';
+import type { TableColumnCtx } from 'element-plus';
+import type { SetupContext, VNode } from 'vue';
+import type { TableColumnProps } from '../../types/table';
 
 interface RenderType {
   default?: (scope: Recordable) => VNode[] | VNode | null;
@@ -11,25 +11,18 @@ interface RenderType {
 }
 
 const TableChild = defineComponent(
-  <T extends object = any>(
-    props: { item: TableColumnProps<T> },
-    { slots }: SetupContext,
-  ) => {
+  <T extends object = any>(props: { item: TableColumnProps<T> }, { slots }: SetupContext) => {
     const { item } = props;
 
     function eLComponent(childrenRender: RenderType | null | undefined = null) {
       const { children, ...reItem } = item;
       if (childrenRender?.default) {
-        return (
-          <ElTableColumn {...(reItem as TableColumnCtx<Recordable>)}>
-            {childrenRender}
-          </ElTableColumn>
-        );
+        return <ElTableColumn {...(reItem as TableColumnCtx<Recordable>)}>{childrenRender}</ElTableColumn>;
       } else {
         return (
           <ElTableColumn {...(reItem as TableColumnCtx<Recordable>)}>
             {childrenRender?.header}
-            {children?.map((child) => <TableChild item={child} />)}
+            {children?.map(child => <TableChild item={child} />)}
           </ElTableColumn>
         );
       }
@@ -37,8 +30,7 @@ const TableChild = defineComponent(
 
     function slotsComponent() {
       const slotContent: RenderType = {
-        default: (scope: Recordable) =>
-          getSlot(slots, String(item.prop), scope),
+        default: (scope: Recordable) => getSlot(slots, String(item.prop), scope),
         header: (scope: Recordable) =>
           getSlot(slots, `${String(item.prop)}_header`, {
             ...scope,
@@ -58,8 +50,7 @@ const TableChild = defineComponent(
       const renderContent: RenderType = {};
 
       if (render_header) {
-        renderContent.header = (scope: Recordable) =>
-          render_header({ ...scope, customItem: item });
+        renderContent.header = (scope: Recordable) => render_header({ ...scope, customItem: item });
       }
 
       if (render) {
@@ -74,17 +65,13 @@ const TableChild = defineComponent(
 
     return () => {
       const { isSlots, render, render_header } = item;
-      const getContent = isSlots
-        ? slotsComponent()
-        : render || render_header
-          ? renderComponent()
-          : eLComponent();
+      const getContent = isSlots ? slotsComponent() : render || render_header ? renderComponent() : eLComponent();
       return getContent;
     };
   },
   {
-    name: "TableChild",
-    props: ["item"],
+    name: 'TableChild',
+    props: ['item'],
   },
 );
 

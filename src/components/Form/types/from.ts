@@ -1,9 +1,9 @@
-import type { Arrayable } from "@vueuse/core";
-import type { FormItemRule } from "element-plus";
-import type { VNode } from "vue";
+import type { Arrayable } from '@vueuse/core';
+import type { FormItemRule } from 'element-plus';
+import type { VNode } from 'vue';
 
 export interface FormProps<T extends object = any> {
-  labelPosition: "top" | "right" | "left";
+  labelPosition: 'top' | 'right' | 'left';
   formItem: Array<FormItemProps<T>>;
 }
 
@@ -25,10 +25,7 @@ export interface FormItemProps<T extends object = object> {
  * @param(rules) 表单校验
  * @param(childrenComponent) 子组件属性 类似ElSelect、ElCheckboxGroup、ElRadioGroup等组件
  */
-export interface FormItemListProps<
-  T extends object = object,
-  P extends keyof T = keyof T,
-> {
+export interface FormItemListProps<T extends object = object, P extends keyof T = keyof T> {
   component: string;
   label: string;
   prop: P;
@@ -38,10 +35,7 @@ export interface FormItemListProps<
     props?: object;
     options?: Array<FormSelectOptProps>;
   };
-  render?: (data: {
-    formModel: T;
-    formItem: FormItemListProps<T>;
-  }) => VNode | VNode[] | string;
+  render?: (data: { formModel: T; formItem: FormItemListProps<T> }) => VNode | VNode[] | string;
 }
 
 export interface FormSelectOptProps {

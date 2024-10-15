@@ -1,35 +1,34 @@
 <script setup lang="ts">
-import waterMark from "@/instruct/waterMark";
-import { ref, useTemplateRef } from "vue";
-import { useWaterMark } from "./hooks/useWaterMark";
+  import waterMark from '@/instruct/waterMark';
+  import { ref, useTemplateRef } from 'vue';
+  import { useWaterMark } from './hooks/useWaterMark';
 
-const vWaterMark = waterMark;
+  const vWaterMark = waterMark;
 
-const { setWaterMark, close } = useWaterMark();
-const overallName = ref<string>("vue-xs-admin");
-const creatOverall = () => {
-  setWaterMark(overallName.value);
-};
-const closeOverall = () => {
-  close();
-};
+  const { setWaterMark, close } = useWaterMark();
+  const overallName = ref<string>('vue-xs-admin');
+  const creatOverall = () => {
+    setWaterMark(overallName.value);
+  };
+  const closeOverall = () => {
+    close();
+  };
 
-const name = ref<string>("vue-xs-admin");
-const markName = ref<string>(name.value);
-const updateName = () => {
-  markName.value = name.value;
-};
+  const name = ref<string>('vue-xs-admin');
+  const markName = ref<string>(name.value);
+  const updateName = () => {
+    markName.value = name.value;
+  };
 
-const hooksDeom = useTemplateRef<HTMLElement | undefined>("hooks-deom");
-const { setWaterMark: hooksSetWaterMark, close: hooksCloseChange } =
-  useWaterMark(hooksDeom);
-const hooksName = ref<string>("这是一个水印");
-const hooksUpdateName = () => {
-  hooksSetWaterMark(hooksName.value);
-};
-const hooksClose = () => {
-  hooksCloseChange();
-};
+  const hooksDeom = useTemplateRef<HTMLElement | undefined>('hooks-deom');
+  const { setWaterMark: hooksSetWaterMark, close: hooksCloseChange } = useWaterMark(hooksDeom);
+  const hooksName = ref<string>('这是一个水印');
+  const hooksUpdateName = () => {
+    hooksSetWaterMark(hooksName.value);
+  };
+  const hooksClose = () => {
+    hooksCloseChange();
+  };
 </script>
 
 <template>
@@ -71,17 +70,17 @@ const hooksClose = () => {
 </template>
 
 <style lang="scss" scoped>
-.config {
-  display: flex;
-  align-items: center;
-  margin-top: 12px;
-}
+  .config {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
 
-.region {
-  width: 100%;
-  height: 500px;
-  margin-top: 12px;
-  overflow-y: auto;
-  border: 1px solid #e3e3e3;
-}
+  .region {
+    width: 100%;
+    height: 500px;
+    margin-top: 12px;
+    overflow-y: auto;
+    border: 1px solid #e3e3e3;
+  }
 </style>

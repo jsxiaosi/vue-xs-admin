@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { RoleEnum } from "@/enum/role";
-import { initRoute } from "@/router/utils";
-import { useUserInfoStoreHook } from "@/store/modules/user";
+  import { RoleEnum } from '@/enum/role';
+  import { initRoute } from '@/router/utils';
+  import { useUserInfoStoreHook } from '@/store/modules/user';
 
-defineOptions({
-  name: "RtPermissions",
-});
+  defineOptions({
+    name: 'RtPermissions',
+  });
 
-const userInfoStore = useUserInfoStoreHook();
+  const userInfoStore = useUserInfoStoreHook();
 
-const roleChange = async () => {
-  userInfoStore.setRoles(
-    userInfoStore.roles === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN,
-  );
-  initRoute(userInfoStore.roles);
-};
+  const roleChange = async () => {
+    userInfoStore.setRoles(userInfoStore.roles === RoleEnum.ADMIN ? RoleEnum.TEST : RoleEnum.ADMIN);
+    initRoute(userInfoStore.roles);
+  };
 </script>
 
 <template>

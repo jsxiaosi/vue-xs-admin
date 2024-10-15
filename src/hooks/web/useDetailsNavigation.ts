@@ -1,12 +1,12 @@
-import { usePermissionStoreHook } from "@/store/modules/permission";
-import { useRouter } from "vue-router";
-import type { Meta } from "@/router/type";
-import type { LocationQuery } from "vue-router";
+import { usePermissionStoreHook } from '@/store/modules/permission';
+import { useRouter } from 'vue-router';
+import type { Meta } from '@/router/type';
+import type { LocationQuery } from 'vue-router';
 
 export interface DetailsNavigationOption {
   path: string;
   name: string;
-  title: Meta["title"];
+  title: Meta['title'];
   query?: LocationQuery;
 }
 
@@ -15,7 +15,7 @@ export const useDetailsNavigation = () => {
 
   const openDetails = (options: DetailsNavigationOption) => {
     const { title, ...res } = options;
-    usePermissionStoreHook().handleMultiTabs("add", {
+    usePermissionStoreHook().handleMultiTabs('add', {
       ...res,
       meta: {
         title,

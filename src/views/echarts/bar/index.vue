@@ -1,7 +1,7 @@
 <script lang="ts"></script>
 
 <script lang="ts" setup>
-import BarRace from "./components/BarRace.vue";
+  import BarRace from './components/BarRace.vue';
 </script>
 
 <template>

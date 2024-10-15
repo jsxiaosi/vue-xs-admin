@@ -1,9 +1,5 @@
-import type { RequestOptions, Result } from "#/axios";
-import type {
-  AxiosRequestConfig,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
-} from "axios";
+import type { RequestOptions, Result } from '#/axios';
+import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 /**
  * axios 数据处理类
  */
@@ -13,20 +9,14 @@ export interface CreateAxiosOptions extends AxiosRequestConfig {
   interceptor?: AxiosInterceptor;
 }
 
-export type InternalAxiosOptions = Pick<
-  CreateAxiosOptions,
-  "requestOptions" | "interceptor"
-> &
+export type InternalAxiosOptions = Pick<CreateAxiosOptions, 'requestOptions' | 'interceptor'> &
   InternalAxiosRequestConfig;
 
 export abstract class AxiosInterceptor {
   /**
    * @description: 请求前的配置
    */
-  beforeRequestHook?: (
-    config: AxiosRequestConfig,
-    options: RequestOptions,
-  ) => AxiosRequestConfig;
+  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig;
 
   /**
    * @description: 请求成功的处理

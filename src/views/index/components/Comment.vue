@@ -21,42 +21,42 @@
 </template>
 
 <style lang="scss" scoped>
-.comment {
-  width: 100%;
-  height: 410px;
-  overflow-y: auto;
+  .comment {
+    width: 100%;
+    height: 410px;
+    overflow-y: auto;
 
-  .item {
-    display: flex;
-
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-
-    .item-content {
+    .item {
       display: flex;
-      flex-direction: column;
-      margin-left: 16px;
 
-      .title {
-        font-size: var(--font-size-medium);
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
       }
 
-      .time {
-        margin: 5px 0;
-        font-size: var(--font-size-extra-small);
-      }
+      .item-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 16px;
 
-      .text {
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+        .title {
+          font-size: var(--font-size-medium);
+        }
+
+        .time {
+          margin: 5px 0;
+          font-size: var(--font-size-extra-small);
+        }
+
+        .text {
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
       }
     }
   }
-}
 </style>

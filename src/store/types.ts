@@ -1,19 +1,14 @@
-import type { PermissionMode } from "@/enum/role";
-import type { localeKey } from "@/locales/types";
-import type { AppRouteRecordRaw, Meta } from "@/router/type";
-import type { StorageConfig } from "@jsxiaosi/utils/es/window/storage/types";
-import type {
-  _RouteLocationBase,
-  LocationQuery,
-  RouteParams,
-  RouteRecordName,
-} from "vue-router";
+import type { PermissionMode } from '@/enum/role';
+import type { localeKey } from '@/locales/types';
+import type { AppRouteRecordRaw, Meta } from '@/router/type';
+import type { StorageConfig } from '@jsxiaosi/utils/es/window/storage/types';
+import type { _RouteLocationBase, LocationQuery, RouteParams, RouteRecordName } from 'vue-router';
 
 export interface AppState {
   appConfigMode: AppConfig;
 }
 
-export type SidebarMode = "vertical" | "horizontal" | "blend";
+export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
 
 export interface AppConfig {
   // 标题
@@ -23,7 +18,7 @@ export interface AppConfig {
   // 菜单显示模式： 'vertical'：左侧模式 | 'horizontal'：顶部模式 | 'blend'：混合模式
   sidebarMode: SidebarMode;
   // 主题模式：白天主题、夜间主题
-  themeMode: "light" | "dark";
+  themeMode: 'light' | 'dark';
   // 国际化
   locale: localeKey;
   // storage配置
@@ -49,14 +44,14 @@ export interface AppConfig {
   // 标签持久化
   tabPersistent: boolean;
   // 侧边栏按钮
-  sidebarFold: "none" | "top" | "bottom";
+  sidebarFold: 'none' | 'top' | 'bottom';
   // 路由模式 REAREND后端路由、ROLE角色权限控制路由
   permissionMode: keyof typeof PermissionMode;
 }
 
 export type MultiTabsType = Omit<
   _RouteLocationBase,
-  "fullPath" | "hash" | "params" | "query" | "redirectedFrom" | "meta"
+  'fullPath' | 'hash' | 'params' | 'query' | 'redirectedFrom' | 'meta'
 > & {
   query?: LocationQuery;
   params?: RouteParams;

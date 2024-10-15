@@ -1,3 +1,3 @@
-const admin = "";
+const admin = '';
 
 console.log(admin);

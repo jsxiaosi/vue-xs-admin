@@ -1,11 +1,11 @@
-import type { App, Plugin } from "vue";
-import "virtual:svg-icons-register";
+import type { App, Plugin } from 'vue';
+import 'virtual:svg-icons-register';
 // import { setWindowAppConfig } from '@/store/modules/app';
 
 // 定义全局钩子
 export const configMainGlobalProperties = (app: App<Element>): void => {
   // 全局定义属性
-  app.config.globalProperties.foo = "bar";
+  app.config.globalProperties.foo = 'bar';
   /**
    * 页面使用方法：
    * import { getCurrentInstance } from 'vue';
@@ -25,5 +25,4 @@ export const withInstall = <T>(component: T, alias?: string) => {
   return component as T & Plugin;
 };
 
-export const converToArray = (number: number): Array<number> =>
-  [...`${number}`].map((el) => parseInt(el));
+export const converToArray = (number: number): Array<number> => [...`${number}`].map(el => parseInt(el));

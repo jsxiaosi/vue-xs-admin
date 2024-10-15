@@ -1,6 +1,6 @@
-import type { RoleEnum } from "@/enum/role";
-import type { localeKey } from "@/locales/types";
-import type { RouteMeta, RouteRecordRaw } from "vue-router";
+import type { RoleEnum } from '@/enum/role';
+import type { localeKey } from '@/locales/types';
+import type { RouteMeta, RouteRecordRaw } from 'vue-router';
 
 export type localeTitle = { [key in localeKey]: string };
 export interface Meta extends RouteMeta {
@@ -30,8 +30,7 @@ export interface Meta extends RouteMeta {
   hideTabs?: boolean;
 }
 
-export interface AppRouteRecordRaw
-  extends Omit<RouteRecordRaw, "meta" | "children"> {
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {
   children?: AppRouteRecordRaw[];
   meta?: Meta;
   basePath?: string;

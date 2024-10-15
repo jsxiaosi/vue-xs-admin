@@ -1,122 +1,122 @@
 <script lang="tsx" setup>
-import Table from "@/components/Table/index.vue";
-import { h, ref } from "vue";
-import type { TableColumnProps } from "@/components/Table/types/table";
+  import Table from '@/components/Table/index.vue';
+  import { h, ref } from 'vue';
+  import type { TableColumnProps } from '@/components/Table/types/table';
 
-interface TableData {
-  date: string;
-  name: string;
-  address: string;
-  children?: TableData[];
-}
+  interface TableData {
+    date: string;
+    name: string;
+    address: string;
+    children?: TableData[];
+  }
 
-const option: TableColumnProps<TableData>[] = [
-  {
-    label: "Date",
-    prop: "date",
-    sortable: true,
-  },
-  {
-    label: "PreName",
-    children: [
-      {
-        label: "Name",
-        prop: "name",
-        isSlots: true,
-      },
-    ],
-  },
-  {
-    label: "Address",
-    prop: "address",
-    render_header: (slotData: any) => {
-      return h("span", {}, `render_header：${slotData.customItem.label}`);
+  const option: TableColumnProps<TableData>[] = [
+    {
+      label: 'Date',
+      prop: 'date',
+      sortable: true,
     },
-    render: (slotData: any) => {
-      return h("span", {}, `render：${slotData.row.address}`);
-    },
-  },
-];
-
-const tabList = ref<TableData[]>([
-  {
-    date: "2016-05-03",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  },
-  {
-    date: "2016-05-02",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  },
-  {
-    date: "2016-05-04",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-    children: [
-      {
-        date: "2016-05-05",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-06",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-    ],
-  },
-  {
-    date: "2016-05-01",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  },
-]);
-
-const nestingOption: TableColumnProps<TableData>[] = [
-  {
-    type: "expand",
-    render: (slotData: any) => {
-      const ngOption = [
+    {
+      label: 'PreName',
+      children: [
         {
-          label: "Date",
-          prop: "date",
-          sortable: true,
-        },
-        {
-          label: "Name",
-          prop: "name",
+          label: 'Name',
+          prop: 'name',
           isSlots: true,
         },
-      ];
-      return (
-        <div style={{ padding: "0 8px" }}>
-          <Table data={[slotData.row]} border option={ngOption}></Table>
-        </div>
-      );
+      ],
     },
-  },
-  {
-    label: "Date",
-    prop: "date",
-    sortable: true,
-  },
-  {
-    label: "Name",
-    prop: "name",
-    isSlots: true,
-  },
-  {
-    label: "Address",
-    prop: "address",
-    render_header: (slotData: any) => {
-      return h("span", {}, `render_header：${slotData.customItem.label}`);
+    {
+      label: 'Address',
+      prop: 'address',
+      render_header: (slotData: any) => {
+        return h('span', {}, `render_header：${slotData.customItem.label}`);
+      },
+      render: (slotData: any) => {
+        return h('span', {}, `render：${slotData.row.address}`);
+      },
     },
-    render: (slotData: any) => {
-      return h("span", {}, `render：${slotData.row.address}`);
+  ];
+
+  const tabList = ref<TableData[]>([
+    {
+      date: '2016-05-03',
+      name: 'Tom',
+      address: 'No. 189, Grove St, Los Angeles',
     },
-  },
-];
+    {
+      date: '2016-05-02',
+      name: 'Tom',
+      address: 'No. 189, Grove St, Los Angeles',
+    },
+    {
+      date: '2016-05-04',
+      name: 'Tom',
+      address: 'No. 189, Grove St, Los Angeles',
+      children: [
+        {
+          date: '2016-05-05',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-06',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+      ],
+    },
+    {
+      date: '2016-05-01',
+      name: 'Tom',
+      address: 'No. 189, Grove St, Los Angeles',
+    },
+  ]);
+
+  const nestingOption: TableColumnProps<TableData>[] = [
+    {
+      type: 'expand',
+      render: (slotData: any) => {
+        const ngOption = [
+          {
+            label: 'Date',
+            prop: 'date',
+            sortable: true,
+          },
+          {
+            label: 'Name',
+            prop: 'name',
+            isSlots: true,
+          },
+        ];
+        return (
+          <div style={{ padding: '0 8px' }}>
+            <Table data={[slotData.row]} border option={ngOption}></Table>
+          </div>
+        );
+      },
+    },
+    {
+      label: 'Date',
+      prop: 'date',
+      sortable: true,
+    },
+    {
+      label: 'Name',
+      prop: 'name',
+      isSlots: true,
+    },
+    {
+      label: 'Address',
+      prop: 'address',
+      render_header: (slotData: any) => {
+        return h('span', {}, `render_header：${slotData.customItem.label}`);
+      },
+      render: (slotData: any) => {
+        return h('span', {}, `render：${slotData.row.address}`);
+      },
+    },
+  ];
 </script>
 
 <template>
@@ -156,11 +156,11 @@ const nestingOption: TableColumnProps<TableData>[] = [
 </template>
 
 <style lang="scss" scoped>
-.box-card {
-  margin-bottom: 20px;
-}
+  .box-card {
+    margin-bottom: 20px;
+  }
 
-.nesting {
-  padding: 0 20px;
-}
+  .nesting {
+    padding: 0 20px;
+  }
 </style>

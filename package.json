@@ -29,7 +29,6 @@
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "lint:eslint": "eslint \"{src,mock,build}/**/*.{vue,ts,js,tsx,jsx}\" package.json --fix",
-    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,css,scss,vue,ts,tsx,jsx,html,md}\"",
     "lint:stylelint": "stylelint \"**/*.{vue,css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/",
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
@@ -157,26 +156,23 @@
   },
   "lint-staged": {
     "{src,mock,build}/**/*.{ts,js,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint --fix"
     ],
     "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --write--parser json"
+      "eslint --fix"
     ],
     "package.json": [
-      "prettier --write"
+      "eslint --fix"
     ],
     "*.vue": [
       "eslint --fix",
-      "prettier --write",
       "stylelint --fix"
     ],
     "*.{scss,less,styl,html}": [
-      "stylelint --fix",
-      "prettier --write"
+      "stylelint --fix"
     ],
     "*.md": [
-      "prettier --write"
+      "eslint --fix"
     ]
   },
   "config": {

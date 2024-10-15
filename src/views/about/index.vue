@@ -1,32 +1,27 @@
 <script lang="ts" setup>
-import { reactive } from "vue";
-import packagepath from "../../../package.json";
-const pageDate = reactive({ info: {}, dependencies: {}, devDependencies: {} });
+  import { reactive } from 'vue';
+  import packagepath from '../../../package.json';
+  const pageDate = reactive({ info: {}, dependencies: {}, devDependencies: {} });
 
-const toName = {
-  info: "项目信息",
-  dependencies: "生产依赖",
-  devDependencies: "开发依赖",
-};
+  const toName = {
+    info: '项目信息',
+    dependencies: '生产依赖',
+    devDependencies: '开发依赖',
+  };
 
-pageDate.info = {
-  name: packagepath.name,
-  version: packagepath.version,
-};
-pageDate.dependencies = packagepath.dependencies;
-pageDate.devDependencies = packagepath.devDependencies;
+  pageDate.info = {
+    name: packagepath.name,
+    version: packagepath.version,
+  };
+  pageDate.dependencies = packagepath.dependencies;
+  pageDate.devDependencies = packagepath.devDependencies;
 
-console.log(packagepath);
+  console.log(packagepath);
 </script>
 
 <template>
   <div>
-    <el-row
-      v-for="(item, index) in pageDate"
-      :key="index"
-      :gutter="30"
-      class="enter-y"
-    >
+    <el-row v-for="(item, index) in pageDate" :key="index" :gutter="30" class="enter-y">
       <el-col>
         <el-card class="box-card">
           <template #header>
@@ -35,18 +30,8 @@ console.log(packagepath);
             </div>
           </template>
           <div class="descriptions">
-            <el-descriptions
-              class="margin-top"
-              direction="horizontal"
-              :column="2"
-              size="default"
-              border
-            >
-              <el-descriptions-item
-                v-for="(i, cindex) in item"
-                :key="cindex"
-                min-width="200px"
-              >
+            <el-descriptions class="margin-top" direction="horizontal" :column="2" size="default" border>
+              <el-descriptions-item v-for="(i, cindex) in item" :key="cindex" min-width="200px">
                 <template #label>
                   {{ cindex }}
                 </template>
@@ -61,12 +46,12 @@ console.log(packagepath);
 </template>
 
 <style lang="scss" scoped>
-.box-card {
-  margin-bottom: 20px;
+  .box-card {
+    margin-bottom: 20px;
 
-  .margin-top :deep(.el-descriptions__body) {
-    margin: 20px;
-    background-color: #{--main-bg-color} !important;
+    .margin-top :deep(.el-descriptions__body) {
+      margin: 20px;
+      background-color: #{--main-bg-color} !important;
+    }
   }
-}
 </style>

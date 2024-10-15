@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { deffElementLocale } from "@/hooks/web/useI18n";
-import { ElConfigProvider } from "element-plus";
+  import { deffElementLocale } from '@/hooks/web/useI18n';
+  import { ElConfigProvider } from 'element-plus';
 
-const { tolocale } = deffElementLocale();
+  const { tolocale } = deffElementLocale();
 </script>
 
 <template>

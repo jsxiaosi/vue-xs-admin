@@ -1,8 +1,8 @@
-import { _storage } from "@jsxiaosi/utils";
-import { defineStore } from "pinia";
-import type { RoleEnum } from "@/enum/role";
-import type { UseInfoType } from "@/server/useInfo";
-import { store } from "..";
+import { _storage } from '@jsxiaosi/utils';
+import { defineStore } from 'pinia';
+import type { RoleEnum } from '@/enum/role';
+import type { UseInfoType } from '@/server/useInfo';
+import { store } from '..';
 
 export interface UserState {
   userInfo: UseInfoType | null;
@@ -10,7 +10,7 @@ export interface UserState {
 }
 
 const getStorageUserInfo = (): UserState => {
-  const userInfo = _storage.getStorage<UseInfoType>("userInfo");
+  const userInfo = _storage.getStorage<UseInfoType>('userInfo');
 
   if (userInfo) {
     return {
@@ -25,11 +25,11 @@ const getStorageUserInfo = (): UserState => {
 };
 
 const useUserInfoStore = defineStore({
-  id: "userInfo",
+  id: 'userInfo',
   state: (): UserState => getStorageUserInfo(),
   actions: {
     setUserInfo(value: UseInfoType) {
-      _storage.setStorage<UseInfoType>("userInfo", value);
+      _storage.setStorage<UseInfoType>('userInfo', value);
       this.userInfo = value;
       this.roles = value.role;
     },
@@ -39,7 +39,7 @@ const useUserInfoStore = defineStore({
     removeUserInfo() {
       this.userInfo = null;
       this.roles = null;
-      _storage.removeStorage("userInfo");
+      _storage.removeStorage('userInfo');
     },
   },
 });

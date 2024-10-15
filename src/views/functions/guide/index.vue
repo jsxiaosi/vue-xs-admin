@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import useIntro from "@/hooks/web/useIntro";
-const handleIntro = () => {
-  useIntro({
-    prevLabel: "单独设置的上一步",
-  });
-};
+  import useIntro from '@/hooks/web/useIntro';
+  const handleIntro = () => {
+    useIntro({
+      prevLabel: '单独设置的上一步',
+    });
+  };
 </script>
 
 <template>

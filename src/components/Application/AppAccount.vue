@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { usePermissionStoreHook } from "@/store/modules/permission";
-import { useUserInfoStoreHook } from "@/store/modules/user";
-import { useRouter } from "vue-router";
-const router = useRouter();
+  import { usePermissionStoreHook } from '@/store/modules/permission';
+  import { useUserInfoStoreHook } from '@/store/modules/user';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
 
-const command = (value: string) => {
-  if (value === "signOut") {
-    usePermissionStoreHook().handleRemoveMultiTabs();
-    useUserInfoStoreHook().removeUserInfo();
-    router.push("/login");
-  }
-};
+  const command = (value: string) => {
+    if (value === 'signOut') {
+      usePermissionStoreHook().handleRemoveMultiTabs();
+      useUserInfoStoreHook().removeUserInfo();
+      router.push('/login');
+    }
+  };
 </script>
 
 <template>
@@ -28,11 +28,11 @@ const command = (value: string) => {
 </template>
 
 <style lang="scss" scoped>
-.account {
-  .wave {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+  .account {
+    .wave {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
   }
-}
 </style>
