@@ -1,9 +1,9 @@
-import type { SetupContext, VNode } from 'vue';
-import { defineComponent } from 'vue';
-import type { TableColumnCtx } from 'element-plus';
-import { ElTableColumn } from 'element-plus';
-import type { TableColumnProps } from '../../types/table';
-import { getSlot } from '@/utils/slotsHelper';
+import { getSlot } from "@/utils/slotsHelper";
+import { ElTableColumn } from "element-plus";
+import { defineComponent } from "vue";
+import type { TableColumnCtx } from "element-plus";
+import type { SetupContext, VNode } from "vue";
+import type { TableColumnProps } from "../../types/table";
 
 interface RenderType {
   default?: (scope: Recordable) => VNode[] | VNode | null;
@@ -11,7 +11,10 @@ interface RenderType {
 }
 
 const TableChild = defineComponent(
-  <T extends Object = any>(props: { item: TableColumnProps<T> }, { slots }: SetupContext) => {
+  <T extends object = any>(
+    props: { item: TableColumnProps<T> },
+    { slots }: SetupContext,
+  ) => {
     const { item } = props;
 
     function eLComponent(childrenRender: RenderType | null | undefined = null) {
@@ -34,13 +37,17 @@ const TableChild = defineComponent(
 
     function slotsComponent() {
       const slotContent: RenderType = {
-        default: (scope: Recordable) => getSlot(slots, String(item.prop), scope),
+        default: (scope: Recordable) =>
+          getSlot(slots, String(item.prop), scope),
         header: (scope: Recordable) =>
-          getSlot(slots, `${String(item.prop)}_header`, { ...scope, customItem: item }),
+          getSlot(slots, `${String(item.prop)}_header`, {
+            ...scope,
+            customItem: item,
+          }),
       };
-      if (!slots[`${String(item.prop)}_header`]) delete slotContent['header'];
+      if (!slots[`${String(item.prop)}_header`]) delete slotContent.header;
 
-      if (!slots[String(item.prop)]) delete slotContent['default'];
+      if (!slots[String(item.prop)]) delete slotContent.default;
 
       return eLComponent(slotContent);
     }
@@ -51,7 +58,8 @@ const TableChild = defineComponent(
       const renderContent: RenderType = {};
 
       if (render_header) {
-        renderContent.header = (scope: Recordable) => render_header({ ...scope, customItem: item });
+        renderContent.header = (scope: Recordable) =>
+          render_header({ ...scope, customItem: item });
       }
 
       if (render) {
@@ -75,8 +83,8 @@ const TableChild = defineComponent(
     };
   },
   {
-    name: 'TableChild',
-    props: ['item'],
+    name: "TableChild",
+    props: ["item"],
   },
 );
 

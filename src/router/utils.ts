@@ -1,14 +1,18 @@
-import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
-import { useTimeoutFn } from '@vueuse/core';
-import { isUrl } from '@jsxiaosi/utils';
-import { cloneDeep } from 'lodash-es';
-import type { AppRouteRecordRaw, Meta } from './type';
-import { router, sidebarRouteList } from './index';
-import { usePermissionStoreHook } from '@/store/modules/permission';
-import type { RouteDataItemType } from '@/server/route';
-import { getRouteApi } from '@/server/route';
-import { useAppStoreHook } from '@/store/modules/app';
-import { PermissionMode, type RoleEnum } from '@/enum/role';
+import { PermissionMode, type RoleEnum } from "@/enum/role";
+import { getRouteApi } from "@/server/route";
+import { useAppStoreHook } from "@/store/modules/app";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+import { isUrl } from "@jsxiaosi/utils";
+import { useTimeoutFn } from "@vueuse/core";
+import { cloneDeep } from "lodash-es";
+import type { RouteDataItemType } from "@/server/route";
+import type {
+  RouteRecordName,
+  RouteRecordNormalized,
+  RouteRecordRaw,
+} from "vue-router";
+import { router, sidebarRouteList } from "./index";
+import type { AppRouteRecordRaw, Meta } from "./type";
 
 // 获取路由列表
 async function getRouteList(permission: RoleEnum) {
@@ -48,14 +52,17 @@ async function getAsyncRoute(permission: RoleEnum) {
     // 根据接口返回的路由列表生成新的路由（此时的路由是带有层级关系）
     return handleRouteList(sortRouteList(sidebarRouteList), res.data);
   } else {
-    console.error('No requested route');
+    console.error("No requested route");
     return [];
   }
 }
 
 // 异步获取静态路由，防止切换权限时因列表缓存导致菜单无法正常刷新
 async function getStaticRoute(permission: RoleEnum) {
-  return filterNoPermissionRouteList(sortRouteList(cloneDeep(sidebarRouteList)), permission);
+  return filterNoPermissionRouteList(
+    sortRouteList(cloneDeep(sidebarRouteList)),
+    permission,
+  );
 }
 
 // 通过角色过滤无权限路由
@@ -64,7 +71,9 @@ function filterNoPermissionRouteList(
   roleName: RoleEnum,
 ): AppRouteRecordRaw[] {
   const newRouteList = [...routerList];
-  let newRoute = newRouteList.filter((i) => !i.meta?.roles || i.meta?.roles?.includes(roleName));
+  let newRoute = newRouteList.filter(
+    (i) => !i.meta?.roles || i.meta?.roles?.includes(roleName),
+  );
   newRoute = newRoute.map((i) => {
     if (i.children && i.children.length) {
       i.children = filterNoPermissionRouteList(i.children, roleName);
@@ -76,7 +85,10 @@ function filterNoPermissionRouteList(
 }
 
 // 通过后端返回路由列表过滤无权限路由
-function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataItemType[]) {
+function handleRouteList(
+  routerList: AppRouteRecordRaw[],
+  dataRouter: RouteDataItemType[],
+) {
   const newRouteList: AppRouteRecordRaw[] = [];
   routerList.forEach((i) => {
     if (!i.meta?.whiteRoute) {
@@ -84,7 +96,7 @@ function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataI
       if (rItem) {
         if (i.children && i.children.length) {
           const children = handleRouteList(i.children, rItem.children);
-          if (children) newRouteList.push({ ...i, children: children });
+          if (children) newRouteList.push({ ...i, children });
         } else {
           newRouteList.push(i);
         }
@@ -97,8 +109,11 @@ function handleRouteList(routerList: AppRouteRecordRaw[], dataRouter: RouteDataI
 }
 
 // 更新route的路由列表
-function privilegeRouting(routeList: RouteRecordRaw[], dataRouter: AppRouteRecordRaw[]) {
-  const homeIndex = routeList.findIndex((i) => i.path === '/');
+function privilegeRouting(
+  routeList: RouteRecordRaw[],
+  dataRouter: AppRouteRecordRaw[],
+) {
+  const homeIndex = routeList.findIndex((i) => i.path === "/");
   if (homeIndex !== -1) {
     routeList[homeIndex].redirect = dataRouter[0].path;
     routeList[homeIndex].children = [];
@@ -111,7 +126,7 @@ function privilegeRouting(routeList: RouteRecordRaw[], dataRouter: AppRouteRecor
 
 // 拼接路径 path
 function pathResolve(...paths: string[]) {
-  let resolvePath = '';
+  let resolvePath = "";
   let isAbsolutePath = false;
   for (let i = paths.length - 1; i > -1; i--) {
     const path = paths[i];
@@ -121,16 +136,16 @@ function pathResolve(...paths: string[]) {
     if (!path) {
       continue;
     }
-    resolvePath = path + '/' + resolvePath;
+    resolvePath = `${path}/${resolvePath}`;
     isAbsolutePath = path.charCodeAt(0) === 47;
   }
   if (/^\/+$/.test(resolvePath)) {
-    resolvePath = resolvePath.replace(/(\/+)/, '/');
+    resolvePath = resolvePath.replace(/(\/+)/, "/");
   } else {
     resolvePath = resolvePath
-      .replace(/(?!^)\w+\/+\.{2}\//g, '')
-      .replace(/(?!^)\.\//g, '')
-      .replace(/\/+$/, '');
+      .replace(/(?!^)\w+\/+\.{2}\//g, "")
+      .replace(/(?!^)\.\//g, "")
+      .replace(/\/+$/, "");
   }
   return resolvePath;
 }
@@ -143,14 +158,16 @@ function sortRouteList(arr: any[]) {
       v.children = sortRouteList(v.children);
     }
   });
-  return arr.sort((a: { meta: { position: number } }, b: { meta: { position: number } }) => {
-    return a?.meta?.position - b?.meta?.position;
-  });
+  return arr.sort(
+    (a: { meta: { position: number } }, b: { meta: { position: number } }) => {
+      return a?.meta?.position - b?.meta?.position;
+    },
+  );
 }
 
 // 匹配不被清除的文件夹和文件
 export function pathNamekeyCheck(key: string, whiteCatalogue: string[]) {
-  const pathName = key.split('/')[1];
+  const pathName = key.split("/")[1];
   const index = whiteCatalogue.findIndex((i: string) => {
     if (pathName.indexOf(i) !== -1) {
       if (pathName === i) return true;
@@ -181,13 +198,13 @@ export function formatFlatteningRoutes(routesList: AppRouteRecordRaw[]) {
 // 设置路由path,并创建路由层级
 export function setUpRoutePath(
   routeList: AppRouteRecordRaw[],
-  pathName = '',
+  pathName = "",
   pathList: number[] = [],
 ) {
   for (const [key, node] of routeList.entries()) {
     node.meta = { ...(node.meta as Meta), pathList: [...pathList, key] };
     if (pathName && !isUrl(node.path)) {
-      node.path = pathResolve(pathName, node.path || '');
+      node.path = pathResolve(pathName, node.path || "");
     }
     if (node.children && node.children.length) {
       setUpRoutePath(node.children, node.path, node.meta?.pathList);
@@ -197,29 +214,33 @@ export function setUpRoutePath(
 }
 
 // 处理缓存路由（添加、删除、刷新）
-export function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
+export function handleAliveRoute(
+  matched: RouteRecordNormalized[],
+  mode?: string,
+) {
   const { cacheOperate } = usePermissionStoreHook();
-  const name: RouteRecordName = matched[matched.length - 1].name as RouteRecordName;
+  const name: RouteRecordName = matched[matched.length - 1]
+    .name as RouteRecordName;
   switch (mode) {
-    case 'add':
+    case "add":
       matched.forEach((v: RouteRecordNormalized) => {
-        cacheOperate({ mode: 'add', name: v.name as RouteRecordName });
+        cacheOperate({ mode: "add", name: v.name as RouteRecordName });
       });
       break;
-    case 'delete':
+    case "delete":
       cacheOperate({
-        mode: 'delete',
+        mode: "delete",
         name,
       });
       break;
     default:
       cacheOperate({
-        mode: 'delete',
+        mode: "delete",
         name,
       });
       useTimeoutFn(() => {
         matched.forEach((v: RouteRecordNormalized) => {
-          cacheOperate({ mode: 'add', name: v.name as RouteRecordName });
+          cacheOperate({ mode: "add", name: v.name as RouteRecordName });
         });
       }, 100);
   }
@@ -253,13 +274,17 @@ export function findRouteByPath(
   path: string,
   routes: AppRouteRecordRaw[],
 ): AppRouteRecordRaw | null {
-  const res = routes.find((item: { path: string }) => item.path === path) || null;
+  const res =
+    routes.find((item: { path: string }) => item.path === path) || null;
   if (res) {
     return res;
   } else {
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].children instanceof Array && routes[i].children?.length) {
-        const miRes = findRouteByPath(path, routes[i].children as AppRouteRecordRaw[]);
+        const miRes = findRouteByPath(
+          path,
+          routes[i].children as AppRouteRecordRaw[],
+        );
         if (miRes) {
           return miRes;
         } else {

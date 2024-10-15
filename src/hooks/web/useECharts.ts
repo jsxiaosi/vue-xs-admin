@@ -1,9 +1,9 @@
-import type { Ref } from 'vue';
-import { nextTick, ref, unref } from 'vue';
-import type { EChartsOption } from 'echarts';
-import { useDebounceFn, tryOnUnmounted } from '@vueuse/core';
-import echarts from '@/utils/plugin/echarts';
-import { useEventListener } from '@/hooks/event/useEventListener';
+import { useEventListener } from "@/hooks/event/useEventListener";
+import echarts from "@/utils/plugin/echarts";
+import { tryOnUnmounted, useDebounceFn } from "@vueuse/core";
+import { nextTick, ref, unref } from "vue";
+import type { EChartsOption } from "echarts";
+import type { Ref } from "vue";
 
 export type createEChartsOption = EChartsOption;
 
@@ -21,12 +21,12 @@ export function useECharts(elRef: Ref<HTMLDivElement>) {
     if (!el || !unref(el)) {
       return;
     }
-    chartInstance = echarts.init(el, 'light');
+    chartInstance = echarts.init(el, "light");
 
     // 监听window宽度变化重新渲染echarts
     const { removeEvent } = useEventListener({
       el: window,
-      name: 'resize',
+      name: "resize",
       listener: resizeFn,
     });
     removeResizeFn = removeEvent;

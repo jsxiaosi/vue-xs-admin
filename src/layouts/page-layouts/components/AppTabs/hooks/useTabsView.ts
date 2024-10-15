@@ -1,8 +1,8 @@
-import type { CSSProperties, Ref } from 'vue';
-import { computed, reactive, ref, watch } from 'vue';
-import type { RouteLocationNormalizedLoaded } from 'vue-router';
-import { useTabsChange } from './useTabsChange';
-import type { MultiTabsType } from '@/store/types';
+import { computed, reactive, ref, watch } from "vue";
+import type { MultiTabsType } from "@/store/types";
+import type { CSSProperties, Ref } from "vue";
+import type { RouteLocationNormalizedLoaded } from "vue-router";
+import { useTabsChange } from "./useTabsChange";
 
 interface RightClickTags {
   text: string;
@@ -11,32 +11,33 @@ interface RightClickTags {
 }
 
 export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
-  const { onFresh, removeTab, closeTabsRoute, setTabPaneKey } = useTabsChange(multiTabs);
+  const { onFresh, removeTab, closeTabsRoute, setTabPaneKey } =
+    useTabsChange(multiTabs);
   const rightClickTags = reactive<RightClickTags[]>([
     {
-      text: '刷新',
+      text: "刷新",
       disabled: false,
-      code: 'refresh',
+      code: "refresh",
     },
     {
-      text: '关闭',
+      text: "关闭",
       disabled: false,
-      code: 'close',
+      code: "close",
     },
     {
-      text: '关闭其他标签',
+      text: "关闭其他标签",
       disabled: false,
-      code: 'closeOther',
+      code: "closeOther",
     },
     {
-      text: '关闭左侧其他标签',
+      text: "关闭左侧其他标签",
       disabled: false,
-      code: 'closeLeftOther',
+      code: "closeLeftOther",
     },
     {
-      text: '关闭右侧其他标签',
+      text: "关闭右侧其他标签",
       disabled: false,
-      code: 'closeRightOther',
+      code: "closeRightOther",
     },
   ]);
 
@@ -68,8 +69,17 @@ export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
     }
   };
 
-  const contextmenu = (route: MultiTabsType | RouteLocationNormalizedLoaded, e?: MouseEvent) => {
-    const item = multiTabs.value.find((i) => setTabPaneKey(i) === setTabPaneKey(route));
+  const closeMenu = () => {
+    visible.value = false;
+  };
+
+  const contextmenu = (
+    route: MultiTabsType | RouteLocationNormalizedLoaded,
+    e?: MouseEvent,
+  ) => {
+    const item = multiTabs.value.find(
+      (i) => setTabPaneKey(i) === setTabPaneKey(route),
+    );
     if (!item) return;
     closeMenu();
     showMenu(item);
@@ -84,20 +94,16 @@ export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
   };
 
   const rightViewStyle = computed((): CSSProperties => {
-    return { left: rightViewLeft.value + 'px', top: rightViewTop.value + 'px' };
+    return { left: `${rightViewLeft.value}px`, top: `${rightViewTop.value}px` };
   });
-
-  const closeMenu = () => {
-    visible.value = false;
-  };
 
   watch(
     () => visible.value,
     (val) => {
       if (val) {
-        document.body.addEventListener('click', closeMenu);
+        document.body.addEventListener("click", closeMenu);
       } else {
-        document.body.removeEventListener('click', closeMenu);
+        document.body.removeEventListener("click", closeMenu);
       }
     },
   );
@@ -105,24 +111,24 @@ export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
   const rightViewChange = (item: RightClickTags) => {
     if (!activityItem.value) return;
     switch (item.code) {
-      case 'refresh': {
+      case "refresh": {
         onFresh(activityItem.value);
         break;
       }
-      case 'close': {
+      case "close": {
         removeTab(activityItem.value);
         break;
       }
-      case 'closeOther': {
-        closeTabsRoute(activityItem.value, 'other');
+      case "closeOther": {
+        closeTabsRoute(activityItem.value, "other");
         break;
       }
-      case 'closeLeftOther': {
-        closeTabsRoute(activityItem.value, 'left');
+      case "closeLeftOther": {
+        closeTabsRoute(activityItem.value, "left");
         break;
       }
-      case 'closeRightOther': {
-        closeTabsRoute(activityItem.value, 'right');
+      case "closeRightOther": {
+        closeTabsRoute(activityItem.value, "right");
         break;
       }
       default:
@@ -131,5 +137,11 @@ export const useTabsView = (multiTabs: Ref<MultiTabsType[]>) => {
     showMenu(activityItem.value);
   };
 
-  return { visible, rightClickTags, rightViewStyle, contextmenu, rightViewChange };
+  return {
+    visible,
+    rightClickTags,
+    rightViewStyle,
+    contextmenu,
+    rightViewChange,
+  };
 };

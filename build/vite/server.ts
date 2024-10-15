@@ -1,4 +1,4 @@
-import type { ServerOptions } from 'vite';
+import type { ServerOptions } from "vite";
 
 export function createViteServer(): ServerOptions {
   const viteServer: ServerOptions = {
@@ -16,10 +16,10 @@ export function createViteServer(): ServerOptions {
     // force: false,
     // 自定义代理规则
     proxy: {
-      '/api': {
-        target: '',
+      "/api": {
+        target: "",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   };

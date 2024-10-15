@@ -1,9 +1,9 @@
-import { isString } from 'lodash-es';
-import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
-import { iAxios } from './iAxios';
-import { checkStatus } from './axiosStatus';
-import { errorData } from './errorConfig';
-import { useMessage } from '@/hooks/web/useMessage';
+import { useMessage } from "@/hooks/web/useMessage";
+import { isString } from "lodash-es";
+import { checkStatus } from "./axiosStatus";
+import { errorData } from "./errorConfig";
+import { IAxios } from "./iAxios";
+import type { AxiosInterceptor, CreateAxiosOptions } from "./axiosConfig";
 
 const { createErrorModal, createErrorMsg } = useMessage();
 
@@ -23,9 +23,9 @@ const interceptor: AxiosInterceptor = {
     const { errorMessageMode } = options;
     if (data) {
       if (data.code === -1) {
-        if (errorMessageMode === 'modal') {
+        if (errorMessageMode === "modal") {
           createErrorModal(data.message);
-        } else if (errorMessageMode === 'message') {
+        } else if (errorMessageMode === "message") {
           createErrorMsg(data.message);
         }
         return errorData(res);
@@ -34,8 +34,8 @@ const interceptor: AxiosInterceptor = {
         if (!code && !dataInfo && !message) {
           const toData = {
             code: 1,
-            data: data,
-            message: 'ok',
+            data,
+            message: "ok",
           };
           return toData;
         }
@@ -56,7 +56,8 @@ const interceptor: AxiosInterceptor = {
    */
   beforeRequestHook: (config, options) => {
     const { urlPrefix } = options;
-    if (urlPrefix && isString(urlPrefix)) config.url = `${urlPrefix}${config.url}`;
+    if (urlPrefix && isString(urlPrefix))
+      config.url = `${urlPrefix}${config.url}`;
     return config;
   },
 
@@ -66,7 +67,7 @@ const interceptor: AxiosInterceptor = {
   requestInterceptors: (config) => {
     const { requestOptions } = config;
     if (requestOptions?.withToken) {
-      (config as Recordable).headers._token = 'myToken';
+      (config as Recordable).headers._token = "myToken";
       if (requestOptions?.specialToken)
         (config as Recordable).headers._token = requestOptions?.specialToken;
     }
@@ -93,25 +94,25 @@ const interceptor: AxiosInterceptor = {
    */
   responseInterceptorsCatch: (error: any) => {
     const { response, message, config } = error || {};
-    const errorMessageMode = config.requestOptions.errorMessageMode || 'none';
+    const errorMessageMode = config.requestOptions.errorMessageMode || "none";
     checkStatus(response ? response.status : 404, message, errorMessageMode);
     return error;
   },
 };
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
-  return new iAxios({
+  return new IAxios({
     ...{
-      acoisadmisf: '',
+      acoisadmisf: "",
       // 请求时间
       timeout: 10 * 1000,
       // (拦截器)数据处理方式
       interceptor,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
       // 配置项（需要在拦截器中做的处理），下面的选项都可以在独立的接口请求中覆盖
       requestOptions: {
         withToken: true,
-        errorMessageMode: 'message',
+        errorMessageMode: "message",
       },
     },
     ...(opt || {}),

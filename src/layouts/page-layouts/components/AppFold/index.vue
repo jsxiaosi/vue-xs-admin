@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import SvgIcon from '@/components/SvgIcon/index.vue';
-  import { useRootSetting } from '@/hooks/setting/useRootSetting';
+import SvgIcon from "@/components/SvgIcon/index.vue";
+import { useRootSetting } from "@/hooks/setting/useRootSetting";
 
-  // 当前是否折叠导航栏
-  const { appConfig, setAppConfigMode } = useRootSetting();
-  // 折叠菜单事件
-  const handerShowElmenu = () => {
-    setAppConfigMode({ collapseMenu: !appConfig.value.collapseMenu });
-  };
+// 当前是否折叠导航栏
+const { appConfig, setAppConfigMode } = useRootSetting();
+// 折叠菜单事件
+const handerShowElmenu = () => {
+  setAppConfigMode({ collapseMenu: !appConfig.value.collapseMenu });
+};
 </script>
 
 <template>
@@ -17,11 +17,11 @@
     name="fold"
     color="#e3e3e3"
     @click="handerShowElmenu"
-  ></SvgIcon>
+  />
 </template>
 
 <style lang="scss">
-  .breadcrumb-unfold {
-    transform: rotate(180deg);
-  }
+.breadcrumb-unfold {
+  transform: rotate(180deg);
+}
 </style>

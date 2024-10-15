@@ -1,11 +1,11 @@
-import { defineStore } from 'pinia';
-import type { RouteRecordName } from 'vue-router';
-import { isEqual } from 'lodash-es';
-import { _storage } from '@jsxiaosi/utils';
-import type { MultiTabsType, PermissionState } from '../types';
-import { useAppStoreHook } from './app';
-import { store } from '@/store';
-import type { AppRouteRecordRaw } from '@/router/type';
+import { store } from "@/store";
+import { _storage } from "@jsxiaosi/utils";
+import { isEqual } from "lodash-es";
+import { defineStore } from "pinia";
+import type { AppRouteRecordRaw } from "@/router/type";
+import type { RouteRecordName } from "vue-router";
+import { useAppStoreHook } from "./app";
+import type { MultiTabsType, PermissionState } from "../types";
 
 const getPermissionState = (): PermissionState => {
   return {
@@ -14,35 +14,35 @@ const getPermissionState = (): PermissionState => {
     // 缓存页面keepAlive
     cachePageList: [],
     // 标签页（路由记录）
-    multiTabs: _storage.getStorage<MultiTabsType[]>('multiTabsList') || [],
+    multiTabs: _storage.getStorage<MultiTabsType[]>("multiTabsList") || [],
   };
 };
 
 export const usePermissionStore = defineStore({
-  id: 'permission',
+  id: "permission",
   state: (): PermissionState => getPermissionState(),
   actions: {
     setWholeMenus(routeList: AppRouteRecordRaw[]) {
       this.wholeMenus = [...routeList];
     },
     cacheOperate({
-      mode = 'sync',
-      name = '',
+      mode = "sync",
+      name = "",
     }: {
-      mode: 'add' | 'delete' | 'sync';
+      mode: "add" | "delete" | "sync";
       name?: RouteRecordName;
     }) {
       let delIndex = -1;
       switch (mode) {
-        case 'add':
+        case "add":
           this.cachePageList.push(name);
           this.cachePageList = [...new Set(this.cachePageList)];
           break;
-        case 'delete':
+        case "delete":
           delIndex = this.cachePageList.findIndex((v) => v === name);
           delIndex !== -1 && this.cachePageList.splice(delIndex, 1);
           break;
-        case 'sync':
+        case "sync":
           // 延时加载：解决因为清除缓存导致回退到上一个页面时页面显示错位问题
           setTimeout(() => {
             this.cachePageList = this.cachePageList.filter((i) => {
@@ -61,17 +61,19 @@ export const usePermissionStore = defineStore({
     persistent() {
       const appConfig = useAppStoreHook();
       if (appConfig.appConfigMode.tabPersistent)
-        _storage.setStorage('multiTabsList', this.multiTabs);
+        _storage.setStorage("multiTabsList", this.multiTabs);
     },
-    handleMultiTabs(type: 'add' | 'delete', value: MultiTabsType) {
+    handleMultiTabs(type: "add" | "delete", value: MultiTabsType) {
       const route = value as MultiTabsType;
       const index = this.multiTabs.findIndex(
         (i) =>
-          i.path === route.path && isEqual(i.query, route.query) && isEqual(i.params, route.params),
+          i.path === route.path &&
+          isEqual(i.query, route.query) &&
+          isEqual(i.params, route.params),
       );
 
       switch (type) {
-        case 'add':
+        case "add":
           if (!value.meta?.title) return;
           if (index !== -1) {
             this.multiTabs[index] = route;
@@ -79,10 +81,10 @@ export const usePermissionStore = defineStore({
             this.multiTabs.push(route);
           }
           break;
-        case 'delete':
+        case "delete":
           if (index === -1) return;
           this.multiTabs.splice(index, 1);
-          this.cacheOperate({ mode: 'sync' });
+          this.cacheOperate({ mode: "sync" });
           break;
         default:
           break;
@@ -96,7 +98,7 @@ export const usePermissionStore = defineStore({
       this.persistent();
     },
     handleRemoveMultiTabs() {
-      _storage.removeStorage('multiTabsList');
+      _storage.removeStorage("multiTabsList");
       this.multiTabs = [];
       this.clearAllCachePage();
     },

@@ -1,65 +1,68 @@
 <script setup lang="ts">
-  import type { PropType } from 'vue';
-  import { computed, ref, watch } from 'vue';
-  import { useRoute } from 'vue-router';
-  import SidebarItem from './SidebarItem.vue';
-  import { usePermissionStoreHook } from '@/store/modules/permission';
-  import type { AppRouteRecordRaw } from '@/router/type';
-  import { getParentPaths, findRouteByPath } from '@/router/utils';
-  import { useRootSetting } from '@/hooks/setting/useRootSetting';
+import { useRootSetting } from "@/hooks/setting/useRootSetting";
+import { findRouteByPath, getParentPaths } from "@/router/utils";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+import { computed, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import type { AppRouteRecordRaw } from "@/router/type";
+import type { PropType } from "vue";
+import SidebarItem from "./SidebarItem.vue";
 
-  defineProps({
-    mode: {
-      type: String as PropType<'vertical' | 'horizontal'>,
-      default: 'vertical',
-    },
-  });
+defineProps({
+  mode: {
+    type: String as PropType<"vertical" | "horizontal">,
+    default: "vertical",
+  },
+});
 
-  const permission = usePermissionStoreHook();
+const permission = usePermissionStoreHook();
 
-  const route = useRoute();
-  const { appConfig } = useRootSetting();
-  let subMenuData = ref<AppRouteRecordRaw[]>(permission.wholeMenus);
+const route = useRoute();
+const { appConfig } = useRootSetting();
+const subMenuData = ref<AppRouteRecordRaw[]>(permission.wholeMenus);
 
-  const menuData = computed<AppRouteRecordRaw[]>(() => {
-    return appConfig.value.sidebarMode === 'blend' && !appConfig.value.drawerSidebar
-      ? subMenuData.value
-      : permission.wholeMenus;
-  });
+const menuData = computed<AppRouteRecordRaw[]>(() => {
+  return appConfig.value.sidebarMode === "blend" &&
+    !appConfig.value.drawerSidebar
+    ? subMenuData.value
+    : permission.wholeMenus;
+});
 
-  function getSubMenuData(path: string) {
-    // path的父级路由组成的数组
-    const parentPathArr = getParentPaths(path, permission.wholeMenus);
-    // 当前路由的信息
-    const parenetRoute = findRouteByPath(parentPathArr[0], permission.wholeMenus);
-    if (parenetRoute) {
-      if (parenetRoute.children && !parenetRoute.children[0].meta?.hideSidebar)
-        subMenuData.value = parenetRoute.children;
-      else subMenuData.value = [parenetRoute];
-    }
+function getSubMenuData(path: string) {
+  // path的父级路由组成的数组
+  const parentPathArr = getParentPaths(path, permission.wholeMenus);
+  // 当前路由的信息
+  const parenetRoute = findRouteByPath(parentPathArr[0], permission.wholeMenus);
+  if (parenetRoute) {
+    if (parenetRoute.children && !parenetRoute.children[0].meta?.hideSidebar)
+      subMenuData.value = parenetRoute.children;
+    else subMenuData.value = [parenetRoute];
   }
+}
 
-  getSubMenuData(route.path);
-  watch(
-    () => [route.path, appConfig.value.sidebarMode],
-    () => {
-      if (appConfig.value.sidebarMode === 'blend') {
-        getSubMenuData(route.path);
-      }
-    },
-  );
-
-  const activeMenyu = computed<string>(() => {
-    const { meta, path } = route;
-    if (meta.activeMenu) {
-      return meta.activeMenu as string;
+getSubMenuData(route.path);
+watch(
+  () => [route.path, appConfig.value.sidebarMode],
+  () => {
+    if (appConfig.value.sidebarMode === "blend") {
+      getSubMenuData(route.path);
     }
-    return path;
-  });
+  },
+);
 
-  const collapse = computed(() =>
-    appConfig.value.sidebarMode === 'horizontal' ? false : appConfig.value.collapseMenu,
-  );
+const activeMenyu = computed<string>(() => {
+  const { meta, path } = route;
+  if (meta.activeMenu) {
+    return meta.activeMenu as string;
+  }
+  return path;
+});
+
+const collapse = computed(() =>
+  appConfig.value.sidebarMode === "horizontal"
+    ? false
+    : appConfig.value.collapseMenu,
+);
 </script>
 
 <template>

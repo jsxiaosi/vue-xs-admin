@@ -1,51 +1,51 @@
 <script setup lang="ts">
-  import { ref, watch } from 'vue';
-  import { useDebounceFn, useEventListener, useMediaQuery } from '@vueuse/core';
-  import VerticalSidebar from '../VerticalSidebar/index.vue';
-  import type { AppConfig } from '@/store/types';
-  import { useRootSetting } from '@/hooks/setting/useRootSetting';
+import { useRootSetting } from "@/hooks/setting/useRootSetting";
+import { useDebounceFn, useEventListener, useMediaQuery } from "@vueuse/core";
+import { ref, watch } from "vue";
+import type { AppConfig } from "@/store/types";
+import VerticalSidebar from "../VerticalSidebar/index.vue";
 
-  const { appConfig, setAppConfigMode } = useRootSetting();
+const { appConfig, setAppConfigMode } = useRootSetting();
 
-  const drawer = ref<boolean>(!appConfig.value.collapseMenu);
+const drawer = ref<boolean>(!appConfig.value.collapseMenu);
 
-  const setAppStore = (appData: Partial<AppConfig>) => {
-    setAppConfigMode(appData);
-  };
+const setAppStore = (appData: Partial<AppConfig>) => {
+  setAppConfigMode(appData);
+};
 
-  const handleClose = () => {
-    setAppStore({ collapseMenu: drawer.value });
-  };
+const handleClose = () => {
+  setAppStore({ collapseMenu: drawer.value });
+};
 
-  const isPhoneScreen = ref<boolean>(false);
+const isPhoneScreen = ref<boolean>(false);
 
-  const isSmallScreen = ref<boolean>(false);
+const isSmallScreen = ref<boolean>(false);
 
-  const mediaQuery = useDebounceFn(() => {
-    isSmallScreen.value = useMediaQuery('(max-width: 1024px)').value;
+const mediaQuery = useDebounceFn(() => {
+  isSmallScreen.value = useMediaQuery("(max-width: 1024px)").value;
 
-    isPhoneScreen.value = useMediaQuery('(max-width: 750px)').value;
-    if (isPhoneScreen.value) {
-      setAppStore({ drawerSidebar: true });
-    } else {
-      setAppStore({ drawerSidebar: false });
-    }
-  }, 100);
+  isPhoneScreen.value = useMediaQuery("(max-width: 750px)").value;
+  if (isPhoneScreen.value) {
+    setAppStore({ drawerSidebar: true });
+  } else {
+    setAppStore({ drawerSidebar: false });
+  }
+}, 100);
 
-  watch(isSmallScreen, () => {
-    setAppStore({ collapseMenu: isSmallScreen.value });
-  });
+watch(isSmallScreen, () => {
+  setAppStore({ collapseMenu: isSmallScreen.value });
+});
 
-  watch(
-    () => appConfig.value.collapseMenu,
-    () => {
-      drawer.value = !appConfig.value.collapseMenu;
-    },
-  );
+watch(
+  () => appConfig.value.collapseMenu,
+  () => {
+    drawer.value = !appConfig.value.collapseMenu;
+  },
+);
 
-  useEventListener(window, 'resize', () => mediaQuery());
+useEventListener(window, "resize", () => mediaQuery());
 
-  mediaQuery();
+mediaQuery();
 </script>
 
 <template>
@@ -65,18 +65,18 @@
 </template>
 
 <style lang="scss">
-  .drawer-sidebar {
-    width: #{$side-bar-width} !important;
-    background-color: var(--main-bg-color);
+.drawer-sidebar {
+  width: #{$side-bar-width} !important;
+  background-color: var(--main-bg-color);
 
-    .el-drawer__body {
-      height: 100vh;
-      padding: 0 !important;
-      overflow: hidden;
+  .el-drawer__body {
+    height: 100vh;
+    padding: 0 !important;
+    overflow: hidden;
 
-      .sidebar-container {
-        height: 100%;
-      }
+    .sidebar-container {
+      height: 100%;
     }
   }
+}
 </style>

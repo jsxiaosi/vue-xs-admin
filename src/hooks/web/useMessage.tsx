@@ -1,20 +1,24 @@
-import type { ElMessageBoxOptions } from 'element-plus';
-import { ElMessage, ElMessageBox } from 'element-plus';
-import { useI18n } from '@/hooks/web/useI18n';
+import { useI18n } from "@/hooks/web/useI18n";
+import { ElMessage, ElMessageBox } from "element-plus";
+import type { ElMessageBoxOptions } from "element-plus";
 
 const { t } = useI18n();
 
-function createElMessageBox(message: string, title: string, options: ElMessageBoxOptions) {
+function createElMessageBox(
+  message: string,
+  title: string,
+  options: ElMessageBoxOptions,
+) {
   ElMessageBox.confirm(message, title, options)
     .then(() => {})
     .catch(() => {});
 }
 
 function createErrorModal(message: string) {
-  createElMessageBox(message, t('sys.errorTip'), {
-    confirmButtonText: t('sys.okText'),
-    cancelButtonText: t('sys.closeText'),
-    type: 'error',
+  createElMessageBox(message, t("sys.errorTip"), {
+    confirmButtonText: t("sys.okText"),
+    cancelButtonText: t("sys.closeText"),
+    type: "error",
   });
 }
 

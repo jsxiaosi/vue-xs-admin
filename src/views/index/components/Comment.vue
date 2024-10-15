@@ -14,49 +14,49 @@
             </span>
           </div>
         </div>
-        <el-divider v-if="index != 3" border-style="double" />
+        <el-divider v-if="index !== 3" border-style="double" />
       </li>
     </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .comment {
-    width: 100%;
-    height: 410px;
-    overflow-y: auto;
+.comment {
+  width: 100%;
+  height: 410px;
+  overflow-y: auto;
 
-    .item {
+  .item {
+    display: flex;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .item-content {
       display: flex;
+      flex-direction: column;
+      margin-left: 16px;
 
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+      .title {
+        font-size: var(--font-size-medium);
       }
 
-      .item-content {
-        display: flex;
-        flex-direction: column;
-        margin-left: 16px;
+      .time {
+        margin: 5px 0;
+        font-size: var(--font-size-extra-small);
+      }
 
-        .title {
-          font-size: var(--font-size-medium);
-        }
-
-        .time {
-          margin: 5px 0;
-          font-size: var(--font-size-extra-small);
-        }
-
-        .text {
-          display: -webkit-box;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
+      .text {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
   }
+}
 </style>

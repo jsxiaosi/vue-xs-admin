@@ -1,11 +1,18 @@
-import { defineComponent, reactive, computed, watch, onMounted, unref } from 'vue';
-import { isNumber } from '@jsxiaosi/utils';
-import { countToProps } from './props';
+import { isNumber } from "@jsxiaosi/utils";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  unref,
+  watch,
+} from "vue";
+import { countToProps } from "./props";
 
 export default defineComponent({
-  name: 'CountToNormal',
+  name: "CountToNormal",
   props: countToProps,
-  emits: ['mounted', 'callback'],
+  emits: ["mounted", "callback"],
   setup(props, { emit }) {
     const state = reactive<{
       localStartVal: number;
@@ -86,7 +93,12 @@ export default defineComponent({
         if (unref(getCountDown)) {
           state.printVal =
             state.localStartVal -
-            easingFn(progress, 0, state.localStartVal - endVal, state.localDuration as number);
+            easingFn(
+              progress,
+              0,
+              state.localStartVal - endVal,
+              state.localDuration as number,
+            );
         } else {
           state.printVal = easingFn(
             progress,
@@ -99,11 +111,13 @@ export default defineComponent({
         if (unref(getCountDown)) {
           state.printVal =
             state.localStartVal -
-            (state.localStartVal - endVal) * (progress / (state.localDuration as number));
+            (state.localStartVal - endVal) *
+              (progress / (state.localDuration as number));
         } else {
           state.printVal =
             state.localStartVal +
-            (endVal - state.localStartVal) * (progress / (state.localDuration as number));
+            (endVal - state.localStartVal) *
+              (progress / (state.localDuration as number));
         }
       }
       if (unref(getCountDown)) {
@@ -115,21 +129,21 @@ export default defineComponent({
       if (progress < (state.localDuration as number)) {
         state.rAF = requestAnimationFrame(count);
       } else {
-        emit('callback');
+        emit("callback");
       }
     }
 
     function formatNumber(num: number | string) {
       const { decimals, decimal, separator, suffix, prefix } = props;
       num = Number(num).toFixed(decimals);
-      num += '';
-      const x = num.split('.');
+      num += "";
+      const x = num.split(".");
       let x1 = x[0];
-      const x2 = x.length > 1 ? decimal + x[1] : '';
+      const x2 = x.length > 1 ? decimal + x[1] : "";
       const rgx = /(\d+)(\d{3})/;
       if (separator && !isNumber(separator)) {
         while (rgx.test(x1)) {
-          x1 = x1.replace(rgx, '$1' + separator + '$2');
+          x1 = x1.replace(rgx, `$1${separator}$2`);
         }
       }
       return prefix + x1 + x2 + suffix;
@@ -139,7 +153,7 @@ export default defineComponent({
       if (props.autoplay) {
         start();
       }
-      emit('mounted');
+      emit("mounted");
     });
 
     return () => (

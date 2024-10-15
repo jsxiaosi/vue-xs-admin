@@ -1,41 +1,41 @@
 <script setup lang="ts">
-  import VisitAnalysis from './components/AnalysisChart.vue';
-  import PieChart from './components/PieChart.vue';
-  import WordCloud from './components/WordCloud.vue';
-  import Comment from './components/Comment.vue';
-  import SvgIcon from '@/components/SvgIcon/index.vue';
+import SvgIcon from "@/components/SvgIcon/index.vue";
+import VisitAnalysis from "./components/AnalysisChart.vue";
+import Comment from "./components/Comment.vue";
+import PieChart from "./components/PieChart.vue";
+import WordCloud from "./components/WordCloud.vue";
 
-  defineOptions({
-    name: 'RtWelcome',
-  });
+defineOptions({
+  name: "RtWelcome",
+});
 
-  const speedList = [
-    {
-      title: '待办事项',
-      online: 24,
-      total: 70,
-    },
-    {
-      title: '待办任务',
-      online: 39,
-      total: 100,
-    },
-    {
-      title: '目标计划',
+const speedList = [
+  {
+    title: "待办事项",
+    online: 24,
+    total: 70,
+  },
+  {
+    title: "待办任务",
+    online: 39,
+    total: 100,
+  },
+  {
+    title: "目标计划",
 
-      online: 5,
-      total: 10,
-    },
-    {
-      title: '评论回复',
-      online: 10,
-      total: 40,
-    },
-  ];
+    online: 5,
+    total: 10,
+  },
+  {
+    title: "评论回复",
+    online: 10,
+    total: 40,
+  },
+];
 
-  const value = (online: number, total: number) => {
-    return Math.round((online / total) * 100);
-  };
+const value = (online: number, total: number) => {
+  return Math.round((online / total) * 100);
+};
 </script>
 
 <template>
@@ -54,7 +54,7 @@
           <template #header>
             <div class="card-header cursor">
               <span>{{ item.title }}</span>
-              <SvgIcon name="iEL-arrow-right"></SvgIcon>
+              <SvgIcon name="iEL-arrow-right" />
             </div>
           </template>
           <div class="card-content">
@@ -111,7 +111,7 @@
               <span>词云</span>
             </div>
           </template>
-          <WordCloud></WordCloud>
+          <WordCloud />
         </el-card>
       </el-col>
     </el-row>
@@ -119,38 +119,38 @@
 </template>
 
 <style lang="scss" scoped>
-  .box-card {
-    margin-bottom: 20px;
+.box-card {
+  margin-bottom: 20px;
 
-    :deep(.el-card__header) {
-      padding-bottom: 0;
-      border: none;
+  :deep(.el-card__header) {
+    padding-bottom: 0;
+    border: none;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  .card-content {
+    :deep(.el-progress-bar__outer) {
+      height: 17px !important;
     }
 
-    .card-header {
+    .numerical-value {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
-      font-weight: 600;
-    }
+      margin-bottom: 10px;
 
-    .card-content {
-      :deep(.el-progress-bar__outer) {
-        height: 17px !important;
-      }
-
-      .numerical-value {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: 10px;
-
-        .number {
-          color: var(--text-color-primary);
-          font-size: var(--font-size-extra-large);
-          font-weight: 600;
-        }
+      .number {
+        color: var(--text-color-primary);
+        font-size: var(--font-size-extra-large);
+        font-weight: 600;
       }
     }
   }
+}
 </style>

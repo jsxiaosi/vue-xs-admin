@@ -1,14 +1,19 @@
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
-import axios from 'axios';
-import { cloneDeep } from 'lodash-es';
-import { isFunction } from '@jsxiaosi/utils';
-import type { CreateAxiosOptions } from './axiosConfig';
-import type { RequestOptions, Result } from '#/axios';
+import { isFunction } from "@jsxiaosi/utils";
+import axios from "axios";
+import { cloneDeep } from "lodash-es";
+import type { RequestOptions, Result } from "#/axios";
+import type {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from "axios";
+import type { CreateAxiosOptions } from "./axiosConfig";
 
 /**
  * @description: axios 模块
  */
-export class iAxios {
+export class IAxios {
   private axiosInstance: AxiosInstance;
   private readonly options: CreateAxiosOptions;
 
@@ -63,22 +68,34 @@ export class iAxios {
     // 请求拦截器配置
     requestInterceptors &&
       isFunction(requestInterceptors) &&
-      this.axiosInstance.interceptors.request.use(requestInterceptors, undefined);
+      this.axiosInstance.interceptors.request.use(
+        requestInterceptors,
+        undefined,
+      );
 
     // 请求拦截器失败配置
     requestInterceptorsCatch &&
       isFunction(requestInterceptorsCatch) &&
-      this.axiosInstance.interceptors.request.use(undefined, requestInterceptorsCatch);
+      this.axiosInstance.interceptors.request.use(
+        undefined,
+        requestInterceptorsCatch,
+      );
 
     // 响应拦截器配置
     responseInterceptors &&
       isFunction(responseInterceptors) &&
-      this.axiosInstance.interceptors.response.use(responseInterceptors, undefined);
+      this.axiosInstance.interceptors.response.use(
+        responseInterceptors,
+        undefined,
+      );
 
     // 响应拦截器失败配置
     responseInterceptorsCatch &&
       isFunction(responseInterceptorsCatch) &&
-      this.axiosInstance.interceptors.response.use(undefined, responseInterceptorsCatch);
+      this.axiosInstance.interceptors.response.use(
+        undefined,
+        responseInterceptorsCatch,
+      );
   }
 
   /**
@@ -88,7 +105,7 @@ export class iAxios {
     config: AxiosRequestConfig<P>,
     options?: RequestOptions,
   ): Promise<Result<T>> {
-    return this.request<T, P>({ ...config, method: 'GET' }, options);
+    return this.request<T, P>({ ...config, method: "GET" }, options);
   }
 
   /**
@@ -98,7 +115,7 @@ export class iAxios {
     config: AxiosRequestConfig<P>,
     options?: RequestOptions,
   ): Promise<Result<T>> {
-    return this.request<T, P>({ ...config, method: 'POST' }, options);
+    return this.request<T, P>({ ...config, method: "POST" }, options);
   }
 
   /**
@@ -108,7 +125,7 @@ export class iAxios {
     config: AxiosRequestConfig<P>,
     options?: RequestOptions,
   ): Promise<Result<T>> {
-    return this.request<T, P>({ ...config, method: 'PUT' }, options);
+    return this.request<T, P>({ ...config, method: "PUT" }, options);
   }
 
   /**
@@ -118,7 +135,7 @@ export class iAxios {
     config: AxiosRequestConfig<P>,
     options?: RequestOptions,
   ): Promise<Result<T>> {
-    return this.request<T, P>({ ...config, method: 'DELETE' }, options);
+    return this.request<T, P>({ ...config, method: "DELETE" }, options);
   }
 
   /**
@@ -136,7 +153,8 @@ export class iAxios {
 
     const opt: RequestOptions = Object.assign({}, requestOptions, options);
 
-    const { beforeRequestHook, requestCatchHook, requestHook } = interceptor || {};
+    const { beforeRequestHook, requestCatchHook, requestHook } =
+      interceptor || {};
     if (beforeRequestHook && isFunction(beforeRequestHook)) {
       conf = beforeRequestHook(conf, opt);
     }
@@ -151,7 +169,7 @@ export class iAxios {
             try {
               resolve(requestHook(res, opt));
             } catch (err) {
-              reject(err || new Error('request error!'));
+              reject(err || new Error("request error!"));
             }
             return;
           }

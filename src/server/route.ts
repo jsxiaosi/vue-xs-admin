@@ -1,7 +1,7 @@
-import { deffHttp } from '@/utils/axios';
+import { deffHttp } from "@/utils/axios";
 
 enum Api {
-  ROUTE_LIST = '/mock_api/getRoute',
+  ROUTE_LIST = "/mock_api/getRoute",
 }
 
 interface Param {

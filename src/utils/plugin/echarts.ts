@@ -1,17 +1,17 @@
-import * as echarts from 'echarts/core';
+import { BarChart, LineChart, MapChart, PieChart } from "echarts/charts";
 import {
+  GeoComponent,
   GridComponent,
-  TooltipComponent,
+  LegendComponent,
   TitleComponent,
   ToolboxComponent,
-  LegendComponent,
+  TooltipComponent,
   VisualMapComponent,
-  GeoComponent,
-} from 'echarts/components';
-import { LineChart, BarChart, MapChart, PieChart } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-import 'echarts-wordcloud';
+} from "echarts/components";
+import * as echarts from "echarts/core";
+import { UniversalTransition } from "echarts/features";
+import { CanvasRenderer } from "echarts/renderers";
+import "echarts-wordcloud";
 
 echarts.use([
   GridComponent,
