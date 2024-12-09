@@ -3,7 +3,7 @@ name: Automatic deployment to GitHub Pages
 on: 
   push:
     branches:
-      - gh-pages
+      - git-pages
 
 jobs:
   deploy:
