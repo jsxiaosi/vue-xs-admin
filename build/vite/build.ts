@@ -8,7 +8,7 @@ export function createViteBuild(): BuildOptions {
   const viteBuild = {
     target: 'es2015',
     // 指定输出路径
-    outDir: 'docs',
+    outDir: 'dist',
     cssTarget: 'chrome80',
     rollupOptions: {
       output: {
