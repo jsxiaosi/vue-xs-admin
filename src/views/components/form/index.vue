@@ -1,16 +1,26 @@
 <script lang="ts" setup>
-  import { h, reactive, ref } from 'vue';
-  import { ElInput } from 'element-plus';
   import Form from '@/components/Form/index.vue';
+  import { ElInput } from 'element-plus';
+  import { h, reactive, ref } from 'vue';
   import type { FormProps } from '@/components/Form/types/from';
 
   defineOptions({
     name: 'RtForm',
   });
 
-  const form = ref<{
-    textarea: number;
-  }>({ textarea: 0 });
+  interface FormDataType {
+    name: string;
+    dateTime?: string;
+    cascader?: string[];
+    select?: string;
+    checkbox?: string[];
+    radio?: string;
+    slotInput?: string;
+    renderInput?: string;
+    admin?: number;
+  }
+
+  const form = ref<FormDataType>({ name: '' });
 
   const cascaderOptions = [
     {
@@ -281,7 +291,7 @@
     },
   ];
 
-  const formOption = reactive<FormProps>({
+  const formOption = reactive<FormProps<FormDataType>>({
     labelPosition: 'right',
     formItem: [
       {
@@ -293,9 +303,13 @@
             prop: 'name',
             rules: [{ required: true, type: 'string' }],
             props: {
-              onChange: (e: any) => {
+              onChange: (e: string) => {
                 console.log(e);
               },
+
+              // onChange: (e: any) => {
+              //   console.log(e);
+              // },
             },
           },
           {
@@ -329,6 +343,7 @@
             component: 'ElSelect',
             label: '晚上吃什么',
             prop: 'select',
+
             childrenComponent: {
               options: [
                 { label: '吃吃吃就知道吃', value: '吃吃吃就知道吃' },
@@ -375,12 +390,12 @@
             component: '',
             label: 'render组件',
             prop: 'renderInput',
-            render: ({ formModel, formItem }) => {
+            render: () => {
               return h(ElInput, {
                 placeholder: '请输入',
-                value: formModel[formItem.prop],
-                onChange: (e: any) => {
-                  formModel[formItem.prop] = e.target.value;
+                modelValue: form.value.renderInput,
+                'onUpdate:modelValue': (value: string) => {
+                  form.value.renderInput = value;
                 },
               });
             },
@@ -391,15 +406,15 @@
   });
 
   const handlerForm = async (val: string) => {
-    if (val == 'vertical') {
-      formOption.formItem.map((res) => {
+    if (val === 'vertical') {
+      formOption.formItem.map(res => {
         res.md = 24;
         res.lg = 24;
         res.xl = 24;
         return res;
       });
-    } else if (val == 'horizontal') {
-      formOption.formItem.map((res) => {
+    } else if (val === 'horizontal') {
+      formOption.formItem.map(res => {
         delete res.md;
         delete res.lg;
         delete res.xl;
@@ -418,16 +433,12 @@
 <template>
   <div class="page-container">
     <div class="config">
-      <el-button @click="handlerForm('vertical')">垂直</el-button>
-      <el-button @click="handlerForm('horizontal')">水平</el-button>
+      <el-button @click="handlerForm('vertical')"> 垂直 </el-button>
+      <el-button @click="handlerForm('horizontal')"> 水平 </el-button>
     </div>
-    <Form ref="formRef" :form-option="formOption" @submit-form="submitForm">
-      <template #slotInput="{ formModel, formItem }">
-        <ElInput
-          v-model="formModel[formItem.prop]"
-          :type="formItem.inputType"
-          placeholder="自定义输入框"
-        ></ElInput>
+    <Form ref="formRef" :form-data="form" :form-option="formOption" @submit-form="submitForm">
+      <template #slotInput="{ formModel }">
+        <ElInput v-model="formModel.slotInput" placeholder="自定义输入框" />
       </template>
     </Form>
   </div>

@@ -1,12 +1,5 @@
 <script lang="tsx">
-  import {
-    defineComponent,
-    ref,
-    unref,
-    onBeforeMount,
-    onBeforeUnmount,
-    getCurrentInstance,
-  } from 'vue';
+  import { defineComponent, getCurrentInstance, onBeforeMount, onBeforeUnmount, ref, unref } from 'vue';
   import { reboundProps } from './props';
 
   export default defineComponent({
@@ -24,7 +17,7 @@
         isSafari &&
           (timer.value = setTimeout(() => {
             // @ts-expect-error: 对象可能为null
-            getCurrentInstance().refs['ul'].setAttribute(
+            getCurrentInstance().refs.ul.setAttribute(
               'style',
               `
         animation: none;
@@ -81,7 +74,9 @@
 
   ul {
     /* display: flex; */
-    animation: move 0.3s linear infinite, bounce-in-down 1s calc(var(--delay) * 1s) forwards;
+    animation:
+      move 0.3s linear infinite,
+      bounce-in-down 1s calc(var(--delay) * 1s) forwards;
   }
 
   @keyframes move {

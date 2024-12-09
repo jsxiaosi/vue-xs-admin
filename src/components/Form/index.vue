@@ -1,43 +1,39 @@
-<script lang="ts" setup>
-  import type { PropType } from 'vue';
-  import { onMounted, reactive, ref } from 'vue';
-  import type { FormProps, FormItemListProps } from './types/from';
+<script lang="ts" setup generic="T extends Object">
+  import { onMounted, reactive, shallowRef, useTemplateRef } from 'vue';
+  import type { Arrayable } from '@vueuse/core';
+  import type { ElForm, FormItemRule } from 'element-plus';
   import FormItem from './src/components/FormItem.vue';
+  import type { FormProps, FormSlotType } from './types/from';
 
-  const props = defineProps({
-    formData: {
-      type: Object as PropType<Recordable>,
-      default: () => {},
-    },
-    formOption: {
-      type: Object as PropType<FormProps>,
-      default: () => {},
-    },
-    rules: {
-      type: Object,
-      default: () => {},
-    },
-  });
+  const props = defineProps<{
+    formData?: T;
+    formOption: FormProps<T>;
+    rules?: Partial<Record<string, Arrayable<FormItemRule>>>;
+  }>();
 
   const emit = defineEmits<{
-    (e: 'submitForm', form: FormItemListProps): void;
+    (e: 'submitForm', form: T): void;
   }>();
-  const form = reactive<any>(props.formData || {});
 
-  const formRef = ref();
+  defineSlots<FormSlotType<T>>();
+
+  const form = reactive<T>(props.formData || ({} as T));
+
+  // const formRef = ref();
+  const fromRef = useTemplateRef<InstanceType<typeof ElForm>>('form-ref');
 
   onMounted(() => {});
 
-  function setFormModel(key: string, value: any) {
-    form[key] = value;
-  }
+  // function setFormModel(key: string, value: any) {
+  //   form[key] = value;
+  // }
 
   const submitForm = () => {
-    formRef.value.validate((value: any) => {
+    fromRef.value?.validate((value: any) => {
       console.log(value);
     });
     console.log(form);
-    emit('submitForm', form);
+    emit('submitForm', shallowRef(form).value);
   };
 
   const resetForm = () => {};
@@ -49,13 +45,7 @@
 
 <template>
   <div>
-    <el-form
-      ref="formRef"
-      :rules="rules"
-      :model="form"
-      :label-position="formOption.labelPosition"
-      label-width="120px"
-    >
+    <el-form ref="form-ref" :rules="rules" :model="form" :label-position="formOption.labelPosition" label-width="120px">
       <el-row v-for="(f, fix) in formOption.formItem" :key="fix" :gutter="f.gutter || 30">
         <el-col
           v-for="(fItem, fItemIx) in f.itemList"
@@ -66,16 +56,16 @@
           :lg="f.lg || 8"
           :xl="f.xl || 8"
         >
-          <FormItem :form-item="fItem" :form-model="form" :set-form-model="setFormModel">
+          <FormItem :form-item="fItem" :form-model="form">
             <template v-for="item in Object.keys($slots)" #[item]="data">
-              <slot :name="item" v-bind="(data || {}) as Recordable"></slot>
+              <slot :name="item as keyof T" v-bind="data || {}" />
             </template>
           </FormItem>
         </el-col>
       </el-row>
       <el-form-item>
-        <el-button type="primary" @click="submitForm()">Create</el-button>
-        <el-button @click="resetForm()">Reset</el-button>
+        <el-button type="primary" @click="submitForm()"> Create </el-button>
+        <el-button @click="resetForm()"> Reset </el-button>
       </el-form-item>
     </el-form>
   </div>
