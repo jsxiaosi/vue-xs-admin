@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - git-pages
+  repository_dispatch:
+    types: [git-pages-deploy]
 
 jobs:
   build:
