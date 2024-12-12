@@ -14,6 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'push' && github.ref || 'git-pages' }}
           fetch-depth: 0
       
       - name: Setup pnpm
