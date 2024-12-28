@@ -3,6 +3,8 @@
   import { ElConfigProvider } from 'element-plus';
 
   const { tolocale } = deffElementLocale();
+
+  cosole.log(asdfas)
 </script>
 
 <template>
