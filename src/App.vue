@@ -3,6 +3,8 @@
   import { ElConfigProvider } from 'element-plus';
 
   const { tolocale } = deffElementLocale();
+
+  console.log(admin)
 </script>
 
 <template>
