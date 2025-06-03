@@ -1,7 +1,7 @@
 {
   "name": "vue-xs-admin",
   "type": "module",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "packageManager": "pnpm@9.0.0",
   "author": {
     "name": "小斯斯",
@@ -28,7 +28,7 @@
     "test:run": "vitest run",
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
-    "lint:eslint": "eslint \"{src,mock,build}/**/*.{vue,ts,js,tsx,jsx}\" package.json --fix",
+    "lint:eslint": "eslint . --fix",
     "lint:stylelint": "stylelint \"**/*.{vue,css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/",
     "lint:prettier": "prettier --write --log-level warn \"src/**/*.{js,json,css,scss,vue,ts,tsx,jsx,html,md}\"",
     "lint:pretty": "pretty-quick --staged",
