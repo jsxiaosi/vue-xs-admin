@@ -1,3 +1,17 @@
+## <small>2.0.3 (2025-06-03)</small>
+
+- feat(k8s): ✨ docker,k8s配置 ([802beb7](https://github.com/jsxiaosi/vue-xs-admin/commit/802beb7))
+- ci: 🔨Update issue templates ([ed6e9a8](https://github.com/jsxiaosi/vue-xs-admin/commit/ed6e9a8))
+- ci: 🛠 lint and type checking 工作流 ([6d24016](https://github.com/jsxiaosi/vue-xs-admin/commit/6d24016))
+- ci: 🛠 lint and type checking 工作流 ([c8005bb](https://github.com/jsxiaosi/vue-xs-admin/commit/c8005bb))
+- ci: 🛠 lint and type checking 工作流依赖同步问题 ([2a08587](https://github.com/jsxiaosi/vue-xs-admin/commit/2a08587))
+- ci: 🛠 pull request template ([9340b8f](https://github.com/jsxiaosi/vue-xs-admin/commit/9340b8f))
+- ci: 🛠 Update issue templates ([8c2fb0f](https://github.com/jsxiaosi/vue-xs-admin/commit/8c2fb0f))
+- ci(components): 🛠 pull request link check ([faadedd](https://github.com/jsxiaosi/vue-xs-admin/commit/faadedd))
+- fix: 🐛 删除多余文件 ([2317a07](https://github.com/jsxiaosi/vue-xs-admin/commit/2317a07))
+- fix: 🐛 lint check jobs name update ([bb88e92](https://github.com/jsxiaosi/vue-xs-admin/commit/bb88e92))
+- fix(components): 🐛 table ts type error ([53dd6fb](https://github.com/jsxiaosi/vue-xs-admin/commit/53dd6fb))
+
 ## <small>2.0.2 (2024-12-22)</small>
 
 - docs: 📝 修改简易版本地址 ([842b247](https://github.com/jsxiaosi/vue-xs-admin/commit/842b247))
