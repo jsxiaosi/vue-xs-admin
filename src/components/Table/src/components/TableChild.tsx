@@ -1,8 +1,8 @@
-import { getSlot } from '@/utils/slotsHelper';
 import { ElTableColumn } from 'element-plus';
 import { defineComponent } from 'vue';
 import type { TableColumnInstance } from 'element-plus';
 import type { SetupContext, VNode } from 'vue';
+import { getSlot } from '@/utils/slotsHelper';
 import type { TableColumnProps } from '../../types/table';
 
 interface RenderType {
@@ -23,7 +23,9 @@ const TableChild = defineComponent(
         return (
           <ElTableColumn {...(reItem as TableColumnInstance)}>
             {childrenRender?.header}
-            {children?.map(child => <TableChild item={child} />)}
+            {children?.map(child => (
+              <TableChild item={child} />
+            ))}
           </ElTableColumn>
         );
       }
