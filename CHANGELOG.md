@@ -1,6 +1,17 @@
-## <small>2.0.3 (2025-06-03)</small>
+## <small>2.0.5 (2025-08-03)</small>
 
-- feat(k8s): ✨ docker,k8s配置 ([802beb7](https://github.com/jsxiaosi/vue-xs-admin/commit/802beb7))
+- fix: 🐛 @typescript-eslint/typescript-estree 版本不匹配 typescript5.9.2 ([1d4e5e3](https://github.com/jsxiaosi/vue-xs-admin/commit/1d4e5e3))
+
+## <small>2.0.4 (2025-08-03)</small>
+
+- docs: 📝 v2.0.4 changelog ([233cc26](https://github.com/jsxiaosi/vue-xs-admin/commit/233cc26))
+- style: 💄 eslint fix ([f56f81a](https://github.com/jsxiaosi/vue-xs-admin/commit/f56f81a))
+- feat(hooks): ✨ echart 自定义主题 ([0d3beea](https://github.com/jsxiaosi/vue-xs-admin/commit/0d3beea))
+- feat(hooks,router,store,styles): ✨ 更新依赖 ([f69dd7e](https://github.com/jsxiaosi/vue-xs-admin/commit/f69dd7e))
+
+## <small>2.0.3 (2025-07-16)</small>
+
+- feat(k8s): ✨ docker,k8s配置 ([60fe177](https://github.com/jsxiaosi/vue-xs-admin/commit/60fe177))
 - ci: 🔨Update issue templates ([ed6e9a8](https://github.com/jsxiaosi/vue-xs-admin/commit/ed6e9a8))
 - ci: 🛠 lint and type checking 工作流 ([6d24016](https://github.com/jsxiaosi/vue-xs-admin/commit/6d24016))
 - ci: 🛠 lint and type checking 工作流 ([c8005bb](https://github.com/jsxiaosi/vue-xs-admin/commit/c8005bb))
