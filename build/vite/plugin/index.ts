@@ -1,12 +1,13 @@
 // tailwindcss
 import tailwindcss from '@tailwindcss/vite';
 
-import vue from '@vitejs/plugin-vue';
+import { DevTools } from '@vitejs/devtools';
 
 // import VueMacros from 'unplugin-vue-macros/vite';
 
-import vueJsx from '@vitejs/plugin-vue-jsx';
+import vue from '@vitejs/plugin-vue';
 
+import vueJsx from '@vitejs/plugin-vue-jsx';
 // 检查插件状态
 import Inspect from 'vite-plugin-inspect';
 import type { ConfigEnv, PluginOption } from 'vite';
@@ -26,6 +27,7 @@ import { configMockPlugin } from './mock';
 import { configPwaPlugin } from './pwa';
 // 按需加载样式配置
 import { configStylePlugin } from './style';
+
 // svg配置
 import { configSvgPlugin } from './svg';
 
@@ -70,6 +72,8 @@ export function createVitePlugins(_isBuild = false, configEnv: ConfigEnv) {
   vitePlugins.push(configAutoElementStylePlugin());
 
   vitePlugins.push(tailwindcss());
+
+  vitePlugins.push(DevTools());
 
   // 使用此插件会导致vite启动变慢 100ms左右
   // vitePlugins.push(configEsLinterPlugin(configEnv))

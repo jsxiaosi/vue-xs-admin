@@ -86,6 +86,7 @@
     "@types/nprogress": "^0.2.3",
     "@types/qs": "^6.14.0",
     "@types/sortablejs": "^1.15.8",
+    "@vitejs/devtools": "0.0.0-alpha.22",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
     "@vue/test-utils": "^2.4.6",

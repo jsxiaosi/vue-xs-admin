@@ -1,6 +1,7 @@
 *.local
 
 .DS_Store
+.rolldown
 package-lock.json
 yarn-error.log
 

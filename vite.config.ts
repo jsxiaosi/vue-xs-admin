@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import type { ConfigEnv, UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 
 import { createViteBuild } from './build/vite/build';
 import { createViteCSS } from './build/vite/css';
@@ -11,7 +11,7 @@ import { createViteResolve } from './build/vite/resolve';
 import { createViteServer } from './build/vite/server';
 
 // https://vitejs.dev/config/
-export default (configEnv: ConfigEnv): UserConfig => {
+export default defineConfig(configEnv => {
   const { mode, command } = configEnv;
   // const root = process.cwd();
 
@@ -32,10 +32,15 @@ export default (configEnv: ConfigEnv): UserConfig => {
     // 服务配置
     server: createViteServer(),
     // 打包配置
-    build: createViteBuild(),
+    build: {
+      ...createViteBuild(),
+      rolldownOptions: {
+        debug: {}, // enable debug mode
+      },
+    },
     // 依赖优化配置
     optimizeDeps: createViteOptimizeDeps(),
     // css预处理配置
     css: createViteCSS(),
   };
-};
+});
