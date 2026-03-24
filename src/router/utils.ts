@@ -1,14 +1,14 @@
+import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import { isUrl } from '@jsxiaosi/utils';
 import { useTimeoutFn } from '@vueuse/core';
 import { cloneDeep } from 'lodash-es';
-import type { RouteRecordName, RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
+import type { RouteDataItemType } from '@/server/route';
 import { PermissionMode, type RoleEnum } from '@/enum/role';
 import { getRouteApi } from '@/server/route';
-import type { RouteDataItemType } from '@/server/route';
 import { useAppStoreHook } from '@/store/modules/app';
 import { usePermissionStoreHook } from '@/store/modules/permission';
-import { router, sidebarRouteList } from './index';
 import type { AppRouteRecordRaw, Meta } from './type';
+import { router, sidebarRouteList } from './index';
 
 // 获取路由列表
 async function getRouteList(permission: RoleEnum) {

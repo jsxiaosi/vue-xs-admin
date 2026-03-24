@@ -1,9 +1,9 @@
 import { isString } from 'lodash-es';
 import { useMessage } from '@/hooks/web/useMessage';
+import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 import { checkStatus } from './axiosStatus';
 import { errorData } from './errorConfig';
 import { IAxios } from './iAxios';
-import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 
 const { createErrorModal, createErrorMsg } = useMessage();
 

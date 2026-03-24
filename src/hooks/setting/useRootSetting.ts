@@ -1,7 +1,7 @@
 import { merge } from 'lodash-es';
 import { storeToRefs } from 'pinia';
-import { useAppStoreHook } from '@/store/modules/app';
 import type { AppConfig } from '@/store/types';
+import { useAppStoreHook } from '@/store/modules/app';
 
 export function useRootSetting() {
   const appStore = useAppStoreHook();

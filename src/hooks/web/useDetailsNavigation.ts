@@ -1,5 +1,5 @@
-import { useRouter } from 'vue-router';
 import type { LocationQuery } from 'vue-router';
+import { useRouter } from 'vue-router';
 import type { Meta } from '@/router/type';
 import { usePermissionStoreHook } from '@/store/modules/permission';
 

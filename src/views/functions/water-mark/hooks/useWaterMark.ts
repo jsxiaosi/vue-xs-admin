@@ -1,7 +1,7 @@
-import { onBeforeUnmount, ref, shallowRef, unref } from 'vue';
 import type { Ref } from 'vue';
-import { createBase64, createWaterMarkDom } from '@/utils/waterMark';
+import { onBeforeUnmount, ref, shallowRef, unref } from 'vue';
 import type { WaterMarkOptions } from '@/utils/waterMark';
+import { createBase64, createWaterMarkDom } from '@/utils/waterMark';
 
 export const useWaterMark = (
   appendEl: Ref<HTMLElement | undefined | null> = ref(document.body) as Ref<HTMLElement>,

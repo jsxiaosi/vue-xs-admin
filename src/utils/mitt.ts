@@ -1,5 +1,5 @@
-import mitt from 'mitt';
 import type { Emitter } from 'mitt';
+import mitt from 'mitt';
 import type { AppRouteRecordRaw } from '@/router/type';
 
 interface Events {

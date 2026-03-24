@@ -1,7 +1,7 @@
 <script setup lang="ts">
+  import type { CSSProperties, Ref } from 'vue';
   import { tryOnMounted, tryOnUnmounted, useDebounceFn } from '@vueuse/core';
   import { computed, nextTick, ref, unref, useTemplateRef } from 'vue';
-  import type { CSSProperties, Ref } from 'vue';
   import * as utilsMethods from './utils';
   defineOptions({
     name: 'SeamlessScroll',

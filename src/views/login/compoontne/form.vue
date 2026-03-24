@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+  import type { FormInstance, FormRules } from 'element-plus';
   import { Avatar, Lock } from '@element-plus/icons-vue';
   import { reactive, ref, useTemplateRef } from 'vue';
   import { useRouter } from 'vue-router';
-  import type { FormInstance, FormRules } from 'element-plus';
   import { useI18n } from '@/hooks/web/useI18n';
   import { initRoute } from '@/router/utils';
   import { getUserInfo } from '@/server/useInfo';

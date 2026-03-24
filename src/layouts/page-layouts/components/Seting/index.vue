@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { _storage } from '@jsxiaosi/utils';
   import { ref, watch } from 'vue';
-  import { useRootSetting } from '@/hooks/setting/useRootSetting';
   import type { SidebarMode } from '@/store/types';
+  import { useRootSetting } from '@/hooks/setting/useRootSetting';
   import pageSettings from './pageSettings/index.vue';
   import ThemeSettings from './ThemeSettings/index.vue';
 

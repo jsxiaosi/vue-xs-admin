@@ -1,7 +1,7 @@
+import type { Plugin } from 'vite';
 import process from 'process';
 // https://github.com/btd/rollup-plugin-visualizer
 import { visualizer } from 'rollup-plugin-visualizer';
-import type { Plugin } from 'vite';
 
 export function configVisualizerPlugin(): Plugin | Plugin[] {
   if (process.env.REPORT === 'true') {

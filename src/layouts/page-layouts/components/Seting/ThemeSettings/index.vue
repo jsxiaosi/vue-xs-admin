@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue';
+  import type { AppConfig } from '@/store/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
-  import type { AppConfig } from '@/store/types';
   import { themeHtmlClassName, updateColor } from '@/utils/theme/transformTheme';
 
   const { appConfig, setAppConfigMode } = useRootSetting();

@@ -1,9 +1,9 @@
 <script lang="tsx">
-  import { defineComponent, resolveComponent } from 'vue';
   import type { DefineComponent, SetupContext } from 'vue';
+  import { defineComponent, resolveComponent } from 'vue';
   import { getSlot } from '@/utils/slotsHelper';
-  import { elComponentItem } from '../../componentMap';
   import type { FormItemRenderProps } from '../../types/from';
+  import { elComponentItem } from '../../componentMap';
   export default defineComponent(
     <T extends Object = any>(props: FormItemRenderProps<T>, { slots }: SetupContext) => {
       const { formItem, formModel } = props;

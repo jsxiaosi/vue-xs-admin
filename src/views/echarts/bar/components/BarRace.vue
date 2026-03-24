@@ -1,11 +1,11 @@
 <script lang="ts"></script>
 
 <script lang="ts" setup>
+  import type { Ref } from 'vue';
   import { useIntervalFn } from '@vueuse/core';
   import { onMounted, useTemplateRef } from 'vue';
-  import type { Ref } from 'vue';
-  import { useECharts } from '@/hooks/web/useECharts';
   import type { createEChartsOption } from '@/hooks/web/useECharts';
+  import { useECharts } from '@/hooks/web/useECharts';
 
   const chartRef = useTemplateRef<HTMLDivElement | null>('chart-ref');
   const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);

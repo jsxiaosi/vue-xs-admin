@@ -1,8 +1,8 @@
 <script setup lang="ts">
+  import type { localeKey } from '@/locales/types';
   import SvgIcon from '@/components/SvgIcon/index.vue';
   import { useRootSetting } from '@/hooks/setting/useRootSetting';
   import { localesList, useI18n } from '@/hooks/web/useI18n';
-  import type { localeKey } from '@/locales/types';
 
   const i18n = useI18n();
   const { setAppConfigMode } = useRootSetting();

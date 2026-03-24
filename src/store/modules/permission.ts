@@ -1,11 +1,11 @@
+import type { RouteRecordName } from 'vue-router';
 import { _storage } from '@jsxiaosi/utils';
 import { isEqual } from 'lodash-es';
 import { defineStore } from 'pinia';
-import type { RouteRecordName } from 'vue-router';
 import type { AppRouteRecordRaw } from '@/router/type';
 import { store } from '@/store';
-import { useAppStoreHook } from './app';
 import type { MultiTabsType, PermissionState } from '../types';
+import { useAppStoreHook } from './app';
 
 const getPermissionState = (): PermissionState => {
   return {

@@ -1,10 +1,10 @@
-import { readdir, stat } from 'fs';
-import { join } from 'path';
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-import { green } from 'kolorist';
 import type { Dayjs } from 'dayjs';
 import type { Plugin, ResolvedConfig } from 'vite';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import { readdir, stat } from 'fs';
+import { green } from 'kolorist';
+import { join } from 'path';
 dayjs.extend(duration);
 
 const tost = `🤩你好！如果您感觉内容还不错，在右边链接给个star哦😘！https://github.com/jsxiaosi/vue-xs-admin`;

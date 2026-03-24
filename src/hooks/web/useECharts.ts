@@ -1,8 +1,8 @@
+import type { EChartsOption } from 'echarts';
+import type { Ref } from 'vue';
 import { tryOnUnmounted, useDebounceFn } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { nextTick, ref, unref, watch } from 'vue';
-import type { EChartsOption } from 'echarts';
-import type { Ref } from 'vue';
 import { useEventListener } from '@/hooks/event/useEventListener';
 import { useAppStoreHook } from '@/store/modules/app';
 import echarts from '@/utils/plugin/echarts';

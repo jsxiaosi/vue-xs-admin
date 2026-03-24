@@ -1,9 +1,9 @@
 <script lang="ts" setup generic="T extends Object">
-  import { onMounted, reactive, shallowRef, useTemplateRef } from 'vue';
   import type { Arrayable } from '@vueuse/core';
   import type { ElForm, FormItemRule } from 'element-plus';
-  import FormItem from './src/components/FormItem.vue';
+  import { onMounted, reactive, shallowRef, useTemplateRef } from 'vue';
   import type { FormProps, FormSlotType } from './types/from';
+  import FormItem from './src/components/FormItem.vue';
 
   const props = defineProps<{
     formData?: T;

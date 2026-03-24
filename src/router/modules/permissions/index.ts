@@ -1,6 +1,6 @@
+import type { AppRouteRecordRaw } from '@/router/type';
 import { RoleEnum } from '@/enum/role';
 import { t } from '@/hooks/web/useI18n';
-import type { AppRouteRecordRaw } from '@/router/type';
 
 const permissions: AppRouteRecordRaw[] = [
   {

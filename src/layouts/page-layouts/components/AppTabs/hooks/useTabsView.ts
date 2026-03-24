@@ -1,6 +1,6 @@
-import { computed, reactive, ref, watch } from 'vue';
 import type { CSSProperties, Ref } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
+import { computed, reactive, ref, watch } from 'vue';
 import type { MultiTabsType } from '@/store/types';
 import { useTabsChange } from './useTabsChange';
 

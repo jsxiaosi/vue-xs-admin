@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import path from 'path';
   import { isUrl } from '@jsxiaosi/utils';
+  import path from 'path';
   import { ref } from 'vue';
-  import { translateI18n } from '@/hooks/web/useI18n';
   import type { AppRouteRecordRaw } from '@/router/type';
+  import { translateI18n } from '@/hooks/web/useI18n';
   import Item from './Item.vue';
   import AppLink from './Link.vue';
 

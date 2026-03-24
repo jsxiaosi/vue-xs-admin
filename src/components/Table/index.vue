@@ -1,8 +1,8 @@
 <script lang="ts" setup generic="T extends Recordable">
-  import { ElTable } from 'element-plus';
   import type { TableProps } from 'element-plus';
-  import TableChild from './src/components/TableChild';
+  import { ElTable } from 'element-plus';
   import type { TableColumnProps, TableSlotType } from './types/table';
+  import TableChild from './src/components/TableChild';
 
   const props = defineProps<TableProps<T> & { option: TableColumnProps<T>[] }>();
 

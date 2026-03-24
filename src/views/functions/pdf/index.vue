@@ -1,10 +1,10 @@
 <script setup lang="ts">
+  // import { useEventListener, useDebounceFn } from '@vueuse/core';
+  import type { UploadRawFile } from 'element-plus';
   import { fileToBase64 } from '@jsxiaosi/utils';
   import { ElUpload } from 'element-plus';
   import { ref, useTemplateRef, watchEffect } from 'vue';
   import VuePdfEmbed from 'vue-pdf-embed';
-  // import { useEventListener, useDebounceFn } from '@vueuse/core';
-  import type { UploadRawFile } from 'element-plus';
   import SvgIcon from '@/components/SvgIcon/index.vue';
 
   type VuePdfEmbedProps = InstanceType<typeof VuePdfEmbed>;

@@ -1,10 +1,10 @@
+import type { Plugin } from 'vite';
+
 /**
  * 用于打包和输出gzip
  * https://github.com/anncwb/vite-plugin-compression/blob/main/README.zh_CN.md
  */
 import viteCompression from 'vite-plugin-compression';
-
-import type { Plugin } from 'vite';
 
 export function configCompressPlugin(compress: 'gzip' | 'brotli' | 'none', disable = false): Plugin | Plugin[] {
   let options = {};

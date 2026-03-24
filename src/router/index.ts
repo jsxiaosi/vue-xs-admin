@@ -1,7 +1,7 @@
-import { _storage, isUrl } from '@jsxiaosi/utils';
-import { createRouter, createWebHistory } from 'vue-router';
 import type { App } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
+import { _storage, isUrl } from '@jsxiaosi/utils';
+import { createRouter, createWebHistory } from 'vue-router';
 import { getConfig } from '@/config';
 import { translateI18n } from '@/hooks/web/useI18n';
 import { usePermissionStoreHook } from '@/store/modules/permission';

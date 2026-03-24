@@ -1,16 +1,12 @@
+import type { ConfigEnv, PluginOption } from 'vite';
 // tailwindcss
 import tailwindcss from '@tailwindcss/vite';
-
-import { DevTools } from '@vitejs/devtools';
-
 // import VueMacros from 'unplugin-vue-macros/vite';
-
+import { DevTools } from '@vitejs/devtools';
 import vue from '@vitejs/plugin-vue';
-
 import vueJsx from '@vitejs/plugin-vue-jsx';
 // 检查插件状态
 import Inspect from 'vite-plugin-inspect';
-import type { ConfigEnv, PluginOption } from 'vite';
 // 自定义插件 问候语，打包检测用时、大小
 import viteBuildOuteInfo from './buildOuteInfo';
 // 压缩
@@ -27,10 +23,8 @@ import { configMockPlugin } from './mock';
 import { configPwaPlugin } from './pwa';
 // 按需加载样式配置
 import { configStylePlugin } from './style';
-
 // svg配置
 import { configSvgPlugin } from './svg';
-
 // 性能分析工具
 import { configVisualizerPlugin } from './visualizer';
 

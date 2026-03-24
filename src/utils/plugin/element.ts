@@ -1,3 +1,4 @@
+import type { App, Component } from 'vue';
 // https://element-plus.org/zh-CN/component/icon.html
 import {
   ArrowDown,
@@ -64,8 +65,6 @@ import {
   ElText,
   ElTooltip,
 } from 'element-plus';
-
-import type { App, Component } from 'vue';
 
 // Directives
 const plugins = [ElLoading, ElInfiniteScroll];

@@ -1,7 +1,7 @@
 <script lang="tsx" setup>
   import { h, ref } from 'vue';
-  import Table from '@/components/Table/index.vue';
   import type { TableColumnProps } from '@/components/Table/types/table';
+  import Table from '@/components/Table/index.vue';
 
   interface TableData {
     date: string;

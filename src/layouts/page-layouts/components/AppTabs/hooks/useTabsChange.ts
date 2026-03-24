@@ -1,11 +1,11 @@
+import type { Ref } from 'vue';
+import type { RouteLocationNormalizedLoaded } from 'vue-router';
 import { addClass, removeClass } from '@jsxiaosi/utils';
 import qs from 'qs';
 import { unref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import type { Ref } from 'vue';
-import type { RouteLocationNormalizedLoaded } from 'vue-router';
-import { usePermissionStoreHook } from '@/store/modules/permission';
 import type { MultiTabsType } from '@/store/types';
+import { usePermissionStoreHook } from '@/store/modules/permission';
 
 export const useTabsChange = (multiTabs: Ref<MultiTabsType[]>) => {
   const route = useRoute();

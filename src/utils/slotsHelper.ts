@@ -1,5 +1,5 @@
-import { isFunction } from '@jsxiaosi/utils';
 import type { Slots } from 'vue';
+import { isFunction } from '@jsxiaosi/utils';
 
 export function getSlot<T extends object = any>(slots: Slots, slot = 'default', data?: T) {
   if (!slots || !Reflect.has(slots, slot)) {

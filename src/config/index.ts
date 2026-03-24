@@ -1,7 +1,7 @@
-import { _storage } from '@jsxiaosi/utils';
 import type { App } from 'vue';
-import { getConfigInfo } from '@/server/config';
+import { _storage } from '@jsxiaosi/utils';
 import type { AppConfig } from '@/store/types';
+import { getConfigInfo } from '@/server/config';
 import { configTheme } from '@/utils/theme/transformTheme';
 
 let config: AppConfig = {} as AppConfig;
