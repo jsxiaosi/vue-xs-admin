@@ -4,7 +4,6 @@ import { defineConfig } from 'vite';
 
 import { createViteBuild } from './build/vite/build';
 import { createViteCSS } from './build/vite/css';
-import { createViteEsbuild } from './build/vite/esbuild';
 import { createViteOptimizeDeps } from './build/vite/optimizeDeps';
 import { createVitePlugins } from './build/vite/plugin';
 import { createViteResolve } from './build/vite/resolve';
@@ -23,8 +22,7 @@ export default defineConfig(configEnv => {
     // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下请通过 --clearScreen false 设置。
     clearScreen: true,
     logLevel: 'info',
-    // esbuild
-    esbuild: createViteEsbuild(isBuild),
+    oxc: {},
     // 解析配置
     resolve: createViteResolve(mode, __dirname),
     // 插件配置
