@@ -80,7 +80,7 @@ export function copyObj() {
     return target;
   }
   for (; i < len; i++) {
-    //所以如果源对象中数据类型为Undefined或Null那么就会跳过本次循环，接着循环下一个源对象
+    // 所以如果源对象中数据类型为Undefined或Null那么就会跳过本次循环，接着循环下一个源对象
 
     options = arguments[i];
     if (options != null) {

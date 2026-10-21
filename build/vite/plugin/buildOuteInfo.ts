@@ -13,22 +13,22 @@ function getdirsize(dir: string, callback: (fileNumber: number, size: number) =>
   let size = 0;
   let fileNumber = 0;
   stat(dir, (err, stats) => {
-    if (err) throw err; //如果出错
-    if (stats.isFile()) return callback(1, stats.size); //如果是文件
+    if (err) throw err; // 如果出错
+    if (stats.isFile()) return callback(1, stats.size); // 如果是文件
 
     readdir(dir, (err, files) => {
-      //如果是目录
-      if (err) throw err; //如果遍历目录出错
-      if (files.length === 0) return callback(0, 0); //如果目录是空的
+      // 如果是目录
+      if (err) throw err; // 如果遍历目录出错
+      if (files.length === 0) return callback(0, 0); // 如果目录是空的
 
-      let count = files.length; //文件数量
+      let count = files.length; // 文件数量
       for (let i = 0; i < files.length; i++) {
         getdirsize(join(dir, files[i]), (_fileNumber: number, _size: number) => {
           if (err) throw err;
           size += _size;
           fileNumber += _fileNumber;
           if (--count <= 0) {
-            //如果目录中所有文件(或目录)都遍历完成
+            // 如果目录中所有文件(或目录)都遍历完成
             callback(fileNumber, size);
           }
         });

@@ -1,5 +1,5 @@
-import type { RequestOptions, Result } from '#/axios';
 import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type { RequestOptions, Result } from '#/axios';
 /**
  * axios 数据处理类
  */

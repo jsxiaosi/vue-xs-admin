@@ -30,7 +30,7 @@
           return (
             <>
               {options?.map(res => (
-                <Comp label={res.label} value={res.value} {...formItem.props}></Comp>
+                <Comp label={res.label} value={res.value} {...formItem.props} />
               ))}
             </>
           );

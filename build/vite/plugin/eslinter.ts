@@ -19,7 +19,7 @@ export function configEsLinterPlugin(configEnv: ConfigEnv) {
       'build/**/*.ts',
       'vite.config.ts',
     ],
-    //运行的lint类型（这里运行了eslint typeScriptLint）注意：目前这个插件好像还没支持styleLint没看到有相关的define
+    // 运行的lint类型（这里运行了eslint typeScriptLint）注意：目前这个插件好像还没支持styleLint没看到有相关的define
     linters: [
       new EsLinter({
         // 环境变量

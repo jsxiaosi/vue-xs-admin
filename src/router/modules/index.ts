@@ -5,7 +5,7 @@ export function configRouteList() {
   // 白名单目录/文件，白名单目录 = 不渲染到菜单，不显示标签页
   const whiteCatalogue = ['root', 'whiteList'];
 
-  let routeModulesList: AppRouteRecordRaw[] = []; //菜单路由
+  let routeModulesList: AppRouteRecordRaw[] = []; // 菜单路由
   const whiteRouteModulesList: AppRouteRecordRaw[] = []; // 不参与菜单处理的路由
 
   // 自动查找路由配置文件

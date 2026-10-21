@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@jsxiaosi/commitlint-config": "^1.0.24",
-    "@jsxiaosi/eslint-config": "^1.0.24",
+    "@jsxiaosi/eslint-config": "files:/Users/jsxiaosi/study/jsxiaosi/eslint-config/packages/eslint",
     "@jsxiaosi/eslint-config-prettier": "^1.0.24",
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/vite": "^4.2.2",
@@ -155,6 +155,10 @@
       "rollup-plugin-terser": "*",
       "urix": "*",
       "uuid": "*"
+    },
+    "overrides": {
+      "@jsxiaosi/eslint-config": "link:../eslint-config/packages/eslint",
+      "bin-wrapper": "npm:bin-wrapper-china"
     }
   },
   "resolutions": {

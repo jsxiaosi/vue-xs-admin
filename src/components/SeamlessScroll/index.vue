@@ -41,9 +41,9 @@
   // move动画的animationFrame定时器
   let reqFrame = 0;
   let startPos: { x: number; y: number };
-  //记录touchStart时候的posY
+  // 记录touchStart时候的posY
   let startPosY = 0;
-  //记录touchStart时候的posX
+  // 记录touchStart时候的posX
   let startPosX = 0;
   // mouseenter mouseleave 控制scrollMove()的开关
   let isHover = false;
@@ -69,21 +69,21 @@
 
   const defaultOption = computed(() => {
     return {
-      //步长
+      // 步长
       step: 1,
-      //启动无缝滚动最小数据数
+      // 启动无缝滚动最小数据数
       limitMoveNum: 5,
-      //是否启用鼠标hover控制
+      // 是否启用鼠标hover控制
       hoverStop: true,
       // bottom 往下 top 往上(默认) left 向左 right 向右
       direction: 'top',
-      //开启移动端touch
+      // 开启移动端touch
       openTouch: true,
-      //单条数据高度有值hoverStop关闭
+      // 单条数据高度有值hoverStop关闭
       singleHeight: 0,
-      //单条数据宽度有值hoverStop关闭
+      // 单条数据宽度有值hoverStop关闭
       singleWidth: 0,
-      //单步停止等待时间
+      // 单步停止等待时间
       waitTime: 1000,
       switchOffset: 30,
       autoPlay: true,
@@ -225,17 +225,17 @@
   function touchStart(e: any) {
     if (!unref(canTouchScroll)) return;
     let timer;
-    //touches数组对象获得屏幕上所有的touch，取第一个touch
+    // touches数组对象获得屏幕上所有的touch，取第一个touch
     const touch = e.targetTouches[0];
     const { waitTime, singleHeight, singleWidth } = unref(options);
-    //取第一个touch的坐标值
+    // 取第一个touch的坐标值
     startPos = {
       x: touch.pageX,
       y: touch.pageY,
     };
-    //记录touchStart时候的posY
+    // 记录touchStart时候的posY
     startPosY = unref(yPos);
-    //记录touchStart时候的posX
+    // 记录touchStart时候的posX
     startPosX = unref(xPos);
     if (!!singleHeight && !!singleWidth) {
       if (timer) clearTimeout(timer);
@@ -248,7 +248,7 @@
   }
 
   function touchMove(e: any) {
-    //当屏幕有多个touch或者页面被缩放过，就不执行move操作
+    // 当屏幕有多个touch或者页面被缩放过，就不执行move操作
     if (!unref(canTouchScroll) || e.targetTouches.length > 1 || (e.scale && e.scale !== 1)) return;
     const touch = e.targetTouches[0];
     const { direction } = unref(options);
@@ -256,9 +256,9 @@
       x: touch.pageX - startPos.x,
       y: touch.pageY - startPos.y,
     };
-    //阻止触摸事件的默认行为，即阻止滚屏
+    // 阻止触摸事件的默认行为，即阻止滚屏
     e.preventDefault();
-    //dir，1表示纵向滑动，0为横向滑动
+    // dir，1表示纵向滑动，0为横向滑动
     const dir = Math.abs(endPos.x) < Math.abs(endPos.y) ? 1 : 0;
     if ((dir === 1 && direction === 'bottom') || (dir === 1 && direction === 'top')) {
       // 表示纵向滑动 && 运动方向为上下
@@ -303,12 +303,12 @@
   function scrollMove() {
     // 鼠标移入时拦截scrollMove()
     if (isHover) return;
-    //进入move立即先清除动画 防止频繁touchMove导致多动画同时进行
+    // 进入move立即先清除动画 防止频繁touchMove导致多动画同时进行
     // scrollCancle();
     reqFrame = requestAnimationFrame(() => {
-      //实际高度
+      // 实际高度
       const h = unref(realBoxHeight) / 2;
-      //宽度
+      // 宽度
       const w = unref(realBoxWidth) / 2;
       const { direction, waitTime } = unref(options);
       if (direction === 'top') {
@@ -342,7 +342,7 @@
       }
       if (singleWaitTime) clearTimeout(singleWaitTime);
       if (unref(realSingleStopHeight)) {
-        //是否启动了单行暂停配置
+        // 是否启动了单行暂停配置
         if (Math.abs(unref(yPos)) % unref(realSingleStopHeight) < unref(step)) {
           // 符合条件暂停waitTime
           singleWaitTime = setTimeout(() => {
@@ -369,7 +369,7 @@
   function scrollInitMove() {
     nextTick(() => {
       const { switchDelay } = unref(options);
-      //清空copy
+      // 清空copy
       copyHtml.value = '';
       if (unref(isHorizontal)) {
         height.value = unref(wrap as Ref<HTMLElement>).offsetHeight;
@@ -410,13 +410,13 @@
   }
 
   function scrollStartMove() {
-    //开启scrollMove
+    // 开启scrollMove
     isHover = false;
     scrollMove();
   }
 
   function scrollStopMove() {
-    //关闭scrollMove
+    // 关闭scrollMove
     isHover = true;
     // 防止频频hover进出单步滚动,导致定时器乱掉
     if (singleWaitTime) clearTimeout(singleWaitTime);

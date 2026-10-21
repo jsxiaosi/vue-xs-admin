@@ -35,7 +35,7 @@
       series: [
         {
           type: 'wordCloud',
-          //maskImage: maskImage,
+          // maskImage: maskImage,
           shape: 'alias',
           sizeRange: [15, 60],
           rotationRange: [-90, 90],

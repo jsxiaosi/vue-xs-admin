@@ -8,7 +8,7 @@ export interface Meta extends RouteMeta {
   title: string | localeTitle;
   // 设置菜单图标
   icon?: string;
-  //排序位置 （子路由无效）
+  // 排序位置 （子路由无效）
   position?: number;
   // 单个路由的时候是否开启折叠
   alwaysShow?: boolean;

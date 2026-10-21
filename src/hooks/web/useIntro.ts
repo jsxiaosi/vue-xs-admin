@@ -17,7 +17,7 @@ async function useIntro(options: Partial<TourOptions> = {}) {
         highlightClass: 'custom-intro-highlight' /* 说明高亮区域的样式 */,
         exitOnEsc: true /* 是否使用键盘Esc退出 */,
         exitOnOverlayClick: false /* 是否允许点击空白处退出 */,
-        showStepNumbers: false /* 是否显示说明的数据步骤*/,
+        showStepNumbers: false /* 是否显示说明的数据步骤 */,
         keyboardNavigation: true /* 是否允许键盘来操作 */,
         showButtons: true /* 是否按键来操作 */,
         showBullets: true /* 是否使用点点点显示进度 */,

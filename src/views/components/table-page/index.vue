@@ -91,7 +91,7 @@
         ];
         return (
           <div style={{ padding: '0 8px' }}>
-            <Table data={[slotData.row]} border option={ngOption}></Table>
+            <Table data={[slotData.row]} border option={ngOption} />
           </div>
         );
       },

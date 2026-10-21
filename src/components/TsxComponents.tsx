@@ -6,9 +6,12 @@ export default defineComponent({
     const dataname = ref<string>('admin');
     return () => (
       <>
-        <div>TSX：{dataname.value}</div>
         <div>
-          <div></div>
+          TSX：
+          {dataname.value}
+        </div>
+        <div>
+          <div />
         </div>
       </>
     );

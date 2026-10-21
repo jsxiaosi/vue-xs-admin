@@ -20,8 +20,8 @@ export function configStylePlugin(): Plugin | Plugin[] {
   //   //       // return `element-plus/lib/theme-chalk/${name}.css`;
   //   //     },
   //   //     // resolveComponent: (name: any) => {
-  //   //     // 	console.log(name)
-  //   //     // 	return `element-plus/lib/${name}`
+  //   //     // console.log(name)
+  //   //     // return `element-plus/lib/${name}`
   //   //     // },
   //   //   },
   //   // ],
